@@ -1,20 +1,16 @@
 import React, { useState } from 'react';
 import postForm from '../api/PostForm';
-import {
-  Box,
-  Typography,
-  Paper,
-} from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
 import './Form.css';
-import Event from './Event';
-import Contact from './Contact';
-import DatePickerClient from './DatePicker';
-import CloseBtn from './CloseBtn';
-
-import SendBtn from './SendBtn';
+import Event from '../components/Event';
+import Contact from '../components/Contact';
+import DatePickerClient from '../components/DatePicker';
+import CloseBtn from '../components/CloseBtn';
+import SendBtn from '../components/SendBtn';
 
 const Form = () => {
+
   // Contact
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -70,6 +66,24 @@ const Form = () => {
     <Box component="main" maxWidth="xs" className="container">
       <form onSubmit={handleSubmit}>
         <CloseBtn redirectUrl="https://visitvarmland.com" />
+        <Box
+          sx={{ display: 'flex', justifyContent: 'flex-start', width: '100%' }}
+        >
+          <img
+            src="/logotyp-visitvarmland-svart.svg"
+            alt="Visit Värmland Logo"
+            style={{
+              width: '150px',
+              marginBottom: '20px',
+              position: 'absolute',
+              top: '10px',
+              left: '20px',
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+            }}
+          />
+        </Box>
         <Typography component="h1" variant="h5" align="center" gutterBottom>
           Kontakt uppgifter
         </Typography>

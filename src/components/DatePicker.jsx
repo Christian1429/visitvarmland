@@ -5,7 +5,6 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Box, TextField } from '@mui/material';
 import dayjs from 'dayjs';
 import 'dayjs/locale/sv';
-import './Form.css';
 
 const DatePickerClient = ({
   fromDate,
