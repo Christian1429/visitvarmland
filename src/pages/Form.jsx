@@ -86,7 +86,7 @@ const Form = () => {
           variant="h5"
           align="center"
           gutterBottom
-          sx={{ color: '#004338', fontWeight: 'bold', paddingTop: '4rem', paddingBottom: '1rem' }}
+          sx={{ color: '#004338', fontWeight: 'bold', paddingTop: '4rem', paddingBottom: '1rem', fontFamily: 'Noto Serif' }}
         >
           Tips och evenemang
         </Typography>
