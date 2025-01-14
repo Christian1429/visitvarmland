@@ -1,0 +1,48 @@
+.container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(219, 219, 219);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.paper {
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.text-field {
+    width: 100%;
+}
+
+.text-field .MuiOutlinedInput-root {
+    & fieldset {
+        /* border-color: rgb(200, 199, 199); */
+    }
+    &:hover fieldset {
+        border-color: #000000;
+    }
+    &.Mui-focused fieldset {
+        border-color: #000000;
+    }
+}
+
+/* Label color */
+/* .text-field .MuiInputLabel-root {
+    color: black; 
+} */
+
+/* Focused label color */
+.text-field .MuiInputLabel-root.Mui-focused {
+    color: #000000; 
+}
