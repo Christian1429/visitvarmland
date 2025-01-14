@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import postForm from '../api/PostForm';
 import { Box, Typography } from '@mui/material';
-
 import './Form.css';
 import Event from '../components/Event';
 import Contact from '../components/Contact';
@@ -66,11 +65,9 @@ const Form = () => {
     <Box component="main" maxWidth="xs" className="container">
       <form onSubmit={handleSubmit}>
         <CloseBtn redirectUrl="https://visitvarmland.com" />
-        <Box
-          sx={{ display: 'flex', justifyContent: 'flex-start', width: '100%' }}
-        >
+        <Box>
           <img
-            src="/logotyp-visitvarmland-svart.svg"
+            src="/assets/logotyp-visitvarmland-svart.svg"
             alt="Visit Värmland Logo"
             style={{
               width: '150px',
@@ -84,8 +81,14 @@ const Form = () => {
             }}
           />
         </Box>
-        <Typography component="h1" variant="h5" align="center" gutterBottom>
-          Kontakt uppgifter
+        <Typography
+          component="h1"
+          variant="h5"
+          align="center"
+          gutterBottom
+          sx={{ color: '#004338', fontWeight: 'bold', paddingTop: '4rem', paddingBottom: '1rem' }}
+        >
+          Tips och evenemang
         </Typography>
         <Box display="flex" flexDirection="column" alignItems="center">
           <Contact
@@ -122,7 +125,7 @@ const Form = () => {
             nyArrangor={nyArrangor}
             setNyArrangor={setNyArrangor}
           />
-          <SendBtn />
+          <SendBtn/>
         </Box>
       </form>
     </Box>

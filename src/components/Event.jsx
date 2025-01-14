@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
   TextField,
   Box,
   Checkbox,
   FormControlLabel,
-  Typography,
 } from '@mui/material';
 
 const Event = ({
@@ -112,7 +111,7 @@ const Event = ({
         margin="dense"
         fullWidth
         id="hemsida"
-        label="Hemsida"
+        label="Eventuell hemsida"
         name="hemsida"
         autoComplete="hemsida"
         value={hemsida}
@@ -144,7 +143,7 @@ const Event = ({
         value={ovrigInformation}
         onChange={(e) => setOvrigInformation(e.target.value)}
         className="text-field"
-        sx={{ gridColumn: 'span 2' }}
+        sx={{ gridColumn: 'span 2', paddingBottom: '1rem'}}
       />
     </Box>
   );

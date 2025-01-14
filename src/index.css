@@ -1,4 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Serif:wght@400;700&display=swap');
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('/fonts/Noto_Sans/NotoSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('/fonts/Noto_Sans/NotoSans-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Noto Serif';
+  src: url('/fonts/Noto_Sans/NotoSerif-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Noto Serif';
+  src: url('/fonts/Noto_Sans/NotoSerif-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
 
 :root {
   --color-green-dark: #004338;
