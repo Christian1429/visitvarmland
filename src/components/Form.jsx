@@ -7,9 +7,11 @@ import {
 } from '@mui/material';
 
 import './Form.css';
+import Event from './Event';
+import Contact from './Contact';
 import DatePickerClient from './DatePicker';
 import CloseBtn from './CloseBtn';
-import Contact from './Contact';
+
 import SendBtn from './SendBtn';
 
 const Form = () => {
@@ -23,6 +25,16 @@ const Form = () => {
   const [fromDate, setFromDate] = useState(null);
   const [toDate, setToDate] = useState(null);
 
+  // Event
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [priser, setPriser] = useState('');
+  const [hemsida, setHemsida] = useState('');
+  const [kontaktuppgifter, setKontaktuppgifter] = useState('');
+  const [ovrigInformation, setOvrigInformation] = useState('');
+  const [befintligArrangor, setBefintligArrangor] = useState(false);
+  const [nyArrangor, setNyArrangor] = useState(false);
+
   const handleFromDateChange = (newValue) => {
     setFromDate(
       newValue ? newValue.toDate().toLocaleDateString('sv-SE') : null
@@ -32,9 +44,25 @@ const Form = () => {
   const handleToDateChange = (newValue) => {
     setToDate(newValue ? newValue.toDate().toLocaleDateString('sv-SE') : null);
   };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = { name, email };
+    const data = {
+      name,
+      email,
+      address,
+      phone,
+      fromDate,
+      toDate,
+      title,
+      description,
+      priser,
+      hemsida,
+      kontaktuppgifter,
+      ovrigInformation,
+      befintligArrangor,
+      nyArrangor,
+    };
     await postForm(data);
   };
 
@@ -61,6 +89,24 @@ const Form = () => {
             toDate={toDate}
             handleFromDateChange={handleFromDateChange}
             handleToDateChange={handleToDateChange}
+          />
+          <Event
+            title={title}
+            setTitle={setTitle}
+            description={description}
+            setDescription={setDescription}
+            priser={priser}
+            setPriser={setPriser}
+            hemsida={hemsida}
+            setHemsida={setHemsida}
+            kontaktuppgifter={kontaktuppgifter}
+            setKontaktuppgifter={setKontaktuppgifter}
+            ovrigInformation={ovrigInformation}
+            setOvrigInformation={setOvrigInformation}
+            befintligArrangor={befintligArrangor}
+            setBefintligArrangor={setBefintligArrangor}
+            nyArrangor={nyArrangor}
+            setNyArrangor={setNyArrangor}
           />
           <SendBtn />
         </Box>
