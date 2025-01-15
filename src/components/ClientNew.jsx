@@ -8,6 +8,10 @@ const ClientNew = ({
   setNewOrganizerAddress,
   newOrganizerWebsite,
   setNewOrganizerWebsite,
+  organizationNumber,
+  setOrganizationNumber,
+  location,
+  setLocation,
 }) => {
   return (
     <>
@@ -23,7 +27,7 @@ const ClientNew = ({
           paddingTop: '1rem',
         }}
       >
-        Evenemang
+        Registera arrangör, företag eller organisation
       </Typography>
       <Box
         sx={{
@@ -73,6 +77,30 @@ const ClientNew = ({
           name="new-organizer-website"
           value={newOrganizerWebsite}
           onChange={(e) => setNewOrganizerWebsite(e.target.value)}
+          className="text-field"
+        />
+        <TextField
+          variant="outlined"
+          margin="dense"
+          required
+          fullWidth
+          id="organization-number"
+          label="Organisationsnummer"
+          name="organization-number"
+          value={organizationNumber}
+          onChange={(e) => setOrganizationNumber(e.target.value)}
+          className="text-field"
+        />
+        <TextField
+          variant="outlined"
+          margin="dense"
+          required
+          fullWidth
+          id="location"
+          label="Plats"
+          name="location"
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
           className="text-field"
         />
       </Box>

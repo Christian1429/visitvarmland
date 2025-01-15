@@ -27,6 +27,8 @@ const Form = () => {
   const [newOrganizerName, setNewOrganizerName] = useState('');
   const [newOrganizerAddress, setNewOrganizerAddress] = useState('');
   const [newOrganizerWebsite, setNewOrganizerWebsite] = useState('');
+  const [organizationNumber, setOrganizationNumber] = useState('');
+  const [location, setLocation] = useState('');
 
   // Event
   const [title, setTitle] = useState('');
@@ -70,6 +72,10 @@ const Form = () => {
             setNewOrganizerAddress={setNewOrganizerAddress}
             newOrganizerWebsite={newOrganizerWebsite}
             setNewOrganizerWebsite={setNewOrganizerWebsite}
+            organizationNumber={organizationNumber}
+            setOrganizationNumber={setOrganizationNumber}
+            location={location}
+            setLocation={setLocation}
           />
         );
       case 2:
