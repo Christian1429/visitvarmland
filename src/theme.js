@@ -1,4 +1,5 @@
 import { createTheme } from '@mui/material/styles';
+import { tr } from 'date-fns/locale';
 
 const theme = createTheme({
   typography: {
@@ -15,6 +16,9 @@ const theme = createTheme({
           '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
             borderColor: '#004337',
           },
+        },
+        input: {
+          backgroundColor: '#ffffff',
         },
       },
     },
@@ -47,6 +51,18 @@ const theme = createTheme({
           color: '#006761',
           '&.Mui-checked': {
             color: '#006761',
+          },
+        },
+      },
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          color: 'white',
+          borderColor: '#004337',
+          backgroundColor: '#00a081',
+          '&:hover': {
+            backgroundColor: '#004337',
           },
         },
       },
