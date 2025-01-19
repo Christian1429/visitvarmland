@@ -1,8 +1,9 @@
 .container {
-    width: 100%;
-    margin: 0 auto;
-    position: relative;
-    min-height: 130vh;
-    background: url('/assets/visit-varmland-start.jpg.webp') no-repeat bottom center;
-    background-size: cover;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  min-height: 150vh;
+  background: url("/assets/visit-varmland-start.jpg.webp") no-repeat bottom
+    center;
+  background-size: cover;
 }
