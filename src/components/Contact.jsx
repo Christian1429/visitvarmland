@@ -47,6 +47,7 @@ const Contact = ({
           value={name}
           onChange={(e) => setName(e.target.value)}
           className="text-field"
+          sx={{ boxShadow: 2 }}
         />
 
         <TextField
@@ -55,12 +56,13 @@ const Contact = ({
           required
           fullWidth
           id="email"
-          label="Email adress"
+          label="Epost adress"
           name="email"
           autoComplete="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="text-field"
+          sx={{ boxShadow: 2 }}
         />
         <TextField
           variant="outlined"
@@ -74,6 +76,7 @@ const Contact = ({
           value={address}
           onChange={(e) => setAddress(e.target.value)}
           className="text-field"
+          sx={{ boxShadow: 2 }}
         />
         <TextField
           variant="outlined"
@@ -87,6 +90,7 @@ const Contact = ({
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
           className="text-field"
+          sx={{ boxShadow: 2 }}
         />
       </Box>
     </>

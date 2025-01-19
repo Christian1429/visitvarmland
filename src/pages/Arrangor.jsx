@@ -1,12 +1,19 @@
 import { useState } from "react";
 import postForm from "../api/PostForm";
-import { Box, Typography, TextField } from "@mui/material";
+import { Box, Typography, TextField, Button } from "@mui/material";
 import "./Form.css";
 import BreadCrumbs from "../components/BreadCrumbs";
 import CloseBtn from "../components/CloseBtn";
 import SendBtn from "../components/SendBtn";
 
-function arrangor(setOvrigInformationArrangor, ovrigInformationArrangor) {
+function arrangor({
+  setOvrigInformationArrangor,
+  ovrigInformationArrangor,
+  laddaUppFiler,
+  setFiler,
+  kontakpersonArrangor,
+  setKontakpersonArrangor,
+}) {
   const handleFromDateChange = (newValue) => {
     setFromDate(
       newValue ? newValue.toDate().toLocaleDateString("sv-SE") : null
@@ -32,9 +39,10 @@ function arrangor(setOvrigInformationArrangor, ovrigInformationArrangor) {
       hemsida,
       kontaktuppgifter,
       ovrigInformationArrangor,
-      befintligArrangor,
-      nyArrangor,
+
       setOvrigInformationArrangor,
+      laddaUppFiler,
+      setFiler,
     };
     await postForm(data);
   };
@@ -95,6 +103,9 @@ function arrangor(setOvrigInformationArrangor, ovrigInformationArrangor) {
               value={name}
               onChange={(e) => setName(e.target.value)}
               className="text-field"
+              sx={{
+                boxShadow: 2,
+              }}
             />
             <TextField
               variant="outlined"
@@ -102,13 +113,33 @@ function arrangor(setOvrigInformationArrangor, ovrigInformationArrangor) {
               required
               fullWidth
               id="name"
-              label="Telefonnummer till arrangör"
+              label="Telefonnummer"
               name="name"
               autoComplete="name"
               autoFocus
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => setArrangor(e.target.value)}
               className="text-field"
+              sx={{
+                boxShadow: 2,
+              }}
+            />
+            <TextField
+              variant="outlined"
+              margin="dense"
+              required
+              fullWidth
+              id="kontakpersonArrangor"
+              label="Kontaktperson"
+              name="kontakpersonArrangor"
+              autoComplete="kontakpersonArrangor"
+              autoFocus
+              value={kontakpersonArrangor}
+              onChange={(e) => setKontakpersonArrangor(e.target.value)}
+              className="text-field"
+              sx={{
+                boxShadow: 2,
+              }}
             />
             <TextField
               variant="outlined"
@@ -123,20 +154,10 @@ function arrangor(setOvrigInformationArrangor, ovrigInformationArrangor) {
               value={name}
               onChange={(e) => setName(e.target.value)}
               className="text-field"
-            />
-            <TextField
-              variant="outlined"
-              margin="dense"
-              required
-              fullWidth
-              id="name"
-              label="Ladda upp filer"
-              name="name"
-              autoComplete="name"
-              autoFocus
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="text-field"
+              sx={{
+                /* gridColumn: "span 2", */
+                boxShadow: 2,
+              }}
             />
           </Box>
           <Box
@@ -148,12 +169,33 @@ function arrangor(setOvrigInformationArrangor, ovrigInformationArrangor) {
               marginBottom: "2rem",
             }}
           >
+            {" "}
+            <Button
+              component="label"
+              variant="outlined"
+              margin="dense"
+              id="laddaUppFiler"
+              label="Ladda upp filer"
+              name="laddaUppFiler"
+              autoFocus
+              sx={{ marginBottom: "1rem", boxShadow: 2 }}
+            >
+              Ladda upp filer/ .png / .jpg
+              <input
+                required
+                type="file"
+                accept="image/png, .jpg"
+                hidden
+                value={laddaUppFiler}
+                onChange={(e) => setFiler(e.target.value)}
+              />
+            </Button>
             <TextField
               variant="outlined"
               margin="dense"
               fullWidth
               id="ovrigInformationArrangor"
-              label="Övrig information arrangör"
+              label="Övrig information om arrangören"
               name="ovrigInformationArrangor"
               autoComplete="ovrigInformationArrangor"
               value={ovrigInformationArrangor}
@@ -161,6 +203,9 @@ function arrangor(setOvrigInformationArrangor, ovrigInformationArrangor) {
               className="text-field"
               multiline
               rows={4}
+              sx={{
+                boxShadow: 2,
+              }}
             />
           </Box>
           <SendBtn />

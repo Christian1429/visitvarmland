@@ -47,6 +47,8 @@ const Event = ({
       <Box
         sx={{
           display: "grid",
+          gap: 1,
+
           gridTemplateColumns: "repeat(2, 1fr)",
         }}
       >
@@ -55,7 +57,6 @@ const Event = ({
             display: "grid",
             gridTemplateColumns: "repeat(1, 2fr)",
             gap: 2,
-            padding: 0,
             marginLeft: 4,
           }}
         >
@@ -103,7 +104,7 @@ const Event = ({
           value={plats}
           onChange={(e) => setPlats(e.target.value)}
           className="text-field"
-          sx={{ gridColumn: "span 2" }}
+          sx={{ gridColumn: "span 2", boxShadow: 2 }}
         />
         <TextField
           variant="outlined"
@@ -119,7 +120,7 @@ const Event = ({
           onChange={(e) => setTitle(e.target.value)}
           className="text-field"
           slotProps={{ htmlInput: { minLength: 12 } }}
-          sx={{ gridColumn: "span 2" }}
+          sx={{ gridColumn: "span 2", boxShadow: 2 }}
         />
         <TextField
           variant="outlined"
@@ -133,7 +134,7 @@ const Event = ({
           value={saljandeBeskrivning}
           onChange={(e) => setSaljandeBeskrivning(e.target.value)}
           className="text-field"
-          sx={{ gridColumn: "span 2" }}
+          sx={{ gridColumn: "span 2", boxShadow: 2 }}
           multiline
           rows={3}
           slotProps={{ htmlInput: { maxLength: 200, minLength: 100 } }}
@@ -150,7 +151,7 @@ const Event = ({
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           className="text-field"
-          sx={{ gridColumn: "span 2" }}
+          sx={{ gridColumn: "span 2", boxShadow: 2 }}
           multiline
           rows={6}
           slotProps={{ htmlInput: { maxLength: 400, minLength: 100 } }}
@@ -166,6 +167,7 @@ const Event = ({
           value={priser}
           onChange={(e) => setPriser(e.target.value)}
           className="text-field"
+          sx={{ boxShadow: 2 }}
         />
         <TextField
           variant="outlined"
@@ -178,6 +180,7 @@ const Event = ({
           value={hemsida}
           onChange={(e) => setHemsida(e.target.value)}
           className="text-field"
+          sx={{ boxShadow: 2 }}
         />
         <TextField
           variant="outlined"
@@ -193,7 +196,7 @@ const Event = ({
           className="text-field"
           multiline
           rows={3}
-          sx={{ gridColumn: "span 2" }}
+          sx={{ gridColumn: "span 2", boxShadow: 2 }}
         />
         <TextField
           variant="outlined"
@@ -208,7 +211,7 @@ const Event = ({
           className="text-field"
           multiline
           rows={3}
-          sx={{ gridColumn: "span 2", paddingBottom: "2rem" }}
+          sx={{ gridColumn: "span 2", boxShadow: 2 }}
         />
       </Box>
 
@@ -216,7 +219,6 @@ const Event = ({
         sx={{
           display: "grid",
           gridTemplateColumns: "repeat(1, 2fr)",
-          gap: 2,
         }}
       >
         <Typography
@@ -226,12 +228,15 @@ const Event = ({
           align="center"
           gutterBottom
           sx={{
-            borderStyle: "double",
+            borderWidth: "0.15rem",
+            borderStyle: "solid",
             width: "30rem",
             fontWeight: "bold",
-            borderRadius: "1rem",
+            borderRadius: ".8rem",
             background: "white",
             padding: "1rem",
+            boxShadow: 2,
+            marginTop: "2rem",
           }}
         >
           Vi på Visit Värmland förbehåller oss rätten att ändra innehållet i ett
