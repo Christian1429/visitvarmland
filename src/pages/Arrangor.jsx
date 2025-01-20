@@ -6,43 +6,24 @@ import BreadCrumbs from "../components/BreadCrumbs";
 import CloseBtn from "../components/CloseBtn";
 import SendBtn from "../components/SendBtn";
 
-function arrangor({
-  setOvrigInformationArrangor,
-  ovrigInformationArrangor,
-  laddaUppFiler,
-  setFiler,
-  kontakpersonArrangor,
-  setKontakpersonArrangor,
-}) {
-  const handleFromDateChange = (newValue) => {
-    setFromDate(
-      newValue ? newValue.toDate().toLocaleDateString("sv-SE") : null
-    );
-  };
-
-  const handleToDateChange = (newValue) => {
-    setToDate(newValue ? newValue.toDate().toLocaleDateString("sv-SE") : null);
-  };
+function arrangor() {
+  // Kontact Arrangör
+  const [name, setName] = useState("");
+  const [ovrigInformationArrangor, setOvrigInformationArrangor] = useState("");
+  const [telefonnummer, setTelefonNummer] = useState("");
+  const [hemsida, setHemsida] = useState("");
+  const [filer, setFiler] = useState("");
+  const [kontakpersonArrangor, setKontakpersonArrangor] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = {
-      name,
-      email,
-      address,
-      phone,
-      fromDate,
-      toDate,
-      title,
-      description,
-      priser,
       hemsida,
-      kontaktuppgifter,
       ovrigInformationArrangor,
-
-      setOvrigInformationArrangor,
-      laddaUppFiler,
-      setFiler,
+      kontakpersonArrangor,
+      filer,
+      telefonnummer,
+      name,
     };
     await postForm(data);
   };
@@ -99,7 +80,7 @@ function arrangor({
               label="Namn på arrangör"
               name="name"
               autoComplete="name"
-              autoFocus
+              /* autoFocus */
               value={name}
               onChange={(e) => setName(e.target.value)}
               className="text-field"
@@ -112,13 +93,13 @@ function arrangor({
               margin="dense"
               required
               fullWidth
-              id="name"
+              id="telefonnummer"
               label="Telefonnummer"
-              name="name"
-              autoComplete="name"
+              name="telefonnummer"
+              autoComplete="telefonnummer"
               autoFocus
-              value={name}
-              onChange={(e) => setArrangor(e.target.value)}
+              value={telefonnummer}
+              onChange={(e) => setTelefonNummer(e.target.value)}
               className="text-field"
               sx={{
                 boxShadow: 2,
@@ -151,11 +132,10 @@ function arrangor({
               name="name"
               autoComplete="name"
               autoFocus
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={hemsida}
+              onChange={(e) => setHemsida(e.target.value)}
               className="text-field"
               sx={{
-                /* gridColumn: "span 2", */
                 boxShadow: 2,
               }}
             />
@@ -177,16 +157,14 @@ function arrangor({
               id="laddaUppFiler"
               label="Ladda upp filer"
               name="laddaUppFiler"
-              autoFocus
               sx={{ marginBottom: "1rem", boxShadow: 2 }}
             >
               Ladda upp filer/ .png / .jpg
               <input
-                required
                 type="file"
                 accept="image/png, .jpg"
                 hidden
-                value={laddaUppFiler}
+                value={filer}
                 onChange={(e) => setFiler(e.target.value)}
               />
             </Button>
