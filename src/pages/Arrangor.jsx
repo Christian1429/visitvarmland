@@ -80,7 +80,7 @@ function arrangor() {
               label="Namn på arrangör"
               name="name"
               autoComplete="name"
-              /* autoFocus */
+              autoFocus
               value={name}
               onChange={(e) => setName(e.target.value)}
               className="text-field"
