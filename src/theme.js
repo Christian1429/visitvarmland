@@ -1,5 +1,4 @@
 import { createTheme } from '@mui/material/styles';
-import { tr } from 'date-fns/locale';
 
 const theme = createTheme({
   typography: {
@@ -19,6 +18,7 @@ const theme = createTheme({
         },
         input: {
           backgroundColor: '#ffffff',
+          borderRadius: '8px',
         },
       },
     },

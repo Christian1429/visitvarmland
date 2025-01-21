@@ -38,80 +38,101 @@ const Contact = ({
       >
         Fyll i dina uppgifter
       </Typography>
-      <Box
+      <Typography
+        align="center"
+        gutterBottom
         sx={{
-          display: isMobile ? 'flex' : 'grid',
-          flexDirection: isMobile ? 'column' : 'row',
-          padding: isMobile ? '1rem' : '0',
-          gap: 2,
+          color: '#004338',
+          fontWeight: 'bold',
         }}
       >
-        <TextField
-          variant="outlined"
-          margin="dense"
-          required
-          fullWidth
-          id="name"
-          label="Ditt namn"
-          name="name"
-          autoComplete="name"
-          autoFocus
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="text-field"
-        />
-        <TextField
-          variant="outlined"
-          margin="dense"
-          required
-          fullWidth
-          id="email"
-          label="Email adress"
-          name="email"
-          autoComplete="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="text-field"
-        />
-        <TextField
-          variant="outlined"
-          margin="dense"
-          required
-          fullWidth
-          id="address"
-          label="Adress"
-          name="address"
-          autoComplete="address"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-          className="text-field"
-        />
-        <TextField
-          variant="outlined"
-          margin="dense"
-          required
-          fullWidth
-          id="phone"
-          label="Telefon nummer"
-          name="phone"
-          autoComplete="phone"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-          className="text-field"
-        />
-        <Box gridColumn="span 2">
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={consent}
-                onChange={(e) => setConsent(e.target.checked)}
-                name="consent"
-                color="primary"
-                required
-              />
-            }
-            label="Jag samtycker till att mina uppgifter lagras och används enligt GDPR."
+        Följ alla steg
+      </Typography>
+      <Box
+        sx={{
+          width: '100%',
+          maxWidth: 600,
+          boxShadow: 3,
+          p: 4,
+          m: 'auto',
+          backdropFilter: 'blur(2px)',
+        }}
+      >
+        <Box
+          sx={{
+            display: isMobile ? 'flex' : 'grid',
+            flexDirection: isMobile ? 'column' : 'row',
+            padding: isMobile ? '1rem' : '0',
+            gap: 2,
+          }}
+        >
+          <TextField
+            variant="outlined"
+            margin="dense"
+            required
+            fullWidth
+            id="name"
+            label="Ditt namn"
+            name="name"
+            autoComplete="name"
+            autoFocus
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="text-field"
           />
+          <TextField
+            variant="outlined"
+            margin="dense"
+            required
+            fullWidth
+            id="email"
+            label="Email adress"
+            name="email"
+            autoComplete="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="text-field"
+          />
+          <TextField
+            variant="outlined"
+            margin="dense"
+            required
+            fullWidth
+            id="address"
+            label="Adress"
+            name="address"
+            autoComplete="address"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            className="text-field"
+          />
+          <TextField
+            variant="outlined"
+            margin="dense"
+            required
+            fullWidth
+            id="phone"
+            label="Telefon nummer"
+            name="phone"
+            autoComplete="phone"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            className="text-field"
+          />
+          <Box gridColumn="span 2">
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={consent}
+                  onChange={(e) => setConsent(e.target.checked)}
+                  name="consent"
+                  color="primary"
+                  required
+                />
+              }
+              label="Jag samtycker till att mina uppgifter lagras och används enligt GDPR."
+            />
+          </Box>
         </Box>
       </Box>
     </>

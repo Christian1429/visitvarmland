@@ -15,6 +15,9 @@ const Event = ({
   ovrigInformation,
   setOvrigInformation,
 }) => {
+
+  const descriptionPlaceholder = `Välkommen till ${title}`;
+  
   return (
     <>
       <Typography
@@ -62,6 +65,7 @@ const Event = ({
           autoComplete="description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
+          placeholder={descriptionPlaceholder}
           className="text-field"
         />
         <TextField

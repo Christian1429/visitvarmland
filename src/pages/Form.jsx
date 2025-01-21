@@ -5,6 +5,7 @@ import ClientNew from '../components/ClientNew';
 import DatePickerClient from '../components/DatePicker';
 import Event from '../components/Event';
 import BtnNext from '../components/BtnNext';
+import CloseBtn from '../components/Buttons/CloseBtn';
 import { useTheme } from '@mui/material/styles';
 import './Form.css';
 
@@ -132,9 +133,11 @@ const Form = () => {
       >
         Tips och evenemang
       </Typography>
+      <CloseBtn redirectUrl="https://visitvarmland.com" />
       <Box display="flex" justifyContent="center" sx={{ marginBottom: '1rem' }}>
         <Breadcrumbs
           aria-label="breadcrumb"
+          separator=">"
           sx={{
             marginBottom: '1rem',
             flexDirection: isMobile ? 'column' : 'row',

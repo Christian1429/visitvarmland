@@ -15,7 +15,6 @@ const ClientNew = ({
 }) => {
   return (
     <>
-      {' '}
       <Typography
         component="h1"
         variant="h5"
