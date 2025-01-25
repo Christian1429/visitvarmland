@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Typography, Breadcrumbs, Link, useMediaQuery } from '@mui/material';
+import { Box, Typography, Breadcrumbs, Link, useMediaQuery, Button } from '@mui/material';
 import Contact from '../components/Contact';
 import ClientNew from '../components/ClientNew';
 import DatePickerClient from '../components/DatePicker';
@@ -12,6 +12,8 @@ import TestButton from '../components/Buttons/TestButton';
 import GetButton from '../components/Buttons/getFrombtn';
 import getForm from '../api/GetFrom';
 import ClientExist from '../components/ClientExist';
+import postForm from '../api/PostForm';
+import { EventData, Organizer } from '../types';
 
 const Form = () => {
   const theme = useTheme();
@@ -26,11 +28,19 @@ const Form = () => {
   const [phone, setPhone] = useState('');
 
   // New Organizer
-  const [newOrganizerName, setNewOrganizerName] = useState('');
-  const [newOrganizerAddress, setNewOrganizerAddress] = useState('');
-  const [newOrganizerWebsite, setNewOrganizerWebsite] = useState('');
-  const [organizationNumber, setOrganizationNumber] = useState('');
-  const [location, setLocation] = useState('');
+const [newOrganizerName, setNewOrganizerName] = useState('');
+  const [newOrganizerStreet1, setNewOrganizerStreet1] = useState('');
+  const [newOrganizerStreet2, setNewOrganizerStreet2] = useState('');
+const [newOrganizerZipCode, setNewOrganizerZipCode] = useState('');
+const [newOrganizerCity, setNewOrganizerCity] = useState('');
+const [newOrganizerMunicipalityId, setNewOrganizerMunicipalityId] =
+  useState('');
+const [newOrganizerOrganizationId, setNewOrganizerOrganizationId] =
+  useState('');
+const [newOrganizerBookingLink, setNewOrganizerBookingLink] = useState('');
+const [newOrganizerWebsite, setNewOrganizerWebsite] = useState('');
+const [newOrganizerEmail, setNewOrganizerEmail] = useState('');
+const [newOrganizerPhoneNumbers, setNewOrganizerPhoneNumbers] = useState([]);
 
   // Event
   const [title, setTitle] = useState('');
@@ -50,25 +60,51 @@ const Form = () => {
     setCurrentStep(step);
   };
 
-   useEffect(() => {
-     const fetchData = async () => {
-       const data = await getForm();
-       setClientData(data);
-     };
+  const handleClientSelect = (client) => {
+    const organizer = client.organizers[0];
+    if (organizer) {
+      setNewOrganizerName(organizer.title || '');
+      setNewOrganizerStreet1(organizer.street1 || '');
+      setNewOrganizerStreet2(organizer.street2 || '');
+      setNewOrganizerZipCode(organizer.zip_code || '');
+      setNewOrganizerCity(organizer.city || '');
+      setNewOrganizerMunicipalityId(organizer.municipality_id || '');
+      setNewOrganizerOrganizationId(organizer.organization_id || '');
+      setNewOrganizerBookingLink(organizer.booking_link || '');
+      setNewOrganizerWebsite(organizer.website_link || '');
+      setNewOrganizerEmail(organizer.email || '');
+      setNewOrganizerPhoneNumbers(organizer.phone_numbers || []);
+    }
+  };
 
-     fetchData();
-   }, []);
+    const handleSubmit = async () => {
+      const formData = {
+        name,
+        email,
+        address,
+        phone,
+        newOrganizerName,
+        newOrganizerStreet1,
+        newOrganizerStreet2,
+        newOrganizerZipCode,
+        newOrganizerCity,
+        newOrganizerMunicipalityId,
+        newOrganizerOrganizationId,
+        newOrganizerBookingLink,
+        newOrganizerWebsite,
+        newOrganizerEmail,
+        newOrganizerPhoneNumbers,
+        title,
+        description,
+        priser,
+        hemsida,
+        kontaktuppgifter,
+        ovrigInformation,
+      };
 
- const handleClientSelect = (client) => {
-   const organizer = client.organizers[0];
-   if (organizer) {
-     setNewOrganizerName(organizer.title || '');
-     setNewOrganizerAddress(organizer.street1 || '');
-     setNewOrganizerWebsite(organizer.website_link || '');
-     setOrganizationNumber(organizer.organization_id || '');
-     setLocation(organizer.city || '');
-   }
- };
+      await postForm(formData);
+    };
+
 
   const renderStep = () => {
     switch (currentStep) {
@@ -99,14 +135,26 @@ const Form = () => {
             <ClientNew
               newOrganizerName={newOrganizerName}
               setNewOrganizerName={setNewOrganizerName}
-              newOrganizerAddress={newOrganizerAddress}
-              setNewOrganizerAddress={setNewOrganizerAddress}
+              newOrganizerStreet1={newOrganizerStreet1}
+              setNewOrganizerStreet1={setNewOrganizerStreet1}
+              newOrganizerStreet2={newOrganizerStreet2}
+              setNewOrganizerStreet2={setNewOrganizerStreet2}
+              newOrganizerZipCode={newOrganizerZipCode}
+              setNewOrganizerZipCode={setNewOrganizerZipCode}
+              newOrganizerCity={newOrganizerCity}
+              setNewOrganizerCity={setNewOrganizerCity}
+              newOrganizerMunicipalityId={newOrganizerMunicipalityId}
+              setNewOrganizerMunicipalityId={setNewOrganizerMunicipalityId}
+              newOrganizerOrganizationId={newOrganizerOrganizationId}
+              setNewOrganizerOrganizationId={setNewOrganizerOrganizationId}
+              newOrganizerBookingLink={newOrganizerBookingLink}
+              setNewOrganizerBookingLink={setNewOrganizerBookingLink}
               newOrganizerWebsite={newOrganizerWebsite}
               setNewOrganizerWebsite={setNewOrganizerWebsite}
-              organizationNumber={organizationNumber}
-              setOrganizationNumber={setOrganizationNumber}
-              location={location}
-              setLocation={setLocation}
+              newOrganizerEmail={newOrganizerEmail}
+              setNewOrganizerEmail={setNewOrganizerEmail}
+              newOrganizerPhoneNumbers={newOrganizerPhoneNumbers}
+              setNewOrganizerPhoneNumbers={setNewOrganizerPhoneNumbers}
             />
           </>
         );
@@ -200,7 +248,12 @@ const Form = () => {
       </Box>
       <Box display="flex" flexDirection="column" alignItems="center">
         <Box sx={{ mb: 4 }}>{renderStep()}</Box>
-        <BtnNext onClick={handleNext} />
+        {currentStep < 2 && <BtnNext onClick={handleNext} />}
+        {currentStep === 2 && (
+          <Button variant="contained" color="primary" onClick={handleSubmit}>
+            Submit
+          </Button>
+        )}
       </Box>
     </Box>
   );
