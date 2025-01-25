@@ -16,6 +16,10 @@ const theme = createTheme({
             borderColor: '#004337',
           },
         },
+        input: {
+          backgroundColor: '#ffffff',
+          borderRadius: '8px',
+        },
       },
     },
     MuiInputLabel: {
@@ -47,6 +51,18 @@ const theme = createTheme({
           color: '#006761',
           '&.Mui-checked': {
             color: '#006761',
+          },
+        },
+      },
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          color: 'white',
+          borderColor: '#004337',
+          backgroundColor: '#00a081',
+          '&:hover': {
+            backgroundColor: '#004337',
           },
         },
       },
