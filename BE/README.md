@@ -1,7 +1,8 @@
 # Turid Backend
 https://www.mongodb.com/try/download/community go for network setup
 
-npm start 
+
+cd be && npm start
 
 ## API Endpoints
 

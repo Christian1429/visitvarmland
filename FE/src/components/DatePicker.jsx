@@ -19,14 +19,14 @@ const DatePickerClient = ({
           value={fromDate ? dayjs(fromDate) : null}
           onChange={handleFromDateChange}
           slotProps={{ textField: { fullWidth: true, margin: 'normal' } }}
-          sx={{ maxWidth: '15.3rem' }}
+          sx={{ width: '15.3rem' }}
         />
         <DatePicker
           label="Till"
           value={toDate ? dayjs(toDate) : null}
           onChange={handleToDateChange}
           slotProps={{ textField: { fullWidth: true, margin: 'normal' } }}
-          sx={{ maxWidth: '15.3rem' }}
+          sx={{ width: '15.3rem' }}
         />
       </Box>
     </LocalizationProvider>

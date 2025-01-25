@@ -13,7 +13,6 @@ import GetButton from '../components/Buttons/getFrombtn';
 import getForm from '../api/GetFrom';
 import ClientExist from '../components/ClientExist';
 import postForm from '../api/PostForm';
-import { EventData, Organizer } from '../types';
 
 const Form = () => {
   const theme = useTheme();
