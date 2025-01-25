@@ -1,6 +1,6 @@
 const postForm = async (data) => {
   try {
-    const response = await fetch('https:// ---- / ----', {
+    const response = await fetch('http://localhost:2000/api/data/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
