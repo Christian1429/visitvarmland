@@ -1,28 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Typography, Breadcrumbs, Link, useMediaQuery } from '@mui/material';
 import Contact from '../components/Contact';
 import ClientNew from '../components/ClientNew';
 import DatePickerClient from '../components/DatePicker';
 import Event from '../components/Event';
-import BtnNext from '../components/BtnNext';
+import BtnNext from '../components/Buttons/BtnNext';
 import CloseBtn from '../components/Buttons/CloseBtn';
 import { useTheme } from '@mui/material/styles';
 import './Form.css';
+import TestButton from '../components/Buttons/TestButton';
+import GetButton from '../components/Buttons/getFrombtn';
+import getForm from '../api/GetFrom';
+import ClientExist from '../components/ClientExist';
 
 const Form = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [currentStep, setCurrentStep] = useState(0);
+  const [organizers, setOrganizers] = useState(null);
 
   // Contact
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [address, setAddress] = useState('');
   const [phone, setPhone] = useState('');
-
-  // Date
-  const [fromDate, setFromDate] = useState(null);
-  const [toDate, setToDate] = useState(null);
 
   // New Organizer
   const [newOrganizerName, setNewOrganizerName] = useState('');
@@ -49,35 +50,65 @@ const Form = () => {
     setCurrentStep(step);
   };
 
+   useEffect(() => {
+     const fetchData = async () => {
+       const data = await getForm();
+       setClientData(data);
+     };
+
+     fetchData();
+   }, []);
+
+ const handleClientSelect = (client) => {
+   const organizer = client.organizers[0];
+   if (organizer) {
+     setNewOrganizerName(organizer.title || '');
+     setNewOrganizerAddress(organizer.street1 || '');
+     setNewOrganizerWebsite(organizer.website_link || '');
+     setOrganizationNumber(organizer.organization_id || '');
+     setLocation(organizer.city || '');
+   }
+ };
+
   const renderStep = () => {
     switch (currentStep) {
       case 0:
         return (
-          <Contact
-            name={name}
-            setName={setName}
-            email={email}
-            setEmail={setEmail}
-            address={address}
-            setAddress={setAddress}
-            phone={phone}
-            setPhone={setPhone}
-          />
+          <>
+            <TestButton />
+            <GetButton />
+            <Contact
+              name={name}
+              setName={setName}
+              email={email}
+              setEmail={setEmail}
+              address={address}
+              setAddress={setAddress}
+              phone={phone}
+              setPhone={setPhone}
+            />
+          </>
         );
       case 1:
         return (
-          <ClientNew
-            newOrganizerName={newOrganizerName}
-            setNewOrganizerName={setNewOrganizerName}
-            newOrganizerAddress={newOrganizerAddress}
-            setNewOrganizerAddress={setNewOrganizerAddress}
-            newOrganizerWebsite={newOrganizerWebsite}
-            setNewOrganizerWebsite={setNewOrganizerWebsite}
-            organizationNumber={organizationNumber}
-            setOrganizationNumber={setOrganizationNumber}
-            location={location}
-            setLocation={setLocation}
-          />
+          <>
+            <ClientExist
+              handleClientSelect={handleClientSelect}
+              clients={organizers}
+            />
+            <ClientNew
+              newOrganizerName={newOrganizerName}
+              setNewOrganizerName={setNewOrganizerName}
+              newOrganizerAddress={newOrganizerAddress}
+              setNewOrganizerAddress={setNewOrganizerAddress}
+              newOrganizerWebsite={newOrganizerWebsite}
+              setNewOrganizerWebsite={setNewOrganizerWebsite}
+              organizationNumber={organizationNumber}
+              setOrganizationNumber={setOrganizationNumber}
+              location={location}
+              setLocation={setLocation}
+            />
+          </>
         );
       case 2:
         return (

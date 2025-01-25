@@ -38,7 +38,7 @@ const ClientNew = ({
           backdropFilter: 'blur(2px)',
         }}
       >
-        <ClientExist />
+        {/* <ClientExist /> */}
         <Typography variant="h6" component="h2" gutterBottom>
           Är du ny arrangör eller företag?
         </Typography>
