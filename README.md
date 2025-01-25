@@ -1,2 +1,0 @@
-# visitvarmland
-Tipsblankett
