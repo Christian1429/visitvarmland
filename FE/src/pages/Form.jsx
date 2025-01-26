@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Box, Typography, Breadcrumbs, Link, useMediaQuery, Button } from '@mui/material';
 import Contact from '../components/Contact';
 import ClientNew from '../components/ClientNew';
@@ -10,16 +10,18 @@ import { useTheme } from '@mui/material/styles';
 import './Form.css';
 import TestButton from '../components/Buttons/TestButton';
 import GetButton from '../components/Buttons/getFrombtn';
-import getForm from '../api/GetFrom';
+// import getForm from '../api/GetFrom';
 import ClientExist from '../components/ClientExist';
 import postForm from '../api/PostForm';
-
+import { FormDataContext } from '../context/FormDataContext';
+import handleSubmit
+ from '../utils/handleSubmit';
 const Form = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [currentStep, setCurrentStep] = useState(0);
   const [organizers, setOrganizers] = useState(null);
-
+  const { formData, setFormData } = useContext(FormDataContext);
   // Contact
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -27,19 +29,19 @@ const Form = () => {
   const [phone, setPhone] = useState('');
 
   // New Organizer
-const [newOrganizerName, setNewOrganizerName] = useState('');
-  const [newOrganizerStreet1, setNewOrganizerStreet1] = useState('');
-  const [newOrganizerStreet2, setNewOrganizerStreet2] = useState('');
-const [newOrganizerZipCode, setNewOrganizerZipCode] = useState('');
-const [newOrganizerCity, setNewOrganizerCity] = useState('');
-const [newOrganizerMunicipalityId, setNewOrganizerMunicipalityId] =
-  useState('');
-const [newOrganizerOrganizationId, setNewOrganizerOrganizationId] =
-  useState('');
-const [newOrganizerBookingLink, setNewOrganizerBookingLink] = useState('');
-const [newOrganizerWebsite, setNewOrganizerWebsite] = useState('');
-const [newOrganizerEmail, setNewOrganizerEmail] = useState('');
-const [newOrganizerPhoneNumbers, setNewOrganizerPhoneNumbers] = useState([]);
+// const [newOrganizerName, setNewOrganizerName] = useState('');
+//   const [newOrganizerStreet1, setNewOrganizerStreet1] = useState('');
+//   const [newOrganizerStreet2, setNewOrganizerStreet2] = useState('');
+// const [newOrganizerZipCode, setNewOrganizerZipCode] = useState('');
+// const [newOrganizerCity, setNewOrganizerCity] = useState('');
+// const [newOrganizerMunicipalityId, setNewOrganizerMunicipalityId] =
+//   useState('');
+// const [newOrganizerOrganizationId, setNewOrganizerOrganizationId] =
+//   useState('');
+// const [newOrganizerBookingLink, setNewOrganizerBookingLink] = useState('');
+// const [newOrganizerWebsite, setNewOrganizerWebsite] = useState('');
+// const [newOrganizerEmail, setNewOrganizerEmail] = useState('');
+// const [newOrganizerPhoneNumbers, setNewOrganizerPhoneNumbers] = useState([]);
 
   // Event
   const [title, setTitle] = useState('');
@@ -60,50 +62,50 @@ const [newOrganizerPhoneNumbers, setNewOrganizerPhoneNumbers] = useState([]);
   };
 
   const handleClientSelect = (client) => {
-    const organizer = client.organizers[0];
-    if (organizer) {
-      setNewOrganizerName(organizer.title || '');
-      setNewOrganizerStreet1(organizer.street1 || '');
-      setNewOrganizerStreet2(organizer.street2 || '');
-      setNewOrganizerZipCode(organizer.zip_code || '');
-      setNewOrganizerCity(organizer.city || '');
-      setNewOrganizerMunicipalityId(organizer.municipality_id || '');
-      setNewOrganizerOrganizationId(organizer.organization_id || '');
-      setNewOrganizerBookingLink(organizer.booking_link || '');
-      setNewOrganizerWebsite(organizer.website_link || '');
-      setNewOrganizerEmail(organizer.email || '');
-      setNewOrganizerPhoneNumbers(organizer.phone_numbers || []);
+    const organizers = client.organizers[0];
+    if (organizers) {
+      setFormData((prevData) => ({
+        ...prevData,
+        id: organizers.id || 0,
+        name: organizers.title || '',
+        street1: organizers.street1 || '',
+        street2: organizers.street2 || '',
+        zip_code: organizers.zip_code || '',
+        city: organizers.city || '',
+        municipality_id: organizers.municipality_id || '',
+        organization_id: organizers.organization_id || '',
+        booking_link: organizers.booking_link || '',
+        website: organizers.website_link || '',
+        email: organizers.email || '',
+        phone_numbers: organizers.phone_numbers || [],
+      }));
+      console.log(prevData);
     }
   };
 
-    const handleSubmit = async () => {
-      const formData = {
-        name,
-        email,
-        address,
-        phone,
-        newOrganizerName,
-        newOrganizerStreet1,
-        newOrganizerStreet2,
-        newOrganizerZipCode,
-        newOrganizerCity,
-        newOrganizerMunicipalityId,
-        newOrganizerOrganizationId,
-        newOrganizerBookingLink,
-        newOrganizerWebsite,
-        newOrganizerEmail,
-        newOrganizerPhoneNumbers,
-        title,
-        description,
-        priser,
-        hemsida,
-        kontaktuppgifter,
-        ovrigInformation,
-      };
-
-      await postForm(formData);
+    const handleChange = (e) => {
+      const { name, value } = e.target;
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
     };
 
+    const handleArrayChange = (e, index, arrayName, fieldName) => {
+      const { value } = e.target;
+      setFormData((prevData) => {
+        const updatedArray = [...prevData[arrayName]];
+        updatedArray[index][fieldName] = value;
+        return {
+          ...prevData,
+          [arrayName]: updatedArray,
+        };
+      });
+    };
+
+      const handleFormSubmit = async () => {
+        await handleSubmit(formData);
+      };
 
   const renderStep = () => {
     switch (currentStep) {
@@ -132,55 +134,91 @@ const [newOrganizerPhoneNumbers, setNewOrganizerPhoneNumbers] = useState([]);
               clients={organizers}
             />
             <ClientNew
-              newOrganizerName={newOrganizerName}
-              setNewOrganizerName={setNewOrganizerName}
-              newOrganizerStreet1={newOrganizerStreet1}
-              setNewOrganizerStreet1={setNewOrganizerStreet1}
-              newOrganizerStreet2={newOrganizerStreet2}
-              setNewOrganizerStreet2={setNewOrganizerStreet2}
-              newOrganizerZipCode={newOrganizerZipCode}
-              setNewOrganizerZipCode={setNewOrganizerZipCode}
-              newOrganizerCity={newOrganizerCity}
-              setNewOrganizerCity={setNewOrganizerCity}
-              newOrganizerMunicipalityId={newOrganizerMunicipalityId}
-              setNewOrganizerMunicipalityId={setNewOrganizerMunicipalityId}
-              newOrganizerOrganizationId={newOrganizerOrganizationId}
-              setNewOrganizerOrganizationId={setNewOrganizerOrganizationId}
-              newOrganizerBookingLink={newOrganizerBookingLink}
-              setNewOrganizerBookingLink={setNewOrganizerBookingLink}
-              newOrganizerWebsite={newOrganizerWebsite}
-              setNewOrganizerWebsite={setNewOrganizerWebsite}
-              newOrganizerEmail={newOrganizerEmail}
-              setNewOrganizerEmail={setNewOrganizerEmail}
-              newOrganizerPhoneNumbers={newOrganizerPhoneNumbers}
-              setNewOrganizerPhoneNumbers={setNewOrganizerPhoneNumbers}
+              name={formData.name}
+              setName={(value) =>
+                setFormData((prevData) => ({ ...prevData, name: value }))
+              }
+              street1={formData.street1}
+              setStreet1={(value) =>
+                setFormData((prevData) => ({ ...prevData, street1: value }))
+              }
+              street2={formData.street2}
+              setStreet2={(value) =>
+                setFormData((prevData) => ({ ...prevData, street2: value }))
+              }
+              zip_code={formData.zip_code}
+              setZipCode={(value) =>
+                setFormData((prevData) => ({ ...prevData, zip_code: value }))
+              }
+              city={formData.city}
+              setCity={(value) =>
+                setFormData((prevData) => ({ ...prevData, city: value }))
+              }
+              municipality_id={formData.municipality_id}
+              setMunicipalityId={(value) =>
+                setFormData((prevData) => ({
+                  ...prevData,
+                  municipality_id: value,
+                }))
+              }
+              organization_id={formData.organization_id}
+              setOrganizationId={(value) =>
+                setFormData((prevData) => ({
+                  ...prevData,
+                  organization_id: value,
+                }))
+              }
+              booking_link={formData.booking_link}
+              setBookingLink={(value) =>
+                setFormData((prevData) => ({
+                  ...prevData,
+                  booking_link: value,
+                }))
+              }
+              website={formData.website}
+              setWebsite={(value) =>
+                setFormData((prevData) => ({ ...prevData, website: value }))
+              }
+              email={formData.email}
+              setEmail={(value) =>
+                setFormData((prevData) => ({ ...prevData, email: value }))
+              }
+              phone_numbers={formData.phone_numbers}
+              setPhoneNumbers={(value) =>
+                setFormData((prevData) => ({
+                  ...prevData,
+                  phone_numbers: value,
+                }))
+              }
+              handleChange={handleChange}
+              handleArrayChange={handleArrayChange}
             />
           </>
         );
-      case 2:
-        return (
-          <>
-            <Event
-              title={title}
-              setTitle={setTitle}
-              description={description}
-              setDescription={setDescription}
-              priser={priser}
-              setPriser={setPriser}
-              hemsida={hemsida}
-              setHemsida={setHemsida}
-              kontaktuppgifter={kontaktuppgifter}
-              setKontaktuppgifter={setKontaktuppgifter}
-              ovrigInformation={ovrigInformation}
-              setOvrigInformation={setOvrigInformation}
-              befintligArrangor={befintligArrangor}
-              setBefintligArrangor={setBefintligArrangor}
-              nyArrangor={nyArrangor}
-              setNyArrangor={setNyArrangor}
-            />
-            <DatePickerClient />
-          </>
-        );
+      // case 2:
+        // return (
+          // <>
+          //   <Event
+          //     title={title}
+          //     setTitle={setTitle}
+          //     description={description}
+          //     setDescription={setDescription}
+          //     priser={priser}
+          //     setPriser={setPriser}
+          //     hemsida={hemsida}
+          //     setHemsida={setHemsida}
+          //     kontaktuppgifter={kontaktuppgifter}
+          //     setKontaktuppgifter={setKontaktuppgifter}
+          //     ovrigInformation={ovrigInformation}
+          //     setOvrigInformation={setOvrigInformation}
+          //     befintligArrangor={befintligArrangor}
+          //     setBefintligArrangor={setBefintligArrangor}
+          //     nyArrangor={nyArrangor}
+          //     setNyArrangor={setNyArrangor}
+          //   />
+          //   <DatePickerClient />
+          // </>
+        // );
       default:
         return null;
     }
@@ -248,11 +286,7 @@ const [newOrganizerPhoneNumbers, setNewOrganizerPhoneNumbers] = useState([]);
       <Box display="flex" flexDirection="column" alignItems="center">
         <Box sx={{ mb: 4 }}>{renderStep()}</Box>
         {currentStep < 2 && <BtnNext onClick={handleNext} />}
-        {currentStep === 2 && (
-          <Button variant="contained" color="primary" onClick={handleSubmit}>
-            Submit
-          </Button>
-        )}
+        {currentStep === 1 && <button onClick={handleFormSubmit}>Submit</button>}
       </Box>
     </Box>
   );

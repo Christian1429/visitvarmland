@@ -1,28 +1,28 @@
 import { Box, TextField, Typography, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 
 const ClientNew = ({
-  newOrganizerName,
-  setNewOrganizerName,
-  newOrganizerStreet1,
-  setNewOrganizerStreet1,
-  newOrganizerStreet2,
-  setNewOrganizerStreet2,
-  newOrganizerZipCode,
-  setNewOrganizerZipCode,
-  newOrganizerCity,
-  setNewOrganizerCity,
-  // newOrganizerMunicipalityId,
-  setNewOrganizerMunicipalityId,
-  newOrganizerOrganizationId,
-  setNewOrganizerOrganizationId,
-  newOrganizerBookingLink,
-  setNewOrganizerBookingLink,
-  newOrganizerWebsite,
-  setNewOrganizerWebsite,
-  newOrganizerEmail,
-  setNewOrganizerEmail,
-  newOrganizerPhoneNumbers,
-  setNewOrganizerPhoneNumbers,
+  name,
+  setName,
+  street1,
+  setStreet1,
+  street2,
+  setStreet2,
+  zip_code,
+  setZipCode,
+  city,
+  setCity,
+  municipality_id,
+  setMunicipalityId,
+  organization_id,
+  setOrganizationId,
+  booking_link,
+  setBookingLink,
+  website,
+  setWebsite,
+  email,
+  setEmail,
+  phone_numbers,
+  setPhoneNumbers,
 }) => {
   const cities = [
     { municipality_id: 1, name: 'Arvika' },
@@ -43,13 +43,13 @@ const ClientNew = ({
     { municipality_id: 16, name: 'Årjäng' },
   ];
 
-    const handleCityChange = (event) => {
-      const selectedCity = cities.find(
-        (city) => city.name === event.target.value
-      );
-      setNewOrganizerCity(selectedCity.name);
-      setNewOrganizerMunicipalityId(selectedCity.id);
-    };
+const handleCityChange = (event) => {
+    const selectedCity = cities.find(
+      (city) => city.municipality_id === event.target.value
+    );
+    setCity(selectedCity ? selectedCity.name : '');
+    setMunicipalityId(selectedCity ? selectedCity.municipality_id : '');
+}
 
   return (
     <>
@@ -87,8 +87,8 @@ const ClientNew = ({
           id="new-organizer-name"
           label="Namn"
           name="new-organizer-name"
-          value={newOrganizerName}
-          onChange={(e) => setNewOrganizerName(e.target.value)}
+          value={name || ''}
+          onChange={(e) => setName(e.target.value)}
           className="text-field"
         />
         <TextField
@@ -99,8 +99,8 @@ const ClientNew = ({
           id="new-organizer-street1"
           label="Gatuadress 1"
           name="new-organizer-street1"
-          value={newOrganizerStreet1}
-          onChange={(e) => setNewOrganizerStreet1(e.target.value)}
+          vvalue={street1 || ''}
+          onChange={(e) => setStreet1(e.target.value)}
           className="text-field"
         />
         <TextField
@@ -111,8 +111,8 @@ const ClientNew = ({
           id="new-organizer-street2"
           label="Gatuadress 2"
           name="new-organizer-street2"
-          value={newOrganizerStreet2}
-          onChange={(e) => setNewOrganizerStreet2(e.target.value)}
+          value={street2 || ''}
+          onChange={(e) => setStreet2(e.target.value)}
           className="text-field"
         />
         <TextField
@@ -123,21 +123,21 @@ const ClientNew = ({
           id="new-organizer-zipcode"
           label="Postnummer"
           name="new-organizer-zipcode"
-          value={newOrganizerZipCode}
-          onChange={(e) => setNewOrganizerZipCode(e.target.value)}
+          value={zip_code || ''}
+          onChange={(e) => setZipCode(e.target.value)}
           className="text-field"
         />
         <FormControl variant="outlined" margin="dense" required fullWidth>
-          <InputLabel id="new-organizer-city-label">Stad</InputLabel>
+          <InputLabel id="organizer-city-label">Stad</InputLabel>
           <Select
-            labelId="new-organizer-city-label"
-            id="new-organizer-city"
-            value={newOrganizerCity}
+            labelId="organizer-city-label"
+            id="organizer-city"
+            value={municipality_id || ''}
             onChange={handleCityChange}
             label="Stad"
           >
             {cities.map((city) => (
-              <MenuItem key={city.id} value={city.name}>
+              <MenuItem key={city.municipality_id} value={city.municipality_id}>
                 {city.name}
               </MenuItem>
             ))}
@@ -162,8 +162,8 @@ const ClientNew = ({
           id="new-organizer-organization-id"
           label="Organisationsnummer"
           name="new-organizer-organization-id"
-          value={newOrganizerOrganizationId}
-          onChange={(e) => setNewOrganizerOrganizationId(e.target.value)}
+          value={organization_id || ''}
+          onChange={(e) => setOrganizationId(e.target.value)}
           className="text-field"
         />
         <TextField
@@ -173,8 +173,8 @@ const ClientNew = ({
           id="new-organizer-booking-link"
           label="Bokningslänk"
           name="new-organizer-booking-link"
-          value={newOrganizerBookingLink}
-          onChange={(e) => setNewOrganizerBookingLink(e.target.value)}
+          value={booking_link || ''}
+          onChange={(e) => setBookingLink(e.target.value)}
           className="text-field"
         />
         <TextField
@@ -184,8 +184,8 @@ const ClientNew = ({
           id="new-organizer-website"
           label="Hemsida"
           name="new-organizer-website"
-          value={newOrganizerWebsite}
-          onChange={(e) => setNewOrganizerWebsite(e.target.value)}
+          value={website || ''}
+          onChange={(e) => setWebsite(e.target.value)}
           className="text-field"
         />
         <TextField
@@ -196,8 +196,8 @@ const ClientNew = ({
           id="new-organizer-email"
           label="E-post"
           name="new-organizer-email"
-          value={newOrganizerEmail}
-          onChange={(e) => setNewOrganizerEmail(e.target.value)}
+          value={email || ''}
+          onChange={(e) => setEmail(e.target.value)}
           className="text-field"
         />
         <TextField
@@ -208,10 +208,8 @@ const ClientNew = ({
           id="new-organizer-phone-numbers"
           label="Telefonnummer"
           name="new-organizer-phone-numbers"
-          value={newOrganizerPhoneNumbers.join(', ')}
-          onChange={(e) =>
-            setNewOrganizerPhoneNumbers(e.target.value.split(', '))
-          }
+          value={phone_numbers.join(', ')}
+          onChange={(e) => setPhoneNumbers(e.target.value.split(', '))}
           className="text-field"
         />
       </Box>
