@@ -1,0 +1,25 @@
+.kalender-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-right: 10%;
+  padding-top: 2%;
+}
+.image-container {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 40px;
+}
+.kalender-image {
+  height: 30px;
+  width: 42px;
+  margin-top: 30px;
+}
+.closewindow {
+  height: 30px;
+  width: 42px;
+  margin-top: 30px;
+}
+.kalender-header {
+  margin-top: 30px;
+}

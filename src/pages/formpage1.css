@@ -1,0 +1,91 @@
+.formpage1_h2 {
+  text-align: center;
+}
+.arrangör-menu {
+  padding-left: 5rem;
+}
+.selector {
+  text-align: center;
+  width: 35%;
+  height: 10%;
+  border: 1px solid black;
+}
+.arrangör-menu::after {
+  content: "";
+  position: absolute;
+  background-color: var(--color-yellow);
+  height: 6px;
+  width: 95vw;
+  top: 25%;
+  left: 2%;
+}
+.formpage-container {
+  background-color: var(--color-background);
+  border: 1px solid black;
+  width: 33vw;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  margin-left: 80px;
+}
+.formpage-calender-container {
+  position: relative;
+  background-color: var(--color-background);
+  width: 50%;
+  height: 5%;
+  border: 1px solid var(--color-yellow);
+}
+.formpage-calender-container::after {
+  content: "";
+  position: absolute;
+  background-color: var(--color-yellow);
+  top: 100%;
+  left: 0;
+  width: 95vw;
+  height: 4px;
+}
+.form-when {
+  background-color: var(--color-background);
+  border: 1px solid black;
+}
+
+.form-when-active {
+  margin-top: -200px;
+}
+.kommun-selector {
+  color: var(--color-background-light);
+}
+.kommuner-menu {
+  color: var(--color-background-light);
+  position: relative;
+}
+.kommuner-menu::after {
+  content: "";
+  position: absolute;
+  background-color: var(--color-yellow);
+  top: 100%;
+  left: 0;
+  width: 95vw;
+  height: 4px;
+}
+.event-form {
+  padding-top: 20px;
+  color: var(--color-background-light);
+}
+.event-form__input-container {
+  position: relative;
+}
+.event-form__input-container::after {
+  content: "";
+  position: absolute;
+  background-color: var(--color-yellow);
+  height: 4px;
+  width: 95vw;
+  bottom: -30px;
+  left: 0;
+}
+.event-form__arrow {
+  padding-top: 30px;
+  margin-left: auto;
+  display: block;
+}

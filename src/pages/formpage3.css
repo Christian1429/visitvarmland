@@ -1,0 +1,132 @@
+.main-formpage {
+  text-align: center;
+}
+
+.main-formpage__form {
+  position: relative;
+}
+
+.main-formpage__form::after {
+  content: "";
+  background-color: var(--color-yellow);
+  position: absolute;
+  top: 170%;
+  left: 2%;
+  width: 81vw;
+  height: 6px;
+}
+
+.main-formpage__form-input {
+  width: 65vw;
+}
+
+.main-formpage__other-form {
+  margin-top: 100px;
+  position: relative;
+}
+
+.main-formpage__other-form::after {
+  content: "";
+  background-color: var(--color-yellow);
+  position: absolute;
+  top: 120%;
+  left: 2%;
+  width: 81vw;
+  height: 6px;
+}
+
+.main-formpage__other-form-input {
+  width: 65vw;
+}
+.main-formpage__accessibility-form {
+  position: relative;
+}
+
+.main-formpage__accessibility-form::after {
+  content: "";
+  background-color: var(--color-yellow);
+  position: absolute;
+  top: 140%;
+  left: 2%;
+  width: 81vw;
+  height: 6px;
+}
+
+.main-formpage__accessibility-form-input {
+  width: 65vw;
+}
+.main-formpage__contact-info-form {
+  position: relative;
+  margin-top: 70px;
+}
+
+.main-formpage__contact-info-form-header {
+  cursor: pointer;
+}
+
+.main-formpage__contact-info-inputs {
+  display: flex;
+  justify-content: space-between;
+  gap: 4%;
+}
+
+.main-formpage__contact-info-inputs > input {
+  width: 48%;
+}
+
+.main-formpage__contact-info-input {
+  width: 100%;
+}
+
+.main-formpage__contact-info-form::after {
+  content: "";
+  background-color: var(--color-yellow);
+  position: absolute;
+  top: 140%;
+  left: 2%;
+  width: 81vw;
+  height: 6px;
+}
+.main-formpage__gdpr-form {
+  position: relative;
+  margin-top: 80px;
+  text-align: center;
+}
+
+.main-formpage__gdpr-form::after {
+  content: "";
+  background-color: var(--color-yellow);
+  position: absolute;
+  top: 140%;
+  left: 2%;
+  width: 81vw;
+  height: 6px;
+}
+.final-message {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4caf50;
+  color: #fff;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  font-size: 1.2rem;
+  animation: fadeInOut 3s ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

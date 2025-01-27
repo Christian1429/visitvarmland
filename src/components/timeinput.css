@@ -1,0 +1,21 @@
+.timeinput {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  padding-right: 10%;
+  padding-top: 25px;
+}
+
+.timeinput::after {
+  content: "Tider";
+  position: absolute;
+  right: 24%;
+}
+
+.timeinput__input::placeholder {
+  text-align: center;
+}
+.timeinput__input {
+  width: 18%;
+  text-align: center;
+}

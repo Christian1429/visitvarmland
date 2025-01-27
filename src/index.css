@@ -1,24 +1,24 @@
 @font-face {
-  font-family: 'Noto Sans';
-  src: url('/fonts/Noto_Sans/NotoSans-Regular.ttf') format('truetype');
+  font-family: "Noto Sans";
+  src: url("/fonts/Noto_Sans/NotoSans-Regular.ttf") format("truetype");
   font-weight: 400;
 }
 
 @font-face {
-  font-family: 'Noto Sans';
-  src: url('/fonts/Noto_Sans/NotoSans-Bold.ttf') format('truetype');
+  font-family: "Noto Sans";
+  src: url("/fonts/Noto_Sans/NotoSans-Bold.ttf") format("truetype");
   font-weight: 700;
 }
 
 @font-face {
-  font-family: 'Noto Serif';
-  src: url('/fonts/Noto_Sans/NotoSerif-Regular.ttf') format('truetype');
+  font-family: "Noto Serif";
+  src: url("/fonts/Noto_Sans/NotoSerif-Regular.ttf") format("truetype");
   font-weight: 400;
 }
 
 @font-face {
-  font-family: 'Noto Serif';
-  src: url('/fonts/Noto_Sans/NotoSerif-Bold.ttf') format('truetype');
+  font-family: "Noto Serif";
+  src: url("/fonts/Noto_Sans/NotoSerif-Bold.ttf") format("truetype");
   font-weight: 700;
 }
 
@@ -40,7 +40,7 @@
   --color-site-yellow: #ebd699;
   --color-background: #fffaf9;
   --color-background-light: #f6efea;
-  font-family: 'Noto Sans', 'Noto Serif';
+  font-family: "Noto Sans", "Noto Serif";
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -53,4 +53,18 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-family: var(--font-family);
+}
+
+.bg-image {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  overflow: auto;
+  opacity: 120%;
+}
+.main-container {
+  opacity: 100%;
 }

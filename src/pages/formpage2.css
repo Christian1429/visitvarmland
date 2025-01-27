@@ -1,0 +1,79 @@
+.formpage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.formpage__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.formpage__form::after {
+  content: "";
+  background-color: var(--color-yellow);
+  position: absolute;
+  top: 110%;
+  left: 0;
+  width: 33vw;
+  height: 6px;
+}
+.formpage__select-label {
+  background-color: var(--color-background);
+  border: 1px solid black;
+  width: 33vw;
+}
+
+.formpage-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 2rem;
+}
+.description-container::before {
+  content: "";
+  background-color: var(--color-yellow);
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-16.5vw);
+  height: 6px;
+  width: 33vw;
+}
+
+.description-container {
+  text-align: center;
+  position: relative;
+}
+.description-form {
+  background-color: var(--color-background);
+  border: 1px solid black;
+  width: 60vw;
+  height: 20vh;
+  position: relative;
+}
+.description-form::after {
+  content: "";
+  background-color: var(--color-yellow);
+  position: absolute;
+  top: 110%;
+  left: 20%;
+  width: 33vw;
+  height: 6px;
+}
+.priser-input {
+  background-color: var(--color-background);
+  border: 1px solid black;
+  width: 33vw;
+}
+.price-container:after {
+  content: "";
+  background-color: var(--color-yellow);
+  position: absolute;
+  top: 75%;
+  left: 33%;
+  width: 33vw;
+  height: 6px;
+}

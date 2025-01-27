@@ -1,0 +1,14 @@
+.header_h1 {
+  text-align: center;
+  color: var(--color-blue-dark);
+  position: relative;
+}
+.header_h1::after {
+  content: "";
+  position: absolute;
+  background-color: var(--color-yellow);
+  height: 6px;
+  width: 20%;
+  top: 110%;
+  left: 40%;
+}
