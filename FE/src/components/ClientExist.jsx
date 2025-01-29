@@ -9,6 +9,7 @@ const ClientExist = ({ handleClientSelect}) => {
   useEffect(() => {
     const fetchClients = async () => {
       const data = await getForm();
+      console.log('Fetched clients:', data);
       setClients(data);
     };
 
@@ -19,6 +20,7 @@ const ClientExist = ({ handleClientSelect}) => {
     const selectedClient = clients.find(
       (client) => client.id === event.target.value
     );
+    console.log('Selected client:', selectedClient);
     setDropdownValueExisting(event.target.value);
     handleClientSelect(selectedClient);
   };

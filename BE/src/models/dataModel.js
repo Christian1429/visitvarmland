@@ -1,24 +1,31 @@
 const mongoose = require('mongoose');
-
+// required: true;
 const organizerSchema = new mongoose.Schema({
-    id: { type: Number, required: true },
-    title: { type: String, required: true },
-    street1: { type: String, required: true },
+    id: { type: Number, },
+    title: { type: String, },
+    street1: { type: String, },
     street2: { type: String },
-    zip_code: { type: String, required: true },
-    city: { type: String, required: true },
-    municipality_id: { type: Number, required: true },
-    organization_id: { type: Number, required: true },
+    zip_code: { type: String,},
+    city: { type: String, },
+    municipality_id: { type: Number,},
+    organization_id: { type: Number,  },
     booking_link: { type: String },
     website_link: { type: String },
     email: { type: String },
     phone_numbers: [{ type: String }]
 });
 
+const contactSchema = new mongoose.Schema({
+  contact_name: { type: String },
+  contact_email: { type: String },
+  contact_address: { type: String },
+  contact_number: { type: String },
+});
+
 const priceSchema = new mongoose.Schema({
-    price_type: { type: String, required: true },
-    price: { type: String, required: true },
-    seats_available: { type: String, required: true },
+    price_type: { type: String, },
+    price: { type: String, },
+    seats_available: { type: String, },
     description: { type: String }
 });
 
@@ -40,14 +47,14 @@ const fileSchema = new mongoose.Schema({
 });
 
 const categorySchema = new mongoose.Schema({
-    id: { type: Number, required: true },
-    title: { type: String, required: true },
-    slug: { type: String, required: true }
+    id: { type: Number },
+    title: { type: String },
+    slug: { type: String }
 });
 
 const placeSchema = new mongoose.Schema({
-    id: { type: Number, required: true },
-    title: { type: String, required: true },
+    id: { type: Number},
+    title: { type: String},
     presentation: { type: String },
     latitude: { type: String },
     longitude: { type: String },
@@ -62,10 +69,10 @@ const occasionSchema = new mongoose.Schema({
 });
 
 const dataSchema = new mongoose.Schema({
-    id: { type: Number, required: true },
+    id: { type: Number },
     created_at: { type: Date, default: Date.now },
     updated_at: { type: Date, default: Date.now },
-    title: { type: String, required: true },
+    title: { type: String },
     description: { type: String },
     sales_text: { type: String },
     presentation: { type: String },
@@ -81,6 +88,7 @@ const dataSchema = new mongoose.Schema({
     organizers: [organizerSchema],
     websites: [{ type: String }],
     prices: [priceSchema],
+    contact: [contactSchema],
     phone_numbers: [{ type: String }],
     images: [imageSchema],
     files: [fileSchema],
