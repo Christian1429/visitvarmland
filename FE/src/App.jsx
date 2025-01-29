@@ -1,12 +1,13 @@
 import Form from './pages/Form'
+import { FormDataProvider } from './context/FormDataContext';
 
 function App() {
 
   return (
-    <>
-    <Form/>
-    </>
-  )
+    <FormDataProvider>
+      <Form />
+    </FormDataProvider>
+  );
 }
 
 export default App
