@@ -1,8 +1,9 @@
 import postForm from '../api/PostForm';
 import { mapPrices, mapImages, mapFiles, mapCategories, mapPlaces, mapOccasions, mapRelatedItems, mapOrganizers} from './mappers';
 
-const handleSubmit = async (formdata) => {
-  const formData = {
+const handleSubmit = async (formData) => {
+  const dataToSubmit = {
+    ...formData,
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString(),
     title: formData.title || '',
@@ -20,12 +21,12 @@ const handleSubmit = async (formdata) => {
     website_link: formData.website_link || '',
     organizers: mapOrganizers(formData.organizers),
     websites: [],
-    prices: mapPrices(prices),
+    prices: mapPrices(formData.prices),
     phone_numbers: [],
-    images: mapImages(images),
-    files: mapFiles(files),
+    images: mapImages(formData.images),
+    files: mapFiles(formData.files),
     categories: mapCategories(formData.categories),
-    places: mapPlaces(places),
+    places: mapPlaces(formData.places),
     distance: '',
     slugs: {
       sv: {
@@ -50,13 +51,13 @@ const handleSubmit = async (formdata) => {
       medium: '',
       small: '',
     },
-    occasions: mapOccasions(occasions),
-    past_occasions: mapOccasions(past_occasions),
-    related_products: mapRelatedItems(related_products),
-    related_events: mapRelatedItems(related_events),
+    occasions: mapOccasions(formData.occasions),
+    past_occasions: mapOccasions(formData.past_occasions),
+    related_products: mapRelatedItems(formData.related_products),
+    related_events: mapRelatedItems(formData.related_events),
   };
-  console.log(formData);
-  await postForm(formData);
+  console.log(dataToSubmit);
+  await postForm(dataToSubmit);
 };
 
 export default handleSubmit;

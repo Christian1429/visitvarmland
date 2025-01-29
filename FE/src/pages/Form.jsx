@@ -14,8 +14,7 @@ import GetButton from '../components/Buttons/getFrombtn';
 import ClientExist from '../components/ClientExist';
 import postForm from '../api/PostForm';
 import { FormDataContext } from '../context/FormDataContext';
-import handleSubmit
- from '../utils/handleSubmit';
+import handleSubmit from '../utils/handleSubmit';
 const Form = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -61,28 +60,30 @@ const Form = () => {
     setCurrentStep(step);
   };
 
-  const handleClientSelect = (client) => {
-    const organizers = client.organizers[0];
-    if (organizers) {
-      setFormData((prevData) => ({
-        ...prevData,
-        id: organizers.id || 0,
-        name: organizers.title || '',
-        street1: organizers.street1 || '',
-        street2: organizers.street2 || '',
-        zip_code: organizers.zip_code || '',
-        city: organizers.city || '',
-        municipality_id: organizers.municipality_id || '',
-        organization_id: organizers.organization_id || '',
-        booking_link: organizers.booking_link || '',
-        website: organizers.website_link || '',
-        email: organizers.email || '',
-        phone_numbers: organizers.phone_numbers || [],
-      }));
-      console.log(prevData);
-    }
-  };
-
+ const handleClientSelect = (client) => {
+  const organizers = client.organizers[0];
+  if (organizers) {
+    setFormData((prevData) => ({
+      ...prevData,
+      organizers: [
+        {
+          id: organizers.id || 0,
+          name: organizers.title || '',
+          street1: organizers.street1 || '',
+          street2: organizers.street2 || '',
+          zip_code: organizers.zip_code || '',
+          city: organizers.city || '',
+          municipality_id: organizers.municipality_id || '',
+          organization_id: organizers.organization_id || '',
+          booking_link: organizers.booking_link || '',
+          website: organizers.website_link || '',
+          email: organizers.email || '',
+          phone_numbers: organizers.phone_numbers || [],
+        },
+      ],
+    }));
+  }
+};
     const handleChange = (e) => {
       const { name, value } = e.target;
       setFormData((prevData) => ({
@@ -112,8 +113,8 @@ const Form = () => {
       case 0:
         return (
           <>
-            <TestButton />
-            <GetButton />
+            {/* <TestButton />
+            <GetButton /> */}
             <Contact
               name={name}
               setName={setName}
@@ -134,60 +135,136 @@ const Form = () => {
               clients={organizers}
             />
             <ClientNew
-              name={formData.name}
+              name={formData.organizers[0]?.name || ''}
               setName={(value) =>
-                setFormData((prevData) => ({ ...prevData, name: value }))
+                setFormData((prevData) => ({
+                  ...prevData,
+                  organizers: [
+                    {
+                      ...prevData.organizers[0],
+                      name: value,
+                    },
+                  ],
+                }))
               }
-              street1={formData.street1}
+              street1={formData.organizers[0]?.street1 || ''}
               setStreet1={(value) =>
-                setFormData((prevData) => ({ ...prevData, street1: value }))
+                setFormData((prevData) => ({
+                  ...prevData,
+                  organizers: [
+                    {
+                      ...prevData.organizers[0],
+                      street1: value,
+                    },
+                  ],
+                }))
               }
-              street2={formData.street2}
+              street2={formData.organizers[0]?.street2 || ''}
               setStreet2={(value) =>
-                setFormData((prevData) => ({ ...prevData, street2: value }))
+                setFormData((prevData) => ({
+                  ...prevData,
+                  organizers: [
+                    {
+                      ...prevData.organizers[0],
+                      street2: value,
+                    },
+                  ],
+                }))
               }
-              zip_code={formData.zip_code}
+              zip_code={formData.organizers[0]?.zip_code || ''}
               setZipCode={(value) =>
-                setFormData((prevData) => ({ ...prevData, zip_code: value }))
+                setFormData((prevData) => ({
+                  ...prevData,
+                  organizers: [
+                    {
+                      ...prevData.organizers[0],
+                      zip_code: value,
+                    },
+                  ],
+                }))
               }
-              city={formData.city}
+              city={formData.organizers[0]?.city || ''}
               setCity={(value) =>
-                setFormData((prevData) => ({ ...prevData, city: value }))
+                setFormData((prevData) => ({
+                  ...prevData,
+                  organizers: [
+                    {
+                      ...prevData.organizers[0],
+                      city: value,
+                    },
+                  ],
+                }))
               }
-              municipality_id={formData.municipality_id}
+              municipality_id={formData.organizers[0]?.municipality_id || ''}
               setMunicipalityId={(value) =>
                 setFormData((prevData) => ({
                   ...prevData,
-                  municipality_id: value,
+                  organizers: [
+                    {
+                      ...prevData.organizers[0],
+                      municipality_id: value,
+                    },
+                  ],
                 }))
               }
-              organization_id={formData.organization_id}
+              organization_id={formData.organizers[0]?.organization_id || ''}
               setOrganizationId={(value) =>
                 setFormData((prevData) => ({
                   ...prevData,
-                  organization_id: value,
+                  organizers: [
+                    {
+                      ...prevData.organizers[0],
+                      organization_id: value,
+                    },
+                  ],
                 }))
               }
-              booking_link={formData.booking_link}
+              booking_link={formData.organizers[0]?.booking_link || ''}
               setBookingLink={(value) =>
                 setFormData((prevData) => ({
                   ...prevData,
-                  booking_link: value,
+                  organizers: [
+                    {
+                      ...prevData.organizers[0],
+                      booking_link: value,
+                    },
+                  ],
                 }))
               }
-              website={formData.website}
+              website={formData.organizers[0]?.website || ''}
               setWebsite={(value) =>
-                setFormData((prevData) => ({ ...prevData, website: value }))
+                setFormData((prevData) => ({
+                  ...prevData,
+                  organizers: [
+                    {
+                      ...prevData.organizers[0],
+                      website: value,
+                    },
+                  ],
+                }))
               }
-              email={formData.email}
+              email={formData.organizers[0]?.email || ''}
               setEmail={(value) =>
-                setFormData((prevData) => ({ ...prevData, email: value }))
+                setFormData((prevData) => ({
+                  ...prevData,
+                  organizers: [
+                    {
+                      ...prevData.organizers[0],
+                      email: value,
+                    },
+                  ],
+                }))
               }
-              phone_numbers={formData.phone_numbers}
+              phone_numbers={formData.organizers[0]?.phone_numbers || []}
               setPhoneNumbers={(value) =>
                 setFormData((prevData) => ({
                   ...prevData,
-                  phone_numbers: value,
+                  organizers: [
+                    {
+                      ...prevData.organizers[0],
+                      phone_numbers: value,
+                    },
+                  ],
                 }))
               }
               handleChange={handleChange}

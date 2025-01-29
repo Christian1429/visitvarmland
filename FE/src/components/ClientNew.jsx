@@ -23,6 +23,8 @@ const ClientNew = ({
   setEmail,
   phone_numbers,
   setPhoneNumbers,
+  handleChange,
+  handleArrayChange,
 }) => {
   const cities = [
     { municipality_id: 1, name: 'Arvika' },
@@ -43,13 +45,13 @@ const ClientNew = ({
     { municipality_id: 16, name: 'Årjäng' },
   ];
 
-const handleCityChange = (event) => {
+  const handleCityChange = (event) => {
     const selectedCity = cities.find(
       (city) => city.municipality_id === event.target.value
     );
     setCity(selectedCity ? selectedCity.name : '');
     setMunicipalityId(selectedCity ? selectedCity.municipality_id : '');
-}
+  };
 
   return (
     <>
