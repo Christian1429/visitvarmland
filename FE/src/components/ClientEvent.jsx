@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, TextField, Typography } from '@mui/material';
-
+import DatePickerClient from '../components/DatePicker';
 const ClientEvent = ({
   title,
   setTitle,
@@ -40,6 +40,7 @@ const ClientEvent = ({
         backdropFilter: 'blur(2px)',
       }}
     >
+       <DatePickerClient />
       <Typography variant="h6" component="h2" gutterBottom>
         Fyll i ditt event
       </Typography>

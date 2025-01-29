@@ -13,6 +13,7 @@ const DatePickerClient = ({
 }) => {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="sv">
+      <h4>Datum för ditt event</h4>  
       <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 2 }}>
         <DatePicker
           label="Från"
