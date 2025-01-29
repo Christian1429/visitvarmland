@@ -2,7 +2,8 @@ import { Box, TextField, Typography, FormControl, InputLabel, Select, MenuItem }
 
 const ClientNew = ({
   name,
-  setName,
+  title,
+  setTitle,
   street1,
   setStreet1,
   street2,
@@ -89,8 +90,8 @@ const ClientNew = ({
           id="new-organizer-name"
           label="Namn"
           name="new-organizer-name"
-          value={name || ''}
-          onChange={(e) => setName(e.target.value)}
+          value={title || ''}
+          onChange={(e) => setTitle(e.target.value)}
           className="text-field"
         />
         <TextField
@@ -134,7 +135,7 @@ const ClientNew = ({
           <Select
             labelId="organizer-city-label"
             id="organizer-city"
-            value={municipality_id || ''}
+            value={municipality_id || 0}
             onChange={handleCityChange}
             label="Stad"
           >
@@ -162,7 +163,7 @@ const ClientNew = ({
           margin="dense"
           fullWidth
           id="new-organizer-organization-id"
-          label="Organisationsnummer"
+          label="Organisationsnummer int"
           name="new-organizer-organization-id"
           value={organization_id || ''}
           onChange={(e) => setOrganizationId(e.target.value)}

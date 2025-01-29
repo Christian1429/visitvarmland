@@ -3,7 +3,7 @@ import { Box, Typography, Breadcrumbs, Link, useMediaQuery, Button } from '@mui/
 import Contact from '../components/Contact';
 import ClientNew from '../components/ClientNew';
 import DatePickerClient from '../components/DatePicker';
-import Event from '../components/Event';
+import ClientEvent from '../components/ClientEvent';
 import BtnNext from '../components/Buttons/BtnNext';
 import CloseBtn from '../components/Buttons/CloseBtn';
 import { useTheme } from '@mui/material/styles';
@@ -135,14 +135,14 @@ const Form = () => {
               clients={organizers}
             />
             <ClientNew
-              name={formData.organizers[0]?.name || ''}
-              setName={(value) =>
+              title={formData.organizers[0]?.title || ''}
+              setTitle={(value) =>
                 setFormData((prevData) => ({
                   ...prevData,
                   organizers: [
                     {
                       ...prevData.organizers[0],
-                      name: value,
+                      title: value,
                     },
                   ],
                 }))
@@ -195,7 +195,7 @@ const Form = () => {
                   ],
                 }))
               }
-              municipality_id={formData.organizers[0]?.municipality_id || ''}
+              municipality_id={formData.organizers[0]?.municipality_id || 0}
               setMunicipalityId={(value) =>
                 setFormData((prevData) => ({
                   ...prevData,
@@ -207,7 +207,7 @@ const Form = () => {
                   ],
                 }))
               }
-              organization_id={formData.organizers[0]?.organization_id || ''}
+              organization_id={formData.organizers[0]?.organization_id || 0}
               setOrganizationId={(value) =>
                 setFormData((prevData) => ({
                   ...prevData,
@@ -272,30 +272,68 @@ const Form = () => {
             />
           </>
         );
-      // case 2:
-        // return (
-          // <>
-          //   <Event
-          //     title={title}
-          //     setTitle={setTitle}
-          //     description={description}
-          //     setDescription={setDescription}
-          //     priser={priser}
-          //     setPriser={setPriser}
-          //     hemsida={hemsida}
-          //     setHemsida={setHemsida}
-          //     kontaktuppgifter={kontaktuppgifter}
-          //     setKontaktuppgifter={setKontaktuppgifter}
-          //     ovrigInformation={ovrigInformation}
-          //     setOvrigInformation={setOvrigInformation}
-          //     befintligArrangor={befintligArrangor}
-          //     setBefintligArrangor={setBefintligArrangor}
-          //     nyArrangor={nyArrangor}
-          //     setNyArrangor={setNyArrangor}
-          //   />
-          //   <DatePickerClient />
-          // </>
-        // );
+      case 2:
+       return (
+          <>
+<ClientEvent
+  title={formData.title}
+  setTitle={(value) =>
+    setFormData((prevData) => ({ ...prevData, title: value }))
+  }
+  description={formData.description}
+  setDescription={(value) =>
+    setFormData((prevData) => ({ ...prevData, description: value }))
+  }
+  sales_text={formData.sales_text}
+  setSalesText={(value) =>
+    setFormData((prevData) => ({ ...prevData, sales_text: value }))
+  }
+  presentation={formData.presentation}
+  setPresentation={(value) =>
+    setFormData((prevData) => ({ ...prevData, presentation: value }))
+  }
+  open_hours={formData.open_hours}
+  setOpenHours={(value) =>
+    setFormData((prevData) => ({ ...prevData, open_hours: value }))
+  }
+  ticket_information={formData.ticket_information}
+  setTicketInformation={(value) =>
+    setFormData((prevData) => ({ ...prevData, ticket_information: value }))
+  }
+  ticket_info={formData.ticket_info}
+  setTicketInfo={(value) =>
+    setFormData((prevData) => ({ ...prevData, ticket_info: value }))
+  }
+  open_times={formData.open_times}
+  setOpenTimes={(value) =>
+    setFormData((prevData) => ({ ...prevData, open_times: value }))
+  }
+  meta_title={formData.meta_title}
+  setMetaTitle={(value) =>
+    setFormData((prevData) => ({ ...prevData, meta_title: value }))
+  }
+  meta_keywords={formData.meta_keywords}
+  setMetaKeywords={(value) =>
+    setFormData((prevData) => ({ ...prevData, meta_keywords: value }))
+  }
+  meta_description={formData.meta_description}
+  setMetaDescription={(value) =>
+    setFormData((prevData) => ({ ...prevData, meta_description: value }))
+  }
+  booking_link={formData.booking_link}
+  setBookingLink={(value) =>
+    setFormData((prevData) => ({ ...prevData, booking_link: value }))
+  }
+  website_link={formData.website_link}
+  setWebsiteLink={(value) =>
+    setFormData((prevData) => ({ ...prevData, website_link: value }))
+  }
+  handleChange={handleChange}
+  handleArrayChange={handleArrayChange}
+/>;
+           {/* <DatePickerClient /> */}
+          </>
+       );
       default:
         return null;
     }

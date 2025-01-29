@@ -1,10 +1,10 @@
 import React, { createContext, useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 
 export const FormDataContext = createContext();
 
 export const FormDataProvider = ({ children }) => {
   const [formData, setFormData] = useState({
+    id: 0,
     title: '',
     description: '',
     sales_text: '',
@@ -20,7 +20,7 @@ export const FormDataProvider = ({ children }) => {
     website_link: '',
     organizers: [
       {
-        id: uuidv4(),
+        id: 0,
         title: '',
         street1: '',
         street2: '',

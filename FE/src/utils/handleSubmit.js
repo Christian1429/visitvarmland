@@ -56,7 +56,7 @@ const handleSubmit = async (formData) => {
     related_products: mapRelatedItems(formData.related_products),
     related_events: mapRelatedItems(formData.related_events),
   };
-  console.log(dataToSubmit);
+  console.log("handleSubmit output:", dataToSubmit);
   await postForm(dataToSubmit);
 };
 
