@@ -18,6 +18,15 @@ export const FormDataProvider = ({ children }) => {
     meta_description: '',
     booking_link: '',
     website_link: '',
+    contact: [
+      {
+        contact_name: '',
+        contact_email: '',
+        contact_address: '',
+        contact_number: '',
+      },
+    ],
+    
     organizers: [
       {
         id: 0,

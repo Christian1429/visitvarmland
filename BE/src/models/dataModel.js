@@ -15,6 +15,13 @@ const organizerSchema = new mongoose.Schema({
     phone_numbers: [{ type: String }]
 });
 
+const contactSchema = new mongoose.Schema({
+  contact_name: { type: String },
+  contact_email: { type: String },
+  contact_address: { type: String },
+  contact_number: { type: String },
+});
+
 const priceSchema = new mongoose.Schema({
     price_type: { type: String, },
     price: { type: String, },
@@ -81,6 +88,7 @@ const dataSchema = new mongoose.Schema({
     organizers: [organizerSchema],
     websites: [{ type: String }],
     prices: [priceSchema],
+    contact: [contactSchema],
     phone_numbers: [{ type: String }],
     images: [imageSchema],
     files: [fileSchema],
