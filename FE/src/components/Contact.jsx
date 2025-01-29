@@ -9,14 +9,14 @@ import {
 import { useTheme } from '@mui/material/styles';
 
 const Contact = ({
-  name,
-  setName,
-  email,
-  setEmail,
-  address,
-  setAddress,
-  phone,
-  setPhone,
+  contact_name,
+  setContactName,
+  contact_email,
+  setContactEmail,
+  contact_address,
+  setContactAddress,
+  contact_number,
+  setContactNumber,
   consent,
   setConsent,
 }) => {
@@ -76,8 +76,8 @@ const Contact = ({
             name="name"
             autoComplete="name"
             autoFocus
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={contact_name}
+            onChange={(e) => setContactName(e.target.value)}
             className="text-field"
           />
           <TextField
@@ -89,8 +89,8 @@ const Contact = ({
             label="Email adress"
             name="email"
             autoComplete="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={contact_email}
+            onChange={(e) => setContactEmail(e.target.value)}
             className="text-field"
           />
           <TextField
@@ -102,8 +102,8 @@ const Contact = ({
             label="Adress"
             name="address"
             autoComplete="address"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
+            value={contact_address}
+            onChange={(e) => setContactAddress(e.target.value)}
             className="text-field"
           />
           <TextField
@@ -115,8 +115,8 @@ const Contact = ({
             label="Telefon nummer"
             name="phone"
             autoComplete="phone"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
+            value={contact_number}
+            onChange={(e) => setContactNumber(e.target.value)}
             className="text-field"
           />
           <Box gridColumn="span 2">
