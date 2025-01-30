@@ -3,55 +3,26 @@ import { Box, Typography, Breadcrumbs, Link, useMediaQuery, Button } from '@mui/
 import Contact from '../components/Contact';
 import ClientNew from '../components/ClientNew';
 import DatePickerClient from '../components/DatePicker';
-import Event from '../components/Event';
+import ClientEvent from '../components/ClientEvent';
 import BtnNext from '../components/Buttons/BtnNext';
 import CloseBtn from '../components/Buttons/CloseBtn';
 import { useTheme } from '@mui/material/styles';
 import './Form.css';
-import TestButton from '../components/Buttons/TestButton';
-import GetButton from '../components/Buttons/getFrombtn';
-// import getForm from '../api/GetFrom';
 import ClientExist from '../components/ClientExist';
-import postForm from '../api/PostForm';
 import { FormDataContext } from '../context/FormDataContext';
-import handleSubmit
- from '../utils/handleSubmit';
+import handleSubmit from '../utils/handleSubmit';
 const Form = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [currentStep, setCurrentStep] = useState(0);
   const [organizers, setOrganizers] = useState(null);
   const { formData, setFormData } = useContext(FormDataContext);
+
   // Contact
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [address, setAddress] = useState('');
   const [phone, setPhone] = useState('');
-
-  // New Organizer
-// const [newOrganizerName, setNewOrganizerName] = useState('');
-//   const [newOrganizerStreet1, setNewOrganizerStreet1] = useState('');
-//   const [newOrganizerStreet2, setNewOrganizerStreet2] = useState('');
-// const [newOrganizerZipCode, setNewOrganizerZipCode] = useState('');
-// const [newOrganizerCity, setNewOrganizerCity] = useState('');
-// const [newOrganizerMunicipalityId, setNewOrganizerMunicipalityId] =
-//   useState('');
-// const [newOrganizerOrganizationId, setNewOrganizerOrganizationId] =
-//   useState('');
-// const [newOrganizerBookingLink, setNewOrganizerBookingLink] = useState('');
-// const [newOrganizerWebsite, setNewOrganizerWebsite] = useState('');
-// const [newOrganizerEmail, setNewOrganizerEmail] = useState('');
-// const [newOrganizerPhoneNumbers, setNewOrganizerPhoneNumbers] = useState([]);
-
-  // Event
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [priser, setPriser] = useState('');
-  const [hemsida, setHemsida] = useState('');
-  const [kontaktuppgifter, setKontaktuppgifter] = useState('');
-  const [ovrigInformation, setOvrigInformation] = useState('');
-  const [befintligArrangor, setBefintligArrangor] = useState(false);
-  const [nyArrangor, setNyArrangor] = useState(false);
 
   const handleNext = () => {
     setCurrentStep((prevStep) => prevStep + 1);
@@ -61,28 +32,30 @@ const Form = () => {
     setCurrentStep(step);
   };
 
-  const handleClientSelect = (client) => {
-    const organizers = client.organizers[0];
-    if (organizers) {
-      setFormData((prevData) => ({
-        ...prevData,
-        id: organizers.id || 0,
-        name: organizers.title || '',
-        street1: organizers.street1 || '',
-        street2: organizers.street2 || '',
-        zip_code: organizers.zip_code || '',
-        city: organizers.city || '',
-        municipality_id: organizers.municipality_id || '',
-        organization_id: organizers.organization_id || '',
-        booking_link: organizers.booking_link || '',
-        website: organizers.website_link || '',
-        email: organizers.email || '',
-        phone_numbers: organizers.phone_numbers || [],
-      }));
-      console.log(prevData);
-    }
-  };
-
+ const handleClientSelect = (client) => {
+  const organizers = client.organizers[0];
+  if (organizers) {
+    setFormData((prevData) => ({
+      ...prevData,
+      organizers: [
+        {
+          id: organizers.id || 0,
+          name: organizers.title || '',
+          street1: organizers.street1 || '',
+          street2: organizers.street2 || '',
+          zip_code: organizers.zip_code || '',
+          city: organizers.city || '',
+          municipality_id: organizers.municipality_id || '',
+          organization_id: organizers.organization_id || '',
+          booking_link: organizers.booking_link || '',
+          website: organizers.website_link || '',
+          email: organizers.email || '',
+          phone_numbers: organizers.phone_numbers || [],
+        },
+      ],
+    }));
+  }
+};
     const handleChange = (e) => {
       const { name, value } = e.target;
       setFormData((prevData) => ({
@@ -112,8 +85,6 @@ const Form = () => {
       case 0:
         return (
           <>
-            <TestButton />
-            <GetButton />
             <Contact
               name={name}
               setName={setName}
@@ -134,60 +105,136 @@ const Form = () => {
               clients={organizers}
             />
             <ClientNew
-              name={formData.name}
-              setName={(value) =>
-                setFormData((prevData) => ({ ...prevData, name: value }))
+              title={formData.organizers[0]?.title || ''}
+              setTitle={(value) =>
+                setFormData((prevData) => ({
+                  ...prevData,
+                  organizers: [
+                    {
+                      ...prevData.organizers[0],
+                      title: value,
+                    },
+                  ],
+                }))
               }
-              street1={formData.street1}
+              street1={formData.organizers[0]?.street1 || ''}
               setStreet1={(value) =>
-                setFormData((prevData) => ({ ...prevData, street1: value }))
+                setFormData((prevData) => ({
+                  ...prevData,
+                  organizers: [
+                    {
+                      ...prevData.organizers[0],
+                      street1: value,
+                    },
+                  ],
+                }))
               }
-              street2={formData.street2}
+              street2={formData.organizers[0]?.street2 || ''}
               setStreet2={(value) =>
-                setFormData((prevData) => ({ ...prevData, street2: value }))
+                setFormData((prevData) => ({
+                  ...prevData,
+                  organizers: [
+                    {
+                      ...prevData.organizers[0],
+                      street2: value,
+                    },
+                  ],
+                }))
               }
-              zip_code={formData.zip_code}
+              zip_code={formData.organizers[0]?.zip_code || ''}
               setZipCode={(value) =>
-                setFormData((prevData) => ({ ...prevData, zip_code: value }))
+                setFormData((prevData) => ({
+                  ...prevData,
+                  organizers: [
+                    {
+                      ...prevData.organizers[0],
+                      zip_code: value,
+                    },
+                  ],
+                }))
               }
-              city={formData.city}
+              city={formData.organizers[0]?.city || ''}
               setCity={(value) =>
-                setFormData((prevData) => ({ ...prevData, city: value }))
+                setFormData((prevData) => ({
+                  ...prevData,
+                  organizers: [
+                    {
+                      ...prevData.organizers[0],
+                      city: value,
+                    },
+                  ],
+                }))
               }
-              municipality_id={formData.municipality_id}
+              municipality_id={formData.organizers[0]?.municipality_id || 0}
               setMunicipalityId={(value) =>
                 setFormData((prevData) => ({
                   ...prevData,
-                  municipality_id: value,
+                  organizers: [
+                    {
+                      ...prevData.organizers[0],
+                      municipality_id: value,
+                    },
+                  ],
                 }))
               }
-              organization_id={formData.organization_id}
+              organization_id={formData.organizers[0]?.organization_id || 0}
               setOrganizationId={(value) =>
                 setFormData((prevData) => ({
                   ...prevData,
-                  organization_id: value,
+                  organizers: [
+                    {
+                      ...prevData.organizers[0],
+                      organization_id: value,
+                    },
+                  ],
                 }))
               }
-              booking_link={formData.booking_link}
+              booking_link={formData.organizers[0]?.booking_link || ''}
               setBookingLink={(value) =>
                 setFormData((prevData) => ({
                   ...prevData,
-                  booking_link: value,
+                  organizers: [
+                    {
+                      ...prevData.organizers[0],
+                      booking_link: value,
+                    },
+                  ],
                 }))
               }
-              website={formData.website}
+              website={formData.organizers[0]?.website || ''}
               setWebsite={(value) =>
-                setFormData((prevData) => ({ ...prevData, website: value }))
+                setFormData((prevData) => ({
+                  ...prevData,
+                  organizers: [
+                    {
+                      ...prevData.organizers[0],
+                      website: value,
+                    },
+                  ],
+                }))
               }
-              email={formData.email}
+              email={formData.organizers[0]?.email || ''}
               setEmail={(value) =>
-                setFormData((prevData) => ({ ...prevData, email: value }))
+                setFormData((prevData) => ({
+                  ...prevData,
+                  organizers: [
+                    {
+                      ...prevData.organizers[0],
+                      email: value,
+                    },
+                  ],
+                }))
               }
-              phone_numbers={formData.phone_numbers}
+              phone_numbers={formData.organizers[0]?.phone_numbers || []}
               setPhoneNumbers={(value) =>
                 setFormData((prevData) => ({
                   ...prevData,
-                  phone_numbers: value,
+                  organizers: [
+                    {
+                      ...prevData.organizers[0],
+                      phone_numbers: value,
+                    },
+                  ],
                 }))
               }
               handleChange={handleChange}
@@ -195,30 +242,77 @@ const Form = () => {
             />
           </>
         );
-      // case 2:
-        // return (
-          // <>
-          //   <Event
-          //     title={title}
-          //     setTitle={setTitle}
-          //     description={description}
-          //     setDescription={setDescription}
-          //     priser={priser}
-          //     setPriser={setPriser}
-          //     hemsida={hemsida}
-          //     setHemsida={setHemsida}
-          //     kontaktuppgifter={kontaktuppgifter}
-          //     setKontaktuppgifter={setKontaktuppgifter}
-          //     ovrigInformation={ovrigInformation}
-          //     setOvrigInformation={setOvrigInformation}
-          //     befintligArrangor={befintligArrangor}
-          //     setBefintligArrangor={setBefintligArrangor}
-          //     nyArrangor={nyArrangor}
-          //     setNyArrangor={setNyArrangor}
-          //   />
-          //   <DatePickerClient />
-          // </>
-        // );
+      case 2:
+       return (
+         <>
+          
+           <ClientEvent
+             title={formData.title}
+             setTitle={(value) =>
+               setFormData((prevData) => ({ ...prevData, title: value }))
+             }
+             description={formData.description}
+             setDescription={(value) =>
+               setFormData((prevData) => ({ ...prevData, description: value }))
+             }
+             sales_text={formData.sales_text}
+             setSalesText={(value) =>
+               setFormData((prevData) => ({ ...prevData, sales_text: value }))
+             }
+             presentation={formData.presentation}
+             setPresentation={(value) =>
+               setFormData((prevData) => ({ ...prevData, presentation: value }))
+             }
+             open_hours={formData.open_hours}
+             setOpenHours={(value) =>
+               setFormData((prevData) => ({ ...prevData, open_hours: value }))
+             }
+             ticket_information={formData.ticket_information}
+             setTicketInformation={(value) =>
+               setFormData((prevData) => ({
+                 ...prevData,
+                 ticket_information: value,
+               }))
+             }
+             ticket_info={formData.ticket_info}
+             setTicketInfo={(value) =>
+               setFormData((prevData) => ({ ...prevData, ticket_info: value }))
+             }
+             open_times={formData.open_times}
+             setOpenTimes={(value) =>
+               setFormData((prevData) => ({ ...prevData, open_times: value }))
+             }
+             meta_title={formData.meta_title}
+             setMetaTitle={(value) =>
+               setFormData((prevData) => ({ ...prevData, meta_title: value }))
+             }
+             meta_keywords={formData.meta_keywords}
+             setMetaKeywords={(value) =>
+               setFormData((prevData) => ({
+                 ...prevData,
+                 meta_keywords: value,
+               }))
+             }
+             meta_description={formData.meta_description}
+             setMetaDescription={(value) =>
+               setFormData((prevData) => ({
+                 ...prevData,
+                 meta_description: value,
+               }))
+             }
+             booking_link={formData.booking_link}
+             setBookingLink={(value) =>
+               setFormData((prevData) => ({ ...prevData, booking_link: value }))
+             }
+             website_link={formData.website_link}
+             setWebsiteLink={(value) =>
+               setFormData((prevData) => ({ ...prevData, website_link: value }))
+             }
+             handleChange={handleChange}
+             handleArrayChange={handleArrayChange}
+           />
+         </>
+       );
       default:
         return null;
     }
@@ -286,7 +380,7 @@ const Form = () => {
       <Box display="flex" flexDirection="column" alignItems="center">
         <Box sx={{ mb: 4 }}>{renderStep()}</Box>
         {currentStep < 2 && <BtnNext onClick={handleNext} />}
-        {currentStep === 1 && <button onClick={handleFormSubmit}>Submit</button>}
+        {currentStep === 2 && <button onClick={handleFormSubmit}>Submit</button>}
       </Box>
     </Box>
   );

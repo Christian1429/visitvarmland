@@ -2,7 +2,8 @@ import { Box, TextField, Typography, FormControl, InputLabel, Select, MenuItem }
 
 const ClientNew = ({
   name,
-  setName,
+  title,
+  setTitle,
   street1,
   setStreet1,
   street2,
@@ -23,6 +24,8 @@ const ClientNew = ({
   setEmail,
   phone_numbers,
   setPhoneNumbers,
+  handleChange,
+  handleArrayChange,
 }) => {
   const cities = [
     { municipality_id: 1, name: 'Arvika' },
@@ -43,13 +46,13 @@ const ClientNew = ({
     { municipality_id: 16, name: 'Årjäng' },
   ];
 
-const handleCityChange = (event) => {
+  const handleCityChange = (event) => {
     const selectedCity = cities.find(
       (city) => city.municipality_id === event.target.value
     );
     setCity(selectedCity ? selectedCity.name : '');
     setMunicipalityId(selectedCity ? selectedCity.municipality_id : '');
-}
+  };
 
   return (
     <>
@@ -87,8 +90,8 @@ const handleCityChange = (event) => {
           id="new-organizer-name"
           label="Namn"
           name="new-organizer-name"
-          value={name || ''}
-          onChange={(e) => setName(e.target.value)}
+          value={title || ''}
+          onChange={(e) => setTitle(e.target.value)}
           className="text-field"
         />
         <TextField
@@ -132,7 +135,7 @@ const handleCityChange = (event) => {
           <Select
             labelId="organizer-city-label"
             id="organizer-city"
-            value={municipality_id || ''}
+            value={municipality_id || 0}
             onChange={handleCityChange}
             label="Stad"
           >
@@ -160,7 +163,7 @@ const handleCityChange = (event) => {
           margin="dense"
           fullWidth
           id="new-organizer-organization-id"
-          label="Organisationsnummer"
+          label="Organisationsnummer int"
           name="new-organizer-organization-id"
           value={organization_id || ''}
           onChange={(e) => setOrganizationId(e.target.value)}
