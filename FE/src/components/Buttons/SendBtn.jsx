@@ -1,20 +1,19 @@
-import { Button } from '@mui/material';
-
+import { Button } from "@mui/material";
 
 // Deras gula knapp
 const SendBtn = () => {
   return (
     <Button
       sx={{
-        backgroundColor: 'var(--color-site-yellow)',
-        borderRadius: '0px',
-        fontSize: '14px',
-        color: 'black',
-        width: '8rem',
-        fontWeight: '600',
-        boxShadow: '6px 6px 0px rgba(236, 198, 82, 0.3)',
-        '&:hover': {
-          textDecoration: 'underline',
+        backgroundColor: "var(--color-site-yellow)",
+        borderRadius: "0px",
+        fontSize: "14px",
+        color: "black",
+        width: "8rem",
+        fontWeight: "600",
+        boxShadow: "6px 6px 0px rgba(236, 198, 82, 0.3)",
+        "&:hover": {
+          textDecoration: "underline",
         },
       }}
       type="submit"
@@ -23,9 +22,8 @@ const SendBtn = () => {
       className="btn-submit"
     >
       Skicka
-    </Button >
+    </Button>
   );
-}
+};
 
-export default SendBtn
-
+export default SendBtn;
