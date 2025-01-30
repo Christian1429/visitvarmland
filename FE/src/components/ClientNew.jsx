@@ -12,8 +12,6 @@ import {
 const ClientNew = ({
   formData,
   setFormData,
-  handleChange,
-  handleArrayChange,
 }) => {
   const cities = [
     { municipality_id: 1, name: 'Arvika' },

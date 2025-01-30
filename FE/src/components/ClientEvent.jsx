@@ -4,8 +4,6 @@ import DatePickerClient from '../components/DatePicker';
 const ClientEvent = ({
   formData,
   setFormData,
-  handleChange,
-  handleArrayChange,
 }) => {
   return (
     <Box
