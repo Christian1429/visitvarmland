@@ -86,14 +86,54 @@ const Form = () => {
         return (
           <>
             <Contact
-              name={name}
-              setName={setName}
-              email={email}
-              setEmail={setEmail}
-              address={address}
-              setAddress={setAddress}
-              phone={phone}
-              setPhone={setPhone}
+              contact_name={formData.contact[0].contact_name}
+              setContactName={(value) =>
+                setFormData((prevData) => ({
+                  ...prevData,
+                  contact: [
+                    {
+                      ...prevData.contact[0],
+                      contact_name: value,
+                    },
+                  ],
+                }))
+              }
+              contact_email={formData.contact[0].contact_email}
+              setContactEmail={(value) =>
+                setFormData((prevData) => ({
+                  ...prevData,
+                  contact: [
+                    {
+                      ...prevData.contact[0],
+                      contact_email: value,
+                    },
+                  ],
+                }))
+              }
+              contact_address={formData.contact[0].contact_address}
+              setContactAddress={(value) =>
+                setFormData((prevData) => ({
+                  ...prevData,
+                  contact: [
+                    {
+                      ...prevData.contact[0],
+                      contact_address: value,
+                    },
+                  ],
+                }))
+              }
+              contact_number={formData.contact[0].contact_number}
+              setContactNumber={(value) =>
+                setFormData((prevData) => ({
+                  ...prevData,
+                  contact: [
+                    {
+                      ...prevData.contact[0],
+                      contact_number: value,
+                    },
+                  ],
+                }))
+              }
             />
           </>
         );
