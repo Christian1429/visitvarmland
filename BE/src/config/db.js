@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
-require('dotenv').config();
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
 
-// Delete this later // see readme in FE
-const mongoURI =
-  process.env.MONGODB_URI || 'mongodb://localhost:27017/turid';
+const mongoURI = process.env.MONGODB_URI 
 
 const connectDB = async () => {
     try {
