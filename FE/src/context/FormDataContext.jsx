@@ -26,7 +26,6 @@ export const FormDataProvider = ({ children }) => {
         contact_number: '',
       },
     ],
-    
     organizers: [
       {
         id: 0,
