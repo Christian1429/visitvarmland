@@ -337,70 +337,76 @@ const Form = () => {
 
   return (
     <Box className="container">
-      <Box sx={{ paddingTop: "1rem", paddingLeft: "1rem" }}>
-        <img
-          src="/assets/logotyp-visitvarmland-svart.svg"
-          alt="Logo"
-          className="logo"
-          width={isMobile ? 100 : 150}
-          sx={{ paddingTop: "10rem" }}
-        />
-      </Box>
-      <Typography
-        component="h1"
-        variant="h5"
-        align="center"
-        gutterBottom
-        sx={{
-          color: "#004338",
-          fontWeight: "bold",
-          paddingTop: "1rem",
-          paddingBottom: "1rem",
-        }}
-      >
-        Tips och evenemang
-      </Typography>
-      <CloseBtn redirectUrl="https://visitvarmland.com" />
-      <Box display="flex" justifyContent="center" sx={{ marginBottom: "1rem" }}>
-        <Breadcrumbs
-          aria-label="breadcrumb"
-          separator=">"
+      <form onSubmit={handleSubmit}>
+        <Box sx={{ paddingTop: "1rem", paddingLeft: "1rem" }}>
+          <img
+            src="/assets/logotyp-visitvarmland-svart.svg"
+            alt="Logo"
+            className="logo"
+            width={isMobile ? 100 : 150}
+            sx={{ paddingTop: "10rem" }}
+          />
+        </Box>
+        <Typography
+          component="h1"
+          variant="h5"
+          align="center"
+          gutterBottom
           sx={{
-            marginBottom: "1rem",
-            flexDirection: isMobile ? "column" : "row",
-            alignItems: isMobile ? "flex-start" : "center",
+            color: "#004338",
+            fontWeight: "bold",
+            paddingTop: "1rem",
+            paddingBottom: "1rem",
           }}
         >
-          <Link
-            color={currentStep === 0 ? "textPrimary" : "inherit"}
-            onClick={() => handleStepClick(0)}
-            sx={{ cursor: "pointer" }}
+          Tips och evenemang
+        </Typography>
+        <CloseBtn redirectUrl="https://visitvarmland.com" />
+        <Box
+          display="flex"
+          justifyContent="center"
+          sx={{ marginBottom: "1rem" }}
+        >
+          <Breadcrumbs
+            aria-label="breadcrumb"
+            separator=">"
+            sx={{
+              marginBottom: "1rem",
+              flexDirection: isMobile ? "column" : "row",
+              alignItems: isMobile ? "flex-start" : "center",
+            }}
           >
-            Steg 1
-          </Link>
-          <Link
-            color={currentStep === 1 ? "textPrimary" : "inherit"}
-            onClick={() => handleStepClick(1)}
-            sx={{ cursor: "pointer" }}
-          >
-            Steg 2
-          </Link>
-          <Link
-            color={currentStep === 2 ? "textPrimary" : "inherit"}
-            onClick={() => handleStepClick(2)}
-            sx={{ cursor: "pointer" }}
-          >
-            Steg 3
-          </Link>
-        </Breadcrumbs>
-      </Box>
-      <Box display="flex" flexDirection="column" alignItems="center">
-        <Box sx={{ mb: 4 }}>{renderStep()}</Box>
-        {currentStep < 2 && <BtnNext onClick={handleNext} />}
-        {currentStep === 2 && (
-          <BtnSend onClick={handleFormSubmit}>Submit</BtnSend>
-        )}
-      </Box>
+            <Link
+              color={currentStep === 0 ? "textPrimary" : "inherit"}
+              onClick={() => handleStepClick(0)}
+              sx={{ cursor: "pointer" }}
+            >
+              Steg 1
+            </Link>
+            <Link
+              color={currentStep === 1 ? "textPrimary" : "inherit"}
+              onClick={() => handleStepClick(1)}
+              sx={{ cursor: "pointer" }}
+            >
+              Steg 2
+            </Link>
+            <Link
+              color={currentStep === 2 ? "textPrimary" : "inherit"}
+              onClick={() => handleStepClick(2)}
+              sx={{ cursor: "pointer" }}
+            >
+              Steg 3
+            </Link>
+          </Breadcrumbs>
+        </Box>
+        <Box display="flex" flexDirection="column" alignItems="center">
+          <Box sx={{ mb: 4 }}>{renderStep()}</Box>
+          {currentStep < 2 && <BtnNext onClick={handleNext} />}
+          {currentStep === 2 && (
+            <BtnSend onClick={handleFormSubmit}>Submit</BtnSend>
+          )}
+        </Box>
+      </form>
     </Box>
   );
 };

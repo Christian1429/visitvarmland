@@ -22,4 +22,3 @@ app.use("/api/data", dataRoutes);
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-g;
