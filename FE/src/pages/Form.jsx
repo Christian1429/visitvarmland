@@ -10,6 +10,7 @@ import './Form.css';
 import ClientExist from '../components/ClientExist';
 import { FormDataContext } from '../context/FormDataContext';
 import handleSubmit from '../utils/handleSubmit';
+import { handleChange, handleArrayChange} from '../utils/formUtils';
 
 const Form = () => {
   const theme = useTheme();
@@ -24,30 +25,6 @@ const Form = () => {
   const handleStepClick = (step) => {
     setCurrentStep(step);
   };
-
-    const handleChange = (e) => {
-      const { name, value } = e.target;
-      setFormData((prevData) => ({
-        ...prevData,
-        [name]: value,
-      }));
-    };
-
-    const handleArrayChange = (e, index, arrayName, fieldName) => {
-      const { value } = e.target;
-      setFormData((prevData) => {
-        const updatedArray = [...prevData[arrayName]];
-        updatedArray[index][fieldName] = value;
-        return {
-          ...prevData,
-          [arrayName]: updatedArray,
-        };
-      });
-    };
-
-      const handleFormSubmit = async () => {
-        await handleSubmit(formData);
-      };
 
   const renderStep = () => {
     switch (currentStep) {
@@ -147,7 +124,9 @@ const Form = () => {
       <Box display="flex" flexDirection="column" alignItems="center">
         <Box sx={{ mb: 4 }}>{renderStep()}</Box>
         {currentStep < 2 && <BtnNext onClick={handleNext} />}
-        {currentStep === 2 && <button onClick={handleFormSubmit}>Submit</button>}
+        {currentStep === 2 && (
+          <button onClick={() => handleSubmit(formData)}>Submit</button>
+        )}
       </Box>
     </Box>
   );
