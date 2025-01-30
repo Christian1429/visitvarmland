@@ -1,4 +1,4 @@
 # visitvarmland
 Tipsblankett
 
-cd fe && npm run dev
+cd fe && npm run start:all

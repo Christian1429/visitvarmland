@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 // required: true;
 const organizerSchema = new mongoose.Schema({
+    // id for existing organizer, remove later
     id: { type: Number, },
     title: { type: String, },
     street1: { type: String, },
