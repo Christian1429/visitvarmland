@@ -3,7 +3,19 @@ import { Box, Typography, TextField, Button } from "@mui/material";
 import "./fileupload.css";
 
 function fileUpload() {
-  const handleUpload = () => {
+  const handleUpload = (event) => {
+    const file = event.target.files[0];
+    const formData = new FormData();
+    formData.append("file", file);
+
+    axios
+      .post("/upload", formData)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
     console.log("test");
   };
 
@@ -14,6 +26,7 @@ function fileUpload() {
       </Typography>
       <form className="fileupload">
         <TextField
+          required
           type="file"
           accept="image/jpeg"
           slotProps={{
@@ -23,7 +36,7 @@ function fileUpload() {
         />
 
         <Button
-          onClick={handleUpload}
+          onClick={(event) => handleUpload(event.target.value)}
           variant="contained"
           color="primary"
           sx={{ margin: "1rem", width: "50%" }}
