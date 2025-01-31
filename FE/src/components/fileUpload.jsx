@@ -1,21 +1,29 @@
 import React from "react";
-import {
-  Box,
-  Typography,
-  Breadcrumbs,
-  Link,
-  TextField,
-  Button,
-} from "@mui/material";
+import { Box, Typography, TextField, Button } from "@mui/material";
 import "./fileupload.css";
 
 function fileUpload() {
+  const handleUpload = () => {
+    console.log("test");
+  };
+
   return (
     <Box>
-      <Typography />
+      <Typography sx={{ marginTop: "1.5rem" }}>
+        Ladda upp bilder. Max 2MB
+      </Typography>
       <form className="fileupload">
-        <TextField type="file" sx={{ width: "90%" }} />
+        <TextField
+          type="file"
+          accept="image/jpeg"
+          slotProps={{
+            multiple: true,
+          }}
+          sx={{ width: "90%" }}
+        />
+
         <Button
+          onClick={handleUpload}
           variant="contained"
           color="primary"
           sx={{ margin: "1rem", width: "50%" }}
