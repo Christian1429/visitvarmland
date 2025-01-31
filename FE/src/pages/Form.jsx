@@ -1,20 +1,28 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { Box, Typography, Breadcrumbs, Link, useMediaQuery, Button } from '@mui/material';
-import Contact from '../components/Contact';
-import ClientNew from '../components/ClientNew';
-import ClientEvent from '../components/ClientEvent';
-import BtnNext from '../components/Buttons/BtnNext';
-import CloseBtn from '../components/Buttons/CloseBtn';
-import { useTheme } from '@mui/material/styles';
-import './Form.css';
-import ClientExist from '../components/ClientExist';
-import { FormDataContext } from '../context/FormDataContext';
-import handleSubmit from '../utils/handleSubmit';
-import { handleChange, handleArrayChange} from '../utils/formUtils';
+import React, { useState, useEffect, useContext } from "react";
+import {
+  Box,
+  Typography,
+  Breadcrumbs,
+  Link,
+  useMediaQuery,
+  Button,
+} from "@mui/material";
+import Contact from "../components/Contact";
+import ClientNew from "../components/ClientNew";
+import ClientEvent from "../components/ClientEvent";
+import BtnNext from "../components/Buttons/BtnNext";
+import CloseBtn from "../components/Buttons/CloseBtn";
+import { useTheme } from "@mui/material/styles";
+import "./Form.css";
+import ClientExist from "../components/ClientExist";
+import { FormDataContext } from "../context/FormDataContext";
+import handleSubmit from "../utils/handleSubmit";
+import { handleChange, handleArrayChange } from "../utils/formUtils";
+import HandleFileUpload from "../components/fileUpload";
 
 const Form = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const [currentStep, setCurrentStep] = useState(0);
   const { formData, setFormData } = useContext(FormDataContext);
 
@@ -47,16 +55,16 @@ const Form = () => {
           </>
         );
       case 2:
-       return (
-         <>
-           <ClientEvent
-             formData={formData}
-             setFormData={setFormData}
-             handleChange={handleChange}
-             handleArrayChange={handleArrayChange}
-           />
-         </>
-       );
+        return (
+          <>
+            <ClientEvent
+              formData={formData}
+              setFormData={setFormData}
+              handleChange={handleChange}
+              handleArrayChange={handleArrayChange}
+            />
+          </>
+        );
       default:
         return null;
     }
@@ -64,13 +72,13 @@ const Form = () => {
 
   return (
     <Box className="container">
-      <Box sx={{ paddingTop: '1rem', paddingLeft: '1rem' }}>
+      <Box sx={{ paddingTop: "1rem", paddingLeft: "1rem" }}>
         <img
           src="/assets/logotyp-visitvarmland-svart.svg"
           alt="Logo"
           className="logo"
           width={isMobile ? 100 : 150}
-          sx={{ paddingTop: '10rem' }}
+          sx={{ paddingTop: "10rem" }}
         />
       </Box>
       <Typography
@@ -79,43 +87,43 @@ const Form = () => {
         align="center"
         gutterBottom
         sx={{
-          color: '#004338',
-          fontWeight: 'bold',
-          paddingTop: '1rem',
-          paddingBottom: '1rem',
+          color: "#004338",
+          fontWeight: "bold",
+          paddingTop: "1rem",
+          paddingBottom: "1rem",
         }}
       >
         Tips och evenemang
       </Typography>
       <CloseBtn redirectUrl="https://visitvarmland.com" />
-      <Box display="flex" justifyContent="center" sx={{ marginBottom: '1rem' }}>
+      <Box display="flex" justifyContent="center" sx={{ marginBottom: "1rem" }}>
         <Breadcrumbs
           aria-label="breadcrumb"
           separator=">"
           sx={{
-            marginBottom: '1rem',
-            flexDirection: isMobile ? 'column' : 'row',
-            alignItems: isMobile ? 'flex-start' : 'center',
+            marginBottom: "1rem",
+            flexDirection: isMobile ? "column" : "row",
+            alignItems: isMobile ? "flex-start" : "center",
           }}
         >
           <Link
-            color={currentStep === 0 ? 'textPrimary' : 'inherit'}
+            color={currentStep === 0 ? "textPrimary" : "inherit"}
             onClick={() => handleStepClick(0)}
-            sx={{ cursor: 'pointer' }}
+            sx={{ cursor: "pointer" }}
           >
             Steg 1
           </Link>
           <Link
-            color={currentStep === 1 ? 'textPrimary' : 'inherit'}
+            color={currentStep === 1 ? "textPrimary" : "inherit"}
             onClick={() => handleStepClick(1)}
-            sx={{ cursor: 'pointer' }}
+            sx={{ cursor: "pointer" }}
           >
             Steg 2
           </Link>
           <Link
-            color={currentStep === 2 ? 'textPrimary' : 'inherit'}
+            color={currentStep === 2 ? "textPrimary" : "inherit"}
             onClick={() => handleStepClick(2)}
-            sx={{ cursor: 'pointer' }}
+            sx={{ cursor: "pointer" }}
           >
             Steg 3
           </Link>
