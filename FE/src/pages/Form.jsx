@@ -1,26 +1,29 @@
-
-import React, { useState, useEffect, useContext } from 'react';
-import { Box, Typography, Breadcrumbs, Link, useMediaQuery, Button } from '@mui/material';
-import Contact from '../components/Contact';
-import ClientNew from '../components/ClientNew';
-import ClientEvent from '../components/ClientEvent';
-import BtnNext from '../components/Buttons/BtnNext';
-import CloseBtn from '../components/Buttons/CloseBtn';
-import { useTheme } from '@mui/material/styles';
-import './Form.css';
-import ClientExist from '../components/ClientExist';
-import { FormDataContext } from '../context/FormDataContext';
-import handleSubmit from '../utils/handleSubmit';
-import { handleChange, handleArrayChange} from '../utils/formUtils';
-
+import React, { useState, useEffect, useContext } from "react";
+import {
+  Box,
+  Typography,
+  Breadcrumbs,
+  Link,
+  useMediaQuery,
+  Button,
+} from "@mui/material";
+import Contact from "../components/Contact";
+import ClientNew from "../components/ClientNew";
+import ClientEvent from "../components/ClientEvent";
+import BtnNext from "../components/Buttons/BtnNext";
+import CloseBtn from "../components/Buttons/CloseBtn";
+import { useTheme } from "@mui/material/styles";
+import "./Form.css";
+import ClientExist from "../components/ClientExist";
+import { FormDataContext } from "../context/FormDataContext";
+import handleSubmit from "../utils/handleSubmit";
+import { handleChange, handleArrayChange } from "../utils/formUtils";
 
 const Form = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const [currentStep, setCurrentStep] = useState(0);
   const { formData, setFormData } = useContext(FormDataContext);
-
-
 
   const handleNext = () => {
     setCurrentStep((prevStep) => prevStep + 1);
@@ -29,7 +32,6 @@ const Form = () => {
   const handleStepClick = (step) => {
     setCurrentStep(step);
   };
-
 
   const renderStep = () => {
     switch (currentStep) {
@@ -44,27 +46,24 @@ const Form = () => {
           <>
             <ClientExist setFormData={setFormData} />
             <ClientNew
-
               formData={formData}
               setFormData={setFormData}
-
               handleChange={handleChange}
               handleArrayChange={handleArrayChange}
             />
           </>
         );
       case 2:
-
-       return (
-         <>
-           <ClientEvent
-             formData={formData}
-             setFormData={setFormData}
-             handleChange={handleChange}
-             handleArrayChange={handleArrayChange}
-           />
-         </>
-       );
+        return (
+          <>
+            <ClientEvent
+              formData={formData}
+              setFormData={setFormData}
+              handleChange={handleChange}
+              handleArrayChange={handleArrayChange}
+            />
+          </>
+        );
 
       default:
         return null;
@@ -112,18 +111,37 @@ const Form = () => {
               alignItems: isMobile ? "flex-start" : "center",
             }}
           >
-            Steg 3
-          </Link>
-        </Breadcrumbs>
-      </Box>
-      <Box display="flex" flexDirection="column" alignItems="center">
-        <Box sx={{ mb: 4 }}>{renderStep()}</Box>
-        {currentStep < 2 && <BtnNext onClick={handleNext} />}
-        {currentStep === 2 && (
-          <button onClick={() => handleSubmit(formData)}>Submit</button>
-        )}
-      </Box>
-
+            <Link
+              color={currentStep === 0 ? "textPrimary" : "inherit"}
+              onClick={() => handleStepClick(0)}
+              sx={{ cursor: "pointer" }}
+            >
+              Steg 1
+            </Link>
+            <Link
+              color={currentStep === 1 ? "textPrimary" : "inherit"}
+              onClick={() => handleStepClick(1)}
+              sx={{ cursor: "pointer" }}
+            >
+              Steg 2
+            </Link>
+            <Link
+              color={currentStep === 2 ? "textPrimary" : "inherit"}
+              onClick={() => handleStepClick(2)}
+              sx={{ cursor: "pointer" }}
+            >
+              Steg 3
+            </Link>
+          </Breadcrumbs>
+        </Box>
+        <Box display="flex" flexDirection="column" alignItems="center">
+          <Box sx={{ mb: 4 }}>{renderStep()}</Box>
+          {currentStep < 2 && <BtnNext onClick={handleNext} />}
+          {currentStep === 2 && (
+            <button onClick={() => handleSubmit(formData)}>Submit</button>
+          )}
+        </Box>
+      </form>
     </Box>
   );
 };
