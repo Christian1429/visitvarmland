@@ -1,33 +1,10 @@
-import React from "react";
-import { Box, TextField, Typography } from "@mui/material";
-import DatePickerClient from "../components/DatePicker";
+import React from 'react';
+import { TextField, Box } from '@mui/material';
+import DatePickerClient from '../components/DatePicker';
+
 const ClientEvent = ({
-  title,
-  setTitle,
-  description,
-  setDescription,
-  sales_text,
-  setSalesText,
-  presentation,
-  setPresentation,
-  open_hours,
-  setOpenHours,
-  ticket_information,
-  setTicketInformation,
-  ticket_info,
-  setTicketInfo,
-  open_times,
-  setOpenTimes,
-  meta_title,
-  setMetaTitle,
-  meta_keywords,
-  setMetaKeywords,
-  meta_description,
-  setMetaDescription,
-  booking_link,
-  setBookingLink,
-  website_link,
-  setWebsiteLink,
+  formData,
+  setFormData,
 }) => {
   return (
     <Box
@@ -41,19 +18,21 @@ const ClientEvent = ({
       }}
     >
       <DatePickerClient />
-      <Typography variant="h6" component="h2" gutterBottom>
-        Fyll i ditt event
-      </Typography>
+
       <TextField
         required
         variant="outlined"
         margin="dense"
         fullWidth
         id="event-title"
-        label="Event titel"
+        label="Title"
         name="event-title"
-        value={title || ""}
-        onChange={(e) => setTitle(e.target.value)}
+
+        value={formData.title || ''}
+        onChange={(e) =>
+          setFormData((prevData) => ({ ...prevData, title: e.target.value }))
+        }
+
         className="text-field"
       />
       <TextField
@@ -61,11 +40,18 @@ const ClientEvent = ({
         variant="outlined"
         margin="dense"
         fullWidth
-        id="event-sales-text"
-        label="Säljande text"
-        name="event-sales-text"
-        value={sales_text || ""}
-        onChange={(e) => setSalesText(e.target.value)}
+
+        id="event-description"
+        label="Description"
+        name="event-description"
+        value={formData.description || ''}
+        onChange={(e) =>
+          setFormData((prevData) => ({
+            ...prevData,
+            description: e.target.value,
+          }))
+        }
+
         className="text-field"
         multiline
         rows={3}
@@ -76,11 +62,18 @@ const ClientEvent = ({
         variant="outlined"
         margin="dense"
         fullWidth
-        id="event-description"
-        label="Beskrivning av ditt event"
-        name="event-description"
-        value={description || ""}
-        onChange={(e) => setDescription(e.target.value)}
+
+        id="event-sales-text"
+        label="Sales Text"
+        name="event-sales-text"
+        value={formData.sales_text || ''}
+        onChange={(e) =>
+          setFormData((prevData) => ({
+            ...prevData,
+            sales_text: e.target.value,
+          }))
+        }
+
         className="text-field"
         multiline
         rows={6}
@@ -93,9 +86,16 @@ const ClientEvent = ({
         fullWidth
         id="event-presentation"
         label="Presentation"
-        name="Event presenation"
-        value={presentation || ""}
-        onChange={(e) => setPresentation(e.target.value)}
+
+        name="event-presentation"
+        value={formData.presentation || ''}
+        onChange={(e) =>
+          setFormData((prevData) => ({
+            ...prevData,
+            presentation: e.target.value,
+          }))
+        }
+
         className="text-field"
       />
       <TextField
@@ -103,10 +103,17 @@ const ClientEvent = ({
         margin="dense"
         fullWidth
         id="event-open-hours"
-        label="Öppettider timmar"
+        label="Open Hours"
         name="event-open-hours"
-        value={open_hours || ""}
-        onChange={(e) => setOpenHours(e.target.value)}
+
+        value={formData.open_hours || ''}
+        onChange={(e) =>
+          setFormData((prevData) => ({
+            ...prevData,
+            open_hours: e.target.value,
+          }))
+        }
+
         className="text-field"
       />
       <TextField
@@ -115,9 +122,16 @@ const ClientEvent = ({
         fullWidth
         id="event-ticket-information"
         label="Ticket Information"
-        name="Biljett information"
-        value={ticket_information || ""}
-        onChange={(e) => setTicketInformation(e.target.value)}
+
+        name="event-ticket-information"
+        value={formData.ticket_information || ''}
+        onChange={(e) =>
+          setFormData((prevData) => ({
+            ...prevData,
+            ticket_information: e.target.value,
+          }))
+        }
+
         className="text-field"
       />
       <TextField
@@ -127,8 +141,15 @@ const ClientEvent = ({
         id="event-ticket-info"
         label="Biljett info"
         name="event-ticket-info"
-        value={ticket_info || ""}
-        onChange={(e) => setTicketInfo(e.target.value)}
+
+        value={formData.ticket_info || ''}
+        onChange={(e) =>
+          setFormData((prevData) => ({
+            ...prevData,
+            ticket_info: e.target.value,
+          }))
+        }
+
         className="text-field"
       />
       <TextField
@@ -138,8 +159,15 @@ const ClientEvent = ({
         id="event-open-times"
         label="Öppettider"
         name="event-open-times"
-        value={open_times || ""}
-        onChange={(e) => setOpenTimes(e.target.value)}
+
+        value={formData.open_times || ''}
+        onChange={(e) =>
+          setFormData((prevData) => ({
+            ...prevData,
+            open_times: e.target.value,
+          }))
+        }
+
         className="text-field"
       />
       <TextField
@@ -149,8 +177,15 @@ const ClientEvent = ({
         id="event-meta-title"
         label="Meta Title"
         name="event-meta-title"
-        value={meta_title || ""}
-        onChange={(e) => setMetaTitle(e.target.value)}
+
+        value={formData.meta_title || ''}
+        onChange={(e) =>
+          setFormData((prevData) => ({
+            ...prevData,
+            meta_title: e.target.value,
+          }))
+        }
+
         className="text-field"
       />
       <TextField
@@ -160,8 +195,15 @@ const ClientEvent = ({
         id="event-meta-keywords"
         label="Meta Keywords"
         name="event-meta-keywords"
-        value={meta_keywords || ""}
-        onChange={(e) => setMetaKeywords(e.target.value)}
+
+        value={formData.meta_keywords || ''}
+        onChange={(e) =>
+          setFormData((prevData) => ({
+            ...prevData,
+            meta_keywords: e.target.value,
+          }))
+        }
+
         className="text-field"
       />
       <TextField
@@ -169,10 +211,17 @@ const ClientEvent = ({
         margin="dense"
         fullWidth
         id="event-meta-description"
-        label="Meta Beskrivning"
+        label="Meta Description"
         name="event-meta-description"
-        value={meta_description || ""}
-        onChange={(e) => setMetaDescription(e.target.value)}
+
+        value={formData.meta_description || ''}
+        onChange={(e) =>
+          setFormData((prevData) => ({
+            ...prevData,
+            meta_description: e.target.value,
+          }))
+        }
+
         className="text-field"
       />
       <TextField
@@ -180,10 +229,17 @@ const ClientEvent = ({
         margin="dense"
         fullWidth
         id="event-booking-link"
-        label="Bokningslänk"
+        label="Booking Link"
         name="event-booking-link"
-        value={booking_link || "a"}
-        onChange={(e) => setBookingLink(e.target.value)}
+
+        value={formData.booking_link || ''}
+        onChange={(e) =>
+          setFormData((prevData) => ({
+            ...prevData,
+            booking_link: e.target.value,
+          }))
+        }
+
         className="text-field"
       />
       <TextField
@@ -191,10 +247,17 @@ const ClientEvent = ({
         margin="dense"
         fullWidth
         id="event-website-link"
-        label="Hemsida länk"
+        label="Website Link"
         name="event-website-link"
-        value={website_link || ""}
-        onChange={(e) => setWebsiteLink(e.target.value)}
+
+        value={formData.website_link || ''}
+        onChange={(e) =>
+          setFormData((prevData) => ({
+            ...prevData,
+            website_link: e.target.value,
+          }))
+        }
+
         className="text-field"
       />
     </Box>
