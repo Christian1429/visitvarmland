@@ -1,6 +1,7 @@
 import React from 'react';
 import { TextField, Box } from '@mui/material';
 import DatePickerClient from '../components/DatePicker';
+
 const ClientEvent = ({
   formData,
   setFormData,
@@ -8,32 +9,38 @@ const ClientEvent = ({
   return (
     <Box
       sx={{
-        width: '100%',
+        width: "100%",
         maxWidth: 600,
         boxShadow: 3,
         p: 4,
-        m: 'auto',
-        backdropFilter: 'blur(2px)',
+        m: "auto",
+        backdropFilter: "blur(2px)",
       }}
     >
       <DatePickerClient />
+
       <TextField
+        required
         variant="outlined"
         margin="dense"
         fullWidth
         id="event-title"
         label="Title"
         name="event-title"
+
         value={formData.title || ''}
         onChange={(e) =>
           setFormData((prevData) => ({ ...prevData, title: e.target.value }))
         }
+
         className="text-field"
       />
       <TextField
+        required
         variant="outlined"
         margin="dense"
         fullWidth
+
         id="event-description"
         label="Description"
         name="event-description"
@@ -44,12 +51,18 @@ const ClientEvent = ({
             description: e.target.value,
           }))
         }
+
         className="text-field"
+        multiline
+        rows={3}
+        slotProps={{ htmlInput: { maxLength: 200, minLength: 100 } }}
       />
       <TextField
+        required
         variant="outlined"
         margin="dense"
         fullWidth
+
         id="event-sales-text"
         label="Sales Text"
         name="event-sales-text"
@@ -60,14 +73,20 @@ const ClientEvent = ({
             sales_text: e.target.value,
           }))
         }
+
         className="text-field"
+        multiline
+        rows={6}
+        slotProps={{ htmlInput: { maxLength: 400, minLength: 100 } }}
       />
+
       <TextField
         variant="outlined"
         margin="dense"
         fullWidth
         id="event-presentation"
         label="Presentation"
+
         name="event-presentation"
         value={formData.presentation || ''}
         onChange={(e) =>
@@ -76,6 +95,7 @@ const ClientEvent = ({
             presentation: e.target.value,
           }))
         }
+
         className="text-field"
       />
       <TextField
@@ -85,6 +105,7 @@ const ClientEvent = ({
         id="event-open-hours"
         label="Open Hours"
         name="event-open-hours"
+
         value={formData.open_hours || ''}
         onChange={(e) =>
           setFormData((prevData) => ({
@@ -92,6 +113,7 @@ const ClientEvent = ({
             open_hours: e.target.value,
           }))
         }
+
         className="text-field"
       />
       <TextField
@@ -100,6 +122,7 @@ const ClientEvent = ({
         fullWidth
         id="event-ticket-information"
         label="Ticket Information"
+
         name="event-ticket-information"
         value={formData.ticket_information || ''}
         onChange={(e) =>
@@ -108,6 +131,7 @@ const ClientEvent = ({
             ticket_information: e.target.value,
           }))
         }
+
         className="text-field"
       />
       <TextField
@@ -117,6 +141,7 @@ const ClientEvent = ({
         id="event-ticket-info"
         label="Biljett info"
         name="event-ticket-info"
+
         value={formData.ticket_info || ''}
         onChange={(e) =>
           setFormData((prevData) => ({
@@ -124,6 +149,7 @@ const ClientEvent = ({
             ticket_info: e.target.value,
           }))
         }
+
         className="text-field"
       />
       <TextField
@@ -133,6 +159,7 @@ const ClientEvent = ({
         id="event-open-times"
         label="Öppettider"
         name="event-open-times"
+
         value={formData.open_times || ''}
         onChange={(e) =>
           setFormData((prevData) => ({
@@ -140,6 +167,7 @@ const ClientEvent = ({
             open_times: e.target.value,
           }))
         }
+
         className="text-field"
       />
       <TextField
@@ -149,6 +177,7 @@ const ClientEvent = ({
         id="event-meta-title"
         label="Meta Title"
         name="event-meta-title"
+
         value={formData.meta_title || ''}
         onChange={(e) =>
           setFormData((prevData) => ({
@@ -156,6 +185,7 @@ const ClientEvent = ({
             meta_title: e.target.value,
           }))
         }
+
         className="text-field"
       />
       <TextField
@@ -165,6 +195,7 @@ const ClientEvent = ({
         id="event-meta-keywords"
         label="Meta Keywords"
         name="event-meta-keywords"
+
         value={formData.meta_keywords || ''}
         onChange={(e) =>
           setFormData((prevData) => ({
@@ -172,6 +203,7 @@ const ClientEvent = ({
             meta_keywords: e.target.value,
           }))
         }
+
         className="text-field"
       />
       <TextField
@@ -181,6 +213,7 @@ const ClientEvent = ({
         id="event-meta-description"
         label="Meta Description"
         name="event-meta-description"
+
         value={formData.meta_description || ''}
         onChange={(e) =>
           setFormData((prevData) => ({
@@ -188,6 +221,7 @@ const ClientEvent = ({
             meta_description: e.target.value,
           }))
         }
+
         className="text-field"
       />
       <TextField
@@ -197,6 +231,7 @@ const ClientEvent = ({
         id="event-booking-link"
         label="Booking Link"
         name="event-booking-link"
+
         value={formData.booking_link || ''}
         onChange={(e) =>
           setFormData((prevData) => ({
@@ -204,6 +239,7 @@ const ClientEvent = ({
             booking_link: e.target.value,
           }))
         }
+
         className="text-field"
       />
       <TextField
@@ -213,6 +249,7 @@ const ClientEvent = ({
         id="event-website-link"
         label="Website Link"
         name="event-website-link"
+
         value={formData.website_link || ''}
         onChange={(e) =>
           setFormData((prevData) => ({
@@ -220,6 +257,7 @@ const ClientEvent = ({
             website_link: e.target.value,
           }))
         }
+
         className="text-field"
       />
     </Box>
