@@ -1,8 +1,11 @@
-const express = require('express');
-const connectDB = require('./config/db');
-const dataRoutes = require('./routes/dataRoutes');
-require('dotenv').config();
-const cors = require('cors');
+const express = require("express");
+const connectDB = require("./config/db");
+const dataRoutes = require("./routes/dataRoutes");
+require("dotenv").config();
+const cors = require("cors");
+const multer = require("multer");
+const GridFsStorage = require("multer-gridfs-storage");
+const Grid = require("gridfs-stream");
 
 const app = express();
 app.use(cors());
@@ -16,7 +19,7 @@ connectDB();
 app.use(express.json());
 
 // Routes
-app.use('/api/data', dataRoutes);
+app.use("/api/data", dataRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

@@ -18,7 +18,6 @@ import ClientExist from "../components/ClientExist";
 import { FormDataContext } from "../context/FormDataContext";
 import handleSubmit from "../utils/handleSubmit";
 import { handleChange, handleArrayChange } from "../utils/formUtils";
-import HandleFileUpload from "../components/fileUpload";
 
 const Form = () => {
   const theme = useTheme();
