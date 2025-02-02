@@ -3,9 +3,6 @@ const connectDB = require("./config/db");
 const dataRoutes = require("./routes/dataRoutes");
 require("dotenv").config();
 const cors = require("cors");
-const multer = require("multer");
-const GridFsStorage = require("multer-gridfs-storage");
-const Grid = require("gridfs-stream");
 
 const app = express();
 app.use(cors());

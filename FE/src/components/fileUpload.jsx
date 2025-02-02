@@ -1,111 +1,60 @@
-import { React, useState } from "react";
+import { React, useContext } from "react";
 import { Box, Typography, TextField, Button } from "@mui/material";
 import "./fileupload.css";
-
-/* async function postcall(e) {
-  try {
-    console.log("File info working!");
-    console.log(e.target.elements.input.value);
-    const file = e.target.elements.fileInput.files[0];
-    const formData = new FormData();
-    formData.append("image", file);
-    setImages(formData);
-    const requestOptions = {
-      method: "POST",
-      mode: "cors",
-      headers: { "Content-Type": "multipart/form-data" },
-      body: { img: formData },
-    };
-    const response = await fetch(
-      "http://localhost:5173/api/data/createData",
-      requestOptions
-    );
-    const data = await response.json();
-    setImages(data);
-  } catch (error) {}
-}
+import { FormDataContext } from "../context/FormDataContext";
 
 function fileUpload() {
-  const [images, setImages] = useState();
-  const handleUpload = (e) => {
-    e.preventDefault();
-    console.log("e", e);
-    postcall(e);
-  };
+  const { formData, setFormData } = useContext(FormDataContext);
 
-  return (
-    <Box>
-      <Typography sx={{ marginTop: "1.5rem" }}>
-        Ladda upp bilder. Max 2MB
-      </Typography>
-      <form onSubmit={(e) => handleUpload(e)} className="fileupload">
-        <TextField
-          required
-          type="file"
-          slotProps={{
-            multiple: true,
-            accept: "image/jpeg",
-          }}
-          sx={{ width: "90%" }}
-        />
-        <Button
-          variant="contained"
-          color="primary"
-          type="submit"
-          sx={{ margin: "1rem", width: "50%" }}
-        >
-          Ladda upp
-        </Button>
-      </form>
-    </Box>
-  );
-} */
-
-async function postcall(e, setImages) {
-  try {
-    console.log("File info working!");
-
-    e.preventDefault(); // Prevent default form submission
-
-    const file = e.target.elements.fileInput.files[0];
-    if (!file) {
-      console.error("No file selected");
+  const handleFileUpload = (e) => {
+    const files = e.target.files; // Convert FileList to an array
+    if (files.length === 0) {
+      console.error("No files selected");
       return;
     }
+    console.log(files);
 
-    const formData = new FormData();
-    formData.append("image", file);
+    // ✅ Store the file in FormDataContext
+    setFormData((prev) => ({
+      ...prev,
+      images: [...(prev.images || []), files], // Store the file object
+    }));
+    console.log("All files", formData.images);
+  };
 
-    console.log("Uploading file:", file.name);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    const requestOptions = {
-      method: "POST",
-      mode: "cors",
-      body: formData, // Correct body format
-    };
-
-    const response = await fetch(
-      "http://localhost:2000/api/data/",
-      requestOptions
-    );
-
-    if (!response.ok) {
-      throw new Error("File upload failed");
+    const submitData = new FormData();
+    console.log("All files, submit", formData);
+    // Append all form fields to FormData
+    for (const key in formData) {
+      if (key === "images") {
+        formData.images.forEach((image, index) => {
+          submitData.append(`images[${index}]`, image);
+        });
+      } else {
+        submitData.append(key, formData[key]);
+        console.log("submit", submitData);
+      }
     }
 
-    const data = await response.json();
-    setImages(data);
-    console.log("Upload successful:", data);
-  } catch (error) {
-    console.error("Error uploading file:", error);
-  }
-}
+    try {
+      const response = await fetch("http://localhost:2000/api/data/", {
+        method: "POST",
+        mode: "cors",
+        body: submitData, // ✅ Send everything at once
+      });
 
-function fileUpload() {
-  const [images, setImages] = useState(null);
+      if (!response.ok) {
+        throw new Error("Failed to submit data");
+      }
 
-  const handleUpload = (e) => {
-    postcall(e, setImages);
+      const data = await response.json();
+      console.log("Form submitted successfully:", data);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
   };
 
   return (
@@ -113,12 +62,13 @@ function fileUpload() {
       <Typography sx={{ marginTop: "1.5rem" }}>
         Ladda upp bilder. Max 2MB
       </Typography>
-      <form onSubmit={handleUpload} className="fileupload">
+      <form onSubmit={handleSubmit} className="fileupload">
         <TextField
           required
           type="file"
-          slotsProps={{ name: "fileInput", accept: "image/jpeg" }} // Fix missing name
+          inputProps={{ accept: "image/jpeg", multiple: true }} // Fix missing name
           sx={{ width: "90%" }}
+          onChange={handleFileUpload}
         />
         <Button
           variant="contained"
@@ -129,7 +79,6 @@ function fileUpload() {
           Ladda upp
         </Button>
       </form>
-      {images && <p>Image uploaded successfully! ID: {images.fileId}</p>}
     </Box>
   );
 }
