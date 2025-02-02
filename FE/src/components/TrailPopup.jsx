@@ -65,33 +65,33 @@ const TrailPopup = ({ onSave }) => {
               onChange={handleChange}
             />
             <TextField
-              label="Trail Total Length"
+              label="Stigens totala längd i km"
               name="trail_total_length"
               type="number"
               value={trailData.trail_total_length}
               onChange={handleChange}
             />
             <TextField
-              label="Number of Trails"
+              label="Antal stigar"
               name="number_of_trails"
               type="number"
               value={trailData.number_of_trails}
               onChange={handleChange}
             />
             <TextField
-              label="Trail Level"
+              label="Stigens svårighetsgrad"
               name="trail_level"
               value={trailData.trail_level}
               onChange={handleChange}
             />
             <TextField
-              label="Trail Terrain"
+              label="Beskriv terräng"
               name="trail_terrain"
               value={trailData.trail_terrain}
               onChange={handleChange}
             />
             <TextField
-              label="Trail Time"
+              label="Stigens tid"
               name="trail_time"
               value={trailData.trail_time}
               onChange={handleChange}
