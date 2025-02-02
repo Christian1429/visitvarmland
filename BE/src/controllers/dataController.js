@@ -6,38 +6,25 @@ class DataController {
   }
 
   async uploadImage(req, res) {
+    console.log("here");
+    console.log(req.body);
     try {
-      const dataItem = await DataModel.findById(req.params.id);
-      if (!dataItem) {
-        return res.status(404).json({ error: "Data item not found" });
-      }
-
       const newImage = {
         filename: req.file.originalname,
         url: `/uploads/${req.file.originalname}`,
         contentType: req.file.mimetype,
         image: req.file.buffer, // Store binary data
+        size: req.file.size,
+        lastModifiedDate: req.file.lastModifiedDate,
+        lastModified: req.file.lastModified,
       };
-
-      dataItem.images.push(newImage);
-      await dataItem.save();
+      console.log(newImage);
+      const newData = new this.dataModel(newImage);
+      await newData.save();
 
       res.json({ message: "Image uploaded successfully", image: newImage });
     } catch (error) {
       res.status(500).json({ error: "Image upload failed" });
-    }
-  }
-
-  async getImageById(req, res) {
-    try {
-      const dataItem = await DataModel.findById(req.params.id);
-      if (!dataItem || !dataItem.images.length) {
-        return res.status(404).json({ error: "No images found" });
-      }
-
-      res.json(dataItem.images);
-    } catch (error) {
-      res.status(500).json({ error: "Error retrieving images" });
     }
   }
 

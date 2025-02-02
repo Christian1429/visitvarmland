@@ -11,14 +11,14 @@ router.get("/", dataController.getAllData.bind(dataController));
 router.get("/:id", dataController.getData.bind(dataController));
 router.put("/:id", dataController.updateData.bind(dataController));
 router.delete("/:id", dataController.deleteData.bind(dataController));
-/* ///Image
+
+///Image
 router.post(
-  "/upload/:id",
-  upload.single("image"),
+  "/upload",
+  upload.single("image", 5),
   dataController.uploadImage.bind(dataController)
 );
-router.get("/images/:id", dataController.getImageById.bind(dataController));
- */
+
 ///Test
 router.get("/test/retrieve", async (req, res) => {
   try {

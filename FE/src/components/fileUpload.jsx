@@ -7,53 +7,38 @@ function fileUpload() {
   const { formData, setFormData } = useContext(FormDataContext);
 
   const handleFileUpload = (e) => {
-    const files = e.target.files; // Convert FileList to an array
-    if (files.length === 0) {
-      console.error("No files selected");
-      return;
-    }
-    console.log(files);
+    const files = e.target.files;
+    if (files[0].size < 2000000) {
+      if (files.length === 0) {
+        console.error("No files selected");
+        return;
+      }
 
-    // ✅ Store the file in FormDataContext
-    setFormData((prev) => ({
-      ...prev,
-      images: [...(prev.images || []), files], // Store the file object
-    }));
-    console.log("All files", formData.images);
+      // ✅ Store the file in FormDataContext
+      setFormData((prev) => ({
+        ...prev,
+        images: [...(prev.images || []), files], // Store the file object
+      }));
+      console.log("All files", formData.images);
+    } else {
+      throw new Error("Failed to submit data, image size to large.");
+    }
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    const requestOptions = {
+      method: "POST",
+      mode: "cors",
+      body: submitData, // ✅ Let the browser set the correct headers
+    };
 
-    const submitData = new FormData();
-    console.log("All files, submit", formData);
-    // Append all form fields to FormData
-    for (const key in formData) {
-      if (key === "images") {
-        formData.images.forEach((image, index) => {
-          submitData.append(`images[${index}]`, image);
-        });
-      } else {
-        submitData.append(key, formData[key]);
-        console.log("submit", submitData);
-      }
-    }
+    const response = await fetch(
+      "http://localhost:2000/api/data/upload",
+      requestOptions
+    );
 
-    try {
-      const response = await fetch("http://localhost:2000/api/data/", {
-        method: "POST",
-        mode: "cors",
-        body: submitData, // ✅ Send everything at once
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to submit data");
-      }
-
-      const data = await response.json();
-      console.log("Form submitted successfully:", data);
-    } catch (error) {
-      console.error("Error submitting form:", error);
+    if (!response.ok) {
+      throw new Error(`Failed to submit data: ${response}`);
     }
   };
 

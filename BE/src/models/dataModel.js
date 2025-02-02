@@ -33,9 +33,11 @@ const priceSchema = new mongoose.Schema({
 const imageSchema = new mongoose.Schema({
   lastModified: { type: String },
   lastModifiedDate: { type: String },
-  name: { type: String },
+  filename: { type: String },
   size: { type: String },
   type: { type: String },
+  contentType: { type: String },
+  url: { type: String },
   /*  large: { type: String },
   medium: { type: String },
   small: { type: String },
