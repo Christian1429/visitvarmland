@@ -12,6 +12,7 @@ import Contact from "../components/Contact";
 import ClientNew from "../components/ClientNew";
 import ClientEvent from "../components/ClientEvent";
 import ClientExist from '../components/ClientExist';
+import TrailPopup from "../components/TrailPopup";
 import BtnNext from "../components/Buttons/BtnNext";
 import CloseBtn from "../components/Buttons/CloseBtn";
 import { FormDataContext } from "../context/FormDataContext";
@@ -57,6 +58,7 @@ const Form = () => {
         return (
           <>
             <DatePickerClient formData={formData} setFormData={setFormData} />
+            <TrailPopup />
             <ClientEvent
               formData={formData}
               setFormData={setFormData}
