@@ -143,7 +143,7 @@ const ClientEvent = ({
             ...prevData,
             ticket_information: e.target.value,
           }))
-        }
+        } 
         className="text-field"
       /> */}
       <TextField

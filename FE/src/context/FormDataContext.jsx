@@ -125,26 +125,26 @@ export const FormDataProvider = ({ children }) => {
         time_end: '',
       },
     ],
-    past_occasions: [
-      {
-        date_start: '',
-        date_end: '',
-        time_start: '',
-        time_end: '',
-      },
-    ],
-    related_products: [
-      {
-        id: 0,
-        title: '',
-      },
-    ],
-    related_events: [
-      {
-        id: 0,
-        title: '',
-      },
-    ],
+    // past_occasions: [
+    //   {
+    //     date_start: '',
+    //     date_end: '',
+    //     time_start: '',
+    //     time_end: '',
+    //   },
+    // ],
+    // related_products: [
+    //   {
+    //     id: 0,
+    //     title: '',
+    //   },
+    // ],
+    // related_events: [
+    //   {
+    //     id: 0,
+    //     title: '',
+    //   },
+    // ],
   });
 
   return (
