@@ -1,10 +1,17 @@
 import React from 'react';
-import { TextField, Box } from '@mui/material';
+import { TextField, Box, InputAdornment } from '@mui/material';
 import DatePickerClient from '../components/DatePicker';
+
 const ClientEvent = ({
   formData,
   setFormData,
 }) => {
+  
+  const sellingTextMaxLength = 100;
+  const descriptionMaxLength = 200;
+  const rmCharDescription = descriptionMaxLength - formData.description.length;
+  const rmCharSelling = sellingTextMaxLength - formData.sales_text.length;
+
   return (
     <Box
       sx={{
@@ -16,8 +23,11 @@ const ClientEvent = ({
         backdropFilter: 'blur(2px)',
       }}
     >
+      <h1></h1>
       <DatePickerClient />
+
       <TextField
+        required
         variant="outlined"
         margin="dense"
         fullWidth
@@ -31,11 +41,12 @@ const ClientEvent = ({
         className="text-field"
       />
       <TextField
+        required
         variant="outlined"
         margin="dense"
         fullWidth
         id="event-description"
-        label="Description"
+        label="Beskriv ditt event"
         name="event-description"
         value={formData.description || ''}
         onChange={(e) =>
@@ -45,13 +56,27 @@ const ClientEvent = ({
           }))
         }
         className="text-field"
+        multiline
+        rows={3}
+        slotProps={{ htmlInput: { maxLength: 200, minLength: 100 } }}
+        InputProps={{
+          endAdornment: (
+            <InputAdornment
+              position="end"
+              sx={{ alignSelf: 'flex-end', mr: 1 }}
+            >
+              {`${rmCharDescription}/${descriptionMaxLength}`}
+            </InputAdornment>
+          ),
+        }}
       />
       <TextField
+        required
         variant="outlined"
         margin="dense"
         fullWidth
         id="event-sales-text"
-        label="Sales Text"
+        label="Säljande text"
         name="event-sales-text"
         value={formData.sales_text || ''}
         onChange={(e) =>
@@ -61,7 +86,21 @@ const ClientEvent = ({
           }))
         }
         className="text-field"
+        multiline
+        rows={6}
+        slotProps={{ htmlInput: { maxLength: 400, minLength: 100 } }}
+        InputProps={{
+          endAdornment: (
+            <InputAdornment
+              position="end"
+              sx={{ alignSelf: 'flex-end', mr: 1 }}
+            >
+              {`${rmCharSelling}/${sellingTextMaxLength}`}
+            </InputAdornment>
+          ),
+        }}
       />
+
       <TextField
         variant="outlined"
         margin="dense"
