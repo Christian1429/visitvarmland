@@ -14,6 +14,7 @@ const ClientNew = ({
   setFormData,
 }) => {
   const cities = [
+    { municipality_id: 0, name: '' },
     { municipality_id: 2, name: 'Arvika' },
     { municipality_id: 3, name: 'Eda' },
     { municipality_id: 4, name: 'Filipstad' },

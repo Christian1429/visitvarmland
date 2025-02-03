@@ -98,7 +98,7 @@ const ClientEvent = ({
         }}
       />
 
-      <TextField
+      {/* <TextField
         variant="outlined"
         margin="dense"
         fullWidth
@@ -113,8 +113,8 @@ const ClientEvent = ({
           }))
         }
         className="text-field"
-      />
-      <TextField
+      /> */}
+      {/* <TextField
         variant="outlined"
         margin="dense"
         fullWidth
@@ -129,7 +129,7 @@ const ClientEvent = ({
           }))
         }
         className="text-field"
-      />
+      /> */}
       {/* <TextField
         variant="outlined"
         margin="dense"
