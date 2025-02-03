@@ -5,6 +5,7 @@ import {
   Breadcrumbs,
   Link,
   useMediaQuery,
+  Button,
 } from "@mui/material";
 import './Form.css';
 import { useTheme } from '@mui/material/styles';
@@ -146,7 +147,9 @@ const Form = () => {
           <Box sx={{ mb: 4 }}>{renderStep()}</Box>
           {currentStep < 2 && <BtnNext onClick={handleNext} />}
           {currentStep === 2 && (
-            <button onClick={() => handleSubmit(formData)}>Submit</button>
+            <Button onClick={() => handleSubmit(formData)}
+            sx={{marginBottom: '2rem', width: '8rem'}}
+            >Skicka</Button>
           )}
         </Box>
       </form>
