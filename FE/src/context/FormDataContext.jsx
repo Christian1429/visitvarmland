@@ -28,14 +28,14 @@ export const FormDataProvider = ({ children }) => {
     ],
     organizers: [
       {
-        id: 0,
+        id: 100,
         title: "",
         street1: "",
         street2: "",
         zip_code: "",
         city: "",
         municipality_id: 0,
-        organization_id: 0,
+        organization_id: 10,
         booking_link: "",
         website_link: "",
         email: "",

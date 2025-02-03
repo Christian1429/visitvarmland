@@ -31,13 +31,13 @@ const priceSchema = new mongoose.Schema({
 });
 
 const imageSchema = new mongoose.Schema({
-  lastModified: { type: String },
-  lastModifiedDate: { type: String },
-  filename: { type: String },
+  /* lastModified: { type: String },
+  lastModifiedDate: { type: String }, */
+  name: { type: String },
   size: { type: String },
   type: { type: String },
-  contentType: { type: String },
-  url: { type: String },
+  image: { type: Buffer, required: true },
+  encoding: { type: String },
   /*  large: { type: String },
   medium: { type: String },
   small: { type: String },

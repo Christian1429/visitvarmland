@@ -6,25 +6,43 @@ class DataController {
   }
 
   async uploadImage(req, res) {
-    console.log("here");
-    console.log(req.body);
     try {
-      const newImage = {
-        filename: req.file.originalname,
-        url: `/uploads/${req.file.originalname}`,
-        contentType: req.file.mimetype,
-        image: req.file.buffer, // Store binary data
-        size: req.file.size,
-        lastModifiedDate: req.file.lastModifiedDate,
-        lastModified: req.file.lastModified,
-      };
-      console.log(newImage);
-      const newData = new this.dataModel(newImage);
-      await newData.save();
+      console.log("🟢 Inkommen förfrågan:", req.files);
 
-      res.json({ message: "Image uploaded successfully", image: newImage });
+      if (!req.files || req.files.length === 0) {
+        return res.status(400).json({ message: "Ingen fil uppladdad" });
+      }
+
+      // Skapa en bildinstans och spara den i databasen
+      /* const newImage = {
+        name: req.file.originalname,
+        size: req.file.size,
+        type: req.file.mimetype,
+        image: req.file.buffer, // Här lagras den binära datan
+        encoding: req.file.encoding,
+      }; */
+
+      // Skapa bildobjekt från uppladdade filer
+      const imageFiles = req.files.map((file) => ({
+        name: file.originalname,
+        size: file.size,
+        type: file.mimetype,
+        image: file.buffer, // ✅ Spara binärdata
+        encoding: file.encoding,
+      }));
+
+      console.log("🟢 Bilder som ska sparas:", imageFiles);
+
+      const newData = new this.dataModel({
+        title: req.body.title || "Ingen titel",
+        images: imageFiles, // Lägg till bilden i databasen
+      });
+
+      const savedData = await newData.save();
+      res.status(201).json(savedData);
     } catch (error) {
-      res.status(500).json({ error: "Image upload failed" });
+      console.error("❌ Fel vid uppladdning:", error.message);
+      res.status(500).json({ message: error.message });
     }
   }
 
