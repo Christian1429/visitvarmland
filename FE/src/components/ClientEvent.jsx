@@ -55,7 +55,7 @@ const ClientEvent = ({
         className="text-field"
         multiline
         rows={3}
-        slotProps={{ htmlInput: { maxLength: 200, minLength: 100 } }}
+        slotProps={{ htmlInput: { maxLength: 200, minLength: 1 } }}
         InputProps={{
           endAdornment: (
             <InputAdornment
@@ -75,7 +75,7 @@ const ClientEvent = ({
         id="event-sales-text"
         label="Säljande text"
         name="event-sales-text"
-        value={formData.sales_text && formData.meta_keywords || ''}
+        value={formData.sales_text || ''}
         onChange={(e) =>
           setFormData((prevData) => ({
             ...prevData,
@@ -85,7 +85,7 @@ const ClientEvent = ({
         className="text-field"
         multiline
         rows={6}
-        slotProps={{ htmlInput: { maxLength: 400, minLength: 100 } }}
+        slotProps={{ htmlInput: { maxLength: 400, minLength: 1 } }}
         InputProps={{
           endAdornment: (
             <InputAdornment

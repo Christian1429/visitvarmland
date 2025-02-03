@@ -58,7 +58,12 @@ const Form = () => {
         return (
           <>
             <DatePickerClient formData={formData} setFormData={setFormData} />
-            <TrailPopup />
+            <TrailPopup
+              formData={formData}
+              setFormData={setFormData}
+              handleChange={handleChange}
+              handleArrayChange={handleArrayChange}
+            />
             <ClientEvent
               formData={formData}
               setFormData={setFormData}
