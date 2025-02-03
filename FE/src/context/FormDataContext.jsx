@@ -4,7 +4,6 @@ export const FormDataContext = createContext();
 
 export const FormDataProvider = ({ children }) => {
   const [formData, setFormData] = useState({
-    id: 0,
     title: "",
     description: "",
     sales_text: "",
@@ -28,7 +27,6 @@ export const FormDataProvider = ({ children }) => {
     ],
     organizers: [
       {
-        id: 100,
         title: "",
         street1: "",
         street2: "",

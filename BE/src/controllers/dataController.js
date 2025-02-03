@@ -13,29 +13,27 @@ class DataController {
         return res.status(400).json({ message: "Ingen fil uppladdad" });
       }
 
-      // Skapa en bildinstans och spara den i databasen
-      /* const newImage = {
-        name: req.file.originalname,
-        size: req.file.size,
-        type: req.file.mimetype,
-        image: req.file.buffer, // Här lagras den binära datan
-        encoding: req.file.encoding,
-      }; */
+      const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
 
-      // Skapa bildobjekt från uppladdade filer
-      const imageFiles = req.files.map((file) => ({
-        name: file.originalname,
-        size: file.size,
-        type: file.mimetype,
-        image: file.buffer, // ✅ Spara binärdata
-        encoding: file.encoding,
-      }));
+      const imageFiles = req.files.map((file) => {
+        if (file.size > MAX_FILE_SIZE) {
+          throw new Error(`Filen ${file.originalname} är för stor! Max 2MB.`);
+        }
+
+        return {
+          name: file.originalname,
+          size: file.size,
+          type: file.mimetype,
+          image: file.buffer,
+          encoding: file.encoding,
+        };
+      });
 
       console.log("🟢 Bilder som ska sparas:", imageFiles);
 
       const newData = new this.dataModel({
         title: req.body.title || "Ingen titel",
-        images: imageFiles, // Lägg till bilden i databasen
+        images: imageFiles,
       });
 
       const savedData = await newData.save();

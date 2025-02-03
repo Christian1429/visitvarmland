@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 // required: true;
 const organizerSchema = new mongoose.Schema({
-  // id for existing organizer, remove later
   id: { type: Number },
   title: { type: String },
   street1: { type: String },
@@ -31,8 +30,6 @@ const priceSchema = new mongoose.Schema({
 });
 
 const imageSchema = new mongoose.Schema({
-  /* lastModified: { type: String },
-  lastModifiedDate: { type: String }, */
   name: { type: String },
   size: { type: String },
   type: { type: String },
@@ -80,7 +77,6 @@ const occasionSchema = new mongoose.Schema({
 });
 
 const dataSchema = new mongoose.Schema({
-  id: { type: Number },
   created_at: { type: Date, default: Date.now },
   updated_at: { type: Date, default: Date.now },
   title: { type: String },
