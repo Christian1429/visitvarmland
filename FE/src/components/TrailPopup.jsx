@@ -32,7 +32,7 @@ const TrailPopup = ({ formData, setFormData }) => {
       </div>
 
       <Dialog open={isPopupOpen} onClose={() => setIsPopupOpen(false)}>
-        <DialogTitle sx={{textAlign: 'center'}}>Stig information</DialogTitle>
+        <DialogTitle sx={{ textAlign: 'center' }}>Stig information</DialogTitle>
         <DialogContent>
           <Box
             sx={{
@@ -123,8 +123,9 @@ const TrailPopup = ({ formData, setFormData }) => {
                 console.log('Saved data:', formData);
                 setIsPopupOpen(false);
               }}
+              sx={{ marginBottom: '2rem', width: '8rem' }}
             >
-              OK
+              Spara
             </Button>
           </Box>
         </DialogActions>

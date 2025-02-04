@@ -234,7 +234,7 @@ const ClientEvent = ({
         margin="dense"
         fullWidth
         id="event-booking-link"
-        label="Booking Link"
+        label="Bookningslänk"
         name="event-booking-link"
         value={formData.booking_link || ''}
         onChange={(e) =>
@@ -250,7 +250,7 @@ const ClientEvent = ({
         margin="dense"
         fullWidth
         id="event-website-link"
-        label="Website Link"
+        label="Hemsida"
         name="event-website-link"
         value={formData.website_link || ''}
         onChange={(e) =>
