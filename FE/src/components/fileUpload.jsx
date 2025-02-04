@@ -10,7 +10,7 @@ function fileUpload() {
 
   const handleFileUpload = (e) => {
     const files = Array.from(e.target.files);
-    console.log("Selected files:", files);
+    /* console.log("Selected files:", files); */
     if (files.length > 0) {
       setPreviewImages((prev) => [
         ...prev,
@@ -75,7 +75,7 @@ function fileUpload() {
   };
   return (
     <Box>
-      <Typography sx={{ marginTop: "1.5rem" }}>
+      <Typography sx={{ marginTop: "1.5rem", marginBottom: "1rem" }}>
         Ladda upp bilder. Max 2MB
       </Typography>
 
@@ -93,50 +93,6 @@ function fileUpload() {
           name="image"
         />
 
-        {/* Preview selected images */}
-        <Box sx={{ marginTop: "1rem" }}>
-          {previewImages.length > 0 && (
-            <div>
-              <Typography variant="h6">Föregående bilder:</Typography>
-              <div style={{ display: "flex", flexWrap: "wrap" }}>
-                {previewImages.map((imageSrc, index) => (
-                  <Box
-                    key={index}
-                    sx={{
-                      position: "relative",
-                      margin: "0.5rem",
-                      border: "1px solid #ccc",
-                      padding: "0.5rem",
-                    }}
-                  >
-                    <img
-                      src={imageSrc} // This is the blob URL
-                      alt={`Preview ${index}`}
-                      style={{
-                        width: "100px",
-                        height: "100px",
-                        objectFit: "cover",
-                        border: "2px solid red",
-                      }}
-                    />
-                    <IconButton
-                      onClick={() => removeImage(index)}
-                      color="error"
-                      sx={{
-                        position: "absolute",
-                        top: "0",
-                        right: "0",
-                      }}
-                    >
-                      <DeleteIcon />
-                    </IconButton>
-                  </Box>
-                ))}
-              </div>
-            </div>
-          )}
-        </Box>
-
         <Button
           variant="contained"
           color="primary"
@@ -146,80 +102,48 @@ function fileUpload() {
           Ladda upp
         </Button>
       </form>
+      {/* Preview selected images */}
+      <Box>
+        {previewImages.length > 0 && (
+          <div>
+            <Typography variant="h6">Valda bilder:</Typography>
+            <div style={{ display: "flex", flexWrap: "wrap" }}>
+              {previewImages.map((imageSrc, index) => (
+                <Box
+                  key={index}
+                  sx={{
+                    position: "relative",
+                    border: "1px solid #ccc",
+                    padding: "0.5rem",
+                  }}
+                >
+                  <img
+                    src={imageSrc}
+                    alt={`Preview ${index}`}
+                    style={{
+                      width: "50px",
+                      height: "50px",
+                      objectFit: "cover",
+                    }}
+                  />
+                  <IconButton
+                    onClick={() => removeImage(index)}
+                    sx={{
+                      position: "absolute",
+                      top: "0",
+                      right: "0",
+                    }}
+                  >
+                    <DeleteIcon />
+                  </IconButton>
+                </Box>
+              ))}
+            </div>
+          </div>
+        )}
+      </Box>
     </Box>
   );
-
-  /*  return (
-    <Box>
-      <Typography sx={{ marginTop: "1.5rem" }}>
-        Ladda upp bilder. Max 2MB
-      </Typography>
-      <form
-        onSubmit={handleSubmit}
-        className="fileupload"
-        encType="multipart/form-data"
-      >
-        <TextField
-          required
-          type="file"
-          inputProps={{ accept: "image/jpeg", multiple: true }}
-          sx={{ width: "90%" }}
-          onChange={handleFileUpload}
-          name="images"
-        />
-        <Box sx={{ marginTop: "1rem" }}>
-          {previewImages.length > 0 && (
-            <div>
-              <Typography variant="h6">Föregående bilder:</Typography>
-              <div style={{ display: "flex", flexWrap: "wrap" }}>
-                {previewImages.map((imageSrc, index) => (
-                  <Box
-                    key={index}
-                    sx={{
-                      position: "relative",
-                      margin: "0.5rem",
-                      border: "1px solid #ccc",
-                      padding: "0.5rem",
-                    }}
-                  >
-                    <img
-                      src={imageSrc}
-                      alt={`Preview ${index}`}
-                      style={{
-                        width: "100px",
-                        height: "100px",
-                        objectFit: "cover",
-                      }}
-                    />
-                    <IconButton
-                      onClick={() => removeImage(index)}
-                      color="error"
-                      sx={{
-                        position: "absolute",
-                        top: "0",
-                        right: "0",
-                      }}
-                    >
-                      <DeleteIcon />
-                    </IconButton>
-                  </Box>
-                ))}
-              </div>
-            </div>
-          )}
-        </Box>
-
-        <Button
-          variant="contained"
-          color="primary"
-          type="submit"
-          sx={{ margin: "1rem", width: "50%" }}
-        >
-          Ladda upp
-        </Button>
-      </form>
-    </Box>
-  ); */
 }
 
 export default fileUpload;

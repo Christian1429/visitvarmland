@@ -15,6 +15,7 @@
     "mongoose": "^8.9.5",
     "multer": "^1.4.4",
     "semver": "^7.6.3",
+    "sharp": "^0.33.5",
     "simple-update-notifier": "^2.0.0"
   },
   "devDependencies": {
