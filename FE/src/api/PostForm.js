@@ -3,9 +3,9 @@ const postForm = async (data) => {
   try {
     const response = await fetch("http://localhost:2000/api/data/", {
       method: "POST",
-      mode: "cors",
       body: data,
     });
+    console.log("Postform", data);
 
     if (response.ok) {
       console.log("Form submitted successfully");

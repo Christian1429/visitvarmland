@@ -76,7 +76,7 @@ const Form = () => {
 
   return (
     <Box className="container">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} encType="multipart/form-data" method="post">
         <Box sx={{ paddingTop: "1rem", paddingLeft: "1rem" }}>
           <img
             src="/assets/logotyp-visitvarmland-svart.svg"

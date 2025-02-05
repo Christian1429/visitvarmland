@@ -1,7 +1,7 @@
 const sharp = require("sharp");
 
 async function uploadImage(req) {
-  /* console.log("Inside uploadImage", req); */
+  console.log("Inside uploadImage", req);
   try {
     /* console.log(req); */
     /* console.log(" !", req.files); */
@@ -32,7 +32,7 @@ async function uploadImage(req) {
         // Use sharp to read image and get metadata (dimensions)
         const imageMetadata = await sharp(image.buffer).metadata();
         console.log("slutet");
-        // Check if the image is exactly 640x640
+
         console.log("imageMetadata.width", imageMetadata.width);
         console.log("imageMetadata.height", imageMetadata.height);
         if (

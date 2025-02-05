@@ -6,11 +6,37 @@ class DataController {
     this.dataModel = dataModel;
   }
 
-  async createData(req, res) {
-    const body = req.body;
-    console.log("req.body", req.body);
-    const images = await uploadImage(body);
+  /* async createData(req, res) {
+    console.log("req.body:", req.body);
+    console.log("req.files:", req.files);
 
+    try {
+      // Ensure images exist
+      const images =
+        req.files?.images?.map((file) => {
+          return {
+            buffer: file.buffer, // This is the image binary data
+            type: file.type, // Keep track of the file type
+            name: file.name,
+            size: file.size,
+          };
+        }) || [];
+
+      // Save data, including image metadata (but not raw image data in DB)
+      const newData = new this.dataModel({
+        ...req.body,
+        images, // Store image buffer or a reference to a cloud storage location
+      });
+
+      const savedData = await newData.save();
+      res.status(201).json(savedData);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  }
+ */
+  async createData(req, res) {
+    console.log(req.body);
     try {
       const newData = new this.dataModel(req.body);
       const savedData = await newData.save();

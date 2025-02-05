@@ -9,7 +9,7 @@ function fileUpload({ formData, setFormData }) {
 
   const handleFileUpload = (e) => {
     const files = Array.from(e.target.files);
-    /* console.log("Selected files:", files); */
+
     if (files.length > 0) {
       setPreviewImages((prev) => [
         ...prev,
@@ -26,9 +26,7 @@ function fileUpload({ formData, setFormData }) {
     });
 
     /*  console.log("Generated previews:", imagePreviews); */
-    /* for (let i = 0; i < files.length; i++) {
-      formData.append("images", files[i]); // Append each file
-    } */
+
     setFormData((prev) => {
       const updatedImages = [...(prev.images || []), ...files];
       return { ...prev, images: updatedImages };
@@ -49,11 +47,8 @@ function fileUpload({ formData, setFormData }) {
 
   const handleSubmitImage = async (e) => {
     /* e.preventDefault(); */
-    /* for (let i = 0; i < files.length; i++) {
-      formData.append("images", files[i]); // Append each file
-    } */
-    /* console.log("formdata", formData); */
-    /*  setFormData(formData); */
+    /*  console.log("formdata", formData);
+    setFormData(formData); */
     /* formData.images.forEach((file) => {
       formDataToSend.append("images", file);
     }); */
@@ -88,7 +83,7 @@ function fileUpload({ formData, setFormData }) {
         inputProps={{ accept: "image/jpeg", multiple: true }}
         sx={{ width: "90%" }}
         onChange={handleFileUpload}
-        name="image"
+        name="images"
       />
 
       <Button
