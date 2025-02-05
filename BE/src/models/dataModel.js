@@ -34,7 +34,6 @@ const imageSchema = new mongoose.Schema({
   size: { type: String },
   type: { type: String },
   image: { type: Buffer, required: true },
-  encoding: { type: String },
   /*  large: { type: String },
   medium: { type: String },
   small: { type: String },
