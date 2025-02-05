@@ -5,6 +5,7 @@ const SendBtn = () => {
   return (
     <Button
       sx={{
+        marginTop: "1rem",
         backgroundColor: "var(--color-site-yellow)",
         borderRadius: "0px",
         fontSize: "14px",

@@ -19,6 +19,7 @@ import { FormDataContext } from "../context/FormDataContext";
 import { handleChange, handleArrayChange } from "../utils/formUtils";
 import handleSubmit from "../utils/handleSubmit";
 import DatePickerClient from "../components/DatePicker";
+import SendBtn from "../components/Buttons/SendBtn";
 
 const Form = () => {
   const theme = useTheme();
@@ -141,7 +142,7 @@ const Form = () => {
           <Box sx={{ mb: 4 }}>{renderStep()}</Box>
           {currentStep < 2 && <BtnNext onClick={handleNext} />}
           {currentStep === 2 && (
-            <button onClick={() => handleSubmit(formData)}>Submit</button>
+            <button onClick={(e) => handleSubmit(e, formData)}>Submit</button>
           )}
         </Box>
       </form>

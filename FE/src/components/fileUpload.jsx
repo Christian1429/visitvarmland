@@ -2,10 +2,9 @@ import { React, useContext, useState } from "react";
 import { Box, Typography, TextField, Button, IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import "./fileupload.css";
-import { FormDataContext } from "../context/FormDataContext";
+/* import { FormDataContext } from "../context/FormDataContext"; */
 
-function fileUpload() {
-  const { formData, setFormData } = useContext(FormDataContext);
+function fileUpload({ formData, setFormData }) {
   const [previewImages, setPreviewImages] = useState([]);
 
   const handleFileUpload = (e) => {
@@ -26,8 +25,10 @@ function fileUpload() {
       return URL.createObjectURL(file); // Generate preview URL for the selected image
     });
 
-    console.log("Generated previews:", imagePreviews);
-
+    /*  console.log("Generated previews:", imagePreviews); */
+    /* for (let i = 0; i < files.length; i++) {
+      formData.append("images", files[i]); // Append each file
+    } */
     setFormData((prev) => {
       const updatedImages = [...(prev.images || []), ...files];
       return { ...prev, images: updatedImages };
@@ -46,21 +47,18 @@ function fileUpload() {
     setPreviewImages(newPreviewImages); // Update preview images
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const formDataToSend = new FormData();
-
-    formData.images.forEach((file) => {
+  const handleSubmitImage = async (e) => {
+    /* e.preventDefault(); */
+    /* for (let i = 0; i < files.length; i++) {
+      formData.append("images", files[i]); // Append each file
+    } */
+    /* console.log("formdata", formData); */
+    /*  setFormData(formData); */
+    /* formData.images.forEach((file) => {
       formDataToSend.append("images", file);
-    });
-
-    const requestOptions = {
-      method: "POST",
-      mode: "cors",
-      body: formDataToSend,
-    };
-
-    try {
+    }); */
+    /* console.log("formDataToSend", formDataToSend); */
+    /* try {
       const response = await fetch(
         "http://localhost:2000/api/data/upload",
         requestOptions
@@ -71,7 +69,7 @@ function fileUpload() {
       console.log("Bilder uppladdade!");
     } catch (error) {
       console.error("Error:", error.message);
-    }
+    } */
   };
   return (
     <Box>
@@ -79,29 +77,30 @@ function fileUpload() {
         Ladda upp bilder. Max 2MB
       </Typography>
 
-      <form
+      {/* <form
         onSubmit={handleSubmit}
         className="fileupload"
         encType="multipart/form-data"
-      >
-        <TextField
-          required
-          type="file"
-          inputProps={{ accept: "image/jpeg", multiple: true }}
-          sx={{ width: "90%" }}
-          onChange={handleFileUpload}
-          name="image"
-        />
+      > */}
+      <TextField
+        required
+        type="file"
+        inputProps={{ accept: "image/jpeg", multiple: true }}
+        sx={{ width: "90%" }}
+        onChange={handleFileUpload}
+        name="image"
+      />
 
-        <Button
-          variant="contained"
-          color="primary"
-          type="submit"
-          sx={{ margin: "1rem", width: "50%" }}
-        >
-          Ladda upp
-        </Button>
-      </form>
+      <Button
+        onClick={handleSubmitImage}
+        variant="contained"
+        color="primary"
+        type="submit"
+        sx={{ margin: "1rem", width: "50%" }}
+      >
+        Ladda upp
+      </Button>
+      {/* </form> */}
       {/* Preview selected images */}
       <Box>
         {previewImages.length > 0 && (

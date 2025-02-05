@@ -1,13 +1,13 @@
 import React from "react";
 import { TextField, Box, InputAdornment } from "@mui/material";
 import DatePickerClient from "../components/DatePicker";
+import HandleFileUpload from "../components/fileUpload";
 
 const ClientEvent = ({ formData, setFormData }) => {
   const sellingTextMaxLength = 100;
   const descriptionMaxLength = 200;
   const rmCharDescription = descriptionMaxLength - formData.description.length;
   const rmCharSelling = sellingTextMaxLength - formData.sales_text.length;
-
   return (
     <Box
       sx={{
@@ -20,7 +20,7 @@ const ClientEvent = ({ formData, setFormData }) => {
       }}
     >
       <TextField
-        required
+        /* required */
         variant="outlined"
         margin="dense"
         fullWidth
@@ -34,7 +34,7 @@ const ClientEvent = ({ formData, setFormData }) => {
         className="text-field"
       />
       <TextField
-        required
+        /* required */
         variant="outlined"
         margin="dense"
         fullWidth
@@ -64,7 +64,7 @@ const ClientEvent = ({ formData, setFormData }) => {
         }}
       />
       <TextField
-        required
+        /* required */
         variant="outlined"
         margin="dense"
         fullWidth
@@ -258,7 +258,7 @@ const ClientEvent = ({ formData, setFormData }) => {
         className="text-field"
       />
 
-      <HandleFileUpload />
+      <HandleFileUpload formData={formData} setFormData={setFormData} />
     </Box>
   );
 };
