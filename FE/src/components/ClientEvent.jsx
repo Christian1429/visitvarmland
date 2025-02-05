@@ -1,9 +1,14 @@
 import React from "react";
-import { TextField, Box } from "@mui/material";
+import { TextField, Box, InputAdornment } from "@mui/material";
 import DatePickerClient from "../components/DatePicker";
 import HandleFileUpload from "../components/fileUpload";
 
 const ClientEvent = ({ formData, setFormData }) => {
+  const sellingTextMaxLength = 100;
+  const descriptionMaxLength = 200;
+  const rmCharDescription = descriptionMaxLength - formData.description.length;
+  const rmCharSelling = sellingTextMaxLength - formData.sales_text.length;
+
   return (
     <Box
       sx={{
@@ -15,13 +20,13 @@ const ClientEvent = ({ formData, setFormData }) => {
         backdropFilter: "blur(2px)",
       }}
     >
-      <DatePickerClient />
       <TextField
+        required
         variant="outlined"
         margin="dense"
         fullWidth
         id="event-title"
-        label="Title"
+        label="Titel"
         name="event-title"
         value={formData.title || ""}
         onChange={(e) =>
@@ -30,11 +35,12 @@ const ClientEvent = ({ formData, setFormData }) => {
         className="text-field"
       />
       <TextField
+        required
         variant="outlined"
         margin="dense"
         fullWidth
         id="event-description"
-        label="Description"
+        label="Beskrivning"
         name="event-description"
         value={formData.description || ""}
         onChange={(e) =>
@@ -44,15 +50,29 @@ const ClientEvent = ({ formData, setFormData }) => {
           }))
         }
         className="text-field"
+        multiline
+        rows={3}
+        slotProps={{ htmlInput: { maxLength: 200, minLength: 100 } }}
+        InputProps={{
+          endAdornment: (
+            <InputAdornment
+              position="end"
+              sx={{ alignSelf: "flex-end", mr: 1 }}
+            >
+              {`${rmCharDescription}/${descriptionMaxLength}`}
+            </InputAdornment>
+          ),
+        }}
       />
       <TextField
+        required
         variant="outlined"
         margin="dense"
         fullWidth
         id="event-sales-text"
-        label="Sales Text"
+        label="Säljande text"
         name="event-sales-text"
-        value={formData.sales_text || ""}
+        value={(formData.sales_text && formData.meta_keywords) || ""}
         onChange={(e) =>
           setFormData((prevData) => ({
             ...prevData,
@@ -60,7 +80,21 @@ const ClientEvent = ({ formData, setFormData }) => {
           }))
         }
         className="text-field"
+        multiline
+        rows={6}
+        slotProps={{ htmlInput: { maxLength: 400, minLength: 100 } }}
+        InputProps={{
+          endAdornment: (
+            <InputAdornment
+              position="end"
+              sx={{ alignSelf: "flex-end", mr: 1 }}
+            >
+              {`${rmCharSelling}/${sellingTextMaxLength}`}
+            </InputAdornment>
+          ),
+        }}
       />
+
       <TextField
         variant="outlined"
         margin="dense"
@@ -93,8 +127,7 @@ const ClientEvent = ({ formData, setFormData }) => {
         }
         className="text-field"
       />
-
-      <TextField
+      {/* <TextField
         variant="outlined"
         margin="dense"
         fullWidth
@@ -107,9 +140,9 @@ const ClientEvent = ({ formData, setFormData }) => {
             ...prevData,
             ticket_information: e.target.value,
           }))
-        }
+        } 
         className="text-field"
-      />
+      /> */}
       <TextField
         variant="outlined"
         margin="dense"
@@ -142,7 +175,10 @@ const ClientEvent = ({ formData, setFormData }) => {
         }
         className="text-field"
       />
-      <TextField
+
+      {/*! Maybe copy title, description, sales_text into sales_text,meta_title, meta_keywords, meta_description */}
+
+      {/* <TextField
         variant="outlined"
         margin="dense"
         fullWidth
@@ -189,7 +225,7 @@ const ClientEvent = ({ formData, setFormData }) => {
           }))
         }
         className="text-field"
-      />
+      /> */}
       <TextField
         variant="outlined"
         margin="dense"
