@@ -1,13 +1,15 @@
 const dataModel = require("../models/dataModel");
-const sharp = require("sharp");
 
+const sharp = require("sharp");
 class DataController {
   constructor() {
     this.dataModel = dataModel;
   }
+
   async uploadImage(req, res) {
     try {
-      console.log("✅ !", req.files);
+      console.log("Body:", req.body);
+      console.log("Files:", req.files);
       if (!req.files || req.files.length === 0) {
         return res.status(400).json({ message: "Ingen fil uppladdad" });
       }
@@ -15,27 +17,25 @@ class DataController {
       // Define max file size (2MB)
       const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
       const Min_WIDTH = 600; // Allow only 640x640
-      const Min_HEIGHT = 640;
+      const Min_HEIGHT = 640; // Allow only 640x640
 
       // Process each file
+      console.log("req files", req.files);
       const imageFiles = await Promise.all(
-        req.files.map(async (file) => {
+        req.files.map(async (image) => {
           // Check if file is a JPEG
-          if (file.mimetype !== "image/jpeg") {
-            throw new Error(
-              `Filen ${file.originalname} måste vara en JPEG-bild!`
-            );
+          if (image.type !== "image/jpeg") {
+            throw new Error(`Filen ${image.name} måste vara en JPEG-bild!`);
           }
 
           // Check if the file size is within the allowed limit
-          if (file.size > MAX_FILE_SIZE) {
-            throw new Error(`Filen ${file.originalname} är för stor! Max 2MB.`);
+          if (image.size > MAX_FILE_SIZE) {
+            throw new Error(`Filen ${image.name} är för stor! Max 2MB.`);
           }
 
           // Use sharp to read image and get metadata (dimensions)
-          const imageMetadata = await sharp(file.buffer).metadata();
+          const imageMetadata = await sharp(image.buffer).metadata();
 
-          // Check if the image is exactly 640x640
           console.log("imageMetadata.width", imageMetadata.width);
           console.log("imageMetadata.height", imageMetadata.height);
           if (
@@ -43,16 +43,16 @@ class DataController {
             imageMetadata.height < Min_HEIGHT
           ) {
             throw new Error(
-              `Bilden ${file.originalname} måste vara lika med eller större än 600x640 pixlar.`
+              `Bilden ${image.name} måste vara lika med eller större än 600x640 pixlar.`
             );
           }
 
           // Return the file data for saving to DB
           return {
-            name: file.originalname,
-            size: file.size,
-            type: file.mimetype,
-            image: file.buffer, // Store binary data
+            name: image.name,
+            size: image.size,
+            type: image.type,
+            image: image.buffer, // Store binary data
           };
         })
       );
@@ -64,8 +64,9 @@ class DataController {
       });
 
       const savedData = await newData.save();
-      console.log("✅ Uppladdning lyckades!", savedData);
+      console.log("Uppladdning lyckades!", savedData);
 
+      console.log(savedData);
       res.status(201).json(savedData);
     } catch (error) {
       console.error("Fel vid uppladdning:", error.message);

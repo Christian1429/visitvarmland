@@ -4,7 +4,7 @@ const multer = require("multer");
 
 const router = express.Router();
 const dataController = new DataController();
-const upload = multer({ storage: multer.memoryStorage() }).array("images", 10); //The number  shows how many iamges can be uploaded at the same time.
+const upload = multer({ storage: multer.memoryStorage() }).array("images", 10);
 
 router.post("/", dataController.createData.bind(dataController));
 router.get("/", dataController.getAllData.bind(dataController));
