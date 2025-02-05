@@ -18,26 +18,7 @@ import ClientExist from "../components/ClientExist";
 import { FormDataContext } from "../context/FormDataContext";
 import handleSubmit from "../utils/handleSubmit";
 import { handleChange, handleArrayChange } from "../utils/formUtils";
-import React, { useState, useContext } from "react";
-import {
-  Box,
-  Typography,
-  Breadcrumbs,
-  Link,
-  useMediaQuery,
-} from "@mui/material";
-import "./Form.css";
-import { useTheme } from "@mui/material/styles";
-import Contact from "../components/Contact";
-import ClientNew from "../components/ClientNew";
-import ClientEvent from "../components/ClientEvent";
-import ClientExist from "../components/ClientExist";
 import TrailPopup from "../components/TrailPopup";
-import BtnNext from "../components/Buttons/BtnNext";
-import CloseBtn from "../components/Buttons/CloseBtn";
-import { FormDataContext } from "../context/FormDataContext";
-import { handleChange, handleArrayChange } from "../utils/formUtils";
-import handleSubmit from "../utils/handleSubmit";
 import DatePickerClient from "../components/DatePicker";
 
 const Form = () => {
