@@ -4,7 +4,7 @@ const multer = require("multer");
 
 const router = express.Router();
 const dataController = new DataController();
-const upload = multer({ storage: multer.memoryStorage() }).any();
+const upload = multer({ storage: multer.memoryStorage() }).array("images", 10);
 
 router.post("/", dataController.createData.bind(dataController));
 router.get("/", dataController.getAllData.bind(dataController));
@@ -13,7 +13,7 @@ router.put("/:id", dataController.updateData.bind(dataController));
 router.delete("/:id", dataController.deleteData.bind(dataController));
 
 ///Image upload.
-/* router.post("/upload", upload, dataController.uploadImage.bind(dataController)); */
+router.post("/upload", upload, dataController.uploadImage.bind(dataController));
 
 router.get("/test/retrieve", async (req, res) => {
   try {

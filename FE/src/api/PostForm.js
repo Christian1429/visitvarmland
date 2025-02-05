@@ -1,11 +1,12 @@
 const postForm = async (data) => {
-  console.log("Postform", data);
   try {
     const response = await fetch("http://localhost:2000/api/data/", {
       method: "POST",
-      body: data,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
     });
-    console.log("Postform", data);
 
     if (response.ok) {
       console.log("Form submitted successfully");

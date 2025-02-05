@@ -2,7 +2,6 @@ import { React, useContext, useState } from "react";
 import { Box, Typography, TextField, Button, IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import "./fileupload.css";
-/* import { FormDataContext } from "../context/FormDataContext"; */
 
 function fileUpload({ formData, setFormData }) {
   const [previewImages, setPreviewImages] = useState([]);
@@ -46,14 +45,15 @@ function fileUpload({ formData, setFormData }) {
   };
 
   const handleSubmitImage = async (e) => {
-    /* e.preventDefault(); */
-    /*  console.log("formdata", formData);
-    setFormData(formData); */
-    /* formData.images.forEach((file) => {
-      formDataToSend.append("images", file);
-    }); */
-    /* console.log("formDataToSend", formDataToSend); */
-    /* try {
+    e.preventDefault();
+    console.log("fileupload", formData);
+    const requestOptions = {
+      method: "POST",
+      mode: "cors",
+      body: formData,
+    };
+
+    try {
       const response = await fetch(
         "http://localhost:2000/api/data/upload",
         requestOptions
@@ -64,7 +64,7 @@ function fileUpload({ formData, setFormData }) {
       console.log("Bilder uppladdade!");
     } catch (error) {
       console.error("Error:", error.message);
-    } */
+    }
   };
   return (
     <Box>
@@ -72,22 +72,17 @@ function fileUpload({ formData, setFormData }) {
         Ladda upp bilder. Max 2MB
       </Typography>
 
-      {/* <form
-        onSubmit={handleSubmit}
-        className="fileupload"
-        encType="multipart/form-data"
-      > */}
       <TextField
         required
         type="file"
-        inputProps={{ accept: "image/jpeg", multiple: true }}
+        slotProps={{ accept: "image/jpeg", multiple: true }}
         sx={{ width: "90%" }}
         onChange={handleFileUpload}
         name="images"
       />
 
       <Button
-        onClick={handleSubmitImage}
+        onClick={(e) => handleSubmitImage(e)}
         variant="contained"
         color="primary"
         type="submit"
@@ -95,7 +90,7 @@ function fileUpload({ formData, setFormData }) {
       >
         Ladda upp
       </Button>
-      {/* </form> */}
+
       {/* Preview selected images */}
       <Box>
         {previewImages.length > 0 && (

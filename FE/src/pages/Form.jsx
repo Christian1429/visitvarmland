@@ -19,7 +19,6 @@ import { FormDataContext } from "../context/FormDataContext";
 import { handleChange, handleArrayChange } from "../utils/formUtils";
 import handleSubmit from "../utils/handleSubmit";
 import DatePickerClient from "../components/DatePicker";
-import SendBtn from "../components/Buttons/SendBtn";
 
 const Form = () => {
   const theme = useTheme();
@@ -76,7 +75,7 @@ const Form = () => {
 
   return (
     <Box className="container">
-      <form onSubmit={handleSubmit} encType="multipart/form-data" method="post">
+      <form onSubmit={handleSubmit} encType="multipart/form-data">
         <Box sx={{ paddingTop: "1rem", paddingLeft: "1rem" }}>
           <img
             src="/assets/logotyp-visitvarmland-svart.svg"
