@@ -79,29 +79,24 @@ function fileUpload() {
         Ladda upp bilder. Max 2MB
       </Typography>
 
-      <form
-        onSubmit={handleSubmit}
-        className="fileupload"
-        encType="multipart/form-data"
-      >
-        <TextField
-          required
-          type="file"
-          inputProps={{ accept: "image/jpeg", multiple: true }}
-          sx={{ width: "90%" }}
-          onChange={handleFileUpload}
-          name="image"
-        />
+      <TextField
+        required
+        type="file"
+        inputProps={{ accept: "image/jpeg", multiple: true }}
+        sx={{ width: "90%" }}
+        onChange={handleFileUpload}
+        name="image"
+      />
 
-        <Button
-          variant="contained"
-          color="primary"
-          type="submit"
-          sx={{ margin: "1rem", width: "50%" }}
-        >
-          Ladda upp
-        </Button>
-      </form>
+      <Button
+        variant="contained"
+        color="primary"
+        type="submit"
+        sx={{ margin: "1rem", width: "50%" }}
+      >
+        Ladda upp
+      </Button>
+
       {/* Preview selected images */}
       <Box>
         {previewImages.length > 0 && (
