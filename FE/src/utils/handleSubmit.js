@@ -10,8 +10,7 @@ import {
   mapOrganizers,
 } from "./mappers";
 
-const handleSubmit = async (e, formData) => {
-  e.preventDefault();
+const handleSubmit = async (formData) => {
   const dataToSubmit = {
     ...formData,
     created_at: new Date().toISOString(),
