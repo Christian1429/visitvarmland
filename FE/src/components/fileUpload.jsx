@@ -10,7 +10,7 @@ function fileUpload() {
 
   const handleFileUpload = (e) => {
     const files = Array.from(e.target.files);
-    /* console.log("Selected files:", files); */
+    console.log("Selected files:", files);
     if (files.length > 0) {
       setPreviewImages((prev) => [
         ...prev,
@@ -79,29 +79,29 @@ function fileUpload() {
         Ladda upp bilder. Max 2MB
       </Typography>
 
-      <form
+      {/* <form
         onSubmit={handleSubmit}
         className="fileupload"
         encType="multipart/form-data"
-      >
-        <TextField
-          required
-          type="file"
-          inputProps={{ accept: "image/jpeg", multiple: true }}
-          sx={{ width: "90%" }}
-          onChange={handleFileUpload}
-          name="image"
-        />
+      > */}
+      <TextField
+        required
+        type="file"
+        inputProps={{ accept: "image/jpeg", multiple: true }}
+        sx={{ width: "90%" }}
+        onChange={handleFileUpload}
+        name="image"
+      />
 
-        <Button
-          variant="contained"
-          color="primary"
-          type="submit"
-          sx={{ margin: "1rem", width: "50%" }}
-        >
-          Ladda upp
-        </Button>
-      </form>
+      <Button
+        variant="contained"
+        color="primary"
+        type="submit"
+        sx={{ margin: "1rem", width: "50%" }}
+      >
+        Ladda upp
+      </Button>
+      {/* </form> */}
       {/* Preview selected images */}
       <Box>
         {previewImages.length > 0 && (

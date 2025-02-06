@@ -21,7 +21,7 @@ const ClientEvent = ({ formData, setFormData }) => {
       }}
     >
       <TextField
-        required
+        /*  required */
         variant="outlined"
         margin="dense"
         fullWidth
@@ -35,7 +35,7 @@ const ClientEvent = ({ formData, setFormData }) => {
         className="text-field"
       />
       <TextField
-        required
+        /* required */
         variant="outlined"
         margin="dense"
         fullWidth
@@ -65,7 +65,7 @@ const ClientEvent = ({ formData, setFormData }) => {
         }}
       />
       <TextField
-        required
+        /*  required */
         variant="outlined"
         margin="dense"
         fullWidth

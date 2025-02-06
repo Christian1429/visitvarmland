@@ -142,7 +142,7 @@ const Form = () => {
           <Box sx={{ mb: 4 }}>{renderStep()}</Box>
           {currentStep < 2 && <BtnNext onClick={handleNext} />}
           {currentStep === 2 && (
-            <button onClick={() => handleSubmit(formData)}>Submit</button>
+            <button onClick={(e) => handleSubmit(e, formData)}>Submit</button>
           )}
         </Box>
       </form>
