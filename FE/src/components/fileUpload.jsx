@@ -2,21 +2,12 @@ import { React, useContext, useState } from "react";
 import { Box, Typography, TextField, Button, IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import "./fileupload.css";
-import { FormDataContext } from "../context/FormDataContext";
 
 function fileUpload({ formData, setFormData }) {
-  /* const { formData, setFormData } = useContext(FormDataContext); */
   const [previewImages, setPreviewImages] = useState([]);
 
   const handleFileUpload = (e) => {
     const files = Array.from(e.target.files);
-    console.log("Selected files:", files);
-    if (files.length > 0) {
-      setPreviewImages((prev) => [
-        ...prev,
-        ...Array.from(files).map((file) => URL.createObjectURL(file)),
-      ]);
-    }
 
     if (files.length === 0) {
       console.error("Inga filer valda");
@@ -85,11 +76,6 @@ function fileUpload({ formData, setFormData }) {
         Ladda upp bilder. Max 2MB
       </Typography>
 
-      {/* <form
-        onSubmit={handleSubmit}
-        className="fileupload"
-        encType="multipart/form-data"
-      > */}
       <TextField
         required
         type="file"
@@ -107,7 +93,7 @@ function fileUpload({ formData, setFormData }) {
       >
         Ladda upp
       </Button>
-      {/* </form> */}
+
       {/* Preview selected images */}
       <Box>
         {previewImages.length > 0 && (
