@@ -1,12 +1,9 @@
-import React from 'react';
-import { TextField, Box, InputAdornment } from '@mui/material';
-import DatePickerClient from '../components/DatePicker';
+import React from "react";
+import { TextField, Box, InputAdornment } from "@mui/material";
+import DatePickerClient from "../components/DatePicker";
+import HandleFileUpload from "../components/fileUpload";
 
-const ClientEvent = ({
-  formData,
-  setFormData,
-}) => {
-  
+const ClientEvent = ({ formData, setFormData }) => {
   const sellingTextMaxLength = 100;
   const descriptionMaxLength = 200;
   const rmCharDescription = descriptionMaxLength - formData.description.length;
@@ -15,12 +12,12 @@ const ClientEvent = ({
   return (
     <Box
       sx={{
-        width: '100%',
+        width: "100%",
         maxWidth: 600,
         boxShadow: 3,
         p: 4,
-        m: 'auto',
-        backdropFilter: 'blur(2px)',
+        m: "auto",
+        backdropFilter: "blur(2px)",
       }}
     >
       <TextField
@@ -31,7 +28,7 @@ const ClientEvent = ({
         id="event-title"
         label="Titel"
         name="event-title"
-        value={formData.title || ''}
+        value={formData.title || ""}
         onChange={(e) =>
           setFormData((prevData) => ({ ...prevData, title: e.target.value }))
         }
@@ -45,7 +42,7 @@ const ClientEvent = ({
         id="event-description"
         label="Beskrivning"
         name="event-description"
-        value={formData.description || ''}
+        value={formData.description || ""}
         onChange={(e) =>
           setFormData((prevData) => ({
             ...prevData,
@@ -60,7 +57,7 @@ const ClientEvent = ({
           endAdornment: (
             <InputAdornment
               position="end"
-              sx={{ alignSelf: 'flex-end', mr: 1 }}
+              sx={{ alignSelf: "flex-end", mr: 1 }}
             >
               {`${rmCharDescription}/${descriptionMaxLength}`}
             </InputAdornment>
@@ -90,7 +87,7 @@ const ClientEvent = ({
           endAdornment: (
             <InputAdornment
               position="end"
-              sx={{ alignSelf: 'flex-end', mr: 1 }}
+              sx={{ alignSelf: "flex-end", mr: 1 }}
             >
               {`${rmCharSelling}/${sellingTextMaxLength}`}
             </InputAdornment>
@@ -105,7 +102,7 @@ const ClientEvent = ({
         id="event-presentation"
         label="Presentation"
         name="event-presentation"
-        value={formData.presentation || ''}
+        value={formData.presentation || ""}
         onChange={(e) =>
           setFormData((prevData) => ({
             ...prevData,
@@ -121,7 +118,7 @@ const ClientEvent = ({
         id="event-open-hours"
         label="Open Hours"
         name="event-open-hours"
-        value={formData.open_hours || ''}
+        value={formData.open_hours || ""}
         onChange={(e) =>
           setFormData((prevData) => ({
             ...prevData,
@@ -137,7 +134,7 @@ const ClientEvent = ({
         id="event-ticket-information"
         label="Ticket Information"
         name="event-ticket-information"
-        value={formData.ticket_information || ''}
+        value={formData.ticket_information || ""}
         onChange={(e) =>
           setFormData((prevData) => ({
             ...prevData,
@@ -153,7 +150,7 @@ const ClientEvent = ({
         id="event-ticket-info"
         label="Biljett info"
         name="event-ticket-info"
-        value={formData.ticket_info || ''}
+        value={formData.ticket_info || ""}
         onChange={(e) =>
           setFormData((prevData) => ({
             ...prevData,
@@ -169,7 +166,7 @@ const ClientEvent = ({
         id="event-open-times"
         label="Öppettider"
         name="event-open-times"
-        value={formData.open_times || ''}
+        value={formData.open_times || ""}
         onChange={(e) =>
           setFormData((prevData) => ({
             ...prevData,
@@ -188,7 +185,7 @@ const ClientEvent = ({
         id="event-meta-title"
         label="Meta Title"
         name="event-meta-title"
-        value={formData.meta_title || ''}
+        value={formData.meta_title || ""}
         onChange={(e) =>
           setFormData((prevData) => ({
             ...prevData,
@@ -204,7 +201,7 @@ const ClientEvent = ({
         id="event-meta-keywords"
         label="Meta Keywords"
         name="event-meta-keywords"
-        value={formData.meta_keywords || ''}
+        value={formData.meta_keywords || ""}
         onChange={(e) =>
           setFormData((prevData) => ({
             ...prevData,
@@ -220,7 +217,7 @@ const ClientEvent = ({
         id="event-meta-description"
         label="Meta Description"
         name="event-meta-description"
-        value={formData.meta_description || ''}
+        value={formData.meta_description || ""}
         onChange={(e) =>
           setFormData((prevData) => ({
             ...prevData,
@@ -236,7 +233,7 @@ const ClientEvent = ({
         id="event-booking-link"
         label="Bookningslänk"
         name="event-booking-link"
-        value={formData.booking_link || ''}
+        value={formData.booking_link || ""}
         onChange={(e) =>
           setFormData((prevData) => ({
             ...prevData,
@@ -252,7 +249,7 @@ const ClientEvent = ({
         id="event-website-link"
         label="Hemsida"
         name="event-website-link"
-        value={formData.website_link || ''}
+        value={formData.website_link || ""}
         onChange={(e) =>
           setFormData((prevData) => ({
             ...prevData,
@@ -261,6 +258,8 @@ const ClientEvent = ({
         }
         className="text-field"
       />
+
+      <HandleFileUpload />
     </Box>
   );
 };
