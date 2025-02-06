@@ -4,8 +4,8 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import "./fileupload.css";
 import { FormDataContext } from "../context/FormDataContext";
 
-function fileUpload() {
-  const { formData, setFormData } = useContext(FormDataContext);
+function fileUpload({ formData, setFormData }) {
+  /* const { formData, setFormData } = useContext(FormDataContext); */
   const [previewImages, setPreviewImages] = useState([]);
 
   const handleFileUpload = (e) => {

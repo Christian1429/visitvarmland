@@ -259,7 +259,7 @@ const ClientEvent = ({ formData, setFormData }) => {
         className="text-field"
       />
 
-      <HandleFileUpload />
+      <HandleFileUpload formData={formData} setFormData={setFormData} />
     </Box>
   );
 };
