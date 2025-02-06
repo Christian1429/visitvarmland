@@ -10,28 +10,26 @@ function fileUpload() {
 
   const handleFileUpload = (e) => {
     const files = Array.from(e.target.files);
-    /* console.log("Selected files:", files); */
-    if (files.length > 0) {
-      setPreviewImages((prev) => [
-        ...prev,
-        ...Array.from(files).map((file) => URL.createObjectURL(file)),
-      ]);
-    }
-
     if (files.length === 0) {
       console.error("Inga filer valda");
       return;
     }
-    const imagePreviews = files.map((file) => {
-      return URL.createObjectURL(file); // Generate preview URL for the selected image
-    });
 
-    console.log("Generated previews:", imagePreviews);
+    const existingFiles = formData.images || [];
+    const existingFileNames = new Set(existingFiles.map((file) => file.name));
 
-    setFormData((prev) => {
-      const updatedImages = [...(prev.images || []), ...files];
-      return { ...prev, images: updatedImages };
-    });
+    const newFiles = files.filter((file) => !existingFileNames.has(file.name));
+    if (newFiles.length === 0) {
+      console.warn("Dubbletter ignorerade");
+      return;
+    }
+
+    const newPreviews = newFiles.map((file) => URL.createObjectURL(file));
+    setPreviewImages((prev) => [...prev, ...newPreviews]);
+    setFormData((prev) => ({
+      ...prev,
+      images: [...existingFiles, ...newFiles],
+    }));
   };
 
   const removeImage = (index) => {
