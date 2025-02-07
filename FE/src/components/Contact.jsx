@@ -1,11 +1,20 @@
-import React from 'react';
-import { TextField, Box, Typography, useMediaQuery, FormControlLabel, Checkbox } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
+import React from "react";
+import {
+  TextField,
+  Box,
+  Typography,
+  useMediaQuery,
+  FormControlLabel,
+  Checkbox,
+} from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { useTranslation } from "react-i18next";
 
 const Contact = ({ formData, setFormData }) => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
+  const { t } = useTranslation();
   return (
     <>
       <Typography
@@ -14,19 +23,19 @@ const Contact = ({ formData, setFormData }) => {
         align="center"
         gutterBottom
         sx={{
-          color: '#004338',
-          fontWeight: 'bold',
-          paddingTop: '1rem',
+          color: "#004338",
+          fontWeight: "bold",
+          paddingTop: "1rem",
         }}
       >
-        Fyll i dina uppgifter
+        {t("contact_details")}
       </Typography>
       <Typography
         align="center"
         gutterBottom
         sx={{
-          color: '#004338',
-          fontWeight: 'bold',
+          color: "#004338",
+          fontWeight: "bold",
         }}
       >
         Följ alla steg
@@ -34,7 +43,7 @@ const Contact = ({ formData, setFormData }) => {
       {/* Contact box */}
       <Box
         sx={{
-          width: '100%',
+          width: "100%",
           maxWidth: 600,
           boxShadow: 3,
           p: 4,
@@ -45,9 +54,9 @@ const Contact = ({ formData, setFormData }) => {
       >
         <Box
           sx={{
-            display: isMobile ? 'flex' : 'grid',
-            flexDirection: isMobile ? 'column' : 'row',
-            padding: isMobile ? '1rem' : '0',
+            display: isMobile ? "flex" : "grid",
+            flexDirection: isMobile ? "column" : "row",
+            padding: isMobile ? "1rem" : "0",
             gap: 2,
           }}
         >
