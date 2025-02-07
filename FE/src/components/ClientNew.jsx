@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Box,
   TextField,
@@ -7,29 +7,27 @@ import {
   InputLabel,
   Select,
   MenuItem,
-} from '@mui/material';
+} from "@mui/material";
+import { useTranslation } from "react-i18next";
 
-const ClientNew = ({
-  formData,
-  setFormData,
-}) => {
+const ClientNew = ({ formData, setFormData }) => {
   const cities = [
-    { municipality_id: 1, name: 'Arvika' },
-    { municipality_id: 2, name: 'Eda' },
-    { municipality_id: 3, name: 'Filipstad' },
-    { municipality_id: 4, name: 'Forshaga' },
-    { municipality_id: 5, name: 'Grums' },
-    { municipality_id: 6, name: 'Hagfors' },
-    { municipality_id: 7, name: 'Hammarö' },
-    { municipality_id: 8, name: 'Karlstad' },
-    { municipality_id: 9, name: 'Kil' },
-    { municipality_id: 10, name: 'Kristinehamn' },
-    { municipality_id: 11, name: 'Munkfors' },
-    { municipality_id: 12, name: 'Storfors' },
-    { municipality_id: 13, name: 'Sunne' },
-    { municipality_id: 14, name: 'Säffle' },
-    { municipality_id: 15, name: 'Torsby' },
-    { municipality_id: 16, name: 'Årjäng' },
+    { municipality_id: 1, name: "Arvika" },
+    { municipality_id: 2, name: "Eda" },
+    { municipality_id: 3, name: "Filipstad" },
+    { municipality_id: 4, name: "Forshaga" },
+    { municipality_id: 5, name: "Grums" },
+    { municipality_id: 6, name: "Hagfors" },
+    { municipality_id: 7, name: "Hammarö" },
+    { municipality_id: 8, name: "Karlstad" },
+    { municipality_id: 9, name: "Kil" },
+    { municipality_id: 10, name: "Kristinehamn" },
+    { municipality_id: 11, name: "Munkfors" },
+    { municipality_id: 12, name: "Storfors" },
+    { municipality_id: 13, name: "Sunne" },
+    { municipality_id: 14, name: "Säffle" },
+    { municipality_id: 15, name: "Torsby" },
+    { municipality_id: 16, name: "Årjäng" },
   ];
 
   const handleCityChange = (event) => {
@@ -41,22 +39,22 @@ const ClientNew = ({
       organizers: [
         {
           ...prevData.organizers[0],
-          city: selectedCity ? selectedCity.name : '',
-          municipality_id: selectedCity ? selectedCity.municipality_id : '',
+          city: selectedCity ? selectedCity.name : "",
+          municipality_id: selectedCity ? selectedCity.municipality_id : "",
         },
       ],
     }));
   };
-
+  const { t } = useTranslation();
   return (
     <Box
       sx={{
-        width: '100%',
+        width: "100%",
         maxWidth: 600,
         boxShadow: 3,
         p: 4,
-        m: 'auto',
-        backdropFilter: 'blur(2px)',
+        m: "auto",
+        backdropFilter: "blur(2px)",
       }}
     >
       <Typography variant="h6" component="h2" gutterBottom>
@@ -68,9 +66,9 @@ const ClientNew = ({
         required
         fullWidth
         id="new-organizer-title"
-        label="Title"
+        label={t("title")}
         name="title"
-        value={formData.organizers[0]?.title || ''}
+        value={formData.organizers[0]?.title || ""}
         onChange={(e) =>
           setFormData((prevData) => ({
             ...prevData,
@@ -90,9 +88,9 @@ const ClientNew = ({
         required
         fullWidth
         id="new-organizer-street1"
-        label="Gatuadress 1"
+        label={t("address1")}
         name="street1"
-        value={formData.organizers[0]?.street1 || ''}
+        value={formData.organizers[0]?.street1 || ""}
         onChange={(e) =>
           setFormData((prevData) => ({
             ...prevData,
@@ -112,9 +110,9 @@ const ClientNew = ({
         required
         fullWidth
         id="new-organizer-street2"
-        label="Gatuadress 2"
+        label={t("address2")}
         name="street2"
-        value={formData.organizers[0]?.street2 || ''}
+        value={formData.organizers[0]?.street2 || ""}
         onChange={(e) =>
           setFormData((prevData) => ({
             ...prevData,
@@ -134,9 +132,9 @@ const ClientNew = ({
         required
         fullWidth
         id="new-organizer-zipcode"
-        label="Postnummer"
+        label={t("postnummer")}
         name="zip_code"
-        value={formData.organizers[0]?.zip_code || ''}
+        value={formData.organizers[0]?.zip_code || ""}
         onChange={(e) =>
           setFormData((prevData) => ({
             ...prevData,
@@ -151,7 +149,7 @@ const ClientNew = ({
         className="text-field"
       />
       <FormControl variant="outlined" margin="dense" required fullWidth>
-        <InputLabel id="organizer-city-label">Stad</InputLabel>
+        <InputLabel id="organizer-city-label">{t("city")}</InputLabel>
         <Select
           labelId="organizer-city-label"
           id="organizer-city"
@@ -171,7 +169,7 @@ const ClientNew = ({
         margin="dense"
         fullWidth
         id="new-organizer-organization-id"
-        label="Organisationsnummer int"
+        label={t("organisation")}
         name="organization_id"
         value={formData.organizers[0]?.organization_id || 0}
         onChange={(e) =>
@@ -192,9 +190,9 @@ const ClientNew = ({
         margin="dense"
         fullWidth
         id="new-organizer-booking-link"
-        label="Bokningslänk"
+        label={t("Bokningslink")}
         name="booking_link"
-        value={formData.organizers[0]?.booking_link || ''}
+        value={formData.organizers[0]?.booking_link || ""}
         onChange={(e) =>
           setFormData((prevData) => ({
             ...prevData,
@@ -213,9 +211,9 @@ const ClientNew = ({
         margin="dense"
         fullWidth
         id="new-organizer-website"
-        label="Hemsida"
+        label={t("Hemsida")}
         name="website"
-        value={formData.organizers[0]?.website || ''}
+        value={formData.organizers[0]?.website || ""}
         onChange={(e) =>
           setFormData((prevData) => ({
             ...prevData,
@@ -235,9 +233,9 @@ const ClientNew = ({
         required
         fullWidth
         id="new-organizer-email"
-        label="E-post"
+        label={t("email")}
         name="email"
-        value={formData.organizers[0]?.email || ''}
+        value={formData.organizers[0]?.email || ""}
         onChange={(e) =>
           setFormData((prevData) => ({
             ...prevData,
@@ -257,16 +255,16 @@ const ClientNew = ({
         required
         fullWidth
         id="new-organizer-phone-numbers"
-        label="Telefonnummer"
+        label={t("phone")}
         name="phone_numbers"
-        value={formData.organizers[0]?.phone_numbers.join(', ') || ''}
+        value={formData.organizers[0]?.phone_numbers.join(", ") || ""}
         onChange={(e) =>
           setFormData((prevData) => ({
             ...prevData,
             organizers: [
               {
                 ...prevData.organizers[0],
-                phone_numbers: e.target.value.split(', '),
+                phone_numbers: e.target.value.split(", "),
               },
             ],
           }))
