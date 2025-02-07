@@ -11,7 +11,12 @@ class DataController {
       if (!req.files || req.files.length === 0) {
         return res.status(400).json({ message: "Ingen fil uppladdad" });
       }
-
+      req.files.forEach((file) => {
+        console.log("File Info: ", file);
+        // Here, file.buffer contains the binary data of the image
+        // file.originalname is the name of the file
+        // file.mimetype is the MIME type of the file
+      });
       // Define max file size (2MB)
       const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
       const Min_WIDTH = 600; // Allow only 640x640
@@ -31,10 +36,10 @@ class DataController {
           if (file.size > MAX_FILE_SIZE) {
             throw new Error(`Filen ${file.originalname} är för stor! Max 2MB.`);
           }
-
+          /* console.log(file);
+          console.log(file.buffer); */
           // Use sharp to read image and get metadata (dimensions)
           const imageMetadata = await sharp(file.buffer).metadata();
-
           // Check if the image is exactly 640x640
           console.log("imageMetadata.width", imageMetadata.width);
           console.log("imageMetadata.height", imageMetadata.height);

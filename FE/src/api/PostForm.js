@@ -1,20 +1,23 @@
 const postForm = async (data) => {
-  console.log("postForm", data);
+  /*   console.log("postForm", data); */
+
   try {
-    const response = await fetch("http://localhost:2000/api/data/", {
+    const requestOptions = {
       method: "POST",
       mode: "cors",
-      /* headers: {
-        'Content-Type': 'application/json',
-      }, */
-      /* body: JSON.stringify(data), */
       body: data,
-    });
+    };
 
-    if (response.ok) {
-      console.log("Form submitted successfully");
+    const response = await fetch(
+      "http://localhost:2000/api/data/",
+      requestOptions
+    ).catch((error) => {
+      console.error("fetch error", error);
+    });
+    if (!response.ok) {
+      throw new Error(`Failed to submit data: ${JSON.stringify(response)}`);
     } else {
-      console.error("Form submission failed");
+      console.log("Form submitted successfully");
     }
   } catch (error) {
     console.error("Error:", error);

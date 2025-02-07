@@ -2,13 +2,15 @@ import { React, useContext, useState } from "react";
 import { Box, Typography, TextField, Button, IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import "./fileupload.css";
+import { FormDataContext } from "../context/FormDataContext";
 
-function fileUpload({ formData, setFormData }) {
+function fileUpload(/* { formData, setFormData } */) {
+  const { formData, setFormData } = useContext(FormDataContext);
   const [previewImages, setPreviewImages] = useState([]);
 
   const handleFileUpload = (e) => {
     const files = Array.from(e.target.files);
-    console.log("selected file", files);
+
     if (files.length === 0) {
       console.error("Inga filer valda");
       return;
@@ -23,6 +25,7 @@ function fileUpload({ formData, setFormData }) {
       return;
     }
 
+    /* console.log("selected file", files); */
     const newPreviews = newFiles.map((file) => URL.createObjectURL(file));
     setPreviewImages((prev) => [...prev, ...newPreviews]);
     setFormData((prev) => ({
@@ -47,29 +50,39 @@ function fileUpload({ formData, setFormData }) {
     e.preventDefault();
     const formDataToSend = new FormData();
 
-    formData.images.forEach((file) => {
-      formDataToSend.append("images", file);
+    // ✅ Append other form fields correctly
+    Object.keys(formData).forEach((key) => {
+      if (key !== "images") {
+        formDataToSend.append(key, formData[key]);
+      }
     });
 
-    const requestOptions = {
-      method: "POST",
-      mode: "cors",
-      body: formDataToSend,
-    };
+    // ✅ Append images correctly as files
+    if (formData.images && formData.images.length > 0) {
+      formData.images.forEach((file) => {
+        formDataToSend.append("images", file);
+      });
+    }
+
+    console.log("Submitting FormData:", formDataToSend);
 
     try {
-      const response = await fetch(
-        "http://localhost:2000/api/data/upload",
-        requestOptions
-      );
+      const response = await fetch("http://localhost:2000/api/data/upload", {
+        method: "POST",
+        mode: "cors",
+        body: formDataToSend,
+      });
+
       if (!response.ok) {
-        throw new Error(`Failed to submit data: ${JSON.stringify(response)}`);
+        throw new Error(`Failed to submit data: ${await response.text()}`);
       }
-      console.log("Bilder uppladdade!");
+
+      console.log("Images uploaded successfully!");
     } catch (error) {
       console.error("Error:", error.message);
     }
   };
+
   return (
     <Box>
       <Typography sx={{ marginTop: "1.5rem", marginBottom: "1rem" }}>
@@ -82,10 +95,13 @@ function fileUpload({ formData, setFormData }) {
         inputProps={{ accept: "image/jpeg", multiple: true }}
         sx={{ width: "90%" }}
         onChange={handleFileUpload}
-        name="image"
+        name="images"
       />
 
       <Button
+        onClick={(e) => {
+          handleSubmit(e);
+        }}
         variant="contained"
         color="primary"
         type="submit"

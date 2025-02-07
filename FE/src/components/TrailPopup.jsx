@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Box,
   TextField,
@@ -7,7 +7,7 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
-} from '@mui/material';
+} from "@mui/material";
 
 const TrailPopup = ({ formData, setFormData }) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -16,10 +16,10 @@ const TrailPopup = ({ formData, setFormData }) => {
     <>
       <div
         style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: '10vh',
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "10vh",
         }}
       >
         <Button
@@ -32,15 +32,15 @@ const TrailPopup = ({ formData, setFormData }) => {
       </div>
 
       <Dialog open={isPopupOpen} onClose={() => setIsPopupOpen(false)}>
-        <DialogTitle sx={{ textAlign: 'center' }}>Stig information</DialogTitle>
+        <DialogTitle sx={{ textAlign: "center" }}>Stig information</DialogTitle>
         <DialogContent>
           <Box
             sx={{
-              display: 'flex',
-              flexDirection: 'column',
+              display: "flex",
+              flexDirection: "column",
               gap: 2,
-              width: '30rem',
-              padding: '1rem',
+              width: "30rem",
+              padding: "1rem",
             }}
           >
             <TextField
@@ -115,15 +115,15 @@ const TrailPopup = ({ formData, setFormData }) => {
           </Box>
         </DialogContent>
         <DialogActions
-          style={{ display: 'flex', justifyContent: 'center', paddingTop: '0' }}
+          style={{ display: "flex", justifyContent: "center", paddingTop: "0" }}
         >
           <Box>
             <Button
               onClick={() => {
-                console.log('Saved data:', formData);
+                console.log("Saved data:", formData);
                 setIsPopupOpen(false);
               }}
-              sx={{ marginBottom: '2rem', width: '8rem' }}
+              sx={{ marginBottom: "2rem", width: "8rem" }}
             >
               Spara
             </Button>
