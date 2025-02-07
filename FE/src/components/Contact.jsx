@@ -1,21 +1,18 @@
-import React from "react";
+import React from 'react';
 import {
   TextField,
   Box,
   Typography,
   useMediaQuery,
-  FormControlLabel,
-  Checkbox,
-} from "@mui/material";
-import { useTheme } from "@mui/material/styles";
-import { useTranslation } from "react-i18next";
-import Translatebuttons from "../components/Buttons/translationbutton";
+} from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import { useTranslation } from 'react-i18next';
 
 const Contact = ({ formData, setFormData }) => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const { t } = useTranslation();
+
   return (
     <>
       <Typography
@@ -29,7 +26,7 @@ const Contact = ({ formData, setFormData }) => {
           paddingTop: '1rem',
         }}
       >
-        {t('contact_details')}
+        {t('contact_title')}
       </Typography>
       <Typography
         align="center"
@@ -39,7 +36,7 @@ const Contact = ({ formData, setFormData }) => {
           fontWeight: 'bold',
         }}
       >
-        Följ alla steg
+        {t('sub_title')}
       </Typography>
       {/* Contact box */}
       <Box
@@ -114,7 +111,7 @@ const Contact = ({ formData, setFormData }) => {
             required
             fullWidth
             id="address"
-            label={t('address')}
+            label={t('address_1')}
             name="address"
             autoComplete="address"
             value={formData.contact[0].contact_address || ''}
@@ -154,20 +151,6 @@ const Contact = ({ formData, setFormData }) => {
             }
             className="text-field"
           />
-          {/* <Box gridColumn="span 2">
-            <FormControlLabel
-              control={
-                <Checkbox
-                checked={consent}
-                onChange={(e) => setConsent(e.target.checked)}
-                name="consent"
-                color="primary"
-                required
-                />
-              }
-              label="Jag samtycker till att mina uppgifter lagras och används enligt GDPR."
-            />
-          </Box> */}
         </Box>
       </Box>
     </>

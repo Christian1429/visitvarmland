@@ -52,11 +52,11 @@ export const FormDataProvider = ({ children }) => {
         size: "",
       },
     ],
-    categories: [
-      {
-        title: "",
-      },
-    ],
+    // categories: [
+    //   {
+    //     title: "",
+    //   },
+    // ],
     places: [
       {
         id: 0,
@@ -79,7 +79,6 @@ export const FormDataProvider = ({ children }) => {
     trail_level: "",
     trail_terrain: "",
     trail_time: "",
-    slug: "",
     primary_image: {
       large: "",
       medium: "",

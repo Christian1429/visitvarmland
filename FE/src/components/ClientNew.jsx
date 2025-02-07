@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Box,
   TextField,
@@ -7,10 +7,11 @@ import {
   InputLabel,
   Select,
   MenuItem,
-} from "@mui/material";
-import { useTranslation } from "react-i18next";
+} from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 const ClientNew = ({ formData, setFormData }) => {
+  const { t } = useTranslation();
   const cities = [
     { municipality_id: 0, name: '' },
     { municipality_id: 2, name: 'Arvika' },
@@ -42,13 +43,13 @@ const ClientNew = ({ formData, setFormData }) => {
       organizers: [
         {
           ...prevData.organizers[0],
-          city: selectedCity ? selectedCity.name : "",
-          municipality_id: selectedCity ? selectedCity.municipality_id : "",
+          city: selectedCity ? selectedCity.name : '',
+          municipality_id: selectedCity ? selectedCity.municipality_id : '',
         },
       ],
     }));
   };
-  const { t } = useTranslation();
+
   return (
     <Box
       sx={{
@@ -61,7 +62,7 @@ const ClientNew = ({ formData, setFormData }) => {
       }}
     >
       <Typography variant="h6" component="h2" gutterBottom>
-        Är du ny arrangör eller företag?
+        {t('title_organizer')}
       </Typography>
       <TextField
         variant="outlined"
@@ -69,7 +70,7 @@ const ClientNew = ({ formData, setFormData }) => {
         required
         fullWidth
         id="new-organizer-title"
-        label={t('Titel')}
+        label={t('title')}
         name="title"
         value={formData.organizers[0]?.title || ''}
         onChange={(e) =>
@@ -91,7 +92,7 @@ const ClientNew = ({ formData, setFormData }) => {
         required
         fullWidth
         id="new-organizer-street1"
-        label={t('adress 1')}
+        label={t('address_1')}
         name="street1"
         value={formData.organizers[0]?.street1 || ''}
         onChange={(e) =>
@@ -113,7 +114,7 @@ const ClientNew = ({ formData, setFormData }) => {
         required
         fullWidth
         id="new-organizer-street2"
-        label={t('adress 2')}
+        label={t('address_2')}
         name="street2"
         value={formData.organizers[0]?.street2 || ''}
         onChange={(e) =>
@@ -135,7 +136,7 @@ const ClientNew = ({ formData, setFormData }) => {
         required
         fullWidth
         id="new-organizer-zipcode"
-        label={t('Postnummer')}
+        label={t('zipcode')}
         name="zip_code"
         value={formData.organizers[0]?.zip_code || ''}
         onChange={(e) =>

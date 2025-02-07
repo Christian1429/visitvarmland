@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import getForm from '../api/GetFrom';
+import { useTranslation } from 'react-i18next';
 
 const ClientExist = ({ setFormData }) => {
   const [clients, setClients] = useState([]);
   const [dropdownValueExisting, setDropdownValueExisting] = useState('');
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchClients = async () => {
@@ -30,7 +32,6 @@ const ClientExist = ({ setFormData }) => {
               zip_code: organizers.zip_code || '',
               city: organizers.city || '',
               municipality_id: organizers.municipality_id || '',
-              organization_id: organizers.organization_id || '',
               booking_link: organizers.booking_link || '',
               website: organizers.website_link || '',
               email: organizers.email || '',
@@ -53,7 +54,7 @@ const ClientExist = ({ setFormData }) => {
   return (
     <FormControl fullWidth margin="normal" sx={{ width: '15rem' }}>
       <InputLabel id="dropdown-label-existing">
-        Redan registrerad?
+        {t('dropdown_organizer_exist')}
       </InputLabel>
       <Select
         labelId="dropdown-label-existing"

@@ -7,11 +7,13 @@ import "dayjs/locale/sv";
 import { useTranslation } from "react-i18next";
 
 const DatePickerClient = ({ formData, setFormData }) => {
+
   const { t } = useTranslation();
+
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="sv">
       <Typography sx={{ textAlign: 'center' }}>
-        Datum och tid för ditt event
+        {t('event_title')}
       </Typography>
       <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
         <DatePicker

@@ -1,14 +1,20 @@
-import React from "react";
-import { TextField, Box, InputAdornment } from "@mui/material";
+import { useState } from "react";
+import { TextField, Box, InputAdornment, Checkbox, FormControlLabel } from "@mui/material";
 import DatePickerClient from "../components/DatePicker";
 import HandleFileUpload from "../components/FileUpload";
 import { useTranslation } from "react-i18next";
+
 const ClientEvent = ({ formData, setFormData }) => {
+
+  // text limitations
   const sellingTextMaxLength = 100;
   const descriptionMaxLength = 200;
   const rmCharDescription = descriptionMaxLength - formData.description.length;
   const rmCharSelling = sellingTextMaxLength - formData.sales_text.length;
+
   const { t } = useTranslation();
+  const [consent, setConsent] = useState(false);
+
   return (
     <Box
       sx={{
@@ -39,8 +45,8 @@ const ClientEvent = ({ formData, setFormData }) => {
         variant="outlined"
         margin="dense"
         fullWidth
-        id={t('description')}
-        label="Description"
+        id="description"
+        label={t('description')}
         name="description"
         value={formData.description || ''}
         onChange={(e) =>
@@ -69,8 +75,8 @@ const ClientEvent = ({ formData, setFormData }) => {
         variant="outlined"
         margin="dense"
         fullWidth
-        id="selling_text"
-        label={t(selling_text)}
+        id="sales_text"
+        label={t('sales_text')}
         name="event-sales-text"
         value={formData.sales_text || ''}
         onChange={(e) =>
@@ -162,8 +168,8 @@ const ClientEvent = ({ formData, setFormData }) => {
         variant="outlined"
         margin="dense"
         fullWidth
-        id="event-website-link"
-        label="Hemsida"
+        id="website"
+        label={t('website')}
         name="event-website-link"
         value={formData.website_link || ''}
         onChange={(e) =>
@@ -174,8 +180,23 @@ const ClientEvent = ({ formData, setFormData }) => {
         }
         className="text-field"
       />
-
+      {/* --------------- IMAGE UPLOADER -------------- */}
       <HandleFileUpload />
+
+      <Box gridColumn="span 2">
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={consent}
+              onChange={(e) => setConsent(e.target.checked)}
+              name="consent"
+              color="primary"
+              required
+            />
+          }
+          label={t("gdpr")}
+        />
+      </Box>
     </Box>
   );
 };

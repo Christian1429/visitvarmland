@@ -56,7 +56,6 @@ const categorySchema = new mongoose.Schema({
 });
 
 const placeSchema = new mongoose.Schema({
-  id: { type: Number },
   title: { type: String },
   presentation: { type: String },
   latitude: { type: String },
@@ -74,8 +73,6 @@ const occasionSchema = new mongoose.Schema({
 });
 
 const dataSchema = new mongoose.Schema({
-  created_at: { type: Date, default: Date.now },
-  updated_at: { type: Date, default: Date.now },
   title: { type: String },
   description: { type: String },
   sales_text: { type: String },
@@ -91,9 +88,8 @@ const dataSchema = new mongoose.Schema({
   phone_numbers: [{ type: String }],
   images: [imageSchema],
   files: [fileSchema],
-  categories: [categorySchema],
+  // categories: [categorySchema],
   places: [placeSchema],
-  distance: { type: String },
   is_trail: { type: Number },
   trail_code_snippet: { type: String },
   trail_total_length: { type: Number },
