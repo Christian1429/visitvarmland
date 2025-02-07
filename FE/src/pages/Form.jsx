@@ -20,13 +20,14 @@ import handleSubmit from "../utils/handleSubmit";
 import { handleChange, handleArrayChange } from "../utils/formUtils";
 import TrailPopup from "../components/TrailPopup";
 import DatePickerClient from "../components/DatePicker";
+import { useTranslation } from "react-i18next";
 
 const Form = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const [currentStep, setCurrentStep] = useState(0);
   const { formData, setFormData } = useContext(FormDataContext);
-
+  const { t } = useTranslation();
   const handleNext = () => {
     setCurrentStep((prevStep) => prevStep + 1);
   };
@@ -59,7 +60,12 @@ const Form = () => {
         return (
           <>
             <DatePickerClient formData={formData} setFormData={setFormData} />
-            <TrailPopup />
+            <TrailPopup
+              formData={formData}
+              setFormData={setFormData}
+              handleChange={handleChange}
+              handleArrayChange={handleArrayChange}
+            />
             <ClientEvent
               formData={formData}
               setFormData={setFormData}
@@ -98,7 +104,7 @@ const Form = () => {
             paddingBottom: "1rem",
           }}
         >
-          Tips och evenemang
+          {t("tips_events")}
         </Typography>
         <CloseBtn redirectUrl="https://visitvarmland.com" />
         <Box
@@ -142,7 +148,12 @@ const Form = () => {
           <Box sx={{ mb: 4 }}>{renderStep()}</Box>
           {currentStep < 2 && <BtnNext onClick={handleNext} />}
           {currentStep === 2 && (
-            <button onClick={(e) => handleSubmit(e, formData)}>Submit</button>
+            <Button
+              onClick={() => handleSubmit(formData)}
+              sx={{ marginBottom: "2rem", width: "8rem" }}
+            >
+              Skicka
+            </Button>
           )}
         </Box>
       </form>
