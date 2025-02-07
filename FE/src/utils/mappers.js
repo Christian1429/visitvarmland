@@ -1,5 +1,3 @@
-
-
 export const mapOrganizers = (organizers) =>
   organizers.map((organizer) => ({
     id: organizer.id || 0,
@@ -23,7 +21,7 @@ export const mapPrices = (prices) =>
     price: price.price,
     seats_available: price.seats_available,
     description: price.description,
-}));
+  }));
 
 export const mapImages = (images) =>
   images.map((image) => ({
@@ -35,21 +33,21 @@ export const mapImages = (images) =>
     description: image.description,
     photographer: image.photographer,
     year: image.year,
-}));
+  }));
 
 export const mapFiles = (files) =>
   files.map((file) => ({
     link: file.link,
     title: file.title,
     size: file.size,
-}));
+  }));
 
 export const mapCategories = (categories) =>
   categories.map((category) => ({
     id: category.id,
     title: category.title,
     slug: category.slug,
-}));
+  }));
 
 export const mapPlaces = (places) =>
   places.map((place) => ({
@@ -62,7 +60,7 @@ export const mapPlaces = (places) =>
       title: access.title,
       more_information: access.more_information,
     })),
-}));
+  }));
 
 export const mapOccasions = (occasions) =>
   occasions.map((occasion) => ({
@@ -70,30 +68,30 @@ export const mapOccasions = (occasions) =>
     date_end: occasion.date_end,
     time_start: occasion.time_start,
     time_end: occasion.time_end,
-}));
-
-export const mapPastOccasions = (past_occasions) =>
-  past_occasions.map((occasion) => ({
-    date_start: occasion.date_start,
-    date_end: occasion.date_end,
-    time_start: occasion.time_start,
-    time_end: occasion.time_end,
-}));
-
-export const mapRelatedProducts = (related_products) =>
-  related_products.map((product) => ({
-    id: product.id,
-    title: product.title,
-}));
-
-export const mapRelatedEvents = (related_events) =>
-  related_events.map((event) => ({
-    id: event.id,
-    title: event.title,
-}));
-
-export const mapRelatedItems = (items) =>
-  items.map((item) => ({
-    id: item.id,
-    title: item.title,
   }));
+
+// export const mapPastOccasions = (past_occasions) =>
+//   past_occasions.map((occasion) => ({
+//     date_start: occasion.date_start,
+//     date_end: occasion.date_end,
+//     time_start: occasion.time_start,
+//     time_end: occasion.time_end,
+// }));
+
+// export const mapRelatedProducts = (related_products) =>
+//   related_products.map((product) => ({
+//     id: product.id,
+//     title: product.title,
+// }));
+
+// export const mapRelatedEvents = (related_events) =>
+//   related_events.map((event) => ({
+//     id: event.id,
+//     title: event.title,
+// }));
+
+// export const mapRelatedItems = (items) =>
+//   items.map((item) => ({
+//     id: item.id,
+//     title: item.title,
+//   }));

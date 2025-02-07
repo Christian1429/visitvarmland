@@ -40,14 +40,16 @@ const Contact = ({ formData, setFormData }) => {
       >
         Följ alla steg
       </Typography>
+      {/* Contact box */}
       <Box
         sx={{
           width: "100%",
           maxWidth: 600,
           boxShadow: 3,
           p: 4,
-          m: "auto",
-          backdropFilter: "blur(2px)",
+          m: 'auto',
+          backgroundColor: '#f6efea',
+          backdropFilter: 'blur(2px)',
         }}
       >
         <Box
@@ -64,11 +66,11 @@ const Contact = ({ formData, setFormData }) => {
             required
             fullWidth
             id="name"
-            label={t("name")}
+            label="Ditt namn"
             name="name"
             autoComplete="name"
             autoFocus
-            value={formData.contact[0].contact_name || ""}
+            value={formData.contact[0].contact_name || ''}
             onChange={(e) =>
               setFormData((prevData) => ({
                 ...prevData,
@@ -88,10 +90,10 @@ const Contact = ({ formData, setFormData }) => {
             required
             fullWidth
             id="email"
-            label={t("email")}
+            label="E-post"
             name="email"
             autoComplete="email"
-            value={formData.contact[0].contact_email || ""}
+            value={formData.contact[0].contact_email || ''}
             onChange={(e) =>
               setFormData((prevData) => ({
                 ...prevData,
@@ -111,10 +113,10 @@ const Contact = ({ formData, setFormData }) => {
             required
             fullWidth
             id="address"
-            label={t("address")}
+            label="Adress"
             name="address"
             autoComplete="address"
-            value={formData.contact[0].contact_address || ""}
+            value={formData.contact[0].contact_address || ''}
             onChange={(e) =>
               setFormData((prevData) => ({
                 ...prevData,
@@ -134,10 +136,10 @@ const Contact = ({ formData, setFormData }) => {
             required
             fullWidth
             id="phone"
-            label={t("phone")}
+            label="Telefonnummer"
             name="phone"
             autoComplete="phone"
-            value={formData.contact[0].contact_number || ""}
+            value={formData.contact[0].contact_number || ''}
             onChange={(e) =>
               setFormData((prevData) => ({
                 ...prevData,

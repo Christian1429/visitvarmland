@@ -1,16 +1,19 @@
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker, TimePicker } from "@mui/x-date-pickers";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import dayjs from "dayjs";
 import "dayjs/locale/sv";
 import { useTranslation } from "react-i18next";
+
 const DatePickerClient = ({ formData, setFormData }) => {
   const { t } = useTranslation();
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="sv">
-      <p>Datum och tid för ditt event</p>
-      <Box sx={{ display: "flex", justifyContent: "space-between", gap: 2 }}>
+      <Typography sx={{ textAlign: 'center' }}>
+        Datum och tid för ditt event
+      </Typography>
+      <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
         <DatePicker
           label={t("dateFrom")}
           value={dayjs(formData.occasions[0].date_start)}
@@ -48,8 +51,8 @@ const DatePickerClient = ({ formData, setFormData }) => {
       </Box>
       <Box
         sx={{
-          display: "flex",
-          justifyContent: "space-between",
+          display: 'flex',
+          justifyContent: 'center',
           gap: 2,
           marginTop: 2,
         }}

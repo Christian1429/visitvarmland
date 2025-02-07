@@ -60,7 +60,12 @@ const Form = () => {
         return (
           <>
             <DatePickerClient formData={formData} setFormData={setFormData} />
-            <TrailPopup />
+            <TrailPopup
+              formData={formData}
+              setFormData={setFormData}
+              handleChange={handleChange}
+              handleArrayChange={handleArrayChange}
+            />
             <ClientEvent
               formData={formData}
               setFormData={setFormData}
@@ -143,7 +148,9 @@ const Form = () => {
           <Box sx={{ mb: 4 }}>{renderStep()}</Box>
           {currentStep < 2 && <BtnNext onClick={handleNext} />}
           {currentStep === 2 && (
-            <button onClick={() => handleSubmit(formData)}>Submit</button>
+            <Button onClick={() => handleSubmit(formData)}
+            sx={{marginBottom: '2rem', width: '8rem'}}
+            >Skicka</Button>
           )}
         </Box>
       </form>

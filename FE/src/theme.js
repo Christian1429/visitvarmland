@@ -67,6 +67,30 @@ const theme = createTheme({
         },
       },
     },
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          '& .MuiInputBase-root': {
+            borderRadius: '8px',
+            '&:hover .MuiOutlinedInput-notchedOutline': {
+              borderColor: '#004337', // Hover border color
+            },
+            '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+              borderColor: '#004337', // Focused border color
+            },
+            '&:not(.Mui-focused) .MuiOutlinedInput-notchedOutline': {
+              borderColor: '#b0b0b0', // Border color when not focused
+            },
+          },
+          '& .MuiInputLabel-root': {
+            color: '#333', // Label color when not focused
+            '&.Mui-focused': {
+              color: '#004337', // Focused label color
+            },
+          },
+        },
+      },
+    },
   },
 });
 
