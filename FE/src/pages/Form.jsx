@@ -28,6 +28,7 @@ const Form = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const { formData, setFormData } = useContext(FormDataContext);
   const { t } = useTranslation();
+
   const handleNext = () => {
     setCurrentStep((prevStep) => prevStep + 1);
   };
@@ -38,6 +39,7 @@ const Form = () => {
 
   const renderStep = () => {
     switch (currentStep) {
+      
       case 0:
         return (
           <>

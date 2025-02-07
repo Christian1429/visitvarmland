@@ -78,12 +78,6 @@ function fileUpload() {
       <Typography sx={{ marginTop: "1.5rem", marginBottom: "1rem" }}>
         Ladda upp bilder. Max 2MB
       </Typography>
-
-      <form
-        onSubmit={handleSubmit}
-        className="fileupload"
-        encType="multipart/form-data"
-      >
         <TextField
           required
           type="file"
@@ -101,7 +95,6 @@ function fileUpload() {
         >
           Ladda upp
         </Button>
-      </form>
       {/* Preview selected images */}
       <Box>
         {previewImages.length > 0 && (
