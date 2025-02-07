@@ -53,7 +53,6 @@ const ClientNew = ({ formData, setFormData }) => {
   return (
     <Box
       sx={{
-        width: '100%',
         maxWidth: 600,
         boxShadow: 3,
         p: 4,

@@ -41,11 +41,9 @@ const Contact = ({ formData, setFormData }) => {
       {/* Contact box */}
       <Box
         sx={{
-          width: '100%',
           maxWidth: 600,
           boxShadow: 3,
           p: 4,
-          m: 'auto',
           backgroundColor: '#f6efea',
           backdropFilter: 'blur(2px)',
         }}
