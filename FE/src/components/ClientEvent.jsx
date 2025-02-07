@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { TextField, Box, InputAdornment, Checkbox, FormControlLabel } from "@mui/material";
-import DatePickerClient from "../components/DatePicker";
 import HandleFileUpload from "../components/FileUpload";
 import { useTranslation } from "react-i18next";
 
@@ -18,7 +17,6 @@ const ClientEvent = ({ formData, setFormData }) => {
   return (
     <Box
       sx={{
-        width: '100%',
         maxWidth: 600,
         boxShadow: 3,
         p: 4,

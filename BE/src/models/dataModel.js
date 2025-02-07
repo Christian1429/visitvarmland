@@ -97,7 +97,6 @@ const dataSchema = new mongoose.Schema({
   trail_level: { type: String },
   trail_terrain: { type: String },
   trail_time: { type: String },
-  slug: { type: String },
   primary_image: {
     large: { type: String },
     medium: { type: String },
