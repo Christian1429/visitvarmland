@@ -4,19 +4,13 @@ import { mapPrices, mapImages, mapFiles, mapPlaces, mapOccasions, mapOrganizers}
 const handleSubmit = async (formData) => {
   const dataToSubmit = {
     ...formData,
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
     title: formData.title || '',
     description: formData.description || '',
     sales_text: formData.sales_text || '',
     presentation: formData.presentation || '',
     open_hours: formData.open_hours || '',
     ticket_information: formData.ticket_information || '',
-    ticket_info: formData.ticket_info || '',
     open_times: formData.open_times || '',
-    meta_title: formData.meta_title || '',
-    meta_keywords: formData.meta_keywords || '',
-    meta_description: formData.meta_description || '',
     booking_link: formData.booking_link || '',
     website_link: formData.website_link || '',
     organizers: mapOrganizers(formData.organizers),
@@ -27,17 +21,6 @@ const handleSubmit = async (formData) => {
     files: mapFiles(formData.files),
     // categories: mapCategories(formData.categories),
     places: mapPlaces(formData.places),
-    distance: '',
-    slugs: {
-      sv: {
-        slug: '',
-        full_slug: '',
-      },
-      en: {
-        slug: '',
-        full_slug: '',
-      },
-    },
     is_trail: 0,
     trail_code_snippet: formData.trail_code_snippet || '',
     trail_total_length: formData.trail_total_length || 0,
@@ -45,7 +28,6 @@ const handleSubmit = async (formData) => {
     trail_level: formData.trail_level || '',
     trail_terrain: formData.trail_terrain || '',
     trail_time: formData.trail_time || '',
-    slug: '',
     primary_image: {
       large: '',
       medium: '',

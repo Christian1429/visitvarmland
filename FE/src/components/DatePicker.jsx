@@ -7,15 +7,17 @@ import "dayjs/locale/sv";
 import { useTranslation } from "react-i18next";
 
 const DatePickerClient = ({ formData, setFormData }) => {
+
   const { t } = useTranslation();
+
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="sv">
       <Typography sx={{ textAlign: 'center' }}>
-        Datum och tid för ditt event
+        {t('event_title')}
       </Typography>
       <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
         <DatePicker
-          label={t("dateFrom")}
+          label={t("date_start")}
           value={dayjs(formData.occasions[0].date_start)}
           onChange={(newValue) => {
             setFormData((prevData) => ({
@@ -32,7 +34,7 @@ const DatePickerClient = ({ formData, setFormData }) => {
           sx={{ width: "15.3rem" }}
         />
         <DatePicker
-          label={t("dateTo")}
+          label={t("date_end")}
           value={dayjs(formData.occasions[0].date_end)}
           onChange={(newValue) => {
             setFormData((prevData) => ({
@@ -58,7 +60,7 @@ const DatePickerClient = ({ formData, setFormData }) => {
         }}
       >
         <TimePicker
-          label={t("TimeTo")}
+          label={t("time_start")}
           value={dayjs(formData.occasions[0].time_start, "HH:mm")}
           onChange={(newValue) => {
             setFormData((prevData) => ({
@@ -95,7 +97,7 @@ const DatePickerClient = ({ formData, setFormData }) => {
           sx={{ width: "15.3rem" }}
         />
         <TimePicker
-          label={t("TimeTo")}
+          label={t("time_end")}
           value={dayjs(formData.occasions[0].time_end, "HH:mm")}
           onChange={(newValue) => {
             setFormData((prevData) => ({

@@ -1,14 +1,15 @@
 import { React, useContext, useState } from "react";
 import { Box, Typography, TextField, Button, IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import "./fileupload.css";
 import { FormDataContext } from "../context/FormDataContext";
+import { useTranslation } from 'react-i18next';
 
-function fileUpload() {
+function FileUpload() {
   const { formData, setFormData } = useContext(FormDataContext);
   const [previewImages, setPreviewImages] = useState([]);
-
-  const handleFileUpload = (e) => {
+  const { t } = useTranslation();
+  
+  const HandleFileUpload = (e) => {
     const files = Array.from(e.target.files);
     /* console.log("Selected files:", files); */
     if (files.length > 0) {
@@ -46,7 +47,7 @@ function fileUpload() {
     setPreviewImages(newPreviewImages); // Update preview images
   };
 
-  const handleSubmit = async (e) => {
+  const HandleSubmit = async (e) => {
     e.preventDefault();
     const formDataToSend = new FormData();
 
@@ -74,64 +75,59 @@ function fileUpload() {
     }
   };
   return (
-    <Box>
-      <Typography sx={{ marginTop: "1.5rem", marginBottom: "1rem" }}>
-        Ladda upp bilder. Max 2MB
+    <Box
+      sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+    >
+      <Typography sx={{ marginTop: '1.5rem', marginBottom: '1rem' }}>
+        {t('images_title')}
       </Typography>
+      <TextField
+        required
+        type="file"
+        inputProps={{ accept: 'image/jpeg', multiple: true }}
+        sx={{ width: '90%' }}
+        onChange={HandleFileUpload}
+        name="image"
+      />
 
-      <form
-        onSubmit={handleSubmit}
-        className="fileupload"
-        encType="multipart/form-data"
+      <Button
+        variant="contained"
+        color="primary"
+        type="submit"
+        sx={{ margin: '1rem', width: '8rem' }}
       >
-        <TextField
-          required
-          type="file"
-          inputProps={{ accept: "image/jpeg", multiple: true }}
-          sx={{ width: "90%" }}
-          onChange={handleFileUpload}
-          name="image"
-        />
-
-        <Button
-          variant="contained"
-          color="primary"
-          type="submit"
-          sx={{ margin: "1rem", width: "50%" }}
-        >
-          Ladda upp
-        </Button>
-      </form>
+        Ladda upp
+      </Button>
       {/* Preview selected images */}
       <Box>
         {previewImages.length > 0 && (
           <div>
             <Typography variant="h6">Valda bilder:</Typography>
-            <div style={{ display: "flex", flexWrap: "wrap" }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap' }}>
               {previewImages.map((imageSrc, index) => (
                 <Box
                   key={index}
                   sx={{
-                    position: "relative",
-                    border: "1px solid #ccc",
-                    padding: "0.5rem",
+                    position: 'relative',
+                    border: '1px solid #ccc',
+                    padding: '0.5rem',
                   }}
                 >
                   <img
                     src={imageSrc}
                     alt={`Preview ${index}`}
                     style={{
-                      width: "50px",
-                      height: "50px",
-                      objectFit: "cover",
+                      width: '50px',
+                      height: '50px',
+                      objectFit: 'cover',
                     }}
                   />
                   <IconButton
                     onClick={() => removeImage(index)}
                     sx={{
-                      position: "absolute",
-                      top: "0",
-                      right: "0",
+                      position: 'absolute',
+                      top: '0',
+                      right: '0',
                     }}
                   >
                     <DeleteIcon />
@@ -146,4 +142,4 @@ function fileUpload() {
   );
 }
 
-export default fileUpload;
+export default FileUpload;
