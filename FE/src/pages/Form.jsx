@@ -149,7 +149,7 @@ const Form = () => {
           {currentStep < 2 && <BtnNext onClick={handleNext} />}
           {currentStep === 2 && (
             <Button
-              onClick={() => handleSubmit(formData)}
+              onClick={(e) => handleSubmit(e, formData)}
               sx={{ marginBottom: "2rem", width: "8rem" }}
             >
               Skicka

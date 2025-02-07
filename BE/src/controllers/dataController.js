@@ -74,6 +74,7 @@ class DataController {
   }
 
   async createData(req, res) {
+    console.log("req, be, created data", req.files);
     try {
       const newData = new this.dataModel(req.body);
       const savedData = await newData.save();

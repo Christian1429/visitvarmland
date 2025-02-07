@@ -8,7 +8,7 @@ function fileUpload({ formData, setFormData }) {
 
   const handleFileUpload = (e) => {
     const files = Array.from(e.target.files);
-
+    console.log("selected file", files);
     if (files.length === 0) {
       console.error("Inga filer valda");
       return;
