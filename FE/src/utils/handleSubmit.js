@@ -3,10 +3,8 @@ import {
   mapPrices,
   mapImages,
   mapFiles,
-  mapCategories,
   mapPlaces,
   mapOccasions,
-  mapRelatedItems,
   mapOrganizers,
 } from "./mappers";
 
@@ -34,7 +32,7 @@ const handleSubmit = async (formData) => {
     phone_numbers: [],
     images: mapImages(formData.images),
     files: mapFiles(formData.files),
-    categories: mapCategories(formData.categories),
+    // categories: mapCategories(formData.categories),
     places: mapPlaces(formData.places),
     distance: "",
     slugs: {
@@ -48,12 +46,12 @@ const handleSubmit = async (formData) => {
       },
     },
     is_trail: 0,
-    trail_code_snippet: "",
-    trail_total_length: 0,
-    number_of_trails: 0,
-    trail_level: "",
-    trail_terrain: "",
-    trail_time: "",
+    trail_code_snippet: formData.trail_code_snippet || "",
+    trail_total_length: formData.trail_total_length || 0,
+    number_of_trails: formData.number_of_trails || 0,
+    trail_level: formData.trail_level || "",
+    trail_terrain: formData.trail_terrain || "",
+    trail_time: formData.trail_time || "",
     slug: "",
     primary_image: {
       large: "",
@@ -61,9 +59,9 @@ const handleSubmit = async (formData) => {
       small: "",
     },
     occasions: mapOccasions(formData.occasions),
-    past_occasions: mapOccasions(formData.past_occasions),
-    related_products: mapRelatedItems(formData.related_products),
-    related_events: mapRelatedItems(formData.related_events),
+    // past_occasions: mapOccasions(formData.past_occasions),
+    // related_products: mapRelatedItems(formData.related_products),
+    // related_events: mapRelatedItems(formData.related_events),
   };
   console.log("handleSubmit output:", dataToSubmit);
   await postForm(dataToSubmit);

@@ -2,13 +2,13 @@ import React from "react";
 import { TextField, Box, InputAdornment } from "@mui/material";
 import DatePickerClient from "../components/DatePicker";
 import HandleFileUpload from "../components/fileUpload";
-
+import { useTranslation } from "react-i18next";
 const ClientEvent = ({ formData, setFormData }) => {
   const sellingTextMaxLength = 100;
   const descriptionMaxLength = 200;
   const rmCharDescription = descriptionMaxLength - formData.description.length;
   const rmCharSelling = sellingTextMaxLength - formData.sales_text.length;
-
+  const { t } = useTranslation();
   return (
     <Box
       sx={{
@@ -26,7 +26,7 @@ const ClientEvent = ({ formData, setFormData }) => {
         margin="dense"
         fullWidth
         id="event-title"
-        label="Titel"
+        label={t("title")}
         name="event-title"
         value={formData.title || ""}
         onChange={(e) =>
@@ -40,7 +40,7 @@ const ClientEvent = ({ formData, setFormData }) => {
         margin="dense"
         fullWidth
         id="event-description"
-        label="Beskrivning"
+        label={t("Description")}
         name="event-description"
         value={formData.description || ""}
         onChange={(e) =>
@@ -52,7 +52,7 @@ const ClientEvent = ({ formData, setFormData }) => {
         className="text-field"
         multiline
         rows={3}
-        slotProps={{ htmlInput: { maxLength: 200, minLength: 100 } }}
+        slotProps={{ htmlInput: { maxLength: 200, minLength: 1 } }}
         InputProps={{
           endAdornment: (
             <InputAdornment
@@ -70,9 +70,9 @@ const ClientEvent = ({ formData, setFormData }) => {
         margin="dense"
         fullWidth
         id="event-sales-text"
-        label="Säljande text"
+        label={t("SellingText")}
         name="event-sales-text"
-        value={(formData.sales_text && formData.meta_keywords) || ""}
+        value={formData.sales_text || ''}
         onChange={(e) =>
           setFormData((prevData) => ({
             ...prevData,
@@ -82,7 +82,7 @@ const ClientEvent = ({ formData, setFormData }) => {
         className="text-field"
         multiline
         rows={6}
-        slotProps={{ htmlInput: { maxLength: 400, minLength: 100 } }}
+        slotProps={{ htmlInput: { maxLength: 400, minLength: 1 } }}
         InputProps={{
           endAdornment: (
             <InputAdornment
@@ -95,12 +95,12 @@ const ClientEvent = ({ formData, setFormData }) => {
         }}
       />
 
-      <TextField
+      {/* <TextField
         variant="outlined"
         margin="dense"
         fullWidth
         id="event-presentation"
-        label="Presentation"
+        label={t("Presentation")}
         name="event-presentation"
         value={formData.presentation || ""}
         onChange={(e) =>
@@ -110,13 +110,13 @@ const ClientEvent = ({ formData, setFormData }) => {
           }))
         }
         className="text-field"
-      />
-      <TextField
+      /> */}
+      {/* <TextField
         variant="outlined"
         margin="dense"
         fullWidth
         id="event-open-hours"
-        label="Open Hours"
+        label="Open Hours" //Open Hours och Öppet tider där nere vad är skillnaden?
         name="event-open-hours"
         value={formData.open_hours || ""}
         onChange={(e) =>
@@ -126,7 +126,7 @@ const ClientEvent = ({ formData, setFormData }) => {
           }))
         }
         className="text-field"
-      />
+      /> */}
       {/* <TextField
         variant="outlined"
         margin="dense"
@@ -148,7 +148,7 @@ const ClientEvent = ({ formData, setFormData }) => {
         margin="dense"
         fullWidth
         id="event-ticket-info"
-        label="Biljett info"
+        label={t("BiljetInformation")}
         name="event-ticket-info"
         value={formData.ticket_info || ""}
         onChange={(e) =>
@@ -164,7 +164,7 @@ const ClientEvent = ({ formData, setFormData }) => {
         margin="dense"
         fullWidth
         id="event-open-times"
-        label="Öppettider"
+        label={t("Open_Hours")}
         name="event-open-times"
         value={formData.open_times || ""}
         onChange={(e) =>
@@ -231,7 +231,7 @@ const ClientEvent = ({ formData, setFormData }) => {
         margin="dense"
         fullWidth
         id="event-booking-link"
-        label="Booking Link"
+        label="Bookningslänk"
         name="event-booking-link"
         value={formData.booking_link || ""}
         onChange={(e) =>
@@ -247,7 +247,7 @@ const ClientEvent = ({ formData, setFormData }) => {
         margin="dense"
         fullWidth
         id="event-website-link"
-        label="Website Link"
+        label="Hemsida"
         name="event-website-link"
         value={formData.website_link || ""}
         onChange={(e) =>
