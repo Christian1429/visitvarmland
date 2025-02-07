@@ -20,13 +20,14 @@ import handleSubmit from "../utils/handleSubmit";
 import { handleChange, handleArrayChange } from "../utils/formUtils";
 import TrailPopup from "../components/TrailPopup";
 import DatePickerClient from "../components/DatePicker";
+import { useTranslation } from "react-i18next";
 
 const Form = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const [currentStep, setCurrentStep] = useState(0);
   const { formData, setFormData } = useContext(FormDataContext);
-
+  const { t } = useTranslation();
   const handleNext = () => {
     setCurrentStep((prevStep) => prevStep + 1);
   };
@@ -98,7 +99,7 @@ const Form = () => {
             paddingBottom: "1rem",
           }}
         >
-          Tips och evenemang
+          {t("tips_events")}
         </Typography>
         <CloseBtn redirectUrl="https://visitvarmland.com" />
         <Box
