@@ -11,7 +11,7 @@ import Contact from '../components/Contact';
 import ClientNew from '../components/ClientNew';
 import ClientEvent from '../components/ClientEvent';
 // import NextBtn from '../components/buttons/NextBtn';
-import CloseBtn from '../components/buttons/CloseBtn';
+import CloseBtn from '../components/buttons/CloseBtn.jsx';
 import { useTheme } from '@mui/material/styles';
 import './Form.css';
 import ClientExist from '../components/ClientExist';
