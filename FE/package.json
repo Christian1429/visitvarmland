@@ -12,6 +12,27 @@
     "start:backend": "node ../BE/src/app.js",
     "start:all": "concurrently \"npm run start:frontend\" \"npm run start:backend\""
   },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "builds": [
+    {
+      "src": "src/index.jsx",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "build"
+      }
+    }
+  ],
   "dependencies": {
     "@date-io/date-fns": "^3.2.0",
     "@emotion/react": "^11.14.0",
