@@ -48,7 +48,7 @@ const theme = createTheme({
     MuiSvgIcon: {
       styleOverrides: {
         root: {
-          color: '#00a081',
+          color: '#006761',
           '&.Mui-checked': {
             color: '#006761',
           },
