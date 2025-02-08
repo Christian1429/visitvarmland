@@ -1,41 +1,52 @@
-import { useTranslation } from "react-i18next";
-import { Button, Box } from '@mui/material';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { IconButton, Menu, MenuItem } from '@mui/material';
+import LanguageIcon from '@mui/icons-material/Language'; // Globe icon
 
 function TranslationBtn() {
-  const { i18n } = useTranslation();
-  const { t } = useTranslation();
+  const { i18n, t } = useTranslation();
+  const [anchorEl, setAnchorEl] = useState(null); // For the Menu component
+
+  // Open Menu on clicking Globe Icon
+  const handleMenuClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  // Close Menu
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
+  // Change Language
+  const handleLanguageChange = (language) => {
+    i18n.changeLanguage(language);
+    setAnchorEl(null); // Close the menu after selecting a language
+  };
+
   return (
-    <>
-      <Box
-        sx={{
-          position: 'absolute',
-          top: '10px',
-          right: '50px',
-          background: 'none',
-          border: 'none',
-          cursor: 'pointer',
-        }}
+    <div style={{ position: 'absolute', top: '10px', right: '50px' }}>
+      {/* Globe Icon for Language Selector */}
+      <IconButton onClick={handleMenuClick} color="primary">
+        <LanguageIcon />
+      </IconButton>
+
+      {/* Language selection menu */}
+      <Menu
+        anchorEl={anchorEl}
+        open={Boolean(anchorEl)}
+        onClose={handleMenuClose}
       >
-        <Button
-          onClick={() => i18n.changeLanguage('en')}
-          sx={{ marginRight: '0.2rem' }}
-        >
+        <MenuItem onClick={() => handleLanguageChange('en')}>
           {t('language_btn_en')}
-        </Button>
-        <Button
-          onClick={() => i18n.changeLanguage('sv')}
-          sx={{ marginRight: '0.2rem' }}
-        >
+        </MenuItem>
+        <MenuItem onClick={() => handleLanguageChange('sv')}>
           {t('language_btn_swe')}
-        </Button>
-        <Button
-          onClick={() => i18n.changeLanguage('de')}
-          sx={{ marginRight: '0.2rem' }}
-        >
+        </MenuItem>
+        <MenuItem onClick={() => handleLanguageChange('de')}>
           {t('language_btn_de')}
-        </Button>
-      </Box>
-    </>
+        </MenuItem>
+      </Menu>
+    </div>
   );
 }
 

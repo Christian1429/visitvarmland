@@ -75,7 +75,7 @@ const resources = {
       // Organizer page (second page)
       dropdown_organizer_exist: 'Redan registrerad?',
       title_organizer: 'Är du ny arrangör, företag eller förening?',
-      title: 'Ange namn på ert företag, förening eller organisation',
+      title: 'Namn på erat företag, förening eller organisation',
       address_2: 'Adress 2',
       zipcode: 'Postnummer',
       city: 'Stad',

@@ -43,19 +43,17 @@ const Contact = ({ formData, setFormData }) => {
         sx={{
           maxWidth: 600,
           boxShadow: 3,
-          p: 4,
-          m: 'auto',
           borderRadius: 2,
           backdropFilter: 'blur(2px)',
           background: 'rgba(255, 255, 255, 0.7)',
+          padding: '16.5px 14px',
         }}
       >
         <Box
           sx={{
             display: isMobile ? 'flex' : 'grid',
             flexDirection: isMobile ? 'column' : 'row',
-            padding: isMobile ? '1rem' : '0',
-            gap: 2,
+            padding: isMobile ? '0rem' : '1rem',
           }}
         >
           <TextField

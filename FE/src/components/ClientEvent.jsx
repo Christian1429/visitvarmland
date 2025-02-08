@@ -2,6 +2,7 @@ import { useState } from "react";
 import { TextField, Box, InputAdornment, Checkbox, FormControlLabel } from "@mui/material";
 import HandleFileUpload from "../components/FileUpload";
 import { useTranslation } from "react-i18next";
+import InfoButton from "./buttons/InfoBtn";
 
 const ClientEvent = ({ formData, setFormData }) => {
 
@@ -183,7 +184,7 @@ const ClientEvent = ({ formData, setFormData }) => {
       {/* --------------- IMAGE UPLOADER -------------- */}
       <HandleFileUpload />
 
-      <Box gridColumn="span 2">
+      <Box gridColumn="span 2" sx={{ display: 'flex'}}>
         <FormControlLabel
           control={
             <Checkbox
@@ -196,6 +197,7 @@ const ClientEvent = ({ formData, setFormData }) => {
           }
           label={t('gdpr')}
         />
+        <InfoButton />
       </Box>
     </Box>
   );
