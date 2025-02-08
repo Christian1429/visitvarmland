@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   Box,
   Typography,
@@ -10,7 +10,7 @@ import {
 import Contact from '../components/Contact';
 import ClientNew from '../components/ClientNew';
 import ClientEvent from '../components/ClientEvent';
-import BtnNext from '../components/buttons/NextBtn';
+import NextBtn from '../components/buttons/NextBtn.jsx';
 import CloseBtn from '../components/buttons/CloseBtn';
 import { useTheme } from '@mui/material/styles';
 import './Form.css';
@@ -150,7 +150,7 @@ const Form = () => {
         </Box>
         <Box display="flex" flexDirection="column" alignItems="center">
           <Box sx={{ mb: 4 }}>{renderStep()}</Box>
-          {currentStep < 2 && <BtnNext onClick={handleNext} />}
+          {currentStep < 2 && <NextBtn onClick={handleNext} />}
           {currentStep === 2 && (
             <Button
               onClick={() => handleSubmit(formData)}
