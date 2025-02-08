@@ -1,4 +1,6 @@
 import React, { useState, useContext } from 'react';
+import { IconButton } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 import {
   Box,
   Typography,
@@ -11,7 +13,7 @@ import Contact from '../components/Contact';
 import ClientNew from '../components/ClientNew';
 import ClientEvent from '../components/ClientEvent';
 // import NextBtn from '../components/buttons/NextBtn';
-import CloseBtn from '../components/buttons/CloseBtn.jsx';
+// import CloseBtn from '../components/buttons/CloseBtn.jsx';
 import { useTheme } from '@mui/material/styles';
 import './Form.css';
 import ClientExist from '../components/ClientExist';
@@ -34,6 +36,8 @@ const Form = () => {
     setCurrentStep((prevStep) => prevStep + 1);
   };
 
+
+  // vercel
   const NextBtn = ({ onClick }) => {
     const { t } = useTranslation();
     return (
@@ -43,6 +47,28 @@ const Form = () => {
     );
   };
 
+  const CloseBtn = ({ redirectUrl }) => {
+    const handleClick = () => {
+      window.location.href = redirectUrl;
+    };
+
+    return (
+      <IconButton
+        onClick={handleClick}
+        sx={{
+          position: 'absolute',
+          top: '10px',
+          right: '10px',
+          background: 'none',
+          border: 'none',
+          cursor: 'pointer',
+        }}
+      >
+        <CloseIcon sx={{ color: 'black' }} />
+      </IconButton>
+    );
+  };
+// end of vercel
   const handleStepClick = (step) => {
     setCurrentStep(step);
   };
