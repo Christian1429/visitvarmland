@@ -18,7 +18,7 @@ const resources = {
       // Organizer page (second page)
       dropdown_organizer_exist: 'Already registered?',
       title_organizer: 'Are you a new organizer, company or organization?',
-      title: 'Title',
+      title: 'Enter the name of your company, organization or association',
       address_2: 'Address 2',
       zipcode: 'Zip Code',
       city: 'City',
@@ -75,7 +75,7 @@ const resources = {
       // Organizer page (second page)
       dropdown_organizer_exist: 'Redan registrerad?',
       title_organizer: 'Är du ny arrangör, företag eller förening?',
-      title: 'Titel',
+      title: 'Ange namn på ert företag, förening eller organisation',
       address_2: 'Adress 2',
       zipcode: 'Postnummer',
       city: 'Stad',
@@ -132,7 +132,7 @@ const resources = {
       dropdown_organizer_exist: 'Bereits registriert?',
       title_organizer:
         'Sind Sie ein neuer Veranstalter, Unternehmen oder Organisation?',
-      title: 'Titel',
+      title: 'Geben Sie den Namen Ihres Unternehmens, Organisations oder Vereins ein',
       address_2: 'Adresse 2',
       zipcode: 'Postleitzahl',
       city: 'Stadt',
