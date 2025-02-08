@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   Box,
   Typography,
@@ -10,8 +10,9 @@ import {
 import Contact from '../components/Contact';
 import ClientNew from '../components/ClientNew';
 import ClientEvent from '../components/ClientEvent';
-import BtnNext from '../components/buttons/NextBtn';
+import NextBtn from '../components/buttons/NextBtn';
 import CloseBtn from '../components/buttons/CloseBtn';
+import TranslationBtn from '../components/buttons/TranslationBtn';
 import { useTheme } from '@mui/material/styles';
 import './Form.css';
 import ClientExist from '../components/ClientExist';
@@ -21,7 +22,7 @@ import { handleChange, handleArrayChange } from '../utils/formUtils';
 import TrailPopup from '../components/TrailPopup';
 import DatePickerClient from '../components/DatePicker';
 import { useTranslation } from 'react-i18next';
-import TranslationBtn from '../components/buttons/TranslationBtn';
+
 
 const Form = () => {
   const theme = useTheme();
@@ -150,7 +151,7 @@ const Form = () => {
         </Box>
         <Box display="flex" flexDirection="column" alignItems="center">
           <Box sx={{ mb: 4 }}>{renderStep()}</Box>
-          {currentStep < 2 && <BtnNext onClick={handleNext} />}
+          {currentStep < 2 && <NextBtn onClick={handleNext} />}
           {currentStep === 2 && (
             <Button
               onClick={() => handleSubmit(formData)}
