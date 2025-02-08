@@ -23,7 +23,7 @@ import { handleChange, handleArrayChange } from '../utils/formUtils';
 import TrailPopup from '../components/TrailPopup';
 import DatePickerClient from '../components/DatePicker';
 import { useTranslation } from 'react-i18next';
-import TranslationBtn from '../components/buttons/TranslationBtn';
+// import TranslationBtn from '../components/buttons/TranslationBtn';
 
 const Form = () => {
   const theme = useTheme();
@@ -68,6 +68,44 @@ const Form = () => {
       </IconButton>
     );
   };
+
+  function TranslationBtn() {
+    const { i18n } = useTranslation();
+    const { t } = useTranslation();
+    return (
+      <>
+        <Box
+          sx={{
+            position: 'absolute',
+            top: '10px',
+            right: '50px',
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer',
+          }}
+        >
+          <Button
+            onClick={() => i18n.changeLanguage('en')}
+            sx={{ marginRight: '0.2rem' }}
+          >
+            {t('language_btn_en')}
+          </Button>
+          <Button
+            onClick={() => i18n.changeLanguage('sv')}
+            sx={{ marginRight: '0.2rem' }}
+          >
+            {t('language_btn_swe')}
+          </Button>
+          <Button
+            onClick={() => i18n.changeLanguage('de')}
+            sx={{ marginRight: '0.2rem' }}
+          >
+            {t('language_btn_de')}
+          </Button>
+        </Box>
+      </>
+    );
+  }
 // end of vercel
   const handleStepClick = (step) => {
     setCurrentStep(step);
