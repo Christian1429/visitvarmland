@@ -21,7 +21,9 @@ const ClientEvent = ({ formData, setFormData }) => {
         boxShadow: 3,
         p: 4,
         m: 'auto',
+        borderRadius: 2,
         backdropFilter: 'blur(2px)',
+        background: 'rgba(255, 255, 255, 0.7)',
       }}
     >
       <TextField
@@ -192,7 +194,7 @@ const ClientEvent = ({ formData, setFormData }) => {
               required
             />
           }
-          label={t("gdpr")}
+          label={t('gdpr')}
         />
       </Box>
     </Box>

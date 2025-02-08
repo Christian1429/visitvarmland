@@ -44,8 +44,10 @@ const Contact = ({ formData, setFormData }) => {
           maxWidth: 600,
           boxShadow: 3,
           p: 4,
-          backgroundColor: '#f6efea',
+          m: 'auto',
+          borderRadius: 2,
           backdropFilter: 'blur(2px)',
+          background: 'rgba(255, 255, 255, 0.7)',
         }}
       >
         <Box

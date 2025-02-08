@@ -57,7 +57,9 @@ const ClientNew = ({ formData, setFormData }) => {
         boxShadow: 3,
         p: 4,
         m: 'auto',
+        borderRadius: 2,
         backdropFilter: 'blur(2px)',
+        background: 'rgba(255, 255, 255, 0.7)',
       }}
     >
       <Typography variant="h6" component="h2" gutterBottom>
