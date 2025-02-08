@@ -10,7 +10,7 @@ import {
 import Contact from '../components/Contact';
 import ClientNew from '../components/ClientNew';
 import ClientEvent from '../components/ClientEvent';
-import NextBtn from '../components/buttons/NextBtn.jsx';
+// import NextBtn from '../components/buttons/NextBtn';
 import CloseBtn from '../components/buttons/CloseBtn';
 import { useTheme } from '@mui/material/styles';
 import './Form.css';
@@ -32,6 +32,15 @@ const Form = () => {
 
   const handleNext = () => {
     setCurrentStep((prevStep) => prevStep + 1);
+  };
+
+  const NextBtn = ({ onClick }) => {
+    const { t } = useTranslation();
+    return (
+      <Button onClick={onClick} sx={{ marginBottom: '2rem', width: '8rem' }}>
+        {t('next_btn')}
+      </Button>
+    );
   };
 
   const handleStepClick = (step) => {
