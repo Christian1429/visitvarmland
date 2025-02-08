@@ -13,117 +13,116 @@ const DatePickerClient = ({ formData, setFormData }) => {
   const { t } = useTranslation();
 
   return (
-      <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="sv">
-        <Typography sx={{ textAlign: 'center' }}>{t('event_title')}</Typography>
-        <Box
-          sx={{
-            display: isMobile ? 'grid' : 'flex',
-            flexDirection: isMobile ? 'column' : 'row',
-            justifyContent: 'center',
-            gap: 2,
-          }}
-        >
-          <DatePicker
-            label={t('date_start')}
-            value={dayjs(formData.occasions[0].date_start)}
-            onChange={(newValue) => {
-              setFormData((prevData) => ({
-                ...prevData,
-                occasions: [
-                  {
-                    ...prevData.occasions[0],
-                    date_start: newValue ? newValue.format('YYYY-MM-DD') : '',
-                  },
-                ],
-              }));
-            }}
-            slotProps={{ textField: { fullWidth: true, margin: 'normal' } }}
-            sx={{ width: '15.3rem' }}
-          />
-          <DatePicker
-            label={t('date_end')}
-            value={dayjs(formData.occasions[0].date_end)}
-            onChange={(newValue) => {
-              setFormData((prevData) => ({
-                ...prevData,
-                occasions: [
-                  {
-                    ...prevData.occasions[0],
-                    date_end: newValue ? newValue.format('YYYY-MM-DD') : '',
-                  },
-                ],
-              }));
-            }}
-            slotProps={{ textField: { fullWidth: true, margin: 'normal' } }}
-            sx={{ width: '15.3rem' }}
-          />
-        </Box>
-        <Box
-          sx={{
-            display: isMobile ? 'grid' : 'flex',
-            flexDirection: isMobile ? 'column' : 'row',
-            justifyContent: 'center',
-            gap: 2,
-            textAlign: 'center',
-            marginTop: 1,
-          }}
-        >
-          <TimePicker
-            label={t('time_start')}
-            value={dayjs(formData.occasions[0].time_start, 'HH:mm')}
-            onChange={(newValue) => {
-              setFormData((prevData) => ({
-                ...prevData,
-                occasions: [
-                  {
-                    ...prevData.occasions[0],
-                    time_start: newValue ? newValue.format('HH:mm') : '',
-                  },
-                ],
-              }));
-            }}
-            slotProps={{
-              textField: { fullWidth: true, margin: 'normal' },
-              layout: {
-                sx: {
-                  // Customize PC
-                  backgroundColor: '#f0f0f0',
-                  borderRadius: '8px',
-                  padding: '16px',
+    <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="sv">
+      <Typography sx={{ textAlign: 'center' }}>{t('event_title')}</Typography>
+      <Box
+        sx={{
+          display: isMobile ? 'grid' : 'flex',
+          flexDirection: isMobile ? 'column' : 'row',
+          justifyContent: 'center',
+          gap: isMobile ? '0rem' : '1rem',
+        }}
+      >
+        <DatePicker
+          label={t('date_start')}
+          value={dayjs(formData.occasions[0].date_start)}
+          onChange={(newValue) => {
+            setFormData((prevData) => ({
+              ...prevData,
+              occasions: [
+                {
+                  ...prevData.occasions[0],
+                  date_start: newValue ? newValue.format('YYYY-MM-DD') : '',
                 },
+              ],
+            }));
+          }}
+          slotProps={{ textField: { fullWidth: true, margin: 'normal' } }}
+          sx={{ width: '15.3rem' }}
+        />
+        <DatePicker
+          label={t('date_end')}
+          value={dayjs(formData.occasions[0].date_end)}
+          onChange={(newValue) => {
+            setFormData((prevData) => ({
+              ...prevData,
+              occasions: [
+                {
+                  ...prevData.occasions[0],
+                  date_end: newValue ? newValue.format('YYYY-MM-DD') : '',
+                },
+              ],
+            }));
+          }}
+          slotProps={{ textField: { fullWidth: true, margin: 'normal' } }}
+          sx={{ width: '15.3rem' }}
+        />
+      </Box>
+      <Box
+        sx={{
+          display: isMobile ? 'grid' : 'flex',
+          flexDirection: isMobile ? 'column' : 'row',
+          justifyContent: 'center',
+          gap: isMobile ? '0rem' : '1rem',
+          textAlign: 'center',
+        }}
+      >
+        <TimePicker
+          label={t('time_start')}
+          value={dayjs(formData.occasions[0].time_start, 'HH:mm')}
+          onChange={(newValue) => {
+            setFormData((prevData) => ({
+              ...prevData,
+              occasions: [
+                {
+                  ...prevData.occasions[0],
+                  time_start: newValue ? newValue.format('HH:mm') : '',
+                },
+              ],
+            }));
+          }}
+          slotProps={{
+            textField: { fullWidth: true, margin: 'normal' },
+            layout: {
+              sx: {
+                // Customize PC
+                backgroundColor: '#f0f0f0',
+                borderRadius: '8px',
+                padding: '16px',
               },
-              clock: {
-                sx: {
-                  // Customize Mobile
-                  backgroundColor: '#141414',
+            },
+            clock: {
+              sx: {
+                // Customize Mobile
+                backgroundColor: '#141414',
+                borderRadius: '32px',
+                '& .MuiClock-squareMask': {
                   borderRadius: '32px',
-                  '& .MuiClock-squareMask': {
-                    borderRadius: '32px',
-                  },
                 },
               },
-            }}
-            sx={{ width: '15.3rem' }}
-          />
-          <TimePicker
-            label={t('time_end')}
-            value={dayjs(formData.occasions[0].time_end, 'HH:mm')}
-            onChange={(newValue) => {
-              setFormData((prevData) => ({
-                ...prevData,
-                occasions: [
-                  {
-                    ...prevData.occasions[0],
-                    time_end: newValue ? newValue.format('HH:mm') : '',
-                  },
-                ],
-              }));
-            }}
-            slotProps={{ textField: { fullWidth: true, margin: 'normal' } }}
-            sx={{ width: '15.3rem' }}
-          />
-        </Box>
-      </LocalizationProvider>
+            },
+          }}
+          sx={{ width: '15.3rem' }}
+        />
+        <TimePicker
+          label={t('time_end')}
+          value={dayjs(formData.occasions[0].time_end, 'HH:mm')}
+          onChange={(newValue) => {
+            setFormData((prevData) => ({
+              ...prevData,
+              occasions: [
+                {
+                  ...prevData.occasions[0],
+                  time_end: newValue ? newValue.format('HH:mm') : '',
+                },
+              ],
+            }));
+          }}
+          slotProps={{ textField: { fullWidth: true, margin: 'normal' } }}
+          sx={{ width: '15.3rem' }}
+        />
+      </Box>
+    </LocalizationProvider>
   );
 };
 
