@@ -79,9 +79,9 @@ const occasionSchema = new mongoose.Schema({
 const dataSchema = new mongoose.Schema({
   created_at: { type: Date, default: Date.now },
   updated_at: { type: Date, default: Date.now },
-  title: { type: String },
-  description: { type: String },
-  sales_text: { type: String },
+  title: { type: String, required: true },
+  description: { type: String, required: true },
+  sales_text: { type: String, required: true },
   presentation: { type: String },
   open_hours: { type: String },
   ticket_information: { type: String },

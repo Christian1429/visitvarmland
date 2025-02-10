@@ -6,14 +6,15 @@ const router = express.Router();
 const dataController = new DataController();
 const upload = multer({ storage: multer.memoryStorage() }).array("images", 10); //The number  shows how many iamges can be uploaded at the same time.
 
-router.post("/", upload, dataController.createData.bind(dataController));
+/* router.post("/", upload, dataController.createData.bind(dataController)); */
+router.post("/", upload, dataController.uploadData.bind(dataController));
 router.get("/", dataController.getAllData.bind(dataController));
 router.get("/:id", dataController.getData.bind(dataController));
 router.put("/:id", dataController.updateData.bind(dataController));
 router.delete("/:id", dataController.deleteData.bind(dataController));
 
 ///Image upload.
-router.post("/upload", upload, dataController.uploadImage.bind(dataController));
+router.post("/upload", upload, dataController.uploadData.bind(dataController));
 
 router.get("/test/retrieve", async (req, res) => {
   try {
