@@ -8,7 +8,6 @@ const organizerSchema = new mongoose.Schema({
   zip_code: { type: String },
   city: { type: String },
   municipality_id: { type: Number },
-  organization_id: { type: Number },
   booking_link: { type: String },
   website_link: { type: String },
   email: { type: String },
@@ -33,7 +32,7 @@ const imageSchema = new mongoose.Schema({
   name: { type: String },
   size: { type: String },
   type: { type: String },
-  image: { type: Buffer, required: true },
+  image: { type: Buffer },
   encoding: { type: String },
   /*  large: { type: String },
   medium: { type: String },
@@ -53,13 +52,10 @@ const fileSchema = new mongoose.Schema({
 });
 
 const categorySchema = new mongoose.Schema({
-  id: { type: Number },
   title: { type: String },
-  slug: { type: String },
 });
 
 const placeSchema = new mongoose.Schema({
-  id: { type: Number },
   title: { type: String },
   presentation: { type: String },
   latitude: { type: String },
@@ -77,19 +73,12 @@ const occasionSchema = new mongoose.Schema({
 });
 
 const dataSchema = new mongoose.Schema({
-  created_at: { type: Date, default: Date.now },
-  updated_at: { type: Date, default: Date.now },
   title: { type: String },
   description: { type: String },
   sales_text: { type: String },
   presentation: { type: String },
-  open_hours: { type: String },
   ticket_information: { type: String },
-  ticket_info: { type: String },
   open_times: { type: String },
-  meta_title: { type: String },
-  meta_keywords: { type: String },
-  meta_description: { type: String },
   booking_link: { type: String },
   website_link: { type: String },
   organizers: [organizerSchema],
@@ -99,19 +88,8 @@ const dataSchema = new mongoose.Schema({
   phone_numbers: [{ type: String }],
   images: [imageSchema],
   files: [fileSchema],
-  categories: [categorySchema],
+  // categories: [categorySchema],
   places: [placeSchema],
-  distance: { type: String },
-  slugs: {
-    sv: {
-      slug: { type: String },
-      full_slug: { type: String },
-    },
-    en: {
-      slug: { type: String },
-      full_slug: { type: String },
-    },
-  },
   is_trail: { type: Number },
   trail_code_snippet: { type: String },
   trail_total_length: { type: Number },
@@ -119,26 +97,12 @@ const dataSchema = new mongoose.Schema({
   trail_level: { type: String },
   trail_terrain: { type: String },
   trail_time: { type: String },
-  slug: { type: String },
   primary_image: {
     large: { type: String },
     medium: { type: String },
     small: { type: String },
   },
   occasions: [occasionSchema],
-  past_occasions: [occasionSchema],
-  related_products: [
-    {
-      id: { type: Number },
-      title: { type: String },
-    },
-  ],
-  related_events: [
-    {
-      id: { type: Number },
-      title: { type: String },
-    },
-  ],
 });
 
 module.exports = mongoose.model("Data", dataSchema);

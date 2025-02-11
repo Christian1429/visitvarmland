@@ -1,23 +1,32 @@
-import React from "react";
-import { TextField, Box, InputAdornment } from "@mui/material";
-import DatePickerClient from "../components/DatePicker";
-import HandleFileUpload from "../components/fileUpload";
+import { useState } from "react";
+import { TextField, Box, InputAdornment, Checkbox, FormControlLabel } from "@mui/material";
+import HandleFileUpload from "../components/FileUpload";
 import { useTranslation } from "react-i18next";
+import InfoButton from "./buttons/InfoBtn";
+
 const ClientEvent = ({ formData, setFormData }) => {
+
+  // text limitations
   const sellingTextMaxLength = 100;
   const descriptionMaxLength = 200;
   const rmCharDescription = descriptionMaxLength - formData.description.length;
   const rmCharSelling = sellingTextMaxLength - formData.sales_text.length;
+
   const { t } = useTranslation();
+  const [consent, setConsent] = useState(false);
+
   return (
     <Box
       sx={{
-        width: "100%",
         maxWidth: 600,
         boxShadow: 3,
         p: 4,
-        m: "auto",
-        backdropFilter: "blur(2px)",
+        m: 'auto',
+        borderRadius: 2,
+        backdropFilter: 'blur(2px)',
+        background: 'rgba(255, 255, 255, 0.7)',
+            display:'flex',
+            flexDirection:'column',
       }}
     >
       <TextField
@@ -25,10 +34,10 @@ const ClientEvent = ({ formData, setFormData }) => {
         variant="outlined"
         margin="dense"
         fullWidth
-        id="event-title"
-        label={t("title")}
+        id="title"
+        label={t('title')}
         name="event-title"
-        value={formData.title || ""}
+        value={formData.title || ''}
         onChange={(e) =>
           setFormData((prevData) => ({ ...prevData, title: e.target.value }))
         }
@@ -39,10 +48,10 @@ const ClientEvent = ({ formData, setFormData }) => {
         variant="outlined"
         margin="dense"
         fullWidth
-        id="event-description"
-        label={t("Description")}
-        name="event-description"
-        value={formData.description || ""}
+        id="description"
+        label={t('description')}
+        name="description"
+        value={formData.description || ''}
         onChange={(e) =>
           setFormData((prevData) => ({
             ...prevData,
@@ -57,7 +66,7 @@ const ClientEvent = ({ formData, setFormData }) => {
           endAdornment: (
             <InputAdornment
               position="end"
-              sx={{ alignSelf: "flex-end", mr: 1 }}
+              sx={{ alignSelf: 'flex-end', mr: 1 }}
             >
               {`${rmCharDescription}/${descriptionMaxLength}`}
             </InputAdornment>
@@ -69,8 +78,8 @@ const ClientEvent = ({ formData, setFormData }) => {
         variant="outlined"
         margin="dense"
         fullWidth
-        id="event-sales-text"
-        label={t("SellingText")}
+        id="sales_text"
+        label={t('sales_text')}
         name="event-sales-text"
         value={formData.sales_text || ''}
         onChange={(e) =>
@@ -87,14 +96,13 @@ const ClientEvent = ({ formData, setFormData }) => {
           endAdornment: (
             <InputAdornment
               position="end"
-              sx={{ alignSelf: "flex-end", mr: 1 }}
+              sx={{ alignSelf: 'flex-end', mr: 1 }}
             >
               {`${rmCharSelling}/${sellingTextMaxLength}`}
             </InputAdornment>
           ),
         }}
       />
-
       {/* <TextField
         variant="outlined"
         margin="dense"
@@ -111,50 +119,18 @@ const ClientEvent = ({ formData, setFormData }) => {
         }
         className="text-field"
       /> */}
-      {/* <TextField
-        variant="outlined"
-        margin="dense"
-        fullWidth
-        id="event-open-hours"
-        label="Open Hours" //Open Hours och Öppet tider där nere vad är skillnaden?
-        name="event-open-hours"
-        value={formData.open_hours || ""}
-        onChange={(e) =>
-          setFormData((prevData) => ({
-            ...prevData,
-            open_hours: e.target.value,
-          }))
-        }
-        className="text-field"
-      /> */}
-      {/* <TextField
-        variant="outlined"
-        margin="dense"
-        fullWidth
-        id="event-ticket-information"
-        label="Ticket Information"
-        name="event-ticket-information"
-        value={formData.ticket_information || ""}
-        onChange={(e) =>
-          setFormData((prevData) => ({
-            ...prevData,
-            ticket_information: e.target.value,
-          }))
-        } 
-        className="text-field"
-      /> */}
       <TextField
         variant="outlined"
         margin="dense"
         fullWidth
-        id="event-ticket-info"
-        label={t("BiljetInformation")}
-        name="event-ticket-info"
-        value={formData.ticket_info || ""}
+        id="event-ticket-information"
+        label={t('ticket_information')}
+        name="event-ticket-information"
+        value={formData.ticket_information || ''}
         onChange={(e) =>
           setFormData((prevData) => ({
             ...prevData,
-            ticket_info: e.target.value,
+            ticket_information: e.target.value,
           }))
         }
         className="text-field"
@@ -164,9 +140,9 @@ const ClientEvent = ({ formData, setFormData }) => {
         margin="dense"
         fullWidth
         id="event-open-times"
-        label={t("Open_Hours")}
+        label={t('open_times')}
         name="event-open-times"
-        value={formData.open_times || ""}
+        value={formData.open_times || ''}
         onChange={(e) =>
           setFormData((prevData) => ({
             ...prevData,
@@ -175,65 +151,14 @@ const ClientEvent = ({ formData, setFormData }) => {
         }
         className="text-field"
       />
-
-      {/*! Maybe copy title, description, sales_text into sales_text,meta_title, meta_keywords, meta_description */}
-
-      {/* <TextField
-        variant="outlined"
-        margin="dense"
-        fullWidth
-        id="event-meta-title"
-        label="Meta Title"
-        name="event-meta-title"
-        value={formData.meta_title || ""}
-        onChange={(e) =>
-          setFormData((prevData) => ({
-            ...prevData,
-            meta_title: e.target.value,
-          }))
-        }
-        className="text-field"
-      />
-      <TextField
-        variant="outlined"
-        margin="dense"
-        fullWidth
-        id="event-meta-keywords"
-        label="Meta Keywords"
-        name="event-meta-keywords"
-        value={formData.meta_keywords || ""}
-        onChange={(e) =>
-          setFormData((prevData) => ({
-            ...prevData,
-            meta_keywords: e.target.value,
-          }))
-        }
-        className="text-field"
-      />
-      <TextField
-        variant="outlined"
-        margin="dense"
-        fullWidth
-        id="event-meta-description"
-        label="Meta Description"
-        name="event-meta-description"
-        value={formData.meta_description || ""}
-        onChange={(e) =>
-          setFormData((prevData) => ({
-            ...prevData,
-            meta_description: e.target.value,
-          }))
-        }
-        className="text-field"
-      /> */}
       <TextField
         variant="outlined"
         margin="dense"
         fullWidth
         id="event-booking-link"
-        label="Bookningslänk"
+        label={t('booking_link')}
         name="event-booking-link"
-        value={formData.booking_link || ""}
+        value={formData.booking_link || ''}
         onChange={(e) =>
           setFormData((prevData) => ({
             ...prevData,
@@ -246,10 +171,10 @@ const ClientEvent = ({ formData, setFormData }) => {
         variant="outlined"
         margin="dense"
         fullWidth
-        id="event-website-link"
-        label="Hemsida"
+        id="website"
+        label={t('website')}
         name="event-website-link"
-        value={formData.website_link || ""}
+        value={formData.website_link || ''}
         onChange={(e) =>
           setFormData((prevData) => ({
             ...prevData,
@@ -258,8 +183,24 @@ const ClientEvent = ({ formData, setFormData }) => {
         }
         className="text-field"
       />
-
+      {/* --------------- IMAGE UPLOADER -------------- */}
       <HandleFileUpload />
+
+      <Box gridColumn="span 2" sx={{ display: 'flex'}}>
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={consent}
+              onChange={(e) => setConsent(e.target.checked)}
+              name="consent"
+              color="primary"
+              required
+            />
+          }
+          label={t('gdpr')}
+        />
+        <InfoButton />
+      </Box>
     </Box>
   );
 };

@@ -1,20 +1,18 @@
-import React from "react";
+import React from 'react';
 import {
   TextField,
   Box,
   Typography,
   useMediaQuery,
-  FormControlLabel,
-  Checkbox,
-} from "@mui/material";
-import { useTheme } from "@mui/material/styles";
-import { useTranslation } from "react-i18next";
+} from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import { useTranslation } from 'react-i18next';
 
 const Contact = ({ formData, setFormData }) => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const { t } = useTranslation();
+
   return (
     <>
       <Typography
@@ -23,41 +21,39 @@ const Contact = ({ formData, setFormData }) => {
         align="center"
         gutterBottom
         sx={{
-          color: "#004338",
-          fontWeight: "bold",
-          paddingTop: "1rem",
+          color: '#004338',
+          fontWeight: 'bold',
+          paddingTop: '1rem',
         }}
       >
-        {t("contact_details")}
+        {t('contact_title')}
       </Typography>
       <Typography
         align="center"
         gutterBottom
         sx={{
-          color: "#004338",
-          fontWeight: "bold",
+          color: '#004338',
+          fontWeight: 'bold',
         }}
       >
-        Följ alla steg
+        {t('sub_title')}
       </Typography>
       {/* Contact box */}
       <Box
         sx={{
-          width: "100%",
           maxWidth: 600,
           boxShadow: 3,
-          p: 4,
-          m: 'auto',
-          backgroundColor: '#f6efea',
+          borderRadius: 2,
           backdropFilter: 'blur(2px)',
+          background: 'rgba(255, 255, 255, 0.7)',
+          padding: '16.5px 14px',
         }}
       >
         <Box
           sx={{
-            display: isMobile ? "flex" : "grid",
-            flexDirection: isMobile ? "column" : "row",
-            padding: isMobile ? "1rem" : "0",
-            gap: 2,
+            display: isMobile ? 'flex' : 'grid',
+            flexDirection: isMobile ? 'column' : 'row',
+            padding: isMobile ? '0rem' : '1rem',
           }}
         >
           <TextField
@@ -66,7 +62,7 @@ const Contact = ({ formData, setFormData }) => {
             required
             fullWidth
             id="name"
-            label="Ditt namn"
+            label={t('name')}
             name="name"
             autoComplete="name"
             autoFocus
@@ -90,7 +86,7 @@ const Contact = ({ formData, setFormData }) => {
             required
             fullWidth
             id="email"
-            label="E-post"
+            label={t('email')}
             name="email"
             autoComplete="email"
             value={formData.contact[0].contact_email || ''}
@@ -113,7 +109,7 @@ const Contact = ({ formData, setFormData }) => {
             required
             fullWidth
             id="address"
-            label="Adress"
+            label={t('address_1')}
             name="address"
             autoComplete="address"
             value={formData.contact[0].contact_address || ''}
@@ -136,7 +132,7 @@ const Contact = ({ formData, setFormData }) => {
             required
             fullWidth
             id="phone"
-            label="Telefonnummer"
+            label={t('phone')}
             name="phone"
             autoComplete="phone"
             value={formData.contact[0].contact_number || ''}
@@ -153,20 +149,6 @@ const Contact = ({ formData, setFormData }) => {
             }
             className="text-field"
           />
-          {/* <Box gridColumn="span 2">
-            <FormControlLabel
-              control={
-                <Checkbox
-                checked={consent}
-                onChange={(e) => setConsent(e.target.checked)}
-                name="consent"
-                color="primary"
-                required
-                />
-              }
-              label="Jag samtycker till att mina uppgifter lagras och används enligt GDPR."
-            />
-          </Box> */}
         </Box>
       </Box>
     </>
