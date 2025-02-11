@@ -8,9 +8,11 @@ import {
   DialogContent,
   DialogActions,
 } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 const TrailPopup = ({ formData, setFormData }) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const { t } = useTranslation();
 
   return (
     <>
@@ -27,12 +29,14 @@ const TrailPopup = ({ formData, setFormData }) => {
           color="primary"
           onClick={() => setIsPopupOpen(true)}
         >
-          Är det en stig?
+          {t("trail_btn")}
         </Button>
       </div>
 
       <Dialog open={isPopupOpen} onClose={() => setIsPopupOpen(false)}>
-        <DialogTitle sx={{ textAlign: "center" }}>Stig information</DialogTitle>
+        <DialogTitle sx={{ textAlign: "center" }}>
+          Fyll i information om stigen
+        </DialogTitle>
         <DialogContent>
           <Box
             sx={{
@@ -43,7 +47,7 @@ const TrailPopup = ({ formData, setFormData }) => {
               padding: "1rem",
             }}
           >
-            <TextField
+            {/* <TextField
               label="Trail Code Snippet"
               name="trail_code_snippet"
               value={formData.trail_code_snippet}
@@ -53,9 +57,9 @@ const TrailPopup = ({ formData, setFormData }) => {
                   trail_code_snippet: e.target.value,
                 }))
               }
-            />
+            /> */}
             <TextField
-              label="Stigens totala längd i km"
+              label={t("trail_total_length")}
               name="trail_total_length"
               type="number"
               value={formData.trail_total_length}
@@ -67,7 +71,7 @@ const TrailPopup = ({ formData, setFormData }) => {
               }
             />
             <TextField
-              label="Antal stigar"
+              label={t("number_of_trails")}
               name="number_of_trails"
               type="number"
               value={formData.number_of_trails}
@@ -80,7 +84,7 @@ const TrailPopup = ({ formData, setFormData }) => {
               className="text-field"
             />
             <TextField
-              label="Stigens svårighetsgrad"
+              label={t("trail_level")}
               name="trail_level"
               value={formData.trail_level}
               onChange={(e) =>
@@ -91,24 +95,24 @@ const TrailPopup = ({ formData, setFormData }) => {
               }
             />
             <TextField
-              label="Beskriv terräng"
-              name="trail_terrain"
-              value={formData.trail_terrain}
-              onChange={(e) =>
-                setFormData((prevData) => ({
-                  ...prevData,
-                  trail_terrain: e.target.value,
-                }))
-              }
-            />
-            <TextField
-              label="Stigens tid"
+              label={t("trail_time")}
               name="trail_time"
               value={formData.trail_time}
               onChange={(e) =>
                 setFormData((prevData) => ({
                   ...prevData,
                   trail_time: e.target.value,
+                }))
+              }
+            />
+            <TextField
+              label={t("trail_terrain")}
+              name="trail_terrain"
+              value={formData.trail_terrain}
+              onChange={(e) =>
+                setFormData((prevData) => ({
+                  ...prevData,
+                  trail_terrain: e.target.value,
                 }))
               }
             />
@@ -125,7 +129,7 @@ const TrailPopup = ({ formData, setFormData }) => {
               }}
               sx={{ marginBottom: "2rem", width: "8rem" }}
             >
-              Spara
+              {t("trail_save_btn")}
             </Button>
           </Box>
         </DialogActions>

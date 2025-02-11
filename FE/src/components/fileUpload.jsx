@@ -1,14 +1,15 @@
 import { React, useContext, useState } from "react";
 import { Box, Typography, TextField, Button, IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import "./fileupload.css";
 import { FormDataContext } from "../context/FormDataContext";
+import { useTranslation } from "react-i18next";
 
-function fileUpload(/* { formData, setFormData } */) {
+function FileUpload() {
   const { formData, setFormData } = useContext(FormDataContext);
   const [previewImages, setPreviewImages] = useState([]);
+  const { t } = useTranslation();
 
-  const handleFileUpload = (e) => {
+  const HandleFileUpload = (e) => {
     const files = Array.from(e.target.files);
 
     if (files.length === 0) {
@@ -46,7 +47,7 @@ function fileUpload(/* { formData, setFormData } */) {
     setPreviewImages(newPreviewImages); // Update preview images
   };
 
-  const handleSubmit = async (e) => {
+  const HandleSubmit = async (e) => {
     e.preventDefault();
     console.log("formdata", formData);
     const formDataToSend = new FormData();
@@ -83,11 +84,12 @@ function fileUpload(/* { formData, setFormData } */) {
   };
 
   return (
-    <Box>
+    <Box
+      sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
       <Typography sx={{ marginTop: "1.5rem", marginBottom: "1rem" }}>
-        Ladda upp bilder. Max 2MB
+        {t("images_title")}
       </Typography>
-
       <TextField
         required
         type="file"
@@ -104,11 +106,10 @@ function fileUpload(/* { formData, setFormData } */) {
         variant="contained"
         color="primary"
         type="submit"
-        sx={{ margin: "1rem", width: "50%" }}
+        sx={{ margin: "1rem", width: "8rem" }}
       >
         Ladda upp
       </Button>
-
       {/* Preview selected images */}
       <Box>
         {previewImages.length > 0 && (
@@ -153,4 +154,4 @@ function fileUpload(/* { formData, setFormData } */) {
   );
 }
 
-export default fileUpload;
+export default FileUpload;

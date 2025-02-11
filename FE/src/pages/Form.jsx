@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import {
   Box,
   Typography,
@@ -10,8 +10,9 @@ import {
 import Contact from "../components/Contact";
 import ClientNew from "../components/ClientNew";
 import ClientEvent from "../components/ClientEvent";
-import BtnNext from "../components/Buttons/BtnNext";
-import CloseBtn from "../components/Buttons/CloseBtn";
+import NextBtn from "../components/buttons/NextBtn";
+import CloseBtn from "../components/buttons/CloseBtn";
+import TranslationBtn from "../components/buttons/TranslationBtn";
 import { useTheme } from "@mui/material/styles";
 import "./Form.css";
 import ClientExist from "../components/ClientExist";
@@ -28,6 +29,7 @@ const Form = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const { formData, setFormData } = useContext(FormDataContext);
   const { t } = useTranslation();
+
   const handleNext = () => {
     setCurrentStep((prevStep) => prevStep + 1);
   };
@@ -82,6 +84,7 @@ const Form = () => {
 
   return (
     <Box className="container">
+      <TranslationBtn />
       <form onSubmit={handleSubmit}>
         <Box sx={{ paddingTop: "1rem", paddingLeft: "1rem" }}>
           <img
@@ -104,8 +107,9 @@ const Form = () => {
             paddingBottom: "1rem",
           }}
         >
-          {t("tips_events")}
+          {t("hero")}
         </Typography>
+
         <CloseBtn redirectUrl="https://visitvarmland.com" />
         <Box
           display="flex"
@@ -126,33 +130,33 @@ const Form = () => {
               onClick={() => handleStepClick(0)}
               sx={{ cursor: "pointer" }}
             >
-              Steg 1
+              {t("breadcrumbs_1")}
             </Link>
             <Link
               color={currentStep === 1 ? "textPrimary" : "inherit"}
               onClick={() => handleStepClick(1)}
               sx={{ cursor: "pointer" }}
             >
-              Steg 2
+              {t("breadcrumbs_2")}
             </Link>
             <Link
               color={currentStep === 2 ? "textPrimary" : "inherit"}
               onClick={() => handleStepClick(2)}
               sx={{ cursor: "pointer" }}
             >
-              Steg 3
+              {t("breadcrumbs_3")}
             </Link>
           </Breadcrumbs>
         </Box>
         <Box display="flex" flexDirection="column" alignItems="center">
           <Box sx={{ mb: 4 }}>{renderStep()}</Box>
-          {currentStep < 2 && <BtnNext onClick={handleNext} />}
+          {currentStep < 2 && <NextBtn onClick={handleNext} />}
           {currentStep === 2 && (
             <Button
               onClick={(e) => handleSubmit(e, formData)}
               sx={{ marginBottom: "2rem", width: "8rem" }}
             >
-              Skicka
+              {t("submit_btn")}
             </Button>
           )}
         </Box>

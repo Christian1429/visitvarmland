@@ -8,13 +8,8 @@ export const FormDataProvider = ({ children }) => {
     description: "",
     sales_text: "",
     presentation: "",
-    open_hours: "",
     ticket_information: "",
-    ticket_info: "",
     open_times: "",
-    meta_title: "",
-    meta_keywords: "",
-    meta_description: "",
     booking_link: "",
     website_link: "",
     contact: [
@@ -33,7 +28,6 @@ export const FormDataProvider = ({ children }) => {
         zip_code: "",
         city: "",
         municipality_id: 0,
-        organization_id: 10,
         booking_link: "",
         website_link: "",
         email: "",
@@ -58,13 +52,11 @@ export const FormDataProvider = ({ children }) => {
         size: "",
       },
     ],
-    categories: [
-      {
-        id: 0,
-        title: "",
-        slug: "",
-      },
-    ],
+    // categories: [
+    //   {
+    //     title: "",
+    //   },
+    // ],
     places: [
       {
         id: 0,
@@ -80,17 +72,6 @@ export const FormDataProvider = ({ children }) => {
         ],
       },
     ],
-    distance: "",
-    slugs: {
-      sv: {
-        slug: "",
-        full_slug: "",
-      },
-      en: {
-        slug: "",
-        full_slug: "",
-      },
-    },
     is_trail: 0,
     trail_code_snippet: "",
     trail_total_length: 0,
@@ -98,7 +79,6 @@ export const FormDataProvider = ({ children }) => {
     trail_level: "",
     trail_terrain: "",
     trail_time: "",
-    slug: "",
     primary_image: {
       large: "",
       medium: "",
@@ -112,26 +92,6 @@ export const FormDataProvider = ({ children }) => {
         time_end: "",
       },
     ],
-    // past_occasions: [
-    //   {
-    //     date_start: '',
-    //     date_end: '',
-    //     time_start: '',
-    //     time_end: '',
-    //   },
-    // ],
-    // related_products: [
-    //   {
-    //     id: 0,
-    //     title: '',
-    //   },
-    // ],
-    // related_events: [
-    //   {
-    //     id: 0,
-    //     title: '',
-    //   },
-    // ],
   });
 
   return (
