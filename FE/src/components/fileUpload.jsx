@@ -95,13 +95,13 @@ function FileUpload() {
         type="file"
         inputProps={{ accept: "image/jpeg", multiple: true }}
         sx={{ width: "90%" }}
-        onChange={handleFileUpload}
+        onChange={HandleFileUpload}
         name="images"
       />
 
       <Button
         onClick={(e) => {
-          handleSubmit(e);
+          HandleSubmit(e);
         }}
         variant="contained"
         color="primary"
