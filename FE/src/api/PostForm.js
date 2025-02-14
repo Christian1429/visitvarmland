@@ -1,7 +1,7 @@
-const postForm = async (data) => {
+const postForm = async (formDataToSend) => {
   /*   console.log("postForm", data); */
 
-  try {
+  /* try {
     const requestOptions = {
       method: "POST",
       mode: "cors",
@@ -21,6 +21,20 @@ const postForm = async (data) => {
     }
   } catch (error) {
     console.error("Error:", error);
+  } */
+
+  try {
+    const response = await fetch("http://localhost:2000/api/data/upload", {
+      method: "POST",
+      mode: "cors",
+      body: formDataToSend,
+    });
+    if (!response.ok) {
+      throw new Error(`Failed to submit data: ${await response.text()}`);
+    }
+    console.log("Images uploaded successfully!");
+  } catch (error) {
+    console.error("Error:", error.message);
   }
 };
 

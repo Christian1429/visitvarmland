@@ -13,7 +13,4 @@ router.get("/:id", dataController.getData.bind(dataController));
 router.put("/:id", dataController.updateData.bind(dataController));
 router.delete("/:id", dataController.deleteData.bind(dataController));
 
-///Image upload.
-router.post("/upload", upload, dataController.uploadData.bind(dataController));
-
 module.exports = router;

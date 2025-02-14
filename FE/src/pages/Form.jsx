@@ -17,7 +17,7 @@ import { useTheme } from "@mui/material/styles";
 import "./Form.css";
 import ClientExist from "../components/ClientExist";
 import { FormDataContext } from "../context/FormDataContext";
-import handleSubmit from "../utils/handleSubmit";
+
 import { handleChange, handleArrayChange } from "../utils/formUtils";
 import TrailPopup from "../components/TrailPopup";
 import DatePickerClient from "../components/DatePicker";
@@ -36,6 +36,44 @@ const Form = () => {
 
   const handleStepClick = (step) => {
     setCurrentStep(step);
+  };
+
+  const handleSubmit = async () => {
+    const formDataToSend = new FormData();
+
+    Object.keys(formData).forEach((key) => {
+      if (key !== "images") {
+        if (Array.isArray(formData[key])) {
+          console.log(`${key} is an array`);
+
+          formData[key].forEach((data) => {
+            formDataToSend.append(key, JSON.stringify(data));
+          });
+        } else {
+          formDataToSend.append(key, formData[key]);
+        }
+      }
+    });
+
+    if (formData.images && formData.images.length > 0) {
+      formData.images.forEach((file) => {
+        formDataToSend.append("images", file);
+      });
+    }
+
+    try {
+      const response = await fetch("http://localhost:2000/api/data/", {
+        method: "POST",
+        mode: "cors",
+        body: formDataToSend,
+      });
+      if (!response.ok) {
+        throw new Error(`Failed to submit data: ${await response.text()}`);
+      }
+      console.log("Images uploaded successfully!");
+    } catch (error) {
+      console.error("Error:", error.message);
+    }
   };
 
   const renderStep = () => {
@@ -153,7 +191,7 @@ const Form = () => {
           {currentStep < 2 && <NextBtn onClick={handleNext} />}
           {currentStep === 2 && (
             <Button
-              onClick={(e) => handleSubmit(e, formData)}
+              onClick={() => handleSubmit(formData)}
               sx={{ marginBottom: "2rem", width: "8rem" }}
             >
               {t("submit_btn")}

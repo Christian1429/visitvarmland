@@ -8,7 +8,6 @@ function FileUpload() {
   const { formData, setFormData } = useContext(FormDataContext);
   const [previewImages, setPreviewImages] = useState([]);
   const { t } = useTranslation();
-
   const HandleFileUpload = (e) => {
     const files = Array.from(e.target.files);
 
@@ -46,52 +45,6 @@ function FileUpload() {
     setPreviewImages(newPreviewImages); // Update preview images
   };
 
-  const HandleSubmit = async (e) => {
-    e.preventDefault();
-
-    const formDataToSend = new FormData();
-
-    Object.keys(formData).forEach((key) => {
-      if (key !== "images") {
-        if (Array.isArray(formData[key])) {
-          console.log(`${key} is an array`);
-
-          formData[key].forEach((data) => {
-            console.log("data", data);
-
-            console.log("data", data);
-            formDataToSend.append(key, JSON.stringify(data));
-          });
-        } else {
-          formDataToSend.append(key, formData[key]);
-        }
-      }
-    });
-
-    if (formData.images && formData.images.length > 0) {
-      formData.images.forEach((file) => {
-        formDataToSend.append("images", file);
-      });
-    }
-    //Debugging
-    /* for (let pair of formDataToSend.entries()) {
-      console.log(pair[0] + ", " + pair[1]);
-    } */
-
-    try {
-      const response = await fetch("http://localhost:2000/api/data/upload", {
-        method: "POST",
-        mode: "cors",
-        body: formDataToSend,
-      });
-      if (!response.ok) {
-        throw new Error(`Failed to submit data: ${await response.text()}`);
-      }
-      console.log("Images uploaded successfully!");
-    } catch (error) {
-      console.error("Error:", error.message);
-    }
-  };
   return (
     <Box
       sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
@@ -108,17 +61,6 @@ function FileUpload() {
         name="images"
       />
 
-      <Button
-        onClick={(e) => {
-          HandleSubmit(e);
-        }}
-        variant="contained"
-        color="primary"
-        type="submit"
-        sx={{ margin: "1rem", width: "8rem" }}
-      >
-        Ladda upp
-      </Button>
       {/* Preview selected images */}
       <Box>
         {previewImages.length > 0 && (

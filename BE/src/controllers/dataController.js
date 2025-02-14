@@ -64,14 +64,14 @@ class DataController {
 
       // Create a new database entry
       const newData = new this.dataModel({
-        title: parsedBody.title || "Ingen titel",
-        description: parsedBody.description || "Ingen beskrivning",
+        title: parsedBody.title || "Ingen titel finns",
+        description: parsedBody.description || "Ingen beskrivning finns",
         sales_text: parsedBody.sales_text || "Ingen säljande beskrivning finns",
-        presentation: parsedBody.presentation || "Ingen presentation",
-        open_hours: parsedBody.open_hours || "Inga öppettider",
+        presentation: parsedBody.presentation || "Ingen presentation finns",
+        open_hours: parsedBody.open_hours || "Inga öppettider finns",
         ticket_information:
-          parsedBody.ticket_information || "Ingen biljet information",
-        booking_link: parsedBody.booking_link || "Ingen bokningslänk",
+          parsedBody.ticket_information || "Ingen biljet information finns",
+        booking_link: parsedBody.booking_link || "Ingen bokningslänk finns",
         images: imageFiles || "Inga bilder finns",
 
         phone_numbers: parsedBody.phone_numbers || "Inga telefonnummer finns",
@@ -85,12 +85,12 @@ class DataController {
 
         is_trail: parsedBody.is_trail,
         number_of_trails: parsedBody.number_of_trails || 0,
-        website_link: parsedBody.website_link,
-        parsedBody,
+        website_link:
+          parsedBody.website_link || "Ingen länk till webbsida finns",
       });
 
       const savedData = await newData.save();
-      /* console.log("Uppladdning lyckades!", savedData); */
+      console.log("Uppladdning lyckades!", savedData);
 
       res.status(201).json(savedData);
     } catch (error) {
