@@ -1,6 +1,6 @@
-import Form from './pages/Form';
-import { FormDataProvider } from './context/FormDataContext';
-import './i18n';
+import Form from "./pages/Form";
+import { FormDataProvider } from "./context/FormDataContext";
+import "./i18n";
 
 function App() {
   return (

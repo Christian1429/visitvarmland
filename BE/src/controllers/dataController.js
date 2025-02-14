@@ -7,8 +7,17 @@ class DataController {
   }
   async uploadData(req, res) {
     try {
-      console.log("req", req.files);
-      console.log("req", req.body);
+      const parsedBody = {};
+      Object.keys(req.body).forEach((key) => {
+        try {
+          parsedBody[key] = JSON.parse(req.body[key]); // Convert JSON back to object
+        } catch (e) {
+          parsedBody[key] = req.body[key]; // If it's not JSON, keep as string
+        }
+      });
+
+      console.log("Parsed Form Data:", parsedBody);
+
       if (!req.files || req.files.length === 0) {
         return res.status(400).json({ message: "Ingen fil uppladdad" });
       }
@@ -22,7 +31,6 @@ class DataController {
       const imageFiles = await Promise.all(
         req.files.map(async (file) => {
           // Check if file is a JPEG
-          console.log("file", file);
           if (file.mimetype !== "image/jpeg") {
             throw new Error(
               `Filen ${file.originalname} måste vara en JPEG-bild!`
@@ -34,11 +42,8 @@ class DataController {
             throw new Error(`Filen ${file.originalname} är för stor! Max 2MB.`);
           }
 
-          // Use sharp to read image and get metadata (dimensions)
           const imageMetadata = await sharp(file.buffer).metadata();
-          // Check if the image is exactly 640x640
-          /* console.log("imageMetadata.width", imageMetadata.width);
-          console.log("imageMetadata.height", imageMetadata.height); */
+
           if (
             imageMetadata.width < Min_WIDTH ||
             imageMetadata.height < Min_HEIGHT
@@ -48,7 +53,6 @@ class DataController {
             );
           }
 
-          // Return the file data for saving to DB
           return {
             name: file.originalname,
             size: file.size,
@@ -60,19 +64,33 @@ class DataController {
 
       // Create a new database entry
       const newData = new this.dataModel({
-        title: req.body.title || "Ingen titel",
-        description: req.body.description || "Ingen beskrivning",
-        sales_text: req.body.sales_text || "Ingen säljande beskrivning finns",
-        presentation: req.body.presentation || "Ingen presentation",
-        open_hours: req.body.open_hours || "Inga öppetider",
+        title: parsedBody.title || "Ingen titel",
+        description: parsedBody.description || "Ingen beskrivning",
+        sales_text: parsedBody.sales_text || "Ingen säljande beskrivning finns",
+        presentation: parsedBody.presentation || "Ingen presentation",
+        open_hours: parsedBody.open_hours || "Inga öppettider",
         ticket_information:
-          req.body.ticket_information || "Ingen biljet information",
-        booking_link: req.body.booking_link || "Ingen booknings länk",
-        images: imageFiles || "Inga bilder finns", // Add images to database
+          parsedBody.ticket_information || "Ingen biljet information",
+        booking_link: parsedBody.booking_link || "Ingen bokningslänk",
+        images: imageFiles || "Inga bilder finns",
+
+        phone_numbers: parsedBody.phone_numbers || "Inga telefonnummer finns",
+
+        websites: parsedBody.websites || "Inga hemsidor finns",
+
+        prices: parsedBody.prices,
+        organizers: parsedBody.organizers,
+        contact: parsedBody.contact,
+        occasions: parsedBody.occasions,
+
+        is_trail: parsedBody.is_trail,
+        number_of_trails: parsedBody.number_of_trails || 0,
+        website_link: parsedBody.website_link,
+        parsedBody,
       });
 
       const savedData = await newData.save();
-      console.log("✅ Uppladdning lyckades!", savedData);
+      /* console.log("Uppladdning lyckades!", savedData); */
 
       res.status(201).json(savedData);
     } catch (error) {

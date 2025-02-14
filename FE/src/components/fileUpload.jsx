@@ -26,7 +26,6 @@ function FileUpload() {
       return;
     }
 
-    /* console.log("selected file", files); */
     const newPreviews = newFiles.map((file) => URL.createObjectURL(file));
     setPreviewImages((prev) => [...prev, ...newPreviews]);
     setFormData((prev) => ({
@@ -49,31 +48,42 @@ function FileUpload() {
 
   const HandleSubmit = async (e) => {
     e.preventDefault();
-    console.log("formdata", formData);
+
     const formDataToSend = new FormData();
-    // Append other form fields correctly
+
     Object.keys(formData).forEach((key) => {
       if (key !== "images") {
-        formDataToSend.append(key, formData[key]);
+        if (Array.isArray(formData[key])) {
+          console.log(`${key} is an array`);
+
+          formData[key].forEach((data) => {
+            console.log("data", data);
+
+            console.log("data", data);
+            formDataToSend.append(key, JSON.stringify(data));
+          });
+        } else {
+          formDataToSend.append(key, formData[key]);
+        }
       }
     });
-    // Append images correctly as files
+
     if (formData.images && formData.images.length > 0) {
       formData.images.forEach((file) => {
         formDataToSend.append("images", file);
       });
     }
-    /* console.log("Submitting FormData:", formDataToSend); */
+    //Debugging
     /* for (let pair of formDataToSend.entries()) {
       console.log(pair[0] + ", " + pair[1]);
     } */
+
     try {
       const response = await fetch("http://localhost:2000/api/data/upload", {
         method: "POST",
         mode: "cors",
         body: formDataToSend,
       });
-
       if (!response.ok) {
         throw new Error(`Failed to submit data: ${await response.text()}`);
       }
@@ -82,7 +92,6 @@ function FileUpload() {
       console.error("Error:", error.message);
     }
   };
-
   return (
     <Box
       sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
