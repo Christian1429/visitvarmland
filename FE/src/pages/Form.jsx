@@ -17,7 +17,7 @@ import { useTheme } from "@mui/material/styles";
 import "./Form.css";
 import ClientExist from "../components/ClientExist";
 import { FormDataContext } from "../context/FormDataContext";
-
+import handleSubmit from "../utils/handleSubmit";
 import { handleChange, handleArrayChange } from "../utils/formUtils";
 import TrailPopup from "../components/TrailPopup";
 import DatePickerClient from "../components/DatePicker";
@@ -38,7 +38,7 @@ const Form = () => {
     setCurrentStep(step);
   };
 
-  const handleSubmit = async () => {
+  /* const handleSubmit = async () => {
     const formDataToSend = new FormData();
 
     Object.keys(formData).forEach((key) => {
@@ -74,7 +74,7 @@ const Form = () => {
     } catch (error) {
       console.error("Error:", error.message);
     }
-  };
+  }; */
 
   const renderStep = () => {
     switch (currentStep) {

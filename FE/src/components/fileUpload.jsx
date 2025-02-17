@@ -4,13 +4,15 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { FormDataContext } from "../context/FormDataContext";
 import { useTranslation } from "react-i18next";
 
-function FileUpload() {
-  const { formData, setFormData } = useContext(FormDataContext);
+//File size/pixel size in fe
+//link name type and size in fe.
+
+function FileUpload({ formData, setFormData }) {
   const [previewImages, setPreviewImages] = useState([]);
   const { t } = useTranslation();
   const HandleFileUpload = (e) => {
     const files = Array.from(e.target.files);
-
+    console.log(e.target.files);
     if (files.length === 0) {
       console.error("Inga filer valda");
       return;
@@ -44,7 +46,6 @@ function FileUpload() {
     setFormData({ ...formData, images: newImages }); // Update formData context
     setPreviewImages(newPreviewImages); // Update preview images
   };
-
   return (
     <Box
       sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}

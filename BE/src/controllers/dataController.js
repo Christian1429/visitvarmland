@@ -22,6 +22,10 @@ class DataController {
         return res.status(400).json({ message: "Ingen fil uppladdad" });
       }
 
+      //Byt kontroller till frontend.
+      //Länk till bild inte binärt.
+      //
+
       // Define max file size (2MB)
       const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
       const Min_WIDTH = 600; // Allow only 640x640
