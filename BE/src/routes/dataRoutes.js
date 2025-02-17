@@ -6,9 +6,45 @@ const router = express.Router();
 const dataController = new DataController();
 const upload = multer({ storage: multer.memoryStorage() }).array("images", 10); //The number  shows how many images can be uploaded at the same time.
 const testplatser = [
-  { id: 1, title: "Mariebergsskogen" },
-  { id: 2, title: "Sandgrundsudden" },
-  { id: 3, title: "Brigadmuseet" },
+  {
+    id: 0,
+    title: "Mariebergsskogen",
+    presentation: "Sommaro",
+    latitude: "40.7128",
+    longitude: "-74.0060",
+    accessibility: [
+      {
+        title: "Rullstolsanpassad",
+        more_information: "Tillgänglig ingång finns",
+      },
+    ],
+  },
+  {
+    id: 1,
+    title: "Sandgrundsmuséet",
+    presentation: "Sandgrund",
+    latitude: "40.7128",
+    longitude: "-74.0060",
+    accessibility: [
+      {
+        title: "Rullstolsanpassad",
+        more_information: "Tillgänglig ingång finns",
+      },
+    ],
+  },
+  {
+    id: 2,
+    title: "Brigadmuséet",
+    presentation: "Militär",
+    latitude: "40.7128",
+    longitude: "-74.0060",
+    accessibility: [
+      {
+        title: "Rullstolsanpassad",
+        more_information: "Tillgänglig ingång finns",
+      },
+    ],
+  },
 ];
 router.put("/:id", dataController.updateData.bind(dataController));
 router.post("/", dataController.createData.bind(dataController));

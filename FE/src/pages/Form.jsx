@@ -45,6 +45,7 @@ const Form = () => {
         return (
           <>
             <Contact formData={formData} setFormData={setFormData} />
+            <Field formData={formData} setFormData={setFormData} />
           </>
         );
       case 1:

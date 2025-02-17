@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Mariebergsskogen",
+    "presentation": "Plats presentation",
+    "latitude": "40.7128",
+    "longitude": "-74.0060",
+    "accessibility": [
+      {
+        "title": "Rullstolsanpassad",
+        "more_information": "Tillgänglig ingång finns"
+      }
+    ]
+  },
+  {
+    "title": "Brigadmuseét",
+    "presentation": "Plats presentation",
+    "latitude": "40.7128",
+    "longitude": "-74.0060",
+    "accessibility": [
+      {
+        "title": "Rullstolsanpassad",
+        "more_information": "Tillgänglig ingång finns"
+      }
+    ]
+  },
+  {
+    "title": "Sandgrundsmuseét",
+    "presentation": "Plats presentation",
+    "latitude": "40.7128",
+    "longitude": "-74.0060",
+    "accessibility": [
+      {
+        "title": "Rullstolsanpassad",
+        "more_information": "Tillgänglig ingång finns"
+      }
+    ]
+  }
+]
