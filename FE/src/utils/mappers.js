@@ -25,14 +25,6 @@ export const mapPrices = (prices) =>
 
 export const mapImages = (images) =>
   images.map((image) => ({
-    /* large: image.large,
-    medium: image.medium,
-    small: image.small,
-    alt_text: image.alt_text,
-    copyright: image.copyright,
-    description: image.description,
-    photographer: image.photographer,
-    year: image.year, */
     name: image.name,
     size: image.size,
     type: image.type,

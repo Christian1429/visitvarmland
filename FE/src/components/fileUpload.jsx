@@ -12,29 +12,56 @@ function FileUpload({ formData, setFormData }) {
   const { t } = useTranslation();
   const HandleFileUpload = (e) => {
     const files = Array.from(e.target.files);
-    console.log(e.target.files);
+
+    //
+
+    if (files[0].size > 2 * 1024 * 1024) {
+      console.log("File with maximum size of 2MB is allowed");
+      return false;
+    }
+    console.log("formData", formData);
+    /* formData.files[0].link = `/support/upload/${files[0].name}`;
+    formData.files[0].title = `${files[0].name}`;
+    formData.files[0].size = `${files[0].size}`;
+    console.log("formData", formData.files[0].link);
+
+    console.log(files[0].name); */
+
+    ////
     if (files.length === 0) {
       console.error("Inga filer valda");
       return;
     }
+    const exisitingFiles = formData.files || [];
+    console.log("exisitingFiles", exisitingFiles);
+    const existingFileNames = new Set(exisitingFiles.map((file) => file.link));
+    const newFiles = files.filter((file) => !existingFileNames.has(file.link));
 
-    const existingFiles = formData.images || [];
-    const existingFileNames = new Set(existingFiles.map((file) => file.name));
+    const existingImages = formData.images || [];
+    const existingImageNames = new Set(existingImages.map((file) => file.name));
 
-    const newFiles = files.filter((file) => !existingFileNames.has(file.name));
-    if (newFiles.length === 0) {
+    const newImages = files.filter(
+      (file) => !existingImageNames.has(file.name)
+    );
+    if (newImages.length === 0) {
       console.warn("Dubbletter ignorerade");
       return;
     }
-
-    const newPreviews = newFiles.map((file) => URL.createObjectURL(file));
+    //Set the files info.
+    setFormData((prev) => ({
+      ...prev,
+      files: [...exisitingFiles, ...newFiles],
+    }));
+    //Creates previews
+    const newPreviews = newImages.map((file) => URL.createObjectURL(file));
     setPreviewImages((prev) => [...prev, ...newPreviews]);
     setFormData((prev) => ({
       ...prev,
-      images: [...existingFiles, ...newFiles],
+      images: [...existingImages, ...newImages],
     }));
+    console.log("formData", formData);
   };
-
+  console.log("formData_after", formData);
   const removeImage = (index) => {
     // Remove file and preview at the selected index
     const newImages = [...formData.images];
@@ -46,6 +73,7 @@ function FileUpload({ formData, setFormData }) {
     setFormData({ ...formData, images: newImages }); // Update formData context
     setPreviewImages(newPreviewImages); // Update preview images
   };
+
   return (
     <Box
       sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}

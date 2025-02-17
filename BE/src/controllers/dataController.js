@@ -1,11 +1,10 @@
 const dataModel = require("../models/dataModel");
-const sharp = require("sharp");
 
 class DataController {
   constructor() {
     this.dataModel = dataModel;
   }
-  async uploadData(req, res) {
+  /*   async uploadData(req, res) {
     try {
       const parsedBody = {};
       Object.keys(req.body).forEach((key) => {
@@ -101,7 +100,7 @@ class DataController {
       console.error("Fel vid uppladdning:", error.message);
       res.status(400).json({ message: error.message }); // Return error response
     }
-  }
+  } */
 
   async createData(req, res) {
     console.log("req, be, created data", req.files);

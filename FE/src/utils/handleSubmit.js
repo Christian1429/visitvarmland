@@ -8,8 +8,7 @@ import {
   mapOrganizers,
 } from "./mappers";
 
-const handleSubmit = async (e, formData) => {
-  e.preventDefault();
+const handleSubmit = async (formData) => {
   const dataToSubmit = {
     ...formData,
     title: formData.title || "",

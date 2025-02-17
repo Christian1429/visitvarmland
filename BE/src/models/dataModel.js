@@ -32,23 +32,13 @@ const imageSchema = new mongoose.Schema({
   name: { type: String },
   size: { type: String },
   type: { type: String },
-  image: { type: Buffer, required: true },
-
-  /*  large: { type: String },
-  medium: { type: String },
-  small: { type: String },
-  alt_text: { type: String },
-  copyright: { type: String },
-  description: { type: String },
-  photographer: { type: String },
-  year: { type: Number },
-  image: { type: Buffer }, */
 });
 
 const fileSchema = new mongoose.Schema({
   link: { type: String },
   title: { type: String },
   size: { type: String },
+  link: { type: String },
 });
 
 const categorySchema = new mongoose.Schema({

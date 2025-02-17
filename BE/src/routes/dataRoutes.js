@@ -1,13 +1,10 @@
 const express = require("express");
 const DataController = require("../controllers/dataController");
-const multer = require("multer");
 
 const router = express.Router();
 const dataController = new DataController();
-const upload = multer({ storage: multer.memoryStorage() }).array("images", 10); //The number  shows how many images can be uploaded at the same time.
 
-/* router.post("/", upload, dataController.createData.bind(dataController)); */
-router.post("/", upload, dataController.uploadData.bind(dataController));
+router.post("/", dataController.createData.bind(dataController));
 router.get("/", dataController.getAllData.bind(dataController));
 router.get("/:id", dataController.getData.bind(dataController));
 router.put("/:id", dataController.updateData.bind(dataController));
