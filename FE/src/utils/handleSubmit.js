@@ -46,6 +46,7 @@ const handleSubmit = async (formData) => {
     // past_occasions: mapOccasions(formData.past_occasions),
     // related_products: mapRelatedItems(formData.related_products),
     // related_events: mapRelatedItems(formData.related_events),
+    gdpr_consent: formData.gdpr_consent,
   };
   console.log("handleSubmit output:", dataToSubmit);
   await postForm(dataToSubmit);
