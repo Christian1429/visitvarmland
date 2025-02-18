@@ -6,7 +6,7 @@ import {
   Checkbox,
   FormControlLabel,
 } from "@mui/material";
-import HandleFileUpload from "../components/FileUpload";
+import HandleFileUpload from "./FileUpload";
 import { useTranslation } from "react-i18next";
 import InfoButton from "./buttons/InfoBtn";
 

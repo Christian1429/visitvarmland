@@ -72,6 +72,15 @@ export const FormDataProvider = ({ children }) => {
         ],
       },
     ],
+    data: [
+      {
+        id: 0,
+        name: "",
+        edit: "",
+        endpointType: "",
+        thumbnail: "",
+      },
+    ],
     is_trail: 0,
     trail_code_snippet: "",
     trail_total_length: 0,

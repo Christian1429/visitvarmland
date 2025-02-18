@@ -6,6 +6,7 @@ import {
   mapPlaces,
   mapOccasions,
   mapOrganizers,
+  mapData,
 } from "./mappers";
 
 const handleSubmit = async (formData) => {
