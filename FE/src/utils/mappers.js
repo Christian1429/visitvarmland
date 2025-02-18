@@ -65,6 +65,16 @@ export const mapOccasions = (occasions) =>
     time_end: occasion.time_end,
   }));
 
+export const mapData = (data) => {
+  data?.map(() => ({
+    id: data.id,
+    name: id.name,
+    edit: id.edit,
+    endpointType: data.endpointType,
+    thumbnail: data.thumbnail,
+  }));
+};
+
 // export const mapPastOccasions = (past_occasions) =>
 //   past_occasions.map((occasion) => ({
 //     date_start: occasion.date_start,

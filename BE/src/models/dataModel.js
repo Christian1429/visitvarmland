@@ -54,7 +54,13 @@ const placeSchema = new mongoose.Schema({
     { title: { type: String }, more_information: { type: String } },
   ],
 });
-
+const dataPlaceSchema = new mongoose.Schema({
+  id: { type: String },
+  name: { type: String },
+  edit: { type: String },
+  endpointType: { type: String },
+  thumbnail: { type: String },
+});
 const occasionSchema = new mongoose.Schema({
   date_start: { type: Date },
   date_end: { type: Date },
@@ -82,6 +88,7 @@ const dataSchema = new mongoose.Schema({
   files: [fileSchema],
   // categories: [categorySchema],
   places: [placeSchema],
+  data: [dataPlaceSchema],
   is_trail: { type: Number },
   trail_code_snippet: { type: String },
   trail_total_length: { type: Number },
