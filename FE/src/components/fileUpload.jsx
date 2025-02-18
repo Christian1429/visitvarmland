@@ -1,5 +1,11 @@
 import { React, useState } from "react";
-import { Box, Typography, TextField, IconButton } from "@mui/material";
+import {
+  Box,
+  Typography,
+  TextField,
+  IconButton,
+  Snackbar,
+} from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useTranslation } from "react-i18next";
 
@@ -7,6 +13,7 @@ const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
 
 function FileUpload({ formData, setFormData }) {
   const [previewImages, setPreviewImages] = useState([]);
+  const [error, setError] = useState("");
   const { t } = useTranslation();
 
   const HandleFileUpload = (e) => {
@@ -16,8 +23,6 @@ function FileUpload({ formData, setFormData }) {
       console.error("No files selected");
       return;
     }
-
-    console.log("Existing formData:", formData);
 
     const existingFiles = (formData.files || []).filter(
       (file) => file.link && file.title && file.size
@@ -33,7 +38,7 @@ function FileUpload({ formData, setFormData }) {
 
     files.forEach((file) => {
       if (file.size > MAX_FILE_SIZE) {
-        console.log(`${file.name} exceeds the size limit of 2MB.`);
+        setError(`${file.name} exceeds the size limit of 2MB.`);
         return;
       }
 
@@ -65,7 +70,8 @@ function FileUpload({ formData, setFormData }) {
     } else {
       console.warn("No new valid files to upload.");
     }
-    /* e.target.value = null; */
+    // Reset file input after upload
+    e.target.value = null;
   };
 
   const removeFile = (index, images, files) => {
@@ -80,6 +86,10 @@ function FileUpload({ formData, setFormData }) {
     setFormData({ ...formData, [images]: newImages, [files]: newFiles });
 
     setPreviewImages(newPreviewImages);
+  };
+
+  const handleCloseError = () => {
+    setError(""); // Close the error message
   };
 
   return (
@@ -139,6 +149,15 @@ function FileUpload({ formData, setFormData }) {
           </div>
         )}
       </Box>
+      {/* Error message Snackbar */}
+      {error && (
+        <Snackbar
+          open={!!error}
+          autoHideDuration={6000}
+          onClose={handleCloseError}
+          message={error}
+        />
+      )}
     </Box>
   );
 }
