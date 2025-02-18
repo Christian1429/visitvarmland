@@ -40,7 +40,7 @@ const ClientEvent = ({ formData, setFormData }) => {
         margin="dense"
         fullWidth
         id="title"
-        label={t("title")}
+        label={t("event_name")}
         name="event-title"
         value={formData.title || ""}
         onChange={(e) =>
