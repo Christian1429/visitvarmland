@@ -149,7 +149,7 @@ function FileUpload({ formData, setFormData }) {
           </div>
         )}
       </Box>
-      {/* Error message Snackbar */}
+
       {error && (
         <Snackbar
           open={!!error}
