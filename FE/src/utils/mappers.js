@@ -65,15 +65,6 @@ export const mapOccasions = (occasions) =>
     time_end: occasion.time_end,
   }));
 
-export const mapData = (data) =>
-  data?.map((dataItem) => ({
-    id: dataItem.id,
-    name: dataItem.name,
-    edit: dataItem.edit,
-    endpointType: dataItem.endpointType,
-    thumbnail: dataItem.thumbnail,
-  }));
-
 // export const mapPastOccasions = (past_occasions) =>
 //   past_occasions.map((occasion) => ({
 //     date_start: occasion.date_start,

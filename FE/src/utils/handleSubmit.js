@@ -6,7 +6,6 @@ import {
   mapPlaces,
   mapOccasions,
   mapOrganizers,
-  mapData,
 } from "./mappers";
 
 const handleSubmit = async (formData) => {
@@ -29,7 +28,6 @@ const handleSubmit = async (formData) => {
     files: mapFiles(formData.files),
     // categories: mapCategories(formData.categories),
     places: mapPlaces(formData.places),
-    data: mapData(formData.data),
     is_trail: 0,
     trail_code_snippet: formData.trail_code_snippet || "",
     trail_total_length: formData.trail_total_length || 0,
