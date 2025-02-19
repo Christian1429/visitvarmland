@@ -41,20 +41,22 @@ function FileUpload({ formData, setFormData }) {
         setError(`${file.name} exceeds the size limit of 2MB.`);
         return;
       }
-
+      //Check for duplicates then updates the file field in formData.
       if (!existingFileNames.has(file.name)) {
         validFiles.push({
           title: file.name,
           size: file.size,
-          link: `/support/upload/${file.name}`,
+          link: `https://tmpfiles.org/api/v1/${file.name}`,
         });
+
         newPreviews.push(URL.createObjectURL(file));
       }
-
+      //Check for duplicates then updates the image field in formData.
       if (!existingImageNames.has(file.name)) {
         validImages.push({
           name: file.name,
           size: file.size,
+          type: file.type,
         });
       }
     });
@@ -108,7 +110,6 @@ function FileUpload({ formData, setFormData }) {
         name="images"
       />
 
-      {/* Preview selected images */}
       <Box>
         {previewImages.length > 0 && (
           <div>
@@ -149,7 +150,7 @@ function FileUpload({ formData, setFormData }) {
           </div>
         )}
       </Box>
-      {/* Error message Snackbar */}
+
       {error && (
         <Snackbar
           open={!!error}
