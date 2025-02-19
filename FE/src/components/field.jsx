@@ -1,10 +1,21 @@
 import React, { useState, useEffect, useContext } from "react";
 import { FormDataContext } from "../context/FormDataContext";
+import {
+  List,
+  ListItem,
+  ListItemText,
+  Card,
+  Typography,
+  Box,
+  Autocomplete,
+  TextField,
+  IconButton,
+} from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 
 function Field() {
   const { formData, setFormData } = useContext(FormDataContext); // Formulärsdatan
   const [data, setData] = useState([]); // API-datan från testplatser
-  const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
     async function fetchTestplatser() {
@@ -14,7 +25,7 @@ function Field() {
         );
         const json = await response.json();
         setData(json);
-        console.log("Testplatser från API:", json);
+        console.log("Testplatser från Backenden", json);
       } catch (error) {
         console.error("Fel vid hämtning av testplatser:", error);
       }
@@ -49,88 +60,93 @@ function Field() {
     });
   };
 
-  useEffect(() => {
-    if (inputValue === "") return;
-    const matchingPlace = data.find((plats) => plats.title === inputValue);
-    if (matchingPlace) {
-      handlePlaceSelect(matchingPlace);
-    }
-  }, [inputValue, data]);
+  const removePlace = (id) => {
+    setFormData((prevData) => {
+      const updatedPlaces = prevData.places.filter((place) => place.id !== id);
+      console.log("Valda platser efter borttagning:", updatedPlaces);
+      return { ...prevData, places: updatedPlaces };
+    });
+  };
 
   return (
-    <>
-      <label htmlFor="place">Välj en plats:</label>
-      <input
-        id="place"
-        type="text"
-        list="places"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-        placeholder="Skriv en plats..."
-        autoComplete="on"
+    <Box sx={{ width: 400, margin: "0 auto", padding: 2 }}>
+      <Autocomplete
+        options={data}
+        getOptionLabel={(option) => option.title || ""}
+        onChange={(event, newValue) => {
+          if (newValue) {
+            handlePlaceSelect(newValue);
+          }
+        }}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            label="Välj en plats"
+            placeholder="Skriv en plats..."
+            autoComplete="on"
+            variant="outlined"
+          />
+        )}
       />
-      <datalist id="places">
-        {data.map((plats) => (
-          <option key={plats.id} value={plats.title} />
-        ))}
-      </datalist>
-    </>
+      <Card
+        sx={{
+          borderRadius: 2,
+          padding: 2,
+          marginTop: 2,
+          boxShadow: "0px 4px 10px rgba(0, 67, 56, 0.2)",
+          width: "100%",
+        }}
+      >
+        <Typography
+          variant="h6"
+          sx={{
+            color: "var(--color-green-dark)",
+            fontFamily: "'Noto Sans', sans-serif",
+            fontWeight: 600,
+            marginBottom: 1,
+          }}
+        >
+          Valda platser:
+        </Typography>
+        <List sx={{ display: "flex", flexDirection: "column" }}>
+          {formData.places.map((place) => (
+            <ListItem
+              key={place.id}
+              sx={{
+                backgroundColor: "var(--color-green-light)",
+                color: "var(--color-background)",
+                borderRadius: 1,
+                marginBottom: 1,
+                padding: 1,
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                "&:hover": { backgroundColor: "var(--color-green-dark)" },
+              }}
+            >
+              <ListItemText
+                primary={place.title}
+                sx={{
+                  fontFamily: "'Noto Serif', serif",
+                  fontWeight: 500,
+                }}
+              />
+
+              <IconButton
+                onClick={() => removePlace(place.id)}
+                sx={{
+                  color: "var(--color-background)",
+                  "&:hover": { color: "var(--color-red-light)" },
+                }}
+              >
+                <CloseIcon />
+              </IconButton>
+            </ListItem>
+          ))}
+        </List>
+      </Card>
+    </Box>
   );
 }
 
 export default Field;
-
-/*   const handleChange = (event) => {
-    const selectedClient = clients.find(
-      (client) => client.id === event.target.value
-    );
-    console.log('Selected client:', selectedClient);
-    setDropdownValueExisting(event.target.value);
-    handleClientSelect(selectedClient);
-  }; Lägg på en sån här funktion här inne så den går efter places istället. Kolla flödet i clientexist. Behöver göra så att det title: "",
-        presentation: "",
-        latitude: "",
-        longitude: "",
-        accessibility: [
-          {
-            title: "",
-            more_information: "", här dyker upp för den platsen man valt när man väljer platsen. Det viktiga är att det läggs till i objektet när man valt det. Så fokusera inte på att göra massa fält där man ser informationen. Se till att datan skickas vidare bara. Den behöver inte visas visuellt. Kommer inte skapa något nytt egentligen utan bara lägga till det i den befintliga. Tjuvkika i de andra funktioner för att få mer hum på hur det läggs till. 
-*/
-/*  Så här ska objektet se ut för att skicka datan vidare fast typa upp som formdatacontexten för places.
-  const handleClientSelect = (client) => {
-    const organizers = client.organizers[0];
-    if (organizers) {
-      setFormData((prevData) => ({
-        ...prevData,
-        organizers: [
-          {
-            id: organizers.id || 0,
-            name: organizers.title || '',
-            street1: organizers.street1 || '',
-            street2: organizers.street2 || '',
-            zip_code: organizers.zip_code || '',
-            city: organizers.city || '',
-            municipality_id: organizers.municipality_id || '',
-            booking_link: organizers.booking_link || '',
-            website: organizers.website_link || '',
-            email: organizers.email || '',
-            phone_numbers: organizers.phone_numbers || [],
-          },
-        ],
-      }));
-    }
-  }; */
-/* Det här måste skickas med i input fältet tillsammans med platsen:  places: [
-      {
-        title: "",
-        presentation: "",
-        latitude: "",
-        longitude: "",
-        accessibility: [
-          {
-            title: "",
-            more_information: "",
-          },
-        ],
-      },
-    ], */

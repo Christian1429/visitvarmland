@@ -22,7 +22,6 @@ import { handleChange, handleArrayChange } from "../utils/formUtils";
 import TrailPopup from "../components/TrailPopup";
 import DatePickerClient from "../components/DatePicker";
 import { useTranslation } from "react-i18next";
-import Field from "../components/field";
 
 const Form = () => {
   const theme = useTheme();
@@ -45,7 +44,6 @@ const Form = () => {
         return (
           <>
             <Contact formData={formData} setFormData={setFormData} />
-            <Field formData={formData} setFormData={setFormData} />
           </>
         );
       case 1:
