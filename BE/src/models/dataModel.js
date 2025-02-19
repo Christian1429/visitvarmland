@@ -54,13 +54,7 @@ const placeSchema = new mongoose.Schema({
     { title: { type: String }, more_information: { type: String } },
   ],
 });
-const dataPlaceSchema = new mongoose.Schema({
-  id: { type: String },
-  name: { type: String },
-  edit: { type: String },
-  endpointType: { type: String },
-  thumbnail: { type: String },
-});
+
 const occasionSchema = new mongoose.Schema({
   date_start: { type: Date },
   date_end: { type: Date },
