@@ -32,23 +32,13 @@ const imageSchema = new mongoose.Schema({
   name: { type: String },
   size: { type: String },
   type: { type: String },
-  image: { type: Buffer },
-  encoding: { type: String },
-  /*  large: { type: String },
-  medium: { type: String },
-  small: { type: String },
-  alt_text: { type: String },
-  copyright: { type: String },
-  description: { type: String },
-  photographer: { type: String },
-  year: { type: Number },
-  image: { type: Buffer }, */
 });
 
 const fileSchema = new mongoose.Schema({
   link: { type: String },
   title: { type: String },
   size: { type: String },
+  link: { type: String },
 });
 
 const categorySchema = new mongoose.Schema({
@@ -73,9 +63,11 @@ const occasionSchema = new mongoose.Schema({
 });
 
 const dataSchema = new mongoose.Schema({
-  title: { type: String },
-  description: { type: String },
-  sales_text: { type: String },
+  created_at: { type: Date, default: Date.now },
+  updated_at: { type: Date, default: Date.now },
+  title: { type: String, required: true },
+  description: { type: String, required: true },
+  sales_text: { type: String, required: true },
   presentation: { type: String },
   ticket_information: { type: String },
   open_times: { type: String },
@@ -90,6 +82,7 @@ const dataSchema = new mongoose.Schema({
   files: [fileSchema],
   // categories: [categorySchema],
   places: [placeSchema],
+  data: [dataPlaceSchema],
   is_trail: { type: Number },
   trail_code_snippet: { type: String },
   trail_total_length: { type: Number },

@@ -6,7 +6,7 @@ import {
   Checkbox,
   FormControlLabel,
 } from "@mui/material";
-import HandleFileUpload from "../components/FileUpload";
+import HandleFileUpload from "./FileUpload";
 import { useTranslation } from "react-i18next";
 import InfoButton from "./buttons/InfoBtn";
 import Field from "./Field";
@@ -27,9 +27,13 @@ const ClientEvent = ({ formData, setFormData }) => {
         boxShadow: 3,
         p: 4,
         m: "auto",
+
         borderRadius: 2,
-        backdropFilter: "blur(2px)",
+
         background: "rgba(255, 255, 255, 0.7)",
+
+        backdropFilter: "blur(2px)",
+
         display: "flex",
         flexDirection: "column",
       }}
@@ -40,7 +44,7 @@ const ClientEvent = ({ formData, setFormData }) => {
         margin="dense"
         fullWidth
         id="title"
-        label={t('event_name')}
+        label={t("event_name")}
         name="event-title"
         value={formData.title || ""}
         onChange={(e) =>
@@ -190,7 +194,8 @@ const ClientEvent = ({ formData, setFormData }) => {
       />
       <Field />
       {/* --------------- IMAGE UPLOADER -------------- */}
-      <HandleFileUpload />
+      <HandleFileUpload formData={formData} setFormData={setFormData} />
+
       <Box gridColumn="span 2" sx={{ display: "flex" }}>
         <FormControlLabel
           control={

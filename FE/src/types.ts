@@ -83,6 +83,13 @@ export interface RelatedEvent {
   title: string;
 }
 
+export interface Data {
+  id: number;
+  name: string;
+  edit: string;
+  endpointType: string;
+  thumbnail: string;
+}
 export interface EventData {
   id: number;
   created_at: string;
@@ -103,6 +110,7 @@ export interface EventData {
   organizers: Organizer[];
   websites: string[];
   prices: Price[];
+  data: Data[];
   phone_numbers: string[];
   images: Image[];
   files: File[];

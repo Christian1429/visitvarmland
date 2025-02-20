@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Box,
   TextField,
@@ -7,8 +7,8 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
-} from '@mui/material';
-import { useTranslation } from 'react-i18next';
+} from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 const TrailPopup = ({ formData, setFormData }) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -18,10 +18,10 @@ const TrailPopup = ({ formData, setFormData }) => {
     <>
       <div
         style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: '10vh',
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "10vh",
         }}
       >
         <Button
@@ -29,20 +29,22 @@ const TrailPopup = ({ formData, setFormData }) => {
           color="primary"
           onClick={() => setIsPopupOpen(true)}
         >
-          {t('trail_btn')}
+          {t("trail_btn")}
         </Button>
       </div>
 
       <Dialog open={isPopupOpen} onClose={() => setIsPopupOpen(false)}>
-        <DialogTitle sx={{ textAlign: 'center' }}>Fyll i information om stigen</DialogTitle>
+        <DialogTitle sx={{ textAlign: "center" }}>
+          Fyll i information om stigen
+        </DialogTitle>
         <DialogContent>
           <Box
             sx={{
-              display: 'flex',
-              flexDirection: 'column',
+              display: "flex",
+              flexDirection: "column",
               gap: 2,
-              width: '30rem',
-              padding: '1rem',
+              width: "30rem",
+              padding: "1rem",
             }}
           >
             {/* <TextField
@@ -57,7 +59,7 @@ const TrailPopup = ({ formData, setFormData }) => {
               }
             /> */}
             <TextField
-              label={(t('trail_total_length'))}
+              label={t("trail_total_length")}
               name="trail_total_length"
               type="number"
               value={formData.trail_total_length}
@@ -69,7 +71,7 @@ const TrailPopup = ({ formData, setFormData }) => {
               }
             />
             <TextField
-              label={t('number_of_trails')}
+              label={t("number_of_trails")}
               name="number_of_trails"
               type="number"
               value={formData.number_of_trails}
@@ -82,7 +84,7 @@ const TrailPopup = ({ formData, setFormData }) => {
               className="text-field"
             />
             <TextField
-              label={t('trail_level')}
+              label={t("trail_level")}
               name="trail_level"
               value={formData.trail_level}
               onChange={(e) =>
@@ -93,7 +95,7 @@ const TrailPopup = ({ formData, setFormData }) => {
               }
             />
             <TextField
-              label={t('trail_time')}
+              label={t("trail_time")}
               name="trail_time"
               value={formData.trail_time}
               onChange={(e) =>
@@ -104,7 +106,7 @@ const TrailPopup = ({ formData, setFormData }) => {
               }
             />
             <TextField
-              label={t('trail_terrain')}
+              label={t("trail_terrain")}
               name="trail_terrain"
               value={formData.trail_terrain}
               onChange={(e) =>
@@ -117,17 +119,17 @@ const TrailPopup = ({ formData, setFormData }) => {
           </Box>
         </DialogContent>
         <DialogActions
-          style={{ display: 'flex', justifyContent: 'center', paddingTop: '0' }}
+          style={{ display: "flex", justifyContent: "center", paddingTop: "0" }}
         >
           <Box>
             <Button
               onClick={() => {
-                console.log('Saved data:', formData);
+                console.log("Saved data:", formData);
                 setIsPopupOpen(false);
               }}
-              sx={{ marginBottom: '2rem', width: '8rem' }}
+              sx={{ marginBottom: "2rem", width: "8rem" }}
             >
-              {t('trail_save_btn')}
+              {t("trail_save_btn")}
             </Button>
           </Box>
         </DialogActions>

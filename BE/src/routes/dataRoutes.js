@@ -1,6 +1,5 @@
 const express = require("express");
 const DataController = require("../controllers/dataController");
-const multer = require("multer");
 
 const router = express.Router();
 const dataController = new DataController();

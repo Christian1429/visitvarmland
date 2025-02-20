@@ -72,6 +72,7 @@ export const FormDataProvider = ({ children }) => {
         ],
       },
     ],
+
     is_trail: 0,
     trail_code_snippet: "",
     trail_total_length: 0,
