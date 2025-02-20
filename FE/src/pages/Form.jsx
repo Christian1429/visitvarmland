@@ -19,7 +19,6 @@ import ClientExist from "../components/ClientExist";
 import { FormDataContext } from "../context/FormDataContext";
 import handleSubmit from "../utils/handleSubmit";
 import { handleChange, handleArrayChange } from "../utils/formUtils";
-import TrailPopup from "../components/TrailPopup";
 import DatePickerClient from "../components/DatePicker";
 import { useTranslation } from "react-i18next";
 
@@ -62,12 +61,6 @@ const Form = () => {
         return (
           <>
             <DatePickerClient formData={formData} setFormData={setFormData} />
-            <TrailPopup
-              formData={formData}
-              setFormData={setFormData}
-              handleChange={handleChange}
-              handleArrayChange={handleArrayChange}
-            />
             <ClientEvent
               formData={formData}
               setFormData={setFormData}

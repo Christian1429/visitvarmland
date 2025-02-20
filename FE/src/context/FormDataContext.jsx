@@ -12,7 +12,7 @@ export const FormDataProvider = ({ children }) => {
     open_times: "",
     booking_link: "",
     website_link: "",
-    contact: [
+    contact: [    // new  
       {
         contact_name: "",
         contact_email: "",
@@ -52,11 +52,6 @@ export const FormDataProvider = ({ children }) => {
         size: "",
       },
     ],
-    // categories: [
-    //   {
-    //     title: "",
-    //   },
-    // ],
     places: [
       {
         id: 0,
@@ -93,7 +88,7 @@ export const FormDataProvider = ({ children }) => {
         time_end: "",
       },
     ],
-    gdpr_consent: false,
+    gdpr_consent: false, //  new
   });
 
   return (

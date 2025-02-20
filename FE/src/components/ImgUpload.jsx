@@ -12,7 +12,7 @@ import { useTranslation } from "react-i18next";
 
 const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
 
-function FileUpload({ formData, setFormData }) {
+function ImgUpload({ formData, setFormData }) {
   const [previewImages, setPreviewImages] = useState([]);
   const [error, setError] = useState("");
   const { t } = useTranslation();
@@ -165,4 +165,4 @@ function FileUpload({ formData, setFormData }) {
   );
 }
 
-export default FileUpload;
+export default ImgUpload;
