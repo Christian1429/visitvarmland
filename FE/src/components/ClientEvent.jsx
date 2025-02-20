@@ -20,6 +20,14 @@ const ClientEvent = ({ formData, setFormData }) => {
   const { t } = useTranslation();
   const [consent, setConsent] = useState(false);
 
+  const handleChange = (e) => {
+    setConsent(e);
+    setFormData((prev) => ({
+      ...prev,
+      gdpr_consent: e,
+    }));
+  };
+
   return (
     <Box
       sx={{
@@ -192,7 +200,6 @@ const ClientEvent = ({ formData, setFormData }) => {
         }
         className="text-field"
       />
-      <Field />
       {/* --------------- IMAGE UPLOADER -------------- */}
       <HandleFileUpload formData={formData} setFormData={setFormData} />
 
@@ -201,7 +208,7 @@ const ClientEvent = ({ formData, setFormData }) => {
           control={
             <Checkbox
               checked={consent}
-              onChange={(e) => setConsent(e.target.checked)}
+              onChange={(e) => handleChange(e.target.checked)}
               name="consent"
               color="primary"
               required

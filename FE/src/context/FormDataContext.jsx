@@ -93,6 +93,7 @@ export const FormDataProvider = ({ children }) => {
         time_end: "",
       },
     ],
+    gdpr_consent: false,
   });
 
   return (

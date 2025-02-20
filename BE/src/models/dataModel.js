@@ -82,7 +82,6 @@ const dataSchema = new mongoose.Schema({
   files: [fileSchema],
   // categories: [categorySchema],
   places: [placeSchema],
-  data: [dataPlaceSchema],
   is_trail: { type: Number },
   trail_code_snippet: { type: String },
   trail_total_length: { type: Number },
