@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext } from "react";
 import {
   Box,
   Typography,
@@ -6,27 +6,26 @@ import {
   Link,
   useMediaQuery,
   Button,
-} from '@mui/material';
-import Contact from '../components/Contact';
-import ClientNew from '../components/ClientNew';
-import ClientEvent from '../components/ClientEvent';
-import NextBtn from '../components/buttons/NextBtn';
-import CloseBtn from '../components/buttons/CloseBtn';
-import TranslationBtn from '../components/buttons/TranslationBtn';
-import { useTheme } from '@mui/material/styles';
-import './Form.css';
-import ClientExist from '../components/ClientExist';
-import { FormDataContext } from '../context/FormDataContext';
-import handleSubmit from '../utils/handleSubmit';
-import { handleChange, handleArrayChange } from '../utils/formUtils';
-import TrailPopup from '../components/TrailPopup';
-import DatePickerClient from '../components/DatePicker';
-import { useTranslation } from 'react-i18next';
-
+} from "@mui/material";
+import Contact from "../components/Contact";
+import ClientNew from "../components/ClientNew";
+import ClientEvent from "../components/ClientEvent";
+import NextBtn from "../components/buttons/NextBtn";
+import CloseBtn from "../components/buttons/CloseBtn";
+import TranslationBtn from "../components/buttons/TranslationBtn";
+import { useTheme } from "@mui/material/styles";
+import "./Form.css";
+import ClientExist from "../components/ClientExist";
+import { FormDataContext } from "../context/FormDataContext";
+import handleSubmit from "../utils/handleSubmit";
+import { handleChange, handleArrayChange } from "../utils/formUtils";
+import TrailPopup from "../components/TrailPopup";
+import DatePickerClient from "../components/DatePicker";
+import { useTranslation } from "react-i18next";
 
 const Form = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const [currentStep, setCurrentStep] = useState(0);
   const { formData, setFormData } = useContext(FormDataContext);
   const { t } = useTranslation();
@@ -87,13 +86,13 @@ const Form = () => {
     <Box className="container">
       <TranslationBtn />
       <form onSubmit={handleSubmit}>
-        <Box sx={{ paddingTop: '1rem', paddingLeft: '1rem' }}>
+        <Box sx={{ paddingTop: "1rem", paddingLeft: "1rem" }}>
           <img
             src="/assets/logotyp-visitvarmland-svart.svg"
             alt="Logo"
             className="logo"
             width={isMobile ? 100 : 150}
-            sx={{ paddingTop: '10rem' }}
+            sx={{ paddingTop: "10rem" }}
           />
         </Box>
         <Typography
@@ -102,50 +101,50 @@ const Form = () => {
           align="center"
           gutterBottom
           sx={{
-            color: '#004338',
-            fontWeight: 'bold',
-            paddingTop: '1rem',
-            paddingBottom: '1rem',
+            color: "#004338",
+            fontWeight: "bold",
+            paddingTop: "1rem",
+            paddingBottom: "1rem",
           }}
         >
-          {t('hero')}
+          {t("hero")}
         </Typography>
 
         <CloseBtn redirectUrl="https://visitvarmland.com" />
         <Box
           display="flex"
           justifyContent="center"
-          sx={{ marginBottom: '1rem' }}
+          sx={{ marginBottom: "1rem" }}
         >
           <Breadcrumbs
             aria-label="breadcrumb"
             separator=">"
             sx={{
-              marginBottom: '1rem',
-              flexDirection: isMobile ? 'column' : 'row',
-              alignItems: isMobile ? 'flex-start' : 'center',
+              marginBottom: "1rem",
+              flexDirection: isMobile ? "column" : "row",
+              alignItems: isMobile ? "flex-start" : "center",
             }}
           >
             <Link
-              color={currentStep === 0 ? 'textPrimary' : 'inherit'}
+              color={currentStep === 0 ? "textPrimary" : "inherit"}
               onClick={() => handleStepClick(0)}
-              sx={{ cursor: 'pointer' }}
+              sx={{ cursor: "pointer" }}
             >
-              {t('breadcrumbs_1')}
+              {t("breadcrumbs_1")}
             </Link>
             <Link
-              color={currentStep === 1 ? 'textPrimary' : 'inherit'}
+              color={currentStep === 1 ? "textPrimary" : "inherit"}
               onClick={() => handleStepClick(1)}
-              sx={{ cursor: 'pointer' }}
+              sx={{ cursor: "pointer" }}
             >
-              {t('breadcrumbs_2')}
+              {t("breadcrumbs_2")}
             </Link>
             <Link
-              color={currentStep === 2 ? 'textPrimary' : 'inherit'}
+              color={currentStep === 2 ? "textPrimary" : "inherit"}
               onClick={() => handleStepClick(2)}
-              sx={{ cursor: 'pointer' }}
+              sx={{ cursor: "pointer" }}
             >
-              {t('breadcrumbs_3')}
+              {t("breadcrumbs_3")}
             </Link>
           </Breadcrumbs>
         </Box>
@@ -155,9 +154,9 @@ const Form = () => {
           {currentStep === 2 && (
             <Button
               onClick={() => handleSubmit(formData)}
-              sx={{ marginBottom: '2rem', width: '8rem' }}
+              sx={{ marginBottom: "2rem", width: "8rem" }}
             >
-              {t('submit_btn')}
+              {t("submit_btn")}
             </Button>
           )}
         </Box>

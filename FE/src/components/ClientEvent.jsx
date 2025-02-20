@@ -1,11 +1,16 @@
 import { useState } from "react";
-import { TextField, Box, InputAdornment, Checkbox, FormControlLabel } from "@mui/material";
+import {
+  TextField,
+  Box,
+  InputAdornment,
+  Checkbox,
+  FormControlLabel,
+} from "@mui/material";
 import HandleFileUpload from "../components/FileUpload";
 import { useTranslation } from "react-i18next";
 import InfoButton from "./buttons/InfoBtn";
-
+import Field from "./Field";
 const ClientEvent = ({ formData, setFormData }) => {
-
   // text limitations
   const sellingTextMaxLength = 100;
   const descriptionMaxLength = 200;
@@ -21,12 +26,12 @@ const ClientEvent = ({ formData, setFormData }) => {
         maxWidth: 600,
         boxShadow: 3,
         p: 4,
-        m: 'auto',
+        m: "auto",
         borderRadius: 2,
-        backdropFilter: 'blur(2px)',
-        background: 'rgba(255, 255, 255, 0.7)',
-            display:'flex',
-            flexDirection:'column',
+        backdropFilter: "blur(2px)",
+        background: "rgba(255, 255, 255, 0.7)",
+        display: "flex",
+        flexDirection: "column",
       }}
     >
       <TextField
@@ -37,7 +42,7 @@ const ClientEvent = ({ formData, setFormData }) => {
         id="title"
         label={t('event_name')}
         name="event-title"
-        value={formData.title || ''}
+        value={formData.title || ""}
         onChange={(e) =>
           setFormData((prevData) => ({ ...prevData, title: e.target.value }))
         }
@@ -49,9 +54,9 @@ const ClientEvent = ({ formData, setFormData }) => {
         margin="dense"
         fullWidth
         id="description"
-        label={t('description')}
+        label={t("description")}
         name="description"
-        value={formData.description || ''}
+        value={formData.description || ""}
         onChange={(e) =>
           setFormData((prevData) => ({
             ...prevData,
@@ -66,7 +71,7 @@ const ClientEvent = ({ formData, setFormData }) => {
           endAdornment: (
             <InputAdornment
               position="end"
-              sx={{ alignSelf: 'flex-end', mr: 1 }}
+              sx={{ alignSelf: "flex-end", mr: 1 }}
             >
               {`${rmCharDescription}/${descriptionMaxLength}`}
             </InputAdornment>
@@ -79,9 +84,9 @@ const ClientEvent = ({ formData, setFormData }) => {
         margin="dense"
         fullWidth
         id="sales_text"
-        label={t('sales_text')}
+        label={t("sales_text")}
         name="event-sales-text"
-        value={formData.sales_text || ''}
+        value={formData.sales_text || ""}
         onChange={(e) =>
           setFormData((prevData) => ({
             ...prevData,
@@ -96,7 +101,7 @@ const ClientEvent = ({ formData, setFormData }) => {
           endAdornment: (
             <InputAdornment
               position="end"
-              sx={{ alignSelf: 'flex-end', mr: 1 }}
+              sx={{ alignSelf: "flex-end", mr: 1 }}
             >
               {`${rmCharSelling}/${sellingTextMaxLength}`}
             </InputAdornment>
@@ -124,9 +129,9 @@ const ClientEvent = ({ formData, setFormData }) => {
         margin="dense"
         fullWidth
         id="event-ticket-information"
-        label={t('ticket_information')}
+        label={t("ticket_information")}
         name="event-ticket-information"
-        value={formData.ticket_information || ''}
+        value={formData.ticket_information || ""}
         onChange={(e) =>
           setFormData((prevData) => ({
             ...prevData,
@@ -140,9 +145,9 @@ const ClientEvent = ({ formData, setFormData }) => {
         margin="dense"
         fullWidth
         id="event-open-times"
-        label={t('open_times')}
+        label={t("open_times")}
         name="event-open-times"
-        value={formData.open_times || ''}
+        value={formData.open_times || ""}
         onChange={(e) =>
           setFormData((prevData) => ({
             ...prevData,
@@ -156,9 +161,9 @@ const ClientEvent = ({ formData, setFormData }) => {
         margin="dense"
         fullWidth
         id="event-booking-link"
-        label={t('booking_link')}
+        label={t("booking_link")}
         name="event-booking-link"
-        value={formData.booking_link || ''}
+        value={formData.booking_link || ""}
         onChange={(e) =>
           setFormData((prevData) => ({
             ...prevData,
@@ -172,9 +177,9 @@ const ClientEvent = ({ formData, setFormData }) => {
         margin="dense"
         fullWidth
         id="website"
-        label={t('website')}
+        label={t("website")}
         name="event-website-link"
-        value={formData.website_link || ''}
+        value={formData.website_link || ""}
         onChange={(e) =>
           setFormData((prevData) => ({
             ...prevData,
@@ -183,10 +188,10 @@ const ClientEvent = ({ formData, setFormData }) => {
         }
         className="text-field"
       />
+      <Field />
       {/* --------------- IMAGE UPLOADER -------------- */}
       <HandleFileUpload />
-
-      <Box gridColumn="span 2" sx={{ display: 'flex'}}>
+      <Box gridColumn="span 2" sx={{ display: "flex" }}>
         <FormControlLabel
           control={
             <Checkbox
@@ -197,7 +202,7 @@ const ClientEvent = ({ formData, setFormData }) => {
               required
             />
           }
-          label={t('gdpr')}
+          label={t("gdpr")}
         />
         <InfoButton />
       </Box>
