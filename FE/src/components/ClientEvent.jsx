@@ -35,9 +35,13 @@ const ClientEvent = ({ formData, setFormData }) => {
         boxShadow: 3,
         p: 4,
         m: "auto",
+
         borderRadius: 2,
-        backdropFilter: "blur(2px)",
+
         background: "rgba(255, 255, 255, 0.7)",
+
+        backdropFilter: "blur(2px)",
+
         display: "flex",
         flexDirection: "column",
       }}
@@ -48,7 +52,7 @@ const ClientEvent = ({ formData, setFormData }) => {
         margin="dense"
         fullWidth
         id="title"
-        label={t("title")}
+        label={t("event_name")}
         name="event-title"
         value={formData.title || ""}
         onChange={(e) =>
@@ -197,7 +201,7 @@ const ClientEvent = ({ formData, setFormData }) => {
         className="text-field"
       />
       {/* --------------- IMAGE UPLOADER -------------- */}
-      <HandleFileUpload />
+      <HandleFileUpload formData={formData} setFormData={setFormData} />
 
       <Box gridColumn="span 2" sx={{ display: "flex" }}>
         <FormControlLabel

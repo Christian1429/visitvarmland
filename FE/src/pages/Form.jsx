@@ -38,44 +38,6 @@ const Form = () => {
     setCurrentStep(step);
   };
 
-  /* const handleSubmit = async () => {
-    const formDataToSend = new FormData();
-
-    Object.keys(formData).forEach((key) => {
-      if (key !== "images") {
-        if (Array.isArray(formData[key])) {
-          console.log(`${key} is an array`);
-
-          formData[key].forEach((data) => {
-            formDataToSend.append(key, JSON.stringify(data));
-          });
-        } else {
-          formDataToSend.append(key, formData[key]);
-        }
-      }
-    });
-
-    if (formData.images && formData.images.length > 0) {
-      formData.images.forEach((file) => {
-        formDataToSend.append("images", file);
-      });
-    }
-
-    try {
-      const response = await fetch("http://localhost:2000/api/data/", {
-        method: "POST",
-        mode: "cors",
-        body: formDataToSend,
-      });
-      if (!response.ok) {
-        throw new Error(`Failed to submit data: ${await response.text()}`);
-      }
-      console.log("Images uploaded successfully!");
-    } catch (error) {
-      console.error("Error:", error.message);
-    }
-  }; */
-
   const renderStep = () => {
     switch (currentStep) {
       case 0:

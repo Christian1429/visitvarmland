@@ -1,4 +1,5 @@
 import { React, useState } from "react";
+
 import {
   Box,
   Typography,
@@ -16,11 +17,11 @@ function FileUpload({ formData, setFormData }) {
   const [error, setError] = useState("");
   const { t } = useTranslation();
 
-  const HandleFileUpload = (e) => {
+  const HandleFileUpload = async (e) => {
     const files = Array.from(e.target.files);
 
     if (files.length === 0) {
-      console.error("No files selected");
+      console.error("Inga filer valda");
       return;
     }
 
@@ -42,19 +43,22 @@ function FileUpload({ formData, setFormData }) {
         return;
       }
 
+      //Check for duplicates then updates the file field in formData.
       if (!existingFileNames.has(file.name)) {
         validFiles.push({
           title: file.name,
           size: file.size,
-          link: `/support/upload/${file.name}`,
+          link: `url/${file.name}`,
         });
+
         newPreviews.push(URL.createObjectURL(file));
       }
-
+      //Check for duplicates then updates the image field in formData.
       if (!existingImageNames.has(file.name)) {
         validImages.push({
           name: file.name,
           size: file.size,
+          type: file.type,
         });
       }
     });
@@ -108,7 +112,6 @@ function FileUpload({ formData, setFormData }) {
         name="images"
       />
 
-      {/* Preview selected images */}
       <Box>
         {previewImages.length > 0 && (
           <div>
