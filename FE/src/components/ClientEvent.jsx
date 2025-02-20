@@ -9,7 +9,7 @@ import {
 import HandleFileUpload from "./FileUpload";
 import { useTranslation } from "react-i18next";
 import InfoButton from "./buttons/InfoBtn";
-
+import Field from "./Field";
 const ClientEvent = ({ formData, setFormData }) => {
   // text limitations
   const sellingTextMaxLength = 100;
@@ -196,8 +196,8 @@ const ClientEvent = ({ formData, setFormData }) => {
         }
         className="text-field"
       />
-
-      <HandleFileUpload formData={formData} setFormData={setFormData} />
+      {/* --------------- IMAGE UPLOADER -------------- */}
+      <HandleFileUpload />
 
       <Box gridColumn="span 2" sx={{ display: "flex" }}>
         <FormControlLabel
