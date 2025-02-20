@@ -1,5 +1,5 @@
-import i18n from "i18next";
-import { initReactI18next } from "react-i18next";
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
 
 // English
 const resources = {
@@ -27,6 +27,7 @@ const resources = {
 
       // Event page (third page)
       event_title: 'Date and time for your event',
+      event_name: 'Enter the name of your event',
       date_start: 'Date From',
       date_end: 'Date To',
       time_start: 'Time From',
@@ -84,6 +85,7 @@ const resources = {
 
       // Event page (third page)
       event_title: 'Datum och tid för ditt event',
+      event_name: 'Ange namnet på ditt evenemang',
       date_start: 'Datum Från',
       date_end: 'Datum Till',
       time_start: 'Tid Från',
@@ -132,7 +134,8 @@ const resources = {
       dropdown_organizer_exist: 'Bereits registriert?',
       title_organizer:
         'Sind Sie ein neuer Veranstalter, Unternehmen oder Organisation?',
-      title: 'Geben Sie den Namen Ihres Unternehmens, Organisations oder Vereins ein',
+      title:
+        'Geben Sie den Namen Ihres Unternehmens, Organisations oder Vereins ein',
       address_2: 'Adresse 2',
       zipcode: 'Postleitzahl',
       city: 'Stadt',
@@ -142,6 +145,7 @@ const resources = {
 
       // Event page (third page)
       event_title: 'Datum und Uhrzeit för Ihr Event',
+      event_name: 'Geben Sie den Namen Ihres Events ein',
       date_start: 'Datum Von',
       date_end: 'Datum bis',
       time_start: 'Uhrzeit bis',
@@ -177,15 +181,13 @@ const resources = {
   },
 };
 
-i18n
-  .use(initReactI18next)
-  .init({
-    resources,
-    lng: "sv",
+i18n.use(initReactI18next).init({
+  resources,
+  lng: 'sv',
 
-    interpolation: {
-      escapeValue: false,
-    },
-  });
+  interpolation: {
+    escapeValue: false,
+  },
+});
 
 export default i18n;
