@@ -1,4 +1,5 @@
 import { React, useState } from "react";
+
 import {
   Box,
   Typography,
@@ -10,7 +11,6 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { useTranslation } from "react-i18next";
 
 const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
-const imgUploadApiKeyKeyEnvVar = "6df64de3597cea9656270f91ac17d508";
 
 function FileUpload({ formData, setFormData }) {
   const [previewImages, setPreviewImages] = useState([]);
@@ -19,108 +19,12 @@ function FileUpload({ formData, setFormData }) {
 
   const HandleFileUpload = async (e) => {
     const files = Array.from(e.target.files);
-    console.log(files);
-    const formDataToSend = new FormData();
+
     if (files.length === 0) {
-      console.error("No files selected");
+      console.error("Inga filer valda");
       return;
     }
-    console.log(formData);
-    Object.keys(formData).forEach((key) => {
-      if (key !== "images") {
-        if (Array.isArray(formData[key])) {
-          formData[key].forEach((data) => {
-            formDataToSend.append(key, JSON.stringify(data));
-          });
-        } else {
-          formDataToSend.append(key, formData[key]);
-        }
-      }
-    });
 
-    if (formData.images) {
-      formData.images.forEach((file) => {
-        formDataToSend.append("images", file);
-      });
-    }
-    console.log(JSON.stringify(formDataToSend));
-    try {
-      const response = await fetch(
-        `https://www.imghippo.com/v1/upload?api_key=${imgUploadApiKeyKeyEnvVar}`,
-        {
-          method: "POST",
-          mode: "cors",
-          file: formDataToSend,
-        }
-      );
-      if (!response.success) {
-        throw new Error(`Failed to submit data: ${await response.text()}`);
-      }
-      const result = await response.json();
-
-      console.log(`Images uploaded successfully!: ${result}`);
-
-      console.log(result);
-      const existingFiles = (formData.files || []).filter(
-        (file) => file.link && file.title && file.size
-      );
-      const existingImages = formData.images || [];
-
-      const existingFileNames = new Set(
-        existingFiles.map((file) => file.title)
-      );
-      const existingImageNames = new Set(
-        existingImages.map((file) => file.name)
-      );
-
-      const validFiles = [];
-      const newPreviews = [];
-      const validImages = [];
-      console.log("here");
-      files.forEach((file) => {
-        if (file.size > MAX_FILE_SIZE) {
-          setError(`${file.name} exceeds the size limit of 2MB.`);
-          return;
-        }
-        //Check for duplicates then updates the file field in formData.
-        if (!existingFileNames.has(file.name)) {
-          validFiles.push({
-            title: file.name,
-            size: file.size,
-            link: `${result.data.view_url}`,
-          });
-
-          newPreviews.push(URL.createObjectURL(file));
-        }
-        //Check for duplicates then updates the image field in formData.
-        if (!existingImageNames.has(file.name)) {
-          validImages.push({
-            name: file.name,
-            size: file.size,
-            type: file.type,
-          });
-        }
-      });
-
-      if (validFiles.length > 0 || validImages.length > 0) {
-        setFormData((prev) => ({
-          ...prev,
-          files: [...existingFiles, ...validFiles],
-          images: [...existingImages, ...validImages],
-        }));
-
-        setPreviewImages((prev) => [...prev, ...newPreviews]);
-      } else {
-        console.warn("No new valid files to upload.");
-      }
-      // Reset file input after upload
-      e.target.value = null;
-      console.log("here");
-    } catch (error) {
-      console.error("Error:", error.message);
-    }
-
-    /* console.log(result);
     const existingFiles = (formData.files || []).filter(
       (file) => file.link && file.title && file.size
     );
@@ -132,18 +36,19 @@ function FileUpload({ formData, setFormData }) {
     const validFiles = [];
     const newPreviews = [];
     const validImages = [];
-    console.log("here");
+
     files.forEach((file) => {
       if (file.size > MAX_FILE_SIZE) {
         setError(`${file.name} exceeds the size limit of 2MB.`);
         return;
       }
+
       //Check for duplicates then updates the file field in formData.
       if (!existingFileNames.has(file.name)) {
         validFiles.push({
           title: file.name,
           size: file.size,
-          link: `${result.data.view_url}`,
+          link: `url/${file.name}`,
         });
 
         newPreviews.push(URL.createObjectURL(file));
@@ -156,8 +61,8 @@ function FileUpload({ formData, setFormData }) {
           type: file.type,
         });
       }
-    }); */
-    /* console.log("here");
+    });
+
     if (validFiles.length > 0 || validImages.length > 0) {
       setFormData((prev) => ({
         ...prev,
@@ -171,7 +76,6 @@ function FileUpload({ formData, setFormData }) {
     }
     // Reset file input after upload
     e.target.value = null;
-    console.log("here"); */
   };
 
   const removeFile = (index, images, files) => {
