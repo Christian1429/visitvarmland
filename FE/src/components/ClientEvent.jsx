@@ -6,10 +6,10 @@ import {
   Checkbox,
   FormControlLabel,
 } from "@mui/material";
-import HandleFileUpload from "./FileUpload";
+import HandleFileUpload from "./ImgUpload";
 import { useTranslation } from "react-i18next";
 import InfoButton from "./buttons/InfoBtn";
-import Field from "./Field";
+import Field from "./Places";
 const ClientEvent = ({ formData, setFormData }) => {
   // text limitations
   const sellingTextMaxLength = 100;
@@ -35,13 +35,9 @@ const ClientEvent = ({ formData, setFormData }) => {
         boxShadow: 3,
         p: 4,
         m: "auto",
-
         borderRadius: 2,
-
         background: "rgba(255, 255, 255, 0.7)",
-
         backdropFilter: "blur(2px)",
-
         display: "flex",
         flexDirection: "column",
       }}
@@ -120,22 +116,6 @@ const ClientEvent = ({ formData, setFormData }) => {
           ),
         }}
       />
-      {/* <TextField
-        variant="outlined"
-        margin="dense"
-        fullWidth
-        id="event-presentation"
-        label={t("Presentation")}
-        name="event-presentation"
-        value={formData.presentation || ""}
-        onChange={(e) =>
-          setFormData((prevData) => ({
-            ...prevData,
-            presentation: e.target.value,
-          }))
-        }
-        className="text-field"
-      /> */}
       <TextField
         variant="outlined"
         margin="dense"
@@ -200,6 +180,7 @@ const ClientEvent = ({ formData, setFormData }) => {
         }
         className="text-field"
       />
+      <Field/>
       {/* --------------- IMAGE UPLOADER -------------- */}
       <HandleFileUpload formData={formData} setFormData={setFormData} />
 
