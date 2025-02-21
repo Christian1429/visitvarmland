@@ -1,6 +1,6 @@
 export const mapOrganizers = (organizers) =>
   organizers.map((organizer) => ({
-    id: organizer.id || 0,
+    id: organizer.id || 1,
     title: organizer.title || "",
     street1: organizer.street1 || "",
     street2: organizer.street2 || "",

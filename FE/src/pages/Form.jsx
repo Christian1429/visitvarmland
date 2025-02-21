@@ -21,6 +21,7 @@ import handleSubmit from "../utils/handleSubmit";
 import { handleChange, handleArrayChange } from "../utils/formUtils";
 import DatePickerClient from "../components/DatePicker";
 import { useTranslation } from "react-i18next";
+import SuccessModal from "../components/Confirmation_modal";
 
 const Form = () => {
   const theme = useTheme();
@@ -28,6 +29,7 @@ const Form = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const { formData, setFormData } = useContext(FormDataContext);
   const { t } = useTranslation();
+  const [showModal, setShowModal] = useState(false);
 
   const handleNext = () => {
     setCurrentStep((prevStep) => prevStep + 1);
@@ -35,6 +37,21 @@ const Form = () => {
 
   const handleStepClick = (step) => {
     setCurrentStep(step);
+  };
+
+  const handleSubmitWithModal = async (formData) => {
+    const isSubmitted = await handleSubmit(formData);
+
+    if (isSubmitted) {
+      setShowModal(true); // Show success modal only if submission was successful
+    } else {
+      console.log("Form submission failed. Please try again");
+      alert("Form submission failed. Please try again."); // You can replace this with an error modal
+    }
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
   };
 
   const renderStep = () => {
@@ -146,12 +163,13 @@ const Form = () => {
           {currentStep < 2 && <NextBtn onClick={handleNext} />}
           {currentStep === 2 && (
             <Button
-              onClick={() => handleSubmit(formData)}
+              onClick={() => handleSubmitWithModal(formData)}
               sx={{ marginBottom: "2rem", width: "8rem" }}
             >
               {t("submit_btn")}
             </Button>
           )}
+          <SuccessModal open={showModal} onClose={handleCloseModal} />
         </Box>
       </form>
     </Box>
