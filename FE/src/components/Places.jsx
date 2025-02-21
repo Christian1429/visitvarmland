@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
+import { useTheme } from '@mui/material/styles';
 import { FormDataContext } from "../context/FormDataContext";
 import {
   List,
@@ -10,18 +11,23 @@ import {
   Autocomplete,
   TextField,
   IconButton,
+  useMediaQuery,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
+
 function Places() {
+  const theme = useTheme();
   const { formData, setFormData } = useContext(FormDataContext); // Formulärsdatan
   const [data, setData] = useState([]); // API-datan från testplatser
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  
 
   useEffect(() => {
     async function fetchPlaces() {
       try {
         const response = await fetch(
-          "http://localhost:2000/api/data/testplatser"
+          "http://localhost:2000/api/data/places"
         );
         const json = await response.json();
         setData(json);
@@ -90,7 +96,7 @@ function Places() {
       />
       <Card
         sx={{
-          marginTop: '0.2rem',
+          marginTop: '0.8rem',
           boxShadow: '0px 4px 10px rgba(0, 67, 56, 0.2)',
           boxSizing: 'border-box',
           padding: '0.5rem',
@@ -107,11 +113,16 @@ function Places() {
         >
           Valda platser:
         </Typography>
-        <List sx={{ display: 'flex', padding: 0, flexWrap: 'nowrap'}}>
+        <List
+          sx={{
+            padding: 0,
+          }}
+        >
           {formData.places.map((place) => (
             <ListItem
               key={place.id}
               sx={{
+                width: 'auto',
                 backgroundColor: 'var(--color-green-light)',
                 color: 'var(--color-background)',
                 borderRadius: 1,
@@ -120,6 +131,7 @@ function Places() {
                 padding: 1,
                 boxSizing: 'border-box',
                 gap: 1,
+
                 '&:hover': { backgroundColor: 'var(--color-green-dark)' },
               }}
             >

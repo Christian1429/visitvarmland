@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import Contact from "../components/Contact";
 import ClientNew from "../components/ClientNew";
-import ClientEvent from "../components/ClientEvent";
+import Event from "../components/Event";
 import NextBtn from "../components/buttons/NextBtn";
 import CloseBtn from "../components/buttons/CloseBtn";
 import TranslationBtn from "../components/buttons/TranslationBtn";
@@ -61,7 +61,7 @@ const Form = () => {
         return (
           <>
             <DatePickerClient formData={formData} setFormData={setFormData} />
-            <ClientEvent
+            <Event
               formData={formData}
               setFormData={setFormData}
               handleChange={handleChange}
