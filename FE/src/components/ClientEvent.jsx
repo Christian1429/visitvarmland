@@ -180,9 +180,6 @@ const ClientEvent = ({ formData, setFormData }) => {
         }
         className="text-field"
       />
-      <Field/>
-      {/* --------------- IMAGE UPLOADER -------------- */}
-      <HandleFileUpload formData={formData} setFormData={setFormData} />
       <Box>
         <TextField
           variant="outlined"
@@ -201,9 +198,12 @@ const ClientEvent = ({ formData, setFormData }) => {
           className="text-field"
           multiline
           rows={4}
-          sx={{ marginTop: "2rem", marginBottom: "2rem" }}
         />
       </Box>
+      <Field />
+      {/* --------------- IMAGE UPLOADER -------------- */}
+      <HandleFileUpload formData={formData} setFormData={setFormData} />
+
       <Box gridColumn="span 2" sx={{ display: "flex" }}>
         <FormControlLabel
           control={
