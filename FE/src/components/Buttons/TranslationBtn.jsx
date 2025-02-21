@@ -42,9 +42,6 @@ function TranslationBtn() {
         <MenuItem onClick={() => handleLanguageChange('sv')}>
           {t('language_btn_swe')}
         </MenuItem>
-        <MenuItem onClick={() => handleLanguageChange('de')}>
-          {t('language_btn_de')}
-        </MenuItem>
       </Menu>
     </div>
   );

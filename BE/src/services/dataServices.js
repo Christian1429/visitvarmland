@@ -1,12 +1,11 @@
 const dataModel = require("../models/dataModel");
 
-class DataController {
+class DataService {
   constructor() {
     this.dataModel = dataModel;
   }
 
   async createData(req, res) {
-    console.log("req, be, created data", req.files);
     try {
       const newData = new this.dataModel(req.body);
       const savedData = await newData.save();
@@ -15,13 +14,12 @@ class DataController {
       res.status(500).json({ message: error.message });
     }
   }
-
   async getData(req, res) {
     try {
       const { id } = req.params;
       const data = await this.dataModel.findById(id);
       if (!data) {
-        return res.status(404).json({ message: "Data not found" });
+        return res.status(404).json({ message: 'Data not found' });
       }
       res.status(200).json(data);
     } catch (error) {
@@ -45,7 +43,7 @@ class DataController {
         new: true,
       });
       if (!updatedData) {
-        return res.status(404).json({ message: "Data not found" });
+        return res.status(404).json({ message: 'Data not found' });
       }
       res.status(200).json(updatedData);
     } catch (error) {
@@ -58,7 +56,7 @@ class DataController {
       const { id } = req.params;
       const deletedData = await this.dataModel.findByIdAndDelete(id);
       if (!deletedData) {
-        return res.status(404).json({ message: "Data not found" });
+        return res.status(404).json({ message: 'Data not found' });
       }
       res.status(204).send();
     } catch (error) {
@@ -67,4 +65,4 @@ class DataController {
   }
 }
 
-module.exports = DataController;
+module.exports = DataService;

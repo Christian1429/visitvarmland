@@ -120,67 +120,6 @@ const resources = {
       gdpr: "Jag samtycker till att mina uppgifter lagras och används enligt GDPR.",
     },
   },
-  // German
-  de: {
-    translation: {
-      hero: "Tipps und Events",
-
-      // Contact information (first page)
-      contact_title: "Füllen Sie Ihre Kontaktdaten aus",
-      sub_title: "Befolgen Sie alle Schritte",
-      name: "Ihr Name",
-      email: "Email",
-      address_1: "Adresse",
-
-      // Organizer page (second page)
-      dropdown_organizer_exist: "Bereits registriert?",
-      title_organizer:
-        "Sind Sie ein neuer Veranstalter, Unternehmen oder Organisation?",
-      title:
-        "Geben Sie den Namen Ihres Unternehmens, Organisations oder Vereins ein",
-      address_2: "Adresse 2",
-      zipcode: "Postleitzahl",
-      city: "Stadt",
-      booking_link: "Buchungslink",
-      website: "Startseite",
-      phone: "Rufnummer",
-
-      // Event page (third page)
-      event_title: "Datum und Uhrzeit för Ihr Event",
-      event_name: "Geben Sie den Namen Ihres Events ein",
-      date_start: "Datum Von",
-      date_end: "Datum bis",
-      time_start: "Uhrzeit bis",
-      time_end: "Uhrzeit von",
-      description: "Beschreibung",
-      sales_text: "Verkaufstext",
-      presentation: "Präsentation",
-      open_times: "Öffnungszeiten",
-      ticket_information: "Ticketinformationen",
-
-      // trail overlay
-      trail_total_length: "Streckenlänge in km",
-      number_of_trails: "Anzahl der Strecken",
-      trail_level: "Beschreiben Sie die Schwierigkeitsgrad der Strecke",
-      trail_time: "Wie lange dauert es, um die Strecke zu wandern?",
-      trail_terrain:
-        "Beschreiben Sie das Gelände und / oder weitere Informationen",
-      trail_save_btn: "Speichern",
-
-      // some generic buttons, breadcrumbs and other.
-      language_btn_en: "Englisch",
-      language_btn_swe: "Schwedisch",
-      language_btn_de: "Deutsch",
-      breadcrumbs_1: "Schritt 1",
-      breadcrumbs_2: "Schritt 2",
-      breadcrumbs_3: "Schritt 3",
-      next_btn: "Weiter",
-      trail_btn: "Gibt es einen Weg?",
-      submit_btn: "Absenden",
-      images_title: "Bilder hochladen. Max 2MB",
-      gdpr: "Ich erkläre mich mit den Daten der Veranstaltung und der Organisation einverstanden, die für die Verarbeitung der Daten nach den Datenschutzbestimmungen der Europäischen Union (DSGVO) erforderlich ist.",
-    },
-  },
 };
 
 i18n.use(initReactI18next).init({
