@@ -74,7 +74,7 @@ const ClientExist = ({ setFormData }) => {
         </Select>
       </FormControl>
 
-      <FormResetButton />
+      <FormResetButton formData={formData} setFormData={setFormData} />
     </Box>
   );
 };
