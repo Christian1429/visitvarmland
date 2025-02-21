@@ -2,14 +2,30 @@ import React from "react";
 import { Button } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
-const FormResetButton = ({ formData, setFormData }) => {
+const FormResetButton = ({ setFormData }) => {
   const { t } = useTranslation();
 
   const reset = () => {
-    setFormData();
+    setFormData((prevData) => ({
+      ...prevData,
+      organizers: [
+        {
+          name: "",
+          street1: "",
+          street2: "",
+          zip_code: "",
+          city: "",
+          municipality_id: "",
+          booking_link: "",
+          website: "",
+          email: "",
+          phone_numbers: [],
+        },
+      ],
+    }));
   };
 
-  return <Button onClick={() => reset(formData)}>{t("erase_fields")}</Button>;
+  return <Button onClick={() => reset()}>{t("erase_fields")}</Button>;
 };
 
 export default FormResetButton;

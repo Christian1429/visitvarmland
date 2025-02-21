@@ -4,7 +4,7 @@ import getForm from "../api/GetFrom";
 import { useTranslation } from "react-i18next";
 import FormResetButton from "../components/Buttons/FormResetButton";
 
-const ClientExist = ({ setFormData }) => {
+const ClientExist = ({ formData, setFormData }) => {
   const [clients, setClients] = useState([]);
   const [dropdownValueExisting, setDropdownValueExisting] = useState("");
   const { t } = useTranslation();
@@ -74,7 +74,7 @@ const ClientExist = ({ setFormData }) => {
         </Select>
       </FormControl>
 
-      <FormResetButton formData={formData} setFormData={setFormData} />
+      <FormResetButton setFormData={setFormData} />
     </Box>
   );
 };
