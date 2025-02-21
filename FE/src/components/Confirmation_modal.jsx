@@ -13,17 +13,36 @@ const SuccessModal = ({ open, onClose }) => {
   const { t } = useTranslation();
 
   return (
-    <Dialog open={open} onClose={onClose}>
-      <DialogTitle>{t("success_title")}</DialogTitle>
-      <DialogContent>
-        <DialogContentText>{t("success_message")}</DialogContentText>
-      </DialogContent>
-      <DialogActions>
-        <Button onClick={onClose} autoFocus>
-          {t("close")}
-        </Button>
-      </DialogActions>
-    </Dialog>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "10vh",
+      }}
+    >
+      <Dialog open={open} onClose={onClose}>
+        <DialogTitle sx={{ textAlign: "center" }}>
+          {t("success_title")}
+        </DialogTitle>
+        <DialogContent
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <DialogContentText>{t("success_message")}</DialogContentText>
+        </DialogContent>
+        <DialogActions
+          style={{ display: "flex", justifyContent: "center", paddingTop: "0" }}
+        >
+          <Button onClick={onClose} autoFocus>
+            {t("success_close")}
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </div>
   );
 };
 
