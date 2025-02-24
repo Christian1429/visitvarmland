@@ -41,6 +41,11 @@ const resources = {
       ticket_information: "Ticket Information",
       other_info: "Other information",
 
+      //Success modal
+      success_title: "Thank you for the tip",
+      success_message: "We'll process your tip soon.",
+      success_close: "Close",
+
       // trail overlay
       trail_total_length: "Total length of the trail",
       number_of_trails: "Number of trails",
@@ -105,6 +110,11 @@ const resources = {
       open_times: "Öppetider",
       ticket_information: "Biljettinformation",
       other_info: "Övrig information",
+
+      //Success modal Form submitted! We'll process your request soon.
+      success_title: "Tack för tipset",
+      success_message: "Vi kommer att behandla ditt tips snart.",
+      success_close: "Stäng",
 
       // trail overlay
       trail_total_length: "Stigens totala längd i km",
