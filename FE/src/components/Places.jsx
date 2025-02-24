@@ -1,5 +1,4 @@
 import { useState, useEffect, useContext } from "react";
-import { useTheme } from '@mui/material/styles';
 import { FormDataContext } from "../context/FormDataContext";
 import {
   List,
@@ -11,27 +10,23 @@ import {
   Autocomplete,
   TextField,
   IconButton,
-  useMediaQuery,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
 
 function Places() {
-  const theme = useTheme();
   const { formData, setFormData } = useContext(FormDataContext); // Formulärsdatan
   const [data, setData] = useState([]); // API-datan från testplatser
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   
-
   useEffect(() => {
     async function fetchPlaces() {
       try {
         const response = await fetch(
           "http://localhost:2000/api/data/places"
         );
-        const json = await response.json();
-        setData(json);
-        console.log("Testplatser från Backenden", json);
+        const data = await response.json();
+        setData(data);
+        console.log("Places från Backenden", data);
       } catch (error) {
         console.error("Fel vid hämtning av testplatser:", error);
       }
@@ -42,7 +37,11 @@ function Places() {
   const handlePlaceSelect = (selectedPlace) => {
     setFormData((prevData) => {
       let existingPlaces = prevData.places;
-      if (existingPlaces.length === 1 && existingPlaces[0].title === "") {
+      if (
+        existingPlaces.length === 1 
+        &&
+        existingPlaces[0].title === "")
+        {
         existingPlaces = [];
       }
 
@@ -131,7 +130,6 @@ function Places() {
                 padding: 1,
                 boxSizing: 'border-box',
                 gap: 1,
-
                 '&:hover': { backgroundColor: 'var(--color-green-dark)' },
               }}
             >

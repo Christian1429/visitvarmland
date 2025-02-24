@@ -10,6 +10,7 @@ import HandleFileUpload from "./ImgUpload";
 import { useTranslation } from "react-i18next";
 import InfoButton from "./buttons/InfoBtn";
 import Places from "./Places";
+import Price from "./Price";
 const Event = ({ formData, setFormData }) => {
   // text limitations
   const sellingTextMaxLength = 100;
@@ -147,7 +148,7 @@ const Event = ({ formData, setFormData }) => {
           }))
         }
         className="text-field"
-      />
+      />{" "}
       <TextField
         variant="outlined"
         margin="dense"
@@ -163,7 +164,7 @@ const Event = ({ formData, setFormData }) => {
           }))
         }
         className="text-field"
-      />
+      />{" "}
       <TextField
         variant="outlined"
         margin="dense"
