@@ -9,7 +9,7 @@ import {
 import HandleFileUpload from "./ImgUpload";
 import { useTranslation } from "react-i18next";
 import InfoButton from "./buttons/InfoBtn";
-import Field from "./Field";
+/* import Field from "./Field"; */
 import Price from "./Price";
 const ClientEvent = ({ formData, setFormData }) => {
   // text limitations
