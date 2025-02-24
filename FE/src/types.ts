@@ -71,6 +71,7 @@ export interface Occasion {
   date_end: string;
   time_start: string;
   time_end: string;
+  date_other_info: string;
 }
 
 export interface RelatedProduct {
