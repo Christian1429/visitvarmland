@@ -164,7 +164,7 @@ const ClientEvent = ({ formData, setFormData }) => {
           }))
         }
         className="text-field"
-      />{" "}
+      />
       <TextField
         variant="outlined"
         margin="dense"
@@ -183,7 +183,27 @@ const ClientEvent = ({ formData, setFormData }) => {
       />
       <Field />
       <Price />
-      {/* --------------- IMAGE UPLOADER -------------- */}
+      <Box>
+        <TextField
+          variant="outlined"
+          margin="dense"
+          fullWidth
+          id="other_info"
+          label={t("other_info")}
+          name="other_info"
+          value={formData.other_info || ""}
+          onChange={(e) =>
+            setFormData((prevData) => ({
+              ...prevData,
+              other_info: e.target.value,
+            }))
+          }
+          className="text-field"
+          multiline
+          rows={4}
+          sx={{ marginTop: "2rem", marginBottom: "2rem" }}
+        />
+      </Box>
       <HandleFileUpload formData={formData} setFormData={setFormData} />
       <Box gridColumn="span 2" sx={{ display: "flex" }}>
         <FormControlLabel

@@ -92,6 +92,7 @@ const dataSchema = new mongoose.Schema({
     small: { type: String },
   },
   occasions: [occasionSchema],
+  other_info: { type: String },
 });
 
 module.exports = mongoose.model("Data", dataSchema);
