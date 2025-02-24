@@ -108,29 +108,6 @@ const Contact = ({ formData, setFormData }) => {
             margin="dense"
             required
             fullWidth
-            id="address"
-            label={t('address_1')}
-            name="address"
-            autoComplete="address"
-            value={formData.contact[0].contact_address || ''}
-            onChange={(e) =>
-              setFormData((prevData) => ({
-                ...prevData,
-                contact: [
-                  {
-                    ...prevData.contact[0],
-                    contact_address: e.target.value,
-                  },
-                ],
-              }))
-            }
-            className="text-field"
-          />
-          <TextField
-            variant="outlined"
-            margin="dense"
-            required
-            fullWidth
             id="phone"
             label={t('phone')}
             name="phone"

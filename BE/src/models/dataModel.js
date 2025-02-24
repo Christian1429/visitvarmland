@@ -32,27 +32,13 @@ const imageSchema = new mongoose.Schema({
   name: { type: String },
   size: { type: String },
   type: { type: String },
-  image: { type: Buffer },
-  encoding: { type: String },
-  /*  large: { type: String },
-  medium: { type: String },
-  small: { type: String },
-  alt_text: { type: String },
-  copyright: { type: String },
-  description: { type: String },
-  photographer: { type: String },
-  year: { type: Number },
-  image: { type: Buffer }, */
 });
 
 const fileSchema = new mongoose.Schema({
   link: { type: String },
   title: { type: String },
   size: { type: String },
-});
-
-const categorySchema = new mongoose.Schema({
-  title: { type: String },
+  link: { type: String },
 });
 
 const placeSchema = new mongoose.Schema({
@@ -73,11 +59,14 @@ const occasionSchema = new mongoose.Schema({
 });
 
 const dataSchema = new mongoose.Schema({
+  created_at: { type: Date, default: Date.now },
+  updated_at: { type: Date, default: Date.now },
   title: { type: String },
   description: { type: String },
   sales_text: { type: String },
   presentation: { type: String },
   ticket_information: { type: String },
+  gdpr_consent: { type: Boolean, default: false }, // Consent to GDPR New
   open_times: { type: String },
   booking_link: { type: String },
   website_link: { type: String },
@@ -88,7 +77,6 @@ const dataSchema = new mongoose.Schema({
   phone_numbers: [{ type: String }],
   images: [imageSchema],
   files: [fileSchema],
-  // categories: [categorySchema],
   places: [placeSchema],
   is_trail: { type: Number },
   trail_code_snippet: { type: String },

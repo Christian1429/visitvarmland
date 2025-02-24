@@ -1,139 +1,141 @@
-import React, { useState } from 'react';
-import {
-  Box,
-  TextField,
-  Button,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-} from '@mui/material';
-import { useTranslation } from 'react-i18next';
+// import React, { useState } from "react";
+// import {
+//   Box,
+//   TextField,
+//   Button,
+//   Dialog,
+//   DialogTitle,
+//   DialogContent,
+//   DialogActions,
+// } from "@mui/material";
+// import { useTranslation } from "react-i18next";
 
-const TrailPopup = ({ formData, setFormData }) => {
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const { t } = useTranslation();
+// const TrailPopup = ({ formData, setFormData }) => {
+//   const [isPopupOpen, setIsPopupOpen] = useState(false);
+//   const { t } = useTranslation();
 
-  return (
-    <>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: '10vh',
-        }}
-      >
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => setIsPopupOpen(true)}
-        >
-          {t('trail_btn')}
-        </Button>
-      </div>
+//   return (
+//     <>
+//       <div
+//         style={{
+//           display: "flex",
+//           justifyContent: "center",
+//           alignItems: "center",
+//           height: "10vh",
+//         }}
+//       >
+//         <Button
+//           variant="contained"
+//           color="primary"
+//           onClick={() => setIsPopupOpen(true)}
+//         >
+//           {t("trail_btn")}
+//         </Button>
+//       </div>
 
-      <Dialog open={isPopupOpen} onClose={() => setIsPopupOpen(false)}>
-        <DialogTitle sx={{ textAlign: 'center' }}>Fyll i information om stigen</DialogTitle>
-        <DialogContent>
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: 2,
-              width: '30rem',
-              padding: '1rem',
-            }}
-          >
-            {/* <TextField
-              label="Trail Code Snippet"
-              name="trail_code_snippet"
-              value={formData.trail_code_snippet}
-              onChange={(e) =>
-                setFormData((prevData) => ({
-                  ...prevData,
-                  trail_code_snippet: e.target.value,
-                }))
-              }
-            /> */}
-            <TextField
-              label={(t('trail_total_length'))}
-              name="trail_total_length"
-              type="number"
-              value={formData.trail_total_length}
-              onChange={(e) =>
-                setFormData((prevData) => ({
-                  ...prevData,
-                  trail_total_length: e.target.value,
-                }))
-              }
-            />
-            <TextField
-              label={t('number_of_trails')}
-              name="number_of_trails"
-              type="number"
-              value={formData.number_of_trails}
-              onChange={(e) =>
-                setFormData((prevData) => ({
-                  ...prevData,
-                  number_of_trails: e.target.value,
-                }))
-              }
-              className="text-field"
-            />
-            <TextField
-              label={t('trail_level')}
-              name="trail_level"
-              value={formData.trail_level}
-              onChange={(e) =>
-                setFormData((prevData) => ({
-                  ...prevData,
-                  trail_level: e.target.value,
-                }))
-              }
-            />
-            <TextField
-              label={t('trail_time')}
-              name="trail_time"
-              value={formData.trail_time}
-              onChange={(e) =>
-                setFormData((prevData) => ({
-                  ...prevData,
-                  trail_time: e.target.value,
-                }))
-              }
-            />
-            <TextField
-              label={t('trail_terrain')}
-              name="trail_terrain"
-              value={formData.trail_terrain}
-              onChange={(e) =>
-                setFormData((prevData) => ({
-                  ...prevData,
-                  trail_terrain: e.target.value,
-                }))
-              }
-            />
-          </Box>
-        </DialogContent>
-        <DialogActions
-          style={{ display: 'flex', justifyContent: 'center', paddingTop: '0' }}
-        >
-          <Box>
-            <Button
-              onClick={() => {
-                console.log('Saved data:', formData);
-                setIsPopupOpen(false);
-              }}
-              sx={{ marginBottom: '2rem', width: '8rem' }}
-            >
-              {t('trail_save_btn')}
-            </Button>
-          </Box>
-        </DialogActions>
-      </Dialog>
-    </>
-  );
-};
+//       <Dialog open={isPopupOpen} onClose={() => setIsPopupOpen(false)}>
+//         <DialogTitle sx={{ textAlign: "center" }}>
+//           Fyll i information om stigen
+//         </DialogTitle>
+//         <DialogContent>
+//           <Box
+//             sx={{
+//               display: "flex",
+//               flexDirection: "column",
+//               gap: 2,
+//               width: "30rem",
+//               padding: "1rem",
+//             }}
+//           >
+//             {/* <TextField
+//               label="Trail Code Snippet"
+//               name="trail_code_snippet"
+//               value={formData.trail_code_snippet}
+//               onChange={(e) =>
+//                 setFormData((prevData) => ({
+//                   ...prevData,
+//                   trail_code_snippet: e.target.value,
+//                 }))
+//               }
+//             /> */}
+//             <TextField
+//               label={t("trail_total_length")}
+//               name="trail_total_length"
+//               type="number"
+//               value={formData.trail_total_length}
+//               onChange={(e) =>
+//                 setFormData((prevData) => ({
+//                   ...prevData,
+//                   trail_total_length: e.target.value,
+//                 }))
+//               }
+//             />
+//             <TextField
+//               label={t("number_of_trails")}
+//               name="number_of_trails"
+//               type="number"
+//               value={formData.number_of_trails}
+//               onChange={(e) =>
+//                 setFormData((prevData) => ({
+//                   ...prevData,
+//                   number_of_trails: e.target.value,
+//                 }))
+//               }
+//               className="text-field"
+//             />
+//             <TextField
+//               label={t("trail_level")}
+//               name="trail_level"
+//               value={formData.trail_level}
+//               onChange={(e) =>
+//                 setFormData((prevData) => ({
+//                   ...prevData,
+//                   trail_level: e.target.value,
+//                 }))
+//               }
+//             />
+//             <TextField
+//               label={t("trail_time")}
+//               name="trail_time"
+//               value={formData.trail_time}
+//               onChange={(e) =>
+//                 setFormData((prevData) => ({
+//                   ...prevData,
+//                   trail_time: e.target.value,
+//                 }))
+//               }
+//             />
+//             <TextField
+//               label={t("trail_terrain")}
+//               name="trail_terrain"
+//               value={formData.trail_terrain}
+//               onChange={(e) =>
+//                 setFormData((prevData) => ({
+//                   ...prevData,
+//                   trail_terrain: e.target.value,
+//                 }))
+//               }
+//             />
+//           </Box>
+//         </DialogContent>
+//         <DialogActions
+//           style={{ display: "flex", justifyContent: "center", paddingTop: "0" }}
+//         >
+//           <Box>
+//             <Button
+//               onClick={() => {
+//                 console.log("Saved data:", formData);
+//                 setIsPopupOpen(false);
+//               }}
+//               sx={{ marginBottom: "2rem", width: "8rem" }}
+//             >
+//               {t("trail_save_btn")}
+//             </Button>
+//           </Box>
+//         </DialogActions>
+//       </Dialog>
+//     </>
+//   );
+// };
 
-export default TrailPopup;
+// export default TrailPopup;

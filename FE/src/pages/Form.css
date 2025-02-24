@@ -3,6 +3,6 @@
     margin: 0 auto;
     position: relative;
     min-height: 100vh;
-    background: linear-gradient(rgba(255, 248, 239, 0.7), rgba(0, 0, 0, 0.7)),
-      url('/assets/max-beck-5uXOd_7uxzs-unsplash.jpg') center/cover no-repeat;
+    background: linear-gradient(rgba(255, 248, 239, 0.5), rgba(0, 0, 0, 0.2)),
+      url('/assets/210528_Bonas_03.jpg') center/cover no-repeat;
 }

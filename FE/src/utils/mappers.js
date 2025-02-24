@@ -1,18 +1,18 @@
 export const mapOrganizers = (organizers) =>
   organizers.map((organizer) => ({
     id: organizer.id || 0,
-    title: organizer.title || '',
-    street1: organizer.street1 || '',
-    street2: organizer.street2 || '',
-    zip_code: organizer.zip_code || '',
-    city: organizer.city || '',
+    title: organizer.title || "",
+    street1: organizer.street1 || "",
+    street2: organizer.street2 || "",
+    zip_code: organizer.zip_code || "",
+    city: organizer.city || "",
     municipality_id: organizer.municipality_id || 0,
     organization_id: organizer.organization_id || 0,
-    booking_link: organizer.booking_link || '',
-    website_link: organizer.website_link || '',
-    email: organizer.email || '',
+    booking_link: organizer.booking_link || "",
+    website_link: organizer.website_link || "",
+    email: organizer.email || "",
     phone_numbers:
-      organizer.phone_numbers.length > 0 ? organizer.phone_numbers : [''],
+      organizer.phone_numbers.length > 0 ? organizer.phone_numbers : [""],
   }));
 
 export const mapPrices = (prices) =>
@@ -25,14 +25,9 @@ export const mapPrices = (prices) =>
 
 export const mapImages = (images) =>
   images.map((image) => ({
-    large: image.large,
-    medium: image.medium,
-    small: image.small,
-    alt_text: image.alt_text,
-    copyright: image.copyright,
-    description: image.description,
-    photographer: image.photographer,
-    year: image.year,
+    name: image.name,
+    size: image.size,
+    type: image.type,
   }));
 
 export const mapFiles = (files) =>
@@ -63,7 +58,7 @@ export const mapPlaces = (places) =>
   }));
 
 export const mapOccasions = (occasions) =>
-  occasions.map((occasion) => ({
+  occasions?.map((occasion) => ({
     date_start: occasion.date_start,
     date_end: occasion.date_end,
     time_start: occasion.time_start,
