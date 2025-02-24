@@ -24,6 +24,7 @@ const resources = {
       city: "City",
       booking_link: "Booking link",
       website: "Website",
+      erase_fields: "Erase inputs",
 
       // Event page (third page)
       event_title: "Date and time for your event",
@@ -46,8 +47,22 @@ const resources = {
       trail_time: "How long does it take to walk the trail?",
       trail_terrain: "Describe the terrain and / or other information",
       trail_save_btn: "Save",
+      trail_time: "How long does it take to walk the trail?",
+      trail_terrain: "Describe the terrain and / or other information",
+      trail_save_btn: "Save",
 
       // some generic buttons, breadcrumbs and other.
+      language_btn_en: "English",
+      language_btn_swe: "Swedish",
+      language_btn_de: "German",
+      breadcrumbs_1: "Step 1",
+      breadcrumbs_2: "Step 2",
+      breadcrumbs_3: "Step 3",
+      trail_btn: "Is it a trail?",
+      next_btn: "Next",
+      submit_btn: "Submit",
+      images_title: "Upload images. Max 2MB",
+      gdpr: "I agree to the terms and conditions of the use of my personal data and the organization.",
       language_btn_en: "English",
       language_btn_swe: "Swedish",
       language_btn_de: "German",
@@ -83,6 +98,7 @@ const resources = {
       city: "Stad",
       booking_link: "Bokningslänk",
       website: "Hemsida",
+      erase_fields: "Radera fälten",
 
       // Event page (third page)
       event_title: "Datum och tid för ditt event",
