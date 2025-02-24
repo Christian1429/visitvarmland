@@ -63,6 +63,7 @@ export const mapOccasions = (occasions) =>
     date_end: occasion.date_end,
     time_start: occasion.time_start,
     time_end: occasion.time_end,
+    date_other_information: occasion.date_other_information,
   }));
 
 // export const mapPastOccasions = (past_occasions) =>

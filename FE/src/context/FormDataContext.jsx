@@ -12,7 +12,8 @@ export const FormDataProvider = ({ children }) => {
     open_times: "",
     booking_link: "",
     website_link: "",
-    contact: [    // new  
+    contact: [
+      // new
       {
         contact_name: "",
         contact_email: "",
@@ -86,6 +87,7 @@ export const FormDataProvider = ({ children }) => {
         date_end: "",
         time_start: "",
         time_end: "",
+        date_other_information: "",
       },
     ],
     gdpr_consent: false, //  new

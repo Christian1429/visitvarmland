@@ -8,7 +8,7 @@ router.put('/:id', dataService.updateData.bind(dataService));
 router.post('/', dataService.createData.bind(dataService));
 router.get("/", dataService.getAllData.bind(dataService));
 router.delete("/:id", dataService.deleteData.bind(dataService));
-router.get('/testplatser', (req, res) => {
+router.get('/places', (req, res) => {
   res.json(places);
 });
 
