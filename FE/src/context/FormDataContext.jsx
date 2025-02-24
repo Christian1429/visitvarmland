@@ -87,6 +87,7 @@ export const FormDataProvider = ({ children }) => {
         date_end: "",
         time_start: "",
         time_end: "",
+        date_other_information: "",
       },
     ],
     gdpr_consent: false, //  new

@@ -56,6 +56,7 @@ const occasionSchema = new mongoose.Schema({
   date_end: { type: Date },
   time_start: { type: String },
   time_end: { type: String },
+  date_other_information: { type: String },
 });
 
 const dataSchema = new mongoose.Schema({
