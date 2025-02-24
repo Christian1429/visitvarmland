@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { FormDataContext } from "../context/FormDataContext";
 import {
   List,
@@ -13,19 +13,20 @@ import {
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
+
 function Places() {
   const { formData, setFormData } = useContext(FormDataContext); // Formulärsdatan
   const [data, setData] = useState([]); // API-datan från testplatser
-
+  
   useEffect(() => {
     async function fetchPlaces() {
       try {
         const response = await fetch(
-          "http://localhost:2000/api/data/testplatser"
+          "http://localhost:2000/api/data/places"
         );
-        const json = await response.json();
-        setData(json);
-        console.log("Testplatser från Backenden", json);
+        const data = await response.json();
+        setData(data);
+        console.log("Places från Backenden", data);
       } catch (error) {
         console.error("Fel vid hämtning av testplatser:", error);
       }
@@ -36,7 +37,11 @@ function Places() {
   const handlePlaceSelect = (selectedPlace) => {
     setFormData((prevData) => {
       let existingPlaces = prevData.places;
-      if (existingPlaces.length === 1 && existingPlaces[0].title === "") {
+      if (
+        existingPlaces.length === 1 
+        &&
+        existingPlaces[0].title === "")
+        {
         existingPlaces = [];
       }
 
@@ -90,7 +95,7 @@ function Places() {
       />
       <Card
         sx={{
-          marginTop: '0.2rem',
+          marginTop: '0.8rem',
           boxShadow: '0px 4px 10px rgba(0, 67, 56, 0.2)',
           boxSizing: 'border-box',
           padding: '0.5rem',
@@ -107,11 +112,16 @@ function Places() {
         >
           Valda platser:
         </Typography>
-        <List sx={{ display: 'flex', padding: 0, flexWrap: 'nowrap'}}>
+        <List
+          sx={{
+            padding: 0,
+          }}
+        >
           {formData.places.map((place) => (
             <ListItem
               key={place.id}
               sx={{
+                width: 'auto',
                 backgroundColor: 'var(--color-green-light)',
                 color: 'var(--color-background)',
                 borderRadius: 1,
