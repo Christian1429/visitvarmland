@@ -24,6 +24,7 @@ const resources = {
       city: "City",
       booking_link: "Booking link",
       website: "Website",
+      erase_fields: "Erase inputs",
 
       // Event page (third page)
       event_title: "Date and time for your event",
@@ -83,6 +84,7 @@ const resources = {
       city: "Stad",
       booking_link: "Bokningslänk",
       website: "Hemsida",
+      erase_fields: "Radera fälten",
 
       // Event page (third page)
       event_title: "Datum och tid för ditt event",
