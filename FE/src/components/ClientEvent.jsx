@@ -181,8 +181,6 @@ const ClientEvent = ({ formData, setFormData }) => {
         }
         className="text-field"
       />
-      <Field />
-      <Price />
       <Box>
         <TextField
           variant="outlined"
@@ -204,6 +202,8 @@ const ClientEvent = ({ formData, setFormData }) => {
           sx={{ marginTop: "2rem", marginBottom: "2rem" }}
         />
       </Box>
+      {/* <Field /> */}
+      <Price />
       <HandleFileUpload formData={formData} setFormData={setFormData} />
       <Box gridColumn="span 2" sx={{ display: "flex" }}>
         <FormControlLabel
