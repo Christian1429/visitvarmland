@@ -10,6 +10,7 @@ import HandleFileUpload from "./ImgUpload";
 import { useTranslation } from "react-i18next";
 import InfoButton from "./buttons/InfoBtn";
 import Places from "./Places";
+import Other_info from "./Other_info";
 import Price from "./Price";
 const Event = ({ formData, setFormData }) => {
   // text limitations
@@ -181,6 +182,7 @@ const Event = ({ formData, setFormData }) => {
         }
         className="text-field"
       />
+      <Other_info />
       <Places />
       {/* --------------- IMAGE UPLOADER -------------- */}
       <HandleFileUpload formData={formData} setFormData={setFormData} />

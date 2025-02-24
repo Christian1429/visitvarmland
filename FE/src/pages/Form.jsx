@@ -43,10 +43,10 @@ const Form = () => {
     const isSubmitted = await handleSubmit(formData);
 
     if (isSubmitted) {
-      setShowModal(true); // Show success modal only if submission was successful
+      setShowModal(true);
     } else {
       console.log("Form submission failed. Please try again");
-      alert("Form submission failed. Please try again."); // You can replace this with an error modal
+      alert("Form submission failed. Please try again.");
     }
   };
 
