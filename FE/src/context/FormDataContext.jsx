@@ -91,6 +91,7 @@ export const FormDataProvider = ({ children }) => {
       },
     ],
     gdpr_consent: false, //  new
+    other_info: "",
   });
 
   return (

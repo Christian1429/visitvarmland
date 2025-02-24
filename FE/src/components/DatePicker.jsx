@@ -6,6 +6,7 @@ import dayjs from "dayjs";
 import "dayjs/locale/sv";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "@mui/material/styles";
+import Other_info from "./Other_info";
 
 const DatePickerClient = ({ formData, setFormData }) => {
   const theme = useTheme();

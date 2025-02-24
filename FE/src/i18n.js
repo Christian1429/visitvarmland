@@ -39,6 +39,7 @@ const resources = {
       presentation: "Presentation",
       open_times: "Open Times",
       ticket_information: "Ticket Information",
+      other_info: "Other information",
 
       //Success modal
       success_title: "Thank you for the tip",
@@ -49,6 +50,9 @@ const resources = {
       trail_total_length: "Total length of the trail",
       number_of_trails: "Number of trails",
       trail_level: "Describe the trail's difficulty level",
+      trail_time: "How long does it take to walk the trail?",
+      trail_terrain: "Describe the terrain and / or other information",
+      trail_save_btn: "Save",
       trail_time: "How long does it take to walk the trail?",
       trail_terrain: "Describe the terrain and / or other information",
       trail_save_btn: "Save",
@@ -105,6 +109,7 @@ const resources = {
       presentation: "Presentation",
       open_times: "Öppetider",
       ticket_information: "Biljettinformation",
+      other_info: "Övrig information",
 
       //Success modal Form submitted! We'll process your request soon.
       success_title: "Tack för tipset",
