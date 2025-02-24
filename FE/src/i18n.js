@@ -40,6 +40,11 @@ const resources = {
       open_times: "Open Times",
       ticket_information: "Ticket Information",
 
+      //Success modal
+      success_title: "Thank you for the tip",
+      success_message: "We'll process your tip soon.",
+      success_close: "Close",
+
       // trail overlay
       trail_total_length: "Total length of the trail",
       number_of_trails: "Number of trails",
@@ -49,17 +54,17 @@ const resources = {
       trail_save_btn: "Save",
 
       // some generic buttons, breadcrumbs and other.
-      language_btn_en: 'English',
-      language_btn_swe: 'Swedish',
-      language_btn_de: 'German',
-      breadcrumbs_1: 'Step 1',
-      breadcrumbs_2: 'Step 2',
-      breadcrumbs_3: 'Step 3',
-      trail_btn: 'Is it a trail?',
-      next_btn: 'Next',
-      submit_btn: 'Submit',
-      images_title: 'Upload images. Max 2MB',
-      gdpr: 'I consent to my information being stored and used in accordance with GDPR and agree that Visit Värmland reserves the right to modify or delete the information.',
+      language_btn_en: "English",
+      language_btn_swe: "Swedish",
+      language_btn_de: "German",
+      breadcrumbs_1: "Step 1",
+      breadcrumbs_2: "Step 2",
+      breadcrumbs_3: "Step 3",
+      trail_btn: "Is it a trail?",
+      next_btn: "Next",
+      submit_btn: "Submit",
+      images_title: "Upload images. Max 2MB",
+      gdpr: "I consent to my information being stored and used in accordance with GDPR and agree that Visit Värmland reserves the right to modify or delete the information.",
     },
   },
   // Swedish
@@ -101,6 +106,11 @@ const resources = {
       open_times: "Öppetider",
       ticket_information: "Biljettinformation",
 
+      //Success modal Form submitted! We'll process your request soon.
+      success_title: "Tack för tipset",
+      success_message: "Vi kommer att behandla ditt tips snart.",
+      success_close: "Stäng",
+
       // trail overlay
       trail_total_length: "Stigens totala längd i km",
       number_of_trails: "Antal stigar",
@@ -110,16 +120,16 @@ const resources = {
       trail_save_btn: "Spara",
 
       // some generic buttons, breadcrumbs and other.
-      language_btn_en: 'Engelska',
-      language_btn_swe: 'Svenska',
-      language_btn_de: 'Tyska',
-      breadcrumbs_1: 'Steg 1',
-      breadcrumbs_2: 'Steg 2',
-      breadcrumbs_3: 'Steg 3',
-      submit_btn: 'Skicka in',
-      next_btn: 'Nästa',
-      images_title: 'Ladda upp bilder. Max 2MB',
-      gdpr: 'Jag samtycker till att mina uppgifter lagras och används enligt GDPR och godkänner att Visit Värmland förbehåller sig rätten att ändra eller ta bort uppgifterna.',
+      language_btn_en: "Engelska",
+      language_btn_swe: "Svenska",
+      language_btn_de: "Tyska",
+      breadcrumbs_1: "Steg 1",
+      breadcrumbs_2: "Steg 2",
+      breadcrumbs_3: "Steg 3",
+      submit_btn: "Skicka in",
+      next_btn: "Nästa",
+      images_title: "Ladda upp bilder. Max 2MB",
+      gdpr: "Jag samtycker till att mina uppgifter lagras och används enligt GDPR och godkänner att Visit Värmland förbehåller sig rätten att ändra eller ta bort uppgifterna.",
     },
   },
 };
