@@ -1,87 +1,59 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { FormDataContext } from "../context/FormDataContext";
+import { Box, TextField } from "@mui/material";
 
 function Price() {
   const { formData, setFormData } = useContext(FormDataContext);
-  const [priceType, setPriceType] = useState("");
-  const [price, setPrice] = useState("");
-  const [seatsAvailable, setSeatsAvailable] = useState("");
-  const [description, setDescription] = useState("");
-
-  const handleAddPrice = (event) => {
-    event.preventDefault();
-
-    if (!priceType || !price) {
-      alert("Både pris och pristyp måste anges!");
-      return;
-    }
-
-    console.log("Lägger till nytt pris:");
-    console.log("Pristyp:", priceType);
-    console.log("Pris:", price);
-    console.log("Tillgängliga platser:", seatsAvailable);
-    console.log("Beskrivning:", description);
-
-    setFormData((prevData) => {
-      const updatedPrices = [
-        ...prevData.prices,
-        {
-          price_type: priceType,
-          price: price,
-          seats_available: seatsAvailable,
-          description: description,
-        },
-      ];
-      return { ...prevData, prices: updatedPrices };
-    });
-
-    setPriceType("");
-    setPrice("");
-    setSeatsAvailable("");
-    setDescription("");
-  };
 
   return (
-    <>
-      <h2>Lägg till pris</h2>
-      <form onSubmit={handleAddPrice}>
-        <label>Pristyp:</label>
-        <input
-          type="text"
-          value={priceType}
-          onChange={(e) => setPriceType(e.target.value)}
-        />
-        <label>Pris:</label>
-        <input
-          type="number"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-        />
-        <label>Tillgängliga Platser:</label>
-        <input
-          type="number"
-          value={seatsAvailable}
-          onChange={(e) => setSeatsAvailable(e.target.value)}
-        />
-        <label>Beskrivning:</label>
-        <input
-          type="text"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <button type="submit">Lägg till pris</button>
-      </form>
-
-      <h3>Inlagda priser:</h3>
-      <ul>
-        {formData.prices.map((item, index) => (
-          <li key={index}>
-            {item.price_type}: {item.price} kr ({item.seats_available} platser)
-            - {item.description}
-          </li>
-        ))}
-      </ul>
-    </>
+    <Box sx={{ width: "100%", margin: "0 auto", padding: 2 }}>
+      <TextField
+        label="Pristyp"
+        value={formData.prices[0].price_type}
+        onChange={(e) =>
+          setFormData((prev) => {
+            const newPrices = [...prev.prices];
+            newPrices[0] = { ...newPrices[0], price_type: e.target.value };
+            return { ...prev, prices: newPrices };
+          })
+        }
+      />
+      <TextField
+        label="Pris"
+        type="number"
+        value={formData.prices[0].price}
+        onChange={(e) =>
+          setFormData((prev) => {
+            const newPrices = [...prev.prices];
+            newPrices[0] = { ...newPrices[0], price: e.target.value };
+            return { ...prev, prices: newPrices };
+          })
+        }
+      />
+      <TextField
+        label="Tillgängliga Platser"
+        type="number"
+        value={formData.prices[0].seats_available}
+        onChange={(e) =>
+          setFormData((prev) => {
+            const newPrices = [...prev.prices];
+            newPrices[0] = { ...newPrices[0], seats_available: e.target.value };
+            return { ...prev, prices: newPrices };
+          })
+        }
+      />
+      <TextField
+        label="Beskrivning"
+        value={formData.prices[0].description}
+        onChange={(e) =>
+          setFormData((prev) => {
+            const newPrices = [...prev.prices];
+            newPrices[0] = { ...newPrices[0], description: e.target.value };
+            return { ...prev, prices: newPrices };
+          })
+        }
+      />
+    </Box>
   );
 }
 

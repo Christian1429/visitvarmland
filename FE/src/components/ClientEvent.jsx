@@ -9,7 +9,8 @@ import {
 import HandleFileUpload from "./ImgUpload";
 import { useTranslation } from "react-i18next";
 import InfoButton from "./buttons/InfoBtn";
-import Field from "./Places";
+import Field from "./Field";
+import Price from "./Price";
 const ClientEvent = ({ formData, setFormData }) => {
   // text limitations
   const sellingTextMaxLength = 100;
@@ -147,7 +148,7 @@ const ClientEvent = ({ formData, setFormData }) => {
           }))
         }
         className="text-field"
-      />
+      />{" "}
       <TextField
         variant="outlined"
         margin="dense"
@@ -163,7 +164,7 @@ const ClientEvent = ({ formData, setFormData }) => {
           }))
         }
         className="text-field"
-      />
+      />{" "}
       <TextField
         variant="outlined"
         margin="dense"
@@ -180,10 +181,10 @@ const ClientEvent = ({ formData, setFormData }) => {
         }
         className="text-field"
       />
-      <Field/>
+      <Field />
+      <Price />
       {/* --------------- IMAGE UPLOADER -------------- */}
       <HandleFileUpload formData={formData} setFormData={setFormData} />
-
       <Box gridColumn="span 2" sx={{ display: "flex" }}>
         <FormControlLabel
           control={
