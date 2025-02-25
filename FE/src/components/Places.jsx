@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { FormDataContext } from "../context/FormDataContext";
 import {
   List,
@@ -20,12 +20,10 @@ function Places() {
   useEffect(() => {
     async function fetchPlaces() {
       try {
-        const response = await fetch(
-          "http://localhost:2000/api/data/testplatser"
-        );
-        const json = await response.json();
-        setData(json);
-        console.log("Testplatser från Backenden", json);
+        const response = await fetch("http://localhost:2000/api/data/places");
+        const data = await response.json();
+        setData(data);
+        console.log("Places från Backenden", data);
       } catch (error) {
         console.error("Fel vid hämtning av testplatser:", error);
       }
@@ -69,10 +67,10 @@ function Places() {
   };
 
   return (
-    <Box sx={{ marginTop: '0.5rem' }}>
+    <Box sx={{ marginTop: "0.5rem" }}>
       <Autocomplete
         options={data}
-        getOptionLabel={(option) => option.title || ''}
+        getOptionLabel={(option) => option.title || ""}
         onChange={(event, newValue) => {
           if (newValue) {
             handlePlaceSelect(newValue);
@@ -90,16 +88,16 @@ function Places() {
       />
       <Card
         sx={{
-          marginTop: '0.2rem',
-          boxShadow: '0px 4px 10px rgba(0, 67, 56, 0.2)',
-          boxSizing: 'border-box',
-          padding: '0.5rem',
+          marginTop: "0.8rem",
+          boxShadow: "0px 4px 10px rgba(0, 67, 56, 0.2)",
+          boxSizing: "border-box",
+          padding: "0.5rem",
         }}
       >
         <Typography
           variant="h6"
           sx={{
-            color: 'var(--color-green-dark)',
+            color: "var(--color-green-dark)",
             fontFamily: "'Noto Sans', sans-serif",
             fontWeight: 600,
             marginBottom: 1,
@@ -107,20 +105,25 @@ function Places() {
         >
           Valda platser:
         </Typography>
-        <List sx={{ display: 'flex', padding: 0, flexWrap: 'nowrap'}}>
+        <List
+          sx={{
+            padding: 0,
+          }}
+        >
           {formData.places.map((place) => (
             <ListItem
               key={place.id}
               sx={{
-                backgroundColor: 'var(--color-green-light)',
-                color: 'var(--color-background)',
+                width: "auto",
+                backgroundColor: "var(--color-green-light)",
+                color: "var(--color-background)",
                 borderRadius: 1,
                 marginBottom: 1,
                 margin: 1,
                 padding: 1,
-                boxSizing: 'border-box',
+                boxSizing: "border-box",
                 gap: 1,
-                '&:hover': { backgroundColor: 'var(--color-green-dark)' },
+                "&:hover": { backgroundColor: "var(--color-green-dark)" },
               }}
             >
               <ListItemText
@@ -134,8 +137,8 @@ function Places() {
               <IconButton
                 onClick={() => removePlace(place.id)}
                 sx={{
-                  color: 'var(--color-background)',
-                  '&:hover': { color: 'var(--color-red-light)' },
+                  color: "var(--color-background)",
+                  "&:hover": { color: "var(--color-red-light)" },
                 }}
               >
                 <CloseIcon />

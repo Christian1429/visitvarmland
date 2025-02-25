@@ -33,16 +33,26 @@ const resources = {
       date_end: "Date To",
       time_start: "Time From",
       time_end: "Time To",
+      date_other_information: "Other information about the dates or times",
       description: "Description",
       sales_text: "Sales Text",
       presentation: "Presentation",
       open_times: "Open Times",
       ticket_information: "Ticket Information",
+      other_info: "Other information",
+
+      //Success modal
+      success_title: "Thank you for the tip",
+      success_message: "We'll process your tip soon.",
+      success_close: "Close",
 
       // trail overlay
       trail_total_length: "Total length of the trail",
       number_of_trails: "Number of trails",
       trail_level: "Describe the trail's difficulty level",
+      trail_time: "How long does it take to walk the trail?",
+      trail_terrain: "Describe the terrain and / or other information",
+      trail_save_btn: "Save",
       trail_time: "How long does it take to walk the trail?",
       trail_terrain: "Describe the terrain and / or other information",
       trail_save_btn: "Save",
@@ -58,7 +68,7 @@ const resources = {
       next_btn: "Next",
       submit_btn: "Submit",
       images_title: "Upload images. Max 2MB",
-      gdpr: "I agree to the terms and conditions of the use of my personal data and the organization.",
+      gdpr: "I consent to my information being stored and used in accordance with GDPR and agree that Visit Värmland reserves the right to modify or delete the information.",
     },
   },
   // Swedish
@@ -92,12 +102,19 @@ const resources = {
       date_end: "Datum Till",
       time_start: "Tid Från",
       time_end: "Tid Till",
+      date_other_information: "Övrig information om datumen eller tiderna",
       trail_btn: "Är det en stig?",
       description: "Beskrivning",
       sales_text: "Säljande Text",
       presentation: "Presentation",
       open_times: "Öppetider",
       ticket_information: "Biljettinformation",
+      other_info: "Övrig information",
+
+      //Success modal Form submitted! We'll process your request soon.
+      success_title: "Tack för tipset",
+      success_message: "Vi kommer att behandla ditt tips snart.",
+      success_close: "Stäng",
 
       // trail overlay
       trail_total_length: "Stigens totala längd i km",
@@ -117,7 +134,7 @@ const resources = {
       submit_btn: "Skicka in",
       next_btn: "Nästa",
       images_title: "Ladda upp bilder. Max 2MB",
-      gdpr: "Jag samtycker till att mina uppgifter lagras och används enligt GDPR.",
+      gdpr: "Jag samtycker till att mina uppgifter lagras och används enligt GDPR och godkänner att Visit Värmland förbehåller sig rätten att ändra eller ta bort uppgifterna.",
     },
   },
 };

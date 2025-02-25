@@ -10,8 +10,9 @@ import HandleFileUpload from "./ImgUpload";
 import { useTranslation } from "react-i18next";
 import InfoButton from "./buttons/InfoBtn";
 import Places from "./Places";
+import Other_info from "./Other_info";
 import Price from "./Price";
-const ClientEvent = ({ formData, setFormData }) => {
+const Event = ({ formData, setFormData }) => {
   // text limitations
   const sellingTextMaxLength = 100;
   const descriptionMaxLength = 200;
@@ -164,7 +165,7 @@ const ClientEvent = ({ formData, setFormData }) => {
           }))
         }
         className="text-field"
-      />
+      />{" "}
       <TextField
         variant="outlined"
         margin="dense"
@@ -181,29 +182,9 @@ const ClientEvent = ({ formData, setFormData }) => {
         }
         className="text-field"
       />
-      <Box>
-        <TextField
-          variant="outlined"
-          margin="dense"
-          fullWidth
-          id="other_info"
-          label={t("other_info")}
-          name="other_info"
-          value={formData.other_info || ""}
-          onChange={(e) =>
-            setFormData((prevData) => ({
-              ...prevData,
-              other_info: e.target.value,
-            }))
-          }
-          className="text-field"
-          multiline
-          rows={4}
-          sx={{ marginTop: "2rem", marginBottom: "2rem" }}
-        />
-      </Box>
+      <Other_info />
       <Places />
-      <Price />
+      {/* --------------- IMAGE UPLOADER -------------- */}
       <HandleFileUpload formData={formData} setFormData={setFormData} />
       <Box gridColumn="span 2" sx={{ display: "flex" }}>
         <FormControlLabel
@@ -224,4 +205,4 @@ const ClientEvent = ({ formData, setFormData }) => {
   );
 };
 
-export default ClientEvent;
+export default Event;
