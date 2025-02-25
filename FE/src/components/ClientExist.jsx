@@ -3,6 +3,7 @@ import { FormControl, InputLabel, Select, MenuItem, Box } from "@mui/material";
 import getForm from "../api/GetFrom";
 import { useTranslation } from "react-i18next";
 import FormResetButton from "../components/Buttons/FormResetButton";
+import Searchfield from "./Searchfield";
 
 const ClientExist = ({ formData, setFormData }) => {
   const [clients, setClients] = useState([]);
@@ -58,7 +59,6 @@ const ClientExist = ({ formData, setFormData }) => {
         <InputLabel id="dropdown-label-existing">
           {t("dropdown_organizer_exist")}
         </InputLabel>
-
         <Select
           labelId="dropdown-label-existing"
           id="dropdown-existing"
@@ -72,6 +72,7 @@ const ClientExist = ({ formData, setFormData }) => {
             </MenuItem>
           ))}
         </Select>
+        <Searchfield />
       </FormControl>
 
       <FormResetButton setFormData={setFormData} />
