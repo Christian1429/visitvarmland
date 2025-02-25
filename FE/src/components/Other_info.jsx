@@ -5,7 +5,7 @@ import { FormDataContext } from "../context/FormDataContext";
 
 const Other_info = () => {
   const { formData, setFormData } = useContext(FormDataContext);
-  console.log("formData", formData);
+
   const { t } = useTranslation();
   return (
     <Box>

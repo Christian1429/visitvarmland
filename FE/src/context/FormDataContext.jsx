@@ -60,6 +60,7 @@ export const FormDataProvider = ({ children }) => {
         presentation: "",
         latitude: "",
         longitude: "",
+        thumbnail: "../../public/assets/icon.jpeg",
         accessibility: [
           {
             title: "",
