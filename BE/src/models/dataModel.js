@@ -46,6 +46,7 @@ const placeSchema = new mongoose.Schema({
   presentation: { type: String },
   latitude: { type: String },
   longitude: { type: String },
+  thumbnail: { type: String },
   accessibility: [
     { title: { type: String }, more_information: { type: String } },
   ],

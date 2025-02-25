@@ -51,6 +51,7 @@ export const mapPlaces = (places) =>
     presentation: place.presentation,
     latitude: place.latitude,
     longitude: place.longitude,
+    thumbnail: place.thumbnail,
     accessibility: place.accessibility.map((access) => ({
       title: access.title,
       more_information: access.more_information,

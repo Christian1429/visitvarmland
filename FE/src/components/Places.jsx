@@ -12,6 +12,7 @@ import {
   IconButton,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import DisplayThumbnail from "../components/Display_thumbnail";
 
 function Places() {
   const { formData, setFormData } = useContext(FormDataContext); // Formulärsdatan
@@ -48,6 +49,7 @@ function Places() {
       }
 
       const updatedPlaces = [...existingPlaces, selectedPlace];
+
       const updatedFormData = {
         ...prevData,
         places: updatedPlaces,
@@ -134,6 +136,7 @@ function Places() {
                 }}
               />
 
+              <DisplayThumbnail formData={place.thumbnail} index={place.id} />
               <IconButton
                 onClick={() => removePlace(place.id)}
                 sx={{
