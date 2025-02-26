@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import FormResetButton from "../components/Buttons/FormResetButton";
 import Searchfield from "./Searchfield";
 
-const ClientExist = ({ formData, setFormData }) => {
+const ClientExist = ({ formData, setFormData, Editable, setEditable }) => {
   const [clients, setClients] = useState([]);
   const [dropdownValueExisting, setDropdownValueExisting] = useState("");
   const { t } = useTranslation();
@@ -72,9 +72,8 @@ const ClientExist = ({ formData, setFormData }) => {
             </MenuItem>
           ))}
         </Select>
-        <Searchfield />
+        <Searchfield setEditable={setEditable} />
       </FormControl>
-
       <FormResetButton setFormData={setFormData} />
     </Box>
   );

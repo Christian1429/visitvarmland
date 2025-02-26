@@ -4,7 +4,7 @@ import { FormDataContext } from "../context/FormDataContext";
 import getForm from "../api/GetFrom";
 import { useTranslation } from "react-i18next";
 
-function Searchfield() {
+function Searchfield({ setEditable }) {
   const { formData, setFormData } = useContext(FormDataContext);
   const [organizers, setOrganizers] = useState([]);
   const { t } = useTranslation();
@@ -29,6 +29,7 @@ function Searchfield() {
         ...prevData,
         organizers: [selectedOrganizer],
       }));
+      setEditable(false);
     }
   };
 
