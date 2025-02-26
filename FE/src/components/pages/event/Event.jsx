@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 import {
   TextField,
   Box,
@@ -6,12 +6,12 @@ import {
   Checkbox,
   FormControlLabel,
   Typography,
-} from "@mui/material";
-import HandleFileUpload from "./ImgUpload";
-import { useTranslation } from "react-i18next";
-import InfoButton from "./buttons/InfoBtn";
-import Places from "./Places";
-import Price from "./Price";
+} from '@mui/material';
+import HandleFileUpload from './ImgUpload';
+import { useTranslation } from 'react-i18next';
+import InfoButton from '../../buttons/InfoBtn';
+import Places from './Places';
+import Price from './Price';
 const Event = ({ formData, setFormData }) => {
   // text limitations, add more or less if needed.
   const sellingTextMaxLength = 100;
@@ -32,9 +32,6 @@ const Event = ({ formData, setFormData }) => {
 
   return (
     <>
-    <Typography sx={{ textAlign: 'center' }}>
-      <p> Fyll i all nödvändig information om ditt evenemang </p>
-    </Typography>
       <Box
         sx={{
           maxWidth: 600,
@@ -48,6 +45,9 @@ const Event = ({ formData, setFormData }) => {
           flexDirection: 'column',
         }}
       >
+        <Typography sx={{ textAlign: 'center', padding: 0, marginTop: '-1rem' }}>
+         Fyll i all nödvändig information om ditt evenemang
+        </Typography>
         <TextField
           required
           variant="outlined"
@@ -229,6 +229,5 @@ const Event = ({ formData, setFormData }) => {
     </>
   );
 };
-
 
 export default Event;

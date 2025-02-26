@@ -1,22 +1,14 @@
-import { useContext } from "react";
-import { FormDataContext } from "../context/FormDataContext";
-import { Box, TextField, Typography } from "@mui/material";
+import { useContext } from 'react';
+import { FormDataContext } from '../../../context/FormDataContext';
+import { Box, TextField, Typography } from '@mui/material';
 
 function Price() {
   const { formData, setFormData } = useContext(FormDataContext);
 
   return (
     <>
-      <Typography sx={{ textAlign: 'center' }}>
-        <p
-          style={{
-            padding: 0,
-            marginBottom: 0,
-            textAlign: 'center',
-          }}
-        >
+      <Typography sx={{ textAlign: 'center', paddingTop: '1rem' }}>
           Priser och övrig information
-        </p>
       </Typography>
       <Box
         sx={{

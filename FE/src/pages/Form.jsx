@@ -7,19 +7,20 @@ import {
   useMediaQuery,
   Button,
 } from "@mui/material";
-import Contact from "../components/Contact";
-import ClientNew from "../components/ClientNew";
-import Event from "../components/Event";
+import Contact from '../components/pages/contact/Contact';
+import Searchfield from "../components/pages/organizer/Searchfield";
+import ClientNew from '../components/pages/organizer/ClientNew';
+import DatePickerClient from '../components/pages/event/DatePicker';
+import Event from '../components/pages/event/Event';
 import NextBtn from "../components/buttons/NextBtn";
 import CloseBtn from "../components/buttons/CloseBtn";
 import TranslationBtn from "../components/buttons/TranslationBtn";
+import handleSubmit from '../utils/handleSubmit';
+
 import { useTheme } from "@mui/material/styles";
 import "./Form.css";
-import ClientExist from "../components/ClientExist";
 import { FormDataContext } from "../context/FormDataContext";
-import handleSubmit from "../utils/handleSubmit";
 import { handleChange, handleArrayChange } from "../utils/formUtils";
-import DatePickerClient from "../components/DatePicker";
 import { useTranslation } from "react-i18next";
 import SuccessModal from "../components/Confirmation_modal";
 
@@ -65,11 +66,7 @@ const Form = () => {
       case 1:
         return (
           <>
-            <ClientExist
-              setFormData={setFormData}
-              Editable={Editable}
-              setEditable={setEditable}
-            />
+  <Searchfield setEditable={setEditable} />
             <ClientNew
               formData={formData}
               setFormData={setFormData}
