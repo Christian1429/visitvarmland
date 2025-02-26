@@ -184,6 +184,7 @@ const Event = ({ formData, setFormData }) => {
       />
       <Other_info />
       <Places />
+      <Price />
       {/* --------------- IMAGE UPLOADER -------------- */}
       <HandleFileUpload formData={formData} setFormData={setFormData} />
       <Box gridColumn="span 2" sx={{ display: "flex" }}>
