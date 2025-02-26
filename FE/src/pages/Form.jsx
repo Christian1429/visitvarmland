@@ -123,7 +123,7 @@ const Form = () => {
         >
           {t("hero")}
         </Typography>
-        <CloseBtn redirectUrl="https://visitvarmland.com" />
+        <CloseBtn/>
         <Box
           display="flex"
           justifyContent="center"

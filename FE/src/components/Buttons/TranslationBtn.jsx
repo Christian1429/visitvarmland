@@ -1,18 +1,16 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { IconButton, Menu, MenuItem } from '@mui/material';
-import LanguageIcon from '@mui/icons-material/Language'; // Globe icon
+import LanguageIcon from '@mui/icons-material/Language';
 
-function TranslationBtn() {
+const TranslationBtn = () => {
   const { i18n, t } = useTranslation();
-  const [anchorEl, setAnchorEl] = useState(null); // For the Menu component
+  const [anchorEl, setAnchorEl] = useState(null);
 
-  // Open Menu on clicking Globe Icon
   const handleMenuClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-  // Close Menu
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
@@ -20,12 +18,11 @@ function TranslationBtn() {
   // Change Language
   const handleLanguageChange = (language) => {
     i18n.changeLanguage(language);
-    setAnchorEl(null); // Close the menu after selecting a language
+    setAnchorEl(null);
   };
 
   return (
     <div style={{ position: 'absolute', top: '10px', right: '50px' }}>
-      {/* Globe Icon for Language Selector */}
       <IconButton onClick={handleMenuClick} color="primary">
         <LanguageIcon />
       </IconButton>

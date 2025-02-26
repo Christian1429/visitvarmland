@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FormControl, InputLabel, Select, MenuItem, Box } from "@mui/material";
 import getForm from "../api/GetFrom";
 import { useTranslation } from "react-i18next";
-import FormResetButton from "../components/Buttons/FormResetButton";
+import FormResetButton from "./buttons/FormResetButton";
 import Searchfield from "./Searchfield";
 
 const ClientExist = ({ formData, setFormData, Editable, setEditable }) => {

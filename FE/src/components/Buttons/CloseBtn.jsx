@@ -1,14 +1,11 @@
 import { IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 
-const CloseBtn = ({ redirectUrl }) => {
-  const handleClick = () => {
-    window.location.href = redirectUrl;
-  };
+const CloseBtn = () => {
 
   return (
     <IconButton
-      onClick={handleClick}
+      onClick={() => (window.location.href = 'https://www.visitvarmland.com')}
       sx={{
         position: 'absolute',
         top: '10px',

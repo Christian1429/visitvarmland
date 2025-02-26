@@ -66,29 +66,3 @@ export const mapOccasions = (occasions) =>
     time_end: occasion.time_end,
     date_other_information: occasion.date_other_information,
   }));
-
-// export const mapPastOccasions = (past_occasions) =>
-//   past_occasions.map((occasion) => ({
-//     date_start: occasion.date_start,
-//     date_end: occasion.date_end,
-//     time_start: occasion.time_start,
-//     time_end: occasion.time_end,
-// }));
-
-// export const mapRelatedProducts = (related_products) =>
-//   related_products.map((product) => ({
-//     id: product.id,
-//     title: product.title,
-// }));
-
-// export const mapRelatedEvents = (related_events) =>
-//   related_events.map((event) => ({
-//     id: event.id,
-//     title: event.title,
-// }));
-
-// export const mapRelatedItems = (items) =>
-//   items.map((item) => ({
-//     id: item.id,
-//     title: item.title,
-//   }));

@@ -26,7 +26,6 @@ const handleSubmit = async (formData) => {
     phone_numbers: [],
     images: mapImages(formData.images),
     files: mapFiles(formData.files),
-    // categories: mapCategories(formData.categories),
     places: mapPlaces(formData.places),
 
     is_trail: 0,
@@ -42,9 +41,6 @@ const handleSubmit = async (formData) => {
       small: "",
     },
     occasions: mapOccasions(formData.occasions),
-    // past_occasions: mapOccasions(formData.past_occasions),
-    // related_products: mapRelatedItems(formData.related_products),
-    // related_events: mapRelatedItems(formData.related_events),
     gdpr_consent: formData.gdpr_consent,
   };
   try {

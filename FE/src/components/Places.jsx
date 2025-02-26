@@ -21,7 +21,9 @@ function Places() {
   useEffect(() => {
     async function fetchPlaces() {
       try {
-        const response = await fetch("http://localhost:2000/api/data/places");
+        const response = await fetch(
+          "http://localhost:2000/api/data/places" // Add your backend URL (Advant)
+        );
         const data = await response.json();
         setData(data);
         console.log("Places från Backenden", data);
