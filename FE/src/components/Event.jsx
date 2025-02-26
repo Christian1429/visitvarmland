@@ -148,7 +148,7 @@ const Event = ({ formData, setFormData }) => {
           }))
         }
         className="text-field"
-      />{" "}
+      />{' '}
       <TextField
         variant="outlined"
         margin="dense"
@@ -164,7 +164,7 @@ const Event = ({ formData, setFormData }) => {
           }))
         }
         className="text-field"
-      />{" "}
+      />{' '}
       <TextField
         variant="outlined"
         margin="dense"
@@ -181,18 +181,16 @@ const Event = ({ formData, setFormData }) => {
         }
         className="text-field"
       />
-      <Places/>
+      <Places />
       {/* --------------- IMAGE UPLOADER -------------- */}
       <HandleFileUpload formData={formData} setFormData={setFormData} />
-
-      <Box gridColumn="span 2" sx={{ display: 'flex' }}>
+      <Box gridColumn="span 2" sx={{ display: 'flex', paddingTop: '2rem' }}>
         <FormControlLabel
           control={
             <Checkbox
               checked={consent}
               onChange={(e) => handleChange(e.target.checked)}
               name="consent"
-              color="primary"
               required
             />
           }

@@ -50,7 +50,6 @@ const resources = {
       // some generic buttons, breadcrumbs and other.
       language_btn_en: 'English',
       language_btn_swe: 'Swedish',
-      language_btn_de: 'German',
       breadcrumbs_1: 'Step 1',
       breadcrumbs_2: 'Step 2',
       breadcrumbs_3: 'Step 3',
@@ -110,7 +109,6 @@ const resources = {
       // some generic buttons, breadcrumbs and other.
       language_btn_en: 'Engelska',
       language_btn_swe: 'Svenska',
-      language_btn_de: 'Tyska',
       breadcrumbs_1: 'Steg 1',
       breadcrumbs_2: 'Steg 2',
       breadcrumbs_3: 'Steg 3',

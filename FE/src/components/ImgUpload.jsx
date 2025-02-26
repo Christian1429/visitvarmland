@@ -6,6 +6,7 @@ import {
   TextField,
   IconButton,
   Snackbar,
+  Button
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useTranslation } from "react-i18next";
@@ -98,50 +99,75 @@ function ImgUpload({ formData, setFormData }) {
 
   return (
     <Box
-      sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+      sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
     >
-      <Typography sx={{ marginTop: "1.5rem", marginBottom: "1rem" }}>
-        {t("images_title")}
+      <Typography sx={{ marginTop: '1.5rem', marginBottom: '1rem' }}>
+        {t('images_title')}
       </Typography>
       <TextField
         required
         type="file"
-        inputProps={{ accept: "image/jpeg", multiple: true }}
-        sx={{ width: "90%" }}
+        inputProps={{ accept: 'image/jpeg', multiple: true }}
+        sx={{ width: '90%', display: 'none' }}
         onChange={(e) => HandleFileUpload(e)}
         name="images"
       />
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          backgroundColor: 'white',
+          padding: '1rem',
+          borderRadius: '8px',
+          width: '85%',
+        }}
+      >
+        <input
+          type="file"
+          id="file-upload"
+          accept="image/jpeg"
+          multiple
+          style={{ display: 'none' }}
+          onChange={(e) => HandleFileUpload(e)}
+        />
 
+        <label htmlFor="file-upload">
+          <Button variant="contained" component="span">
+            {t('upload_files')}
+          </Button>
+        </label>
+      </Box>
       <Box>
         {previewImages.length > 0 && (
           <div>
-            <Typography variant="h6">{t("selected_images")}</Typography>
-            <div style={{ display: "flex", flexWrap: "wrap" }}>
+            <Typography variant="h6">{t('selected_images')}</Typography>
+            <div style={{ display: 'flex', flexWrap: 'wrap' }}>
               {previewImages.map((imageSrc, index) => (
                 <Box
                   key={index}
                   sx={{
-                    position: "relative",
-                    border: "1px solid #ccc",
-                    padding: "0.5rem",
-                    margin: "0.5rem",
+                    position: 'relative',
+                    border: '1px solid #ccc',
+                    padding: '0.5rem',
+                    margin: '0.5rem',
                   }}
                 >
                   <img
                     src={imageSrc}
                     alt={`Preview ${index}`}
                     style={{
-                      width: "100px",
-                      height: "100px",
-                      objectFit: "cover",
+                      width: '100px',
+                      height: '100px',
+                      objectFit: 'cover',
                     }}
                   />
                   <IconButton
-                    onClick={() => removeFile(index, "images", "files")}
+                    onClick={() => removeFile(index, 'images', 'files')}
                     sx={{
-                      position: "absolute",
-                      top: "0",
-                      right: "0",
+                      position: 'absolute',
+                      top: '0',
+                      right: '0',
                     }}
                   >
                     <DeleteIcon />

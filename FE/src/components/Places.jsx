@@ -22,7 +22,7 @@ function Places() {
     async function fetchPlaces() {
       try {
         const response = await fetch(
-          "http://localhost:2000/api/data/places"
+          "http://localhost:2000/api/data/places" // Add your backend URL (Advant)
         );
         const data = await response.json();
         setData(data);
