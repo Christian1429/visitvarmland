@@ -30,6 +30,7 @@ const Form = () => {
   const { formData, setFormData } = useContext(FormDataContext);
   const { t } = useTranslation();
   const [showModal, setShowModal] = useState(false);
+  const [Editable, setEditable] = useState(true);
 
   const handleNext = () => {
     setCurrentStep((prevStep) => prevStep + 1);
@@ -41,7 +42,6 @@ const Form = () => {
 
   const handleSubmitWithModal = async (formData) => {
     const isSubmitted = await handleSubmit(formData);
-
     if (isSubmitted) {
       setShowModal(true);
     } else {
@@ -65,12 +65,17 @@ const Form = () => {
       case 1:
         return (
           <>
-            <ClientExist setFormData={setFormData} />
+            <ClientExist
+              setFormData={setFormData}
+              Editable={Editable}
+              setEditable={setEditable}
+            />
             <ClientNew
               formData={formData}
               setFormData={setFormData}
               handleChange={handleChange}
               handleArrayChange={handleArrayChange}
+              Editable={Editable}
             />
           </>
         );
@@ -86,7 +91,6 @@ const Form = () => {
             />
           </>
         );
-
       default:
         return null;
     }
@@ -119,22 +123,17 @@ const Form = () => {
         >
           {t("hero")}
         </Typography>
-
         <CloseBtn redirectUrl="https://visitvarmland.com" />
         <Box
           display="flex"
           justifyContent="center"
-          sx={{ marginBottom: "1rem" }}
+          sx={{
+            marginBottom: "1rem",
+            flexDirection: isMobile ? "column" : "row",
+            alignItems: isMobile ? "flex-start" : "center",
+          }}
         >
-          <Breadcrumbs
-            aria-label="breadcrumb"
-            separator=">"
-            sx={{
-              marginBottom: "1rem",
-              flexDirection: isMobile ? "column" : "row",
-              alignItems: isMobile ? "flex-start" : "center",
-            }}
-          >
+          <Breadcrumbs aria-label="breadcrumb" separator=">">
             <Link
               color={currentStep === 0 ? "textPrimary" : "inherit"}
               onClick={() => handleStepClick(0)}
