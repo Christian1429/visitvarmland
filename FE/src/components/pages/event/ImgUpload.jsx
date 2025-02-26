@@ -22,6 +22,7 @@ function ImgUpload({ formData, setFormData }) {
     const files = Array.from(e.target.files);
 
     if (files.length === 0) {
+      setError("error_no_files_selected");
       console.error("Inga filer valda");
       return;
     }
@@ -128,7 +129,8 @@ function ImgUpload({ formData, setFormData }) {
           id="file-upload"
           accept="image/jpeg"
           multiple
-          style={{ display: "none" }}
+          /* required */
+          style={{ opacity: "0", width: "1px", height: "1px" }}
           onChange={(e) => HandleFileUpload(e)}
         />
 

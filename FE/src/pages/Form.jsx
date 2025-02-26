@@ -45,15 +45,16 @@ const Form = () => {
   };
 
   const handleSubmitWithModal = async (formData) => {
-    console.log(formRef.current.reportValidity());
+    formRef.current.reportValidity();
     const isSubmitted = await handleSubmit(formData);
 
-    if (isSubmitted && formRef.current.reportValidity()) {
+    if (isSubmitted) {
       setShowModal(true);
     }
     if (!formRef.current.reportValidity()) {
-      return 0;
+      return;
     }
+
     if (!isSubmitted) {
       console.log("Form submission failed. Please try again");
       alert("Form submission failed. Please try again.");
