@@ -1,6 +1,6 @@
 export const mapOrganizers = (organizers) =>
   organizers.map((organizer) => ({
-    id: organizer.id || 0,
+    id: organizer.id || 1,
     title: organizer.title || "",
     street1: organizer.street1 || "",
     street2: organizer.street2 || "",
@@ -51,6 +51,7 @@ export const mapPlaces = (places) =>
     presentation: place.presentation,
     latitude: place.latitude,
     longitude: place.longitude,
+    thumbnail: place.thumbnail,
     accessibility: place.accessibility.map((access) => ({
       title: access.title,
       more_information: access.more_information,
@@ -63,4 +64,5 @@ export const mapOccasions = (occasions) =>
     date_end: occasion.date_end,
     time_start: occasion.time_start,
     time_end: occasion.time_end,
+    date_other_information: occasion.date_other_information,
   }));

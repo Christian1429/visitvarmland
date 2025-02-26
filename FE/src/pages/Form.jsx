@@ -21,6 +21,7 @@ import handleSubmit from "../utils/handleSubmit";
 import { handleChange, handleArrayChange } from "../utils/formUtils";
 import DatePickerClient from "../components/DatePicker";
 import { useTranslation } from "react-i18next";
+import SuccessModal from "../components/Confirmation_modal";
 
 const Form = () => {
   const theme = useTheme();
@@ -28,6 +29,8 @@ const Form = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const { formData, setFormData } = useContext(FormDataContext);
   const { t } = useTranslation();
+  const [showModal, setShowModal] = useState(false);
+  const [Editable, setEditable] = useState(true);
 
   const handleNext = () => {
     setCurrentStep((prevStep) => prevStep + 1);
@@ -35,6 +38,20 @@ const Form = () => {
 
   const handleStepClick = (step) => {
     setCurrentStep(step);
+  };
+
+  const handleSubmitWithModal = async (formData) => {
+    const isSubmitted = await handleSubmit(formData);
+    if (isSubmitted) {
+      setShowModal(true);
+    } else {
+      console.log("Form submission failed. Please try again");
+      alert("Form submission failed. Please try again.");
+    }
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
   };
 
   const renderStep = () => {
@@ -48,12 +65,17 @@ const Form = () => {
       case 1:
         return (
           <>
-            <ClientExist setFormData={setFormData} />
+            <ClientExist
+              setFormData={setFormData}
+              Editable={Editable}
+              setEditable={setEditable}
+            />
             <ClientNew
               formData={formData}
               setFormData={setFormData}
               handleChange={handleChange}
               handleArrayChange={handleArrayChange}
+              Editable={Editable}
             />
           </>
         );
@@ -69,7 +91,6 @@ const Form = () => {
             />
           </>
         );
-
       default:
         return null;
     }
@@ -102,22 +123,17 @@ const Form = () => {
         >
           {t("hero")}
         </Typography>
-
         <CloseBtn/>
         <Box
           display="flex"
           justifyContent="center"
-          sx={{ marginBottom: "1rem" }}
+          sx={{
+            marginBottom: "1rem",
+            flexDirection: isMobile ? "column" : "row",
+            alignItems: isMobile ? "flex-start" : "center",
+          }}
         >
-          <Breadcrumbs
-            aria-label="breadcrumb"
-            separator=">"
-            sx={{
-              marginBottom: "1rem",
-              flexDirection: isMobile ? "column" : "row",
-              alignItems: isMobile ? "flex-start" : "center",
-            }}
-          >
+          <Breadcrumbs aria-label="breadcrumb" separator=">">
             <Link
               color={currentStep === 0 ? "textPrimary" : "inherit"}
               onClick={() => handleStepClick(0)}
@@ -146,12 +162,13 @@ const Form = () => {
           {currentStep < 2 && <NextBtn onClick={handleNext} />}
           {currentStep === 2 && (
             <Button
-              onClick={() => handleSubmit(formData)}
+              onClick={() => handleSubmitWithModal(formData)}
               sx={{ marginBottom: "2rem", width: "8rem" }}
             >
               {t("submit_btn")}
             </Button>
           )}
+          <SuccessModal open={showModal} onClose={handleCloseModal} />
         </Box>
       </form>
     </Box>

@@ -10,9 +10,8 @@ import HandleFileUpload from "./ImgUpload";
 import { useTranslation } from "react-i18next";
 import InfoButton from "./buttons/InfoBtn";
 import Places from "./Places";
-import Other_info from "./Other_info";
 import Price from "./Price";
-const Event = ({ formData, setFormData }) => {
+const ClientEvent = ({ formData, setFormData }) => {
   // text limitations
   const sellingTextMaxLength = 100;
   const descriptionMaxLength = 200;
@@ -149,7 +148,7 @@ const Event = ({ formData, setFormData }) => {
           }))
         }
         className="text-field"
-      />{' '}
+      />{" "}
       <TextField
         variant="outlined"
         margin="dense"
@@ -165,7 +164,7 @@ const Event = ({ formData, setFormData }) => {
           }))
         }
         className="text-field"
-      />{' '}
+      />
       <TextField
         variant="outlined"
         margin="dense"
@@ -182,18 +181,38 @@ const Event = ({ formData, setFormData }) => {
         }
         className="text-field"
       />
-      <Other_info />
+      <Box>
+        <TextField
+          variant="outlined"
+          margin="dense"
+          fullWidth
+          id="other_info"
+          label={t("other_info")}
+          name="other_info"
+          value={formData.other_info || ""}
+          onChange={(e) =>
+            setFormData((prevData) => ({
+              ...prevData,
+              other_info: e.target.value,
+            }))
+          }
+          className="text-field"
+          multiline
+          rows={4}
+          sx={{ marginTop: "2rem", marginBottom: "2rem" }}
+        />
+      </Box>
       <Places />
       <Price />
-      {/* --------------- IMAGE UPLOADER -------------- */}
       <HandleFileUpload formData={formData} setFormData={setFormData} />
-      <Box gridColumn="span 2" sx={{ display: "flex" paddingTop: '2rem' }}>
+      <Box gridColumn="span 2" sx={{ display: "flex" }}>
         <FormControlLabel
           control={
             <Checkbox
               checked={consent}
               onChange={(e) => handleChange(e.target.checked)}
               name="consent"
+              color="primary"
               required
             />
           }
@@ -205,4 +224,4 @@ const Event = ({ formData, setFormData }) => {
   );
 };
 
-export default Event;
+export default ClientEvent;

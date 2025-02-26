@@ -43,8 +43,22 @@ const handleSubmit = async (formData) => {
     occasions: mapOccasions(formData.occasions),
     gdpr_consent: formData.gdpr_consent,
   };
-  console.log("handleSubmit output:", dataToSubmit);
-  await postForm(dataToSubmit);
+  try {
+    console.log("Submitting form data:", dataToSubmit);
+
+    const response = await postForm(dataToSubmit);
+
+    if (response) {
+      console.log("Form submitted successfully!");
+      return true; // Success
+    } else {
+      console.error("Form submission failed:");
+      return false; // Failure
+    }
+  } catch (error) {
+    console.error("Error submitting form:", error);
+    return false; // Failure
+  }
 };
 
 export default handleSubmit;
