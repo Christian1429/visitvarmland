@@ -187,7 +187,7 @@ const Event = ({ formData, setFormData }) => {
       <Price />
       {/* --------------- IMAGE UPLOADER -------------- */}
       <HandleFileUpload formData={formData} setFormData={setFormData} />
-      <Box gridColumn="span 2" sx={{ display: "flex" paddingTop: '2rem' }}>
+      <Box gridColumn="span 2" sx={{ display: "flex", paddingTop: '2rem' }}>
         <FormControlLabel
           control={
             <Checkbox
