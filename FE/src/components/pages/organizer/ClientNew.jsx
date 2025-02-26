@@ -247,6 +247,7 @@ const ClientNew = ({ formData, setFormData, Editable }) => {
         fullWidth
         id="new-organizer-phone-numbers"
         label={t("phone")}
+        type="number"
         name="phone_numbers"
         disabled={!Editable}
         value={formData.organizers[0]?.phone_numbers.join(", ") || ""}

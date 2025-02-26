@@ -108,6 +108,7 @@ const Contact = ({ formData, setFormData }) => {
             required
             fullWidth
             id="phone"
+            type="number"
             label={t('phone')}
             name="phone"
             autoComplete="phone"
