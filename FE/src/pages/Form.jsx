@@ -7,15 +7,15 @@ import {
   useMediaQuery,
   Button,
 } from "@mui/material";
-import Contact from '../components/pages/contact/Contact';
+import Contact from "../components/pages/contact/Contact";
 import Searchfield from "../components/pages/organizer/Searchfield";
-import ClientNew from '../components/pages/organizer/ClientNew';
-import DatePickerClient from '../components/pages/event/DatePicker';
-import Event from '../components/pages/event/Event';
+import ClientNew from "../components/pages/organizer/ClientNew";
+import DatePickerClient from "../components/pages/event/DatePicker";
+import Event from "../components/pages/event/Event";
 import NextBtn from "../components/buttons/NextBtn";
 import CloseBtn from "../components/buttons/CloseBtn";
 import TranslationBtn from "../components/buttons/TranslationBtn";
-import handleSubmit from '../utils/handleSubmit';
+import handleSubmit from "../utils/handleSubmit";
 
 import { useTheme } from "@mui/material/styles";
 import "./Form.css";
@@ -25,6 +25,7 @@ import { useTranslation } from "react-i18next";
 import SuccessModal from "../components/Confirmation_modal";
 
 const Form = () => {
+  const formRef = React.useRef();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const [currentStep, setCurrentStep] = useState(0);
@@ -34,7 +35,9 @@ const Form = () => {
   const [Editable, setEditable] = useState(true);
 
   const handleNext = () => {
-    setCurrentStep((prevStep) => prevStep + 1);
+    if (formRef.current.reportValidity()) {
+      setCurrentStep((prevStep) => prevStep + 1);
+    }
   };
 
   const handleStepClick = (step) => {
@@ -42,10 +45,16 @@ const Form = () => {
   };
 
   const handleSubmitWithModal = async (formData) => {
+    console.log(formRef.current.reportValidity());
     const isSubmitted = await handleSubmit(formData);
-    if (isSubmitted) {
+
+    if (isSubmitted && formRef.current.reportValidity()) {
       setShowModal(true);
-    } else {
+    }
+    if (!formRef.current.reportValidity()) {
+      return 0;
+    }
+    if (!isSubmitted) {
       console.log("Form submission failed. Please try again");
       alert("Form submission failed. Please try again.");
     }
@@ -66,7 +75,7 @@ const Form = () => {
       case 1:
         return (
           <>
-  <Searchfield setEditable={setEditable} />
+            <Searchfield setEditable={setEditable} />
             <ClientNew
               formData={formData}
               setFormData={setFormData}
@@ -96,7 +105,7 @@ const Form = () => {
   return (
     <Box className="container">
       <TranslationBtn />
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} ref={formRef}>
         <Box sx={{ paddingTop: "1rem", paddingLeft: "1rem" }}>
           <img
             src="/assets/logotyp-visitvarmland-svart.svg"
@@ -120,7 +129,7 @@ const Form = () => {
         >
           {t("hero")}
         </Typography>
-        <CloseBtn/>
+        <CloseBtn />
         <Box
           display="flex"
           justifyContent="center"
