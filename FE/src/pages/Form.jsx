@@ -8,8 +8,8 @@ import {
   Button,
 } from "@mui/material";
 import Contact from '../components/pages/contact/Contact';
+import Searchfield from "../components/pages/organizer/Searchfield";
 import ClientNew from '../components/pages/organizer/ClientNew';
-import ClientExist from '../components/pages/organizer/ClientExist';
 import DatePickerClient from '../components/pages/event/DatePicker';
 import Event from '../components/pages/event/Event';
 import NextBtn from "../components/buttons/NextBtn";
@@ -66,11 +66,7 @@ const Form = () => {
       case 1:
         return (
           <>
-            <ClientExist
-              setFormData={setFormData}
-              Editable={Editable}
-              setEditable={setEditable}
-            />
+  <Searchfield setEditable={setEditable} />
             <ClientNew
               formData={formData}
               setFormData={setFormData}

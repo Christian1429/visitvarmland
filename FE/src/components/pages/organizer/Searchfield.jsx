@@ -1,13 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Autocomplete, TextField, Box } from '@mui/material';
 import { FormDataContext } from '../../../context/FormDataContext';
 import getForm from '../../../api/GetFrom';
 import { useTranslation } from 'react-i18next';
+import FormResetButton from '../../buttons/FormResetButton';
 
 function Searchfield({ setEditable }) {
   const { formData, setFormData } = useContext(FormDataContext);
   const [organizers, setOrganizers] = useState([]);
+  
   const { t } = useTranslation();
+  
 
   useEffect(() => {
     const fetchOrganizers = async () => {
@@ -49,6 +52,7 @@ function Searchfield({ setEditable }) {
           <TextField {...params} label={t('Sök arrangör')} variant="outlined" />
         )}
       />
+      <FormResetButton setFormData={setFormData} setEditable={setEditable} />
     </Box>
   );
 }

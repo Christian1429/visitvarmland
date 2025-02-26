@@ -32,9 +32,6 @@ const Event = ({ formData, setFormData }) => {
 
   return (
     <>
-      <Typography sx={{ textAlign: 'center' }}>
-        <p> Fyll i all nödvändig information om ditt evenemang </p>
-      </Typography>
       <Box
         sx={{
           maxWidth: 600,
@@ -48,6 +45,9 @@ const Event = ({ formData, setFormData }) => {
           flexDirection: 'column',
         }}
       >
+        <Typography sx={{ textAlign: 'center', padding: 0, marginTop: '-1rem' }}>
+         Fyll i all nödvändig information om ditt evenemang
+        </Typography>
         <TextField
           required
           variant="outlined"

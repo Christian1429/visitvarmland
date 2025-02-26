@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
-const FormResetButton = ({ setFormData }) => {
+const FormResetButton = ({ setFormData, setEditable }) => {
   const { t } = useTranslation();
 
   const reset = () => {
@@ -10,7 +10,7 @@ const FormResetButton = ({ setFormData }) => {
       ...prevData,
       organizers: [
         {
-          name: "",
+          title: "",
           street1: "",
           street2: "",
           zip_code: "",
@@ -25,7 +25,13 @@ const FormResetButton = ({ setFormData }) => {
     }));
   };
 
-  return <Button onClick={() => reset()}>{t("erase_fields")}</Button>;
+  return <Button onClick={() => {
+    setEditable(true)
+    reset();
+  }
+    
+  }>
+  {t("erase_fields")}</Button>;
 };
 
 export default FormResetButton;

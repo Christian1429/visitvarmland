@@ -7,16 +7,8 @@ function Price() {
 
   return (
     <>
-      <Typography sx={{ textAlign: 'center' }}>
-        <p
-          style={{
-            padding: 0,
-            marginBottom: 0,
-            textAlign: 'center',
-          }}
-        >
+      <Typography sx={{ textAlign: 'center', paddingTop: '1rem' }}>
           Priser och övrig information
-        </p>
       </Typography>
       <Box
         sx={{
