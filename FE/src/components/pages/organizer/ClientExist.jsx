@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from "react";
-import { FormControl, InputLabel, Select, MenuItem, Box } from "@mui/material";
-import getForm from "../api/GetFrom";
-import { useTranslation } from "react-i18next";
-import FormResetButton from "./buttons/FormResetButton";
-import Searchfield from "./Searchfield";
+import React, { useState, useEffect } from 'react';
+import { FormControl, InputLabel, Select, MenuItem, Box } from '@mui/material';
+import getForm from '../../../api/GetFrom';
+import { useTranslation } from 'react-i18next';
+import FormResetButton from '../../buttons/FormResetButton';
+import Searchfield from './Searchfield';
 
 const ClientExist = ({ formData, setFormData, Editable, setEditable }) => {
   const [clients, setClients] = useState([]);
-  const [dropdownValueExisting, setDropdownValueExisting] = useState("");
+  const [dropdownValueExisting, setDropdownValueExisting] = useState('');
   const { t } = useTranslation();
 
   useEffect(() => {
     const fetchClients = async () => {
       const data = await getForm();
-      console.log("Fetched clients:", data);
+      console.log('Fetched clients:', data);
       setClients(data);
     };
 
@@ -28,15 +28,15 @@ const ClientExist = ({ formData, setFormData, Editable, setEditable }) => {
         organizers: [
           {
             id: organizers.id || 0,
-            name: organizers.title || "",
-            street1: organizers.street1 || "",
-            street2: organizers.street2 || "",
-            zip_code: organizers.zip_code || "",
-            city: organizers.city || "",
-            municipality_id: organizers.municipality_id || "",
-            booking_link: organizers.booking_link || "",
-            website: organizers.website_link || "",
-            email: organizers.email || "",
+            name: organizers.title || '',
+            street1: organizers.street1 || '',
+            street2: organizers.street2 || '',
+            zip_code: organizers.zip_code || '',
+            city: organizers.city || '',
+            municipality_id: organizers.municipality_id || '',
+            booking_link: organizers.booking_link || '',
+            website: organizers.website_link || '',
+            email: organizers.email || '',
             phone_numbers: organizers.phone_numbers || [],
           },
         ],
@@ -48,16 +48,16 @@ const ClientExist = ({ formData, setFormData, Editable, setEditable }) => {
     const selectedClient = clients.find(
       (client) => client.id === event.target.value
     );
-    console.log("Selected client:", selectedClient);
+    console.log('Selected client:', selectedClient);
     setDropdownValueExisting(event.target.value);
     handleClientSelect(selectedClient);
   };
 
   return (
     <Box display="flex" alignItems="center" gap={4} marginY={2}>
-      <FormControl sx={{ width: "15rem" }}>
+      <FormControl sx={{ width: '15rem' }}>
         <InputLabel id="dropdown-label-existing">
-          {t("dropdown_organizer_exist")}
+          {t('dropdown_organizer_exist')}
         </InputLabel>
         <Select
           labelId="dropdown-label-existing"

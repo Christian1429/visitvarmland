@@ -1,6 +1,6 @@
-import { useContext } from "react";
-import { FormDataContext } from "../context/FormDataContext";
-import { Box, TextField, Typography } from "@mui/material";
+import { useContext } from 'react';
+import { FormDataContext } from '../../../context/FormDataContext';
+import { Box, TextField, Typography } from '@mui/material';
 
 function Price() {
   const { formData, setFormData } = useContext(FormDataContext);
