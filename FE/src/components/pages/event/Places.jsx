@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { FormDataContext } from "../../../context/FormDataContext";
+import { useTranslation } from "react-i18next";
 import {
   List,
   ListItem,
@@ -15,17 +16,15 @@ import CloseIcon from "@mui/icons-material/Close";
 import DisplayThumbnail from "./Display_thumbnail";
 
 function Places() {
-  const { formData, setFormData } = useContext(FormDataContext); // Formulärsdatan
-  const [data, setData] = useState([]); // API-datan från testplatser
-  const [backgroundColor, setbackgroundColor] = useState(false); // Kom ihåg byt namn på variabeln innan överlämning då denna hanterar synligheten på thumbnail icon button och closebutton!
-  const [thumbNail, setThumbnail] = useState(false);
+  const { formData, setFormData } = useContext(FormDataContext);
+  const [data, setData] = useState([]);
+  const [visibility, setVisibility] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     async function fetchPlaces() {
       try {
-        const response = await fetch(
-          "http://localhost:2000/api/data/places" // Add your backend URL (Advant)
-        );
+        const response = await fetch("http://localhost:2000/api/data/places");
         const data = await response.json();
         setData(data);
         console.log("Places från Backenden", data);
@@ -36,9 +35,8 @@ function Places() {
     fetchPlaces();
   }, []);
 
-  const Toogler = () => {
-    setbackgroundColor(true);
-    setThumbnail(true);
+  const toogler = () => {
+    setVisibility(true);
   };
 
   const handlePlaceSelect = (selectedPlace) => {
@@ -53,7 +51,7 @@ function Places() {
       );
 
       if (alreadyExists) {
-        window.alert("Du kan inte lägga till samma plats två gånger");
+        window.alert(t("duplicate_place_alert"));
         return prevData;
       }
 
@@ -67,8 +65,7 @@ function Places() {
       console.log("Valda platser:", updatedPlaces);
       return updatedFormData;
     });
-    setbackgroundColor(true);
-    setThumbnail(true);
+    setVisibility(true);
   };
 
   const removePlace = (id) => {
@@ -82,6 +79,7 @@ function Places() {
   return (
     <Box sx={{ marginTop: "0.5rem" }}>
       <Autocomplete
+        onClick={toogler}
         options={data}
         getOptionLabel={(option) => option.title || ""}
         onChange={(event, newValue) => {
@@ -92,11 +90,10 @@ function Places() {
         renderInput={(params) => (
           <TextField
             {...params}
-            label="Välj en plats"
-            placeholder="Skriv en plats..."
+            label={t("select_place_label")}
+            placeholder={t("select_place_placeholder")}
             autoComplete="on"
             variant="outlined"
-            onClick={Toogler}
           />
         )}
       />
@@ -117,7 +114,7 @@ function Places() {
             marginBottom: 1,
           }}
         >
-          Valda platser:
+          {t("selected_places_title")}
         </Typography>
         <List
           sx={{
@@ -129,7 +126,7 @@ function Places() {
               key={place.id}
               sx={{
                 width: "auto",
-                backgroundColor: backgroundColor
+                backgroundColor: visibility
                   ? "var(--color-green-light)"
                   : undefined,
                 color: "var(--color-background)",
@@ -140,7 +137,7 @@ function Places() {
                 boxSizing: "border-box",
                 gap: 1,
                 "&:hover": {
-                  backgroundColor: backgroundColor
+                  backgroundColor: visibility
                     ? "var(--color-green-dark)"
                     : undefined,
                 },
@@ -157,7 +154,7 @@ function Places() {
               <DisplayThumbnail
                 formData={place.thumbnail}
                 index={place.id}
-                thumbNail={thumbNail}
+                visibility={visibility}
               />
 
               <IconButton
@@ -165,13 +162,11 @@ function Places() {
                 sx={{
                   color: "var(--color-background)",
                   "&:hover": {
-                    color: backgroundColor
-                      ? "var(--color-red-light)"
-                      : undefined,
+                    color: visibility ? "var(--color-red-light)" : undefined,
                   },
                 }}
               >
-                {backgroundColor ? <CloseIcon /> : null}
+                {visibility ? <CloseIcon /> : null}
               </IconButton>
             </ListItem>
           ))}
