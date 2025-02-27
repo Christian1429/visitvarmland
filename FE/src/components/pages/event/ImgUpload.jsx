@@ -129,7 +129,6 @@ function ImgUpload({ formData, setFormData }) {
           id="file-upload"
           accept="image/jpeg"
           multiple
-          /* required */
           style={{ opacity: "0", width: "1px", height: "1px" }}
           onChange={(e) => HandleFileUpload(e)}
         />

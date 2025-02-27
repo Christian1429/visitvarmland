@@ -46,6 +46,10 @@ const Form = () => {
 
   const handleSubmitWithModal = async (formData) => {
     formRef.current.reportValidity();
+    if (!formData.images || formData.images.length === 0) {
+      alert("Please upload at least one image before submitting.");
+      return;
+    }
     const isSubmitted = await handleSubmit(formData);
 
     if (isSubmitted) {
