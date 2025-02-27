@@ -1,6 +1,6 @@
 import React from "react";
 import { Box } from "@mui/material";
-const Display_thumbnail = ({ formData, index, thumbNail }) => {
+const Display_thumbnail = ({ formData, index, visibility }) => {
   return (
     <Box
       key={index}
@@ -17,7 +17,7 @@ const Display_thumbnail = ({ formData, index, thumbNail }) => {
           width: "5rem",
           height: "2rem",
           objectFit: "cover",
-          display: thumbNail ? "block" : "none",
+          display: visibility ? "block" : "none",
         }}
       />
     </Box>
