@@ -17,6 +17,8 @@ import DisplayThumbnail from "./Display_thumbnail";
 function Places() {
   const { formData, setFormData } = useContext(FormDataContext); // Formulärsdatan
   const [data, setData] = useState([]); // API-datan från testplatser
+  const [backgroundColor, setbackgroundColor] = useState(false); // Kom ihåg byt namn på variabeln innan överlämning då denna hanterar synligheten på thumbnail icon button och closebutton!
+  const [thumbNail, setThumbnail] = useState(false);
 
   useEffect(() => {
     async function fetchPlaces() {
@@ -33,6 +35,11 @@ function Places() {
     }
     fetchPlaces();
   }, []);
+
+  const Toogler = () => {
+    setbackgroundColor(true);
+    setThumbnail(true);
+  };
 
   const handlePlaceSelect = (selectedPlace) => {
     setFormData((prevData) => {
@@ -60,6 +67,8 @@ function Places() {
       console.log("Valda platser:", updatedPlaces);
       return updatedFormData;
     });
+    setbackgroundColor(true);
+    setThumbnail(true);
   };
 
   const removePlace = (id) => {
@@ -88,6 +97,7 @@ function Places() {
             placeholder="Skriv en plats..."
             autoComplete="on"
             variant="outlined"
+            onClick={Toogler}
           />
         )}
       />
@@ -120,7 +130,9 @@ function Places() {
               key={place.id}
               sx={{
                 width: "auto",
-                backgroundColor: "var(--color-green-light)",
+                backgroundColor: backgroundColor
+                  ? "var(--color-green-light)"
+                  : undefined,
                 color: "var(--color-background)",
                 borderRadius: 1,
                 marginBottom: 1,
@@ -128,7 +140,11 @@ function Places() {
                 padding: 1,
                 boxSizing: "border-box",
                 gap: 1,
-                "&:hover": { backgroundColor: "var(--color-green-dark)" },
+                "&:hover": {
+                  backgroundColor: backgroundColor
+                    ? "var(--color-green-dark)"
+                    : undefined,
+                },
               }}
             >
               <ListItemText
@@ -139,15 +155,24 @@ function Places() {
                 }}
               />
 
-              <DisplayThumbnail formData={place.thumbnail} index={place.id} />
+              <DisplayThumbnail
+                formData={place.thumbnail}
+                index={place.id}
+                thumbNail={thumbNail}
+              />
+
               <IconButton
                 onClick={() => removePlace(place.id)}
                 sx={{
                   color: "var(--color-background)",
-                  "&:hover": { color: "var(--color-red-light)" },
+                  "&:hover": {
+                    color: backgroundColor
+                      ? "var(--color-red-light)"
+                      : undefined,
+                  },
                 }}
               >
-                <CloseIcon />
+                {backgroundColor ? <CloseIcon /> : null}
               </IconButton>
             </ListItem>
           ))}
