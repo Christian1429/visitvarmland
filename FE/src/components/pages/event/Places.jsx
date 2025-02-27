@@ -17,7 +17,7 @@ import DisplayThumbnail from "./Display_thumbnail";
 function Places() {
   const { formData, setFormData } = useContext(FormDataContext); // Formulärsdatan
   const [data, setData] = useState([]); // API-datan från testplatser
-  const [backgroundColor, setbackgroundColor] = useState(false);
+  const [backgroundColor, setbackgroundColor] = useState(false); // Kom ihåg byt namn på variabeln innan överlämning då denna hanterar synligheten på thumbnail icon button och closebutton!
   const [thumbNail, setThumbnail] = useState(false);
 
   useEffect(() => {
