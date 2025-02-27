@@ -1,5 +1,5 @@
-import { useState, useEffect, useContext } from 'react';
-import { FormDataContext } from '../../../context/FormDataContext';
+import { useState, useEffect, useContext } from "react";
+import { FormDataContext } from "../../../context/FormDataContext";
 import {
   List,
   ListItem,
@@ -10,34 +10,41 @@ import {
   Autocomplete,
   TextField,
   IconButton,
-} from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
-import DisplayThumbnail from './Display_thumbnail';
+} from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
+import DisplayThumbnail from "./Display_thumbnail";
 
 function Places() {
   const { formData, setFormData } = useContext(FormDataContext); // Formulärsdatan
   const [data, setData] = useState([]); // API-datan från testplatser
+  const [backgroundColor, setbackgroundColor] = useState(false); // Kom ihåg byt namn på variabeln innan överlämning då denna hanterar synligheten på thumbnail icon button och closebutton!
+  const [thumbNail, setThumbnail] = useState(false);
 
   useEffect(() => {
     async function fetchPlaces() {
       try {
         const response = await fetch(
-          'http://localhost:2000/api/data/places' // Add your backend URL (Advant)
+          "http://localhost:2000/api/data/places" // Add your backend URL (Advant)
         );
         const data = await response.json();
         setData(data);
-        console.log('Places från Backenden', data);
+        console.log("Places från Backenden", data);
       } catch (error) {
-        console.error('Fel vid hämtning av testplatser:', error);
+        console.error("Fel vid hämtning av testplatser:", error);
       }
     }
     fetchPlaces();
   }, []);
 
+  const Toogler = () => {
+    setbackgroundColor(true);
+    setThumbnail(true);
+  };
+
   const handlePlaceSelect = (selectedPlace) => {
     setFormData((prevData) => {
       let existingPlaces = prevData.places;
-      if (existingPlaces.length === 1 && existingPlaces[0].title === '') {
+      if (existingPlaces.length === 1 && existingPlaces[0].title === "") {
         existingPlaces = [];
       }
 
@@ -46,7 +53,7 @@ function Places() {
       );
 
       if (alreadyExists) {
-        window.alert('Du kan inte lägga till samma plats två gånger');
+        window.alert("Du kan inte lägga till samma plats två gånger");
         return prevData;
       }
 
@@ -57,24 +64,26 @@ function Places() {
         places: updatedPlaces,
       };
 
-      console.log('Valda platser:', updatedPlaces);
+      console.log("Valda platser:", updatedPlaces);
       return updatedFormData;
     });
+    setbackgroundColor(true);
+    setThumbnail(true);
   };
 
   const removePlace = (id) => {
     setFormData((prevData) => {
       const updatedPlaces = prevData.places.filter((place) => place.id !== id);
-      console.log('Valda platser efter borttagning:', updatedPlaces);
+      console.log("Valda platser efter borttagning:", updatedPlaces);
       return { ...prevData, places: updatedPlaces };
     });
   };
 
   return (
-    <Box sx={{ marginTop: '0.5rem' }}>
+    <Box sx={{ marginTop: "0.5rem" }}>
       <Autocomplete
         options={data}
-        getOptionLabel={(option) => option.title || ''}
+        getOptionLabel={(option) => option.title || ""}
         onChange={(event, newValue) => {
           if (newValue) {
             handlePlaceSelect(newValue);
@@ -87,21 +96,22 @@ function Places() {
             placeholder="Skriv en plats..."
             autoComplete="on"
             variant="outlined"
+            onClick={Toogler}
           />
         )}
       />
       <Card
         sx={{
-          marginTop: '0.8rem',
-          boxShadow: '0px 4px 10px rgba(0, 67, 56, 0.2)',
-          boxSizing: 'border-box',
-          padding: '0.5rem',
+          marginTop: "0.8rem",
+          boxShadow: "0px 4px 10px rgba(0, 67, 56, 0.2)",
+          boxSizing: "border-box",
+          padding: "0.5rem",
         }}
       >
         <Typography
           variant="h6"
           sx={{
-            color: 'var(--color-green-dark)',
+            color: "var(--color-green-dark)",
             fontFamily: "'Noto Sans', sans-serif",
             fontWeight: 600,
             marginBottom: 1,
@@ -118,16 +128,22 @@ function Places() {
             <ListItem
               key={place.id}
               sx={{
-                width: 'auto',
-                backgroundColor: 'var(--color-green-light)',
-                color: 'var(--color-background)',
+                width: "auto",
+                backgroundColor: backgroundColor
+                  ? "var(--color-green-light)"
+                  : undefined,
+                color: "var(--color-background)",
                 borderRadius: 1,
                 marginBottom: 1,
                 margin: 1,
                 padding: 1,
-                boxSizing: 'border-box',
+                boxSizing: "border-box",
                 gap: 1,
-                '&:hover': { backgroundColor: 'var(--color-green-dark)' },
+                "&:hover": {
+                  backgroundColor: backgroundColor
+                    ? "var(--color-green-dark)"
+                    : undefined,
+                },
               }}
             >
               <ListItemText
@@ -138,15 +154,24 @@ function Places() {
                 }}
               />
 
-              <DisplayThumbnail formData={place.thumbnail} index={place.id} />
+              <DisplayThumbnail
+                formData={place.thumbnail}
+                index={place.id}
+                thumbNail={thumbNail}
+              />
+
               <IconButton
                 onClick={() => removePlace(place.id)}
                 sx={{
-                  color: 'var(--color-background)',
-                  '&:hover': { color: 'var(--color-red-light)' },
+                  color: "var(--color-background)",
+                  "&:hover": {
+                    color: backgroundColor
+                      ? "var(--color-red-light)"
+                      : undefined,
+                  },
                 }}
               >
-                <CloseIcon />
+                {backgroundColor ? <CloseIcon /> : null}
               </IconButton>
             </ListItem>
           ))}
