@@ -67,8 +67,12 @@ const resources = {
       trail_btn: "Is it a trail?",
       next_btn: "Next",
       submit_btn: "Submit",
-      images_title: "Upload images. Max 2MB",
+      images_title: "Upload images. Max 2MB (*)",
       gdpr: "I consent to my information being stored and used in accordance with GDPR and agree that Visit Värmland reserves the right to modify or delete the information.",
+
+      //Alerts
+      alert_fill_in_all_fields:
+        "Please fill in all required fields on all pages before submitting (*).",
     },
   },
   // Swedish
@@ -135,6 +139,10 @@ const resources = {
       next_btn: "Nästa",
       images_title: "Ladda upp bilder. Max 2MB",
       gdpr: "Jag samtycker till att mina uppgifter lagras och används enligt GDPR och godkänner att Visit Värmland förbehåller sig rätten att ändra eller ta bort uppgifterna.",
+
+      //Alerts
+      alert_fill_in_all_fields:
+        "Fyll i alla obligatoriska fält i alla sidor innan du skickar in tipset (*).",
     },
   },
 };

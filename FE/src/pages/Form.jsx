@@ -44,12 +44,22 @@ const Form = () => {
     setCurrentStep(step);
   };
 
-  const handleSubmitWithModal = async (formData) => {
+  /* const handleSubmitWithModal = async (formData) => {
     formRef.current.reportValidity();
-    if (!formData.images || formData.images.length === 0) {
-      alert("Please upload at least one image before submitting.");
+
+    // Validate all steps before submitting
+    const allFieldsValid = validateAllSteps();
+
+    if (!allFieldsValid) {
+      alert(t("alert_fill_in_all_fields"));
       return;
     }
+
+    if (!formData.images || formData.images.length === 0) {
+      alert(t("alert_fill_in_all_fields"));
+      return;
+    }
+
     const isSubmitted = await handleSubmit(formData);
 
     if (isSubmitted) {
@@ -63,10 +73,84 @@ const Form = () => {
       console.log("Form submission failed. Please try again");
       alert("Form submission failed. Please try again.");
     }
+  }; */
+
+  const handleSubmitWithModal = async (formData) => {
+    console.log(formData);
+    const invalidStep = validateAllSteps();
+
+    if (invalidStep !== null) {
+      setCurrentStep(invalidStep); // Navigate to the first step with an error
+      setTimeout(() => {
+        // Wait for the step to render before focusing on the invalid field
+        const firstInvalidField = formRef.current.querySelector(":invalid");
+        if (firstInvalidField) {
+          firstInvalidField.focus();
+        }
+      }, 100);
+
+      alert(t("alert_fill_in_all_fields"));
+      return;
+    }
+
+    if (!formData.images || formData.images.length === 0) {
+      alert(t("alert_fill_in_all_fields"));
+      return;
+    }
+
+    const isSubmitted = await handleSubmit(formData);
+
+    if (isSubmitted) {
+      setShowModal(true);
+    } else {
+      alert("Form submission failed. Please try again.");
+    }
   };
 
   const handleCloseModal = () => {
     setShowModal(false);
+  };
+
+  /*  const validateAllSteps = () => {
+    // Get all form elements
+    const formElements = formRef.current.elements;
+    let isValid = true;
+
+    // Loop through all elements and check validity
+    for (let i = 0; i < formElements.length; i++) {
+      if (!formElements[i].reportValidity()) {
+        isValid = false;
+      }
+    }
+
+    return isValid;
+  }; */
+
+  const validateAllSteps = () => {
+    const formElements = formRef.current.elements;
+    let invalidStep = null;
+
+    for (let i = 0; i < formElements.length; i++) {
+      if (!formElements[i].checkValidity()) {
+        const fieldStep = getStepForField(formElements[i]);
+
+        if (invalidStep === null || fieldStep < invalidStep) {
+          invalidStep = fieldStep; // Store the first step with an invalid field
+        }
+      }
+    }
+
+    return invalidStep;
+  };
+
+  const getStepForField = (field) => {
+    const stepContainers = [
+      document.getElementById("contact-step"),
+      document.getElementById("client-step"),
+      document.getElementById("event-step"),
+    ];
+
+    return stepContainers.findIndex((container) => container?.contains(field));
   };
 
   const renderStep = () => {
@@ -74,32 +158,38 @@ const Form = () => {
       case 0:
         return (
           <>
-            <Contact formData={formData} setFormData={setFormData} />
+            <Box id="contact-step">
+              <Contact formData={formData} setFormData={setFormData} />
+            </Box>
           </>
         );
       case 1:
         return (
           <>
-            <Searchfield setEditable={setEditable} />
-            <ClientNew
-              formData={formData}
-              setFormData={setFormData}
-              handleChange={handleChange}
-              handleArrayChange={handleArrayChange}
-              Editable={Editable}
-            />
+            <Box id="client-step">
+              <Searchfield setEditable={setEditable} />
+              <ClientNew
+                formData={formData}
+                setFormData={setFormData}
+                handleChange={handleChange}
+                handleArrayChange={handleArrayChange}
+                Editable={Editable}
+              />
+            </Box>
           </>
         );
       case 2:
         return (
           <>
-            <DatePickerClient formData={formData} setFormData={setFormData} />
-            <Event
-              formData={formData}
-              setFormData={setFormData}
-              handleChange={handleChange}
-              handleArrayChange={handleArrayChange}
-            />
+            <Box id="event-step">
+              <DatePickerClient formData={formData} setFormData={setFormData} />
+              <Event
+                formData={formData}
+                setFormData={setFormData}
+                handleChange={handleChange}
+                handleArrayChange={handleArrayChange}
+              />
+            </Box>
           </>
         );
       default:
