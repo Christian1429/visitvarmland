@@ -26,6 +26,7 @@ import SuccessModal from "../components/Confirmation_modal";
 
 const Form = () => {
   const formRef = React.useRef();
+
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const [currentStep, setCurrentStep] = useState(0);
@@ -44,113 +45,55 @@ const Form = () => {
     setCurrentStep(step);
   };
 
-  /* const handleSubmitWithModal = async (formData) => {
+  const handleSubmitWithModal = async ({ formData }) => {
+    //Verification for date and time
+    if (
+      formData.occasions[0].date_start == "" ||
+      formData.occasions[0].date_end == "" ||
+      formData.occasions[0].time_end == "" ||
+      formData.occasions[0].time_start == ""
+    ) {
+      alert(t("alert_fill_in_all_fields"));
+      return;
+    }
+    //Verification for organiser
+    if (
+      formData.organizers[0].city == "" ||
+      formData.organizers[0].email == "" ||
+      formData.organizers[0].zip_code == "" ||
+      formData.organizers[0].street1 == "" ||
+      formData.organizers[0].title == "" ||
+      formData.organizers[0].phone_numbers[0] == ""
+    ) {
+      alert(t("alert_fill_in_all_fields"));
+      return;
+    }
+    //Verification for contact
+    if (
+      formData.contact[0].contact_address == "" ||
+      formData.contact[0].contact_email == "" ||
+      formData.contact[0].contact_name == "" ||
+      formData.contact[0].contact_number == ""
+    ) {
+      alert(t("alert_fill_in_all_fields"));
+      return;
+    }
+
+    if (!formData.images || formData.images.length === 0) {
+      alert(t("alert_fill_in_all_fields"));
+      return;
+    }
     formRef.current.reportValidity();
-
-    // Validate all steps before submitting
-    const allFieldsValid = validateAllSteps();
-
-    if (!allFieldsValid) {
-      alert(t("alert_fill_in_all_fields"));
-      return;
-    }
-
-    if (!formData.images || formData.images.length === 0) {
-      alert(t("alert_fill_in_all_fields"));
-      return;
-    }
-
     const isSubmitted = await handleSubmit(formData);
-
-    if (isSubmitted) {
-      setShowModal(true);
-    }
-    if (!formRef.current.reportValidity()) {
-      return;
-    }
-
-    if (!isSubmitted) {
-      console.log("Form submission failed. Please try again");
-      alert("Form submission failed. Please try again.");
-    }
-  }; */
-
-  const handleSubmitWithModal = async (formData) => {
-    console.log(formData);
-    const invalidStep = validateAllSteps();
-
-    if (invalidStep !== null) {
-      setCurrentStep(invalidStep); // Navigate to the first step with an error
-      setTimeout(() => {
-        // Wait for the step to render before focusing on the invalid field
-        const firstInvalidField = formRef.current.querySelector(":invalid");
-        if (firstInvalidField) {
-          firstInvalidField.focus();
-        }
-      }, 100);
-
-      alert(t("alert_fill_in_all_fields"));
-      return;
-    }
-
-    if (!formData.images || formData.images.length === 0) {
-      alert(t("alert_fill_in_all_fields"));
-      return;
-    }
-
-    const isSubmitted = await handleSubmit(formData);
-
     if (isSubmitted) {
       setShowModal(true);
     } else {
-      alert("Form submission failed. Please try again.");
+      alert(t("alert_submission_failed"));
     }
   };
 
   const handleCloseModal = () => {
     setShowModal(false);
-  };
-
-  /*  const validateAllSteps = () => {
-    // Get all form elements
-    const formElements = formRef.current.elements;
-    let isValid = true;
-
-    // Loop through all elements and check validity
-    for (let i = 0; i < formElements.length; i++) {
-      if (!formElements[i].reportValidity()) {
-        isValid = false;
-      }
-    }
-
-    return isValid;
-  }; */
-
-  const validateAllSteps = () => {
-    const formElements = formRef.current.elements;
-    let invalidStep = null;
-
-    for (let i = 0; i < formElements.length; i++) {
-      if (!formElements[i].checkValidity()) {
-        const fieldStep = getStepForField(formElements[i]);
-
-        if (invalidStep === null || fieldStep < invalidStep) {
-          invalidStep = fieldStep; // Store the first step with an invalid field
-        }
-      }
-    }
-
-    return invalidStep;
-  };
-
-  const getStepForField = (field) => {
-    const stepContainers = [
-      document.getElementById("contact-step"),
-      document.getElementById("client-step"),
-      document.getElementById("event-step"),
-    ];
-
-    return stepContainers.findIndex((container) => container?.contains(field));
   };
 
   const renderStep = () => {
@@ -200,7 +143,7 @@ const Form = () => {
   return (
     <Box className="container">
       <TranslationBtn />
-      <form onSubmit={handleSubmit} ref={formRef}>
+      <form ref={formRef}>
         <Box sx={{ paddingTop: "1rem", paddingLeft: "1rem" }}>
           <img
             src="/assets/logotyp-visitvarmland-svart.svg"
@@ -263,7 +206,7 @@ const Form = () => {
           {currentStep < 2 && <NextBtn onClick={handleNext} />}
           {currentStep === 2 && (
             <Button
-              onClick={() => handleSubmitWithModal(formData)}
+              onClick={() => handleSubmitWithModal({ formData })}
               sx={{ marginBottom: "2rem", width: "8rem" }}
             >
               {t("submit_btn")}

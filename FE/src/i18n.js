@@ -137,7 +137,7 @@ const resources = {
       breadcrumbs_3: "Steg 3",
       submit_btn: "Skicka in",
       next_btn: "Nästa",
-      images_title: "Ladda upp bilder. Max 2MB",
+      images_title: "Ladda upp bilder. Max 2MB (*)",
       gdpr: "Jag samtycker till att mina uppgifter lagras och används enligt GDPR och godkänner att Visit Värmland förbehåller sig rätten att ändra eller ta bort uppgifterna.",
 
       //Alerts

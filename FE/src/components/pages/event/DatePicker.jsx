@@ -39,7 +39,11 @@ const DatePickerClient = ({ formData, setFormData }) => {
             }));
           }}
           slotProps={{
-            textField: { fullWidth: true, margin: "normal", required: true },
+            textField: {
+              fullWidth: true,
+              margin: "normal",
+              required: true,
+            },
           }}
           sx={{ width: "15.3rem" }}
         />
@@ -58,7 +62,11 @@ const DatePickerClient = ({ formData, setFormData }) => {
             }));
           }}
           slotProps={{
-            textField: { fullWidth: true, margin: "normal", required: true },
+            textField: {
+              fullWidth: true,
+              margin: "normal",
+              required: true,
+            },
           }}
           sx={{ width: "15.3rem" }}
         />
@@ -87,7 +95,11 @@ const DatePickerClient = ({ formData, setFormData }) => {
             }));
           }}
           slotProps={{
-            textField: { fullWidth: true, margin: "normal", required: true },
+            textField: {
+              fullWidth: true,
+              margin: "normal",
+              required: true,
+            },
             layout: {
               sx: {
                 // Customize PC
@@ -124,7 +136,11 @@ const DatePickerClient = ({ formData, setFormData }) => {
             }));
           }}
           slotProps={{
-            textField: { fullWidth: true, margin: "normal", required: true },
+            textField: {
+              fullWidth: true,
+              margin: "normal",
+              required: true,
+            },
           }}
           sx={{ width: "15.3rem" }}
         />
