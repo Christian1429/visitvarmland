@@ -12,6 +12,9 @@ import { useTranslation } from 'react-i18next';
 import InfoButton from '../../buttons/InfoBtn';
 import Places from './Places';
 import Price from './Price';
+import Tooltip from "@mui/material/Tooltip";
+import IconButton from "@mui/material/IconButton";
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 const Event = ({ formData, setFormData }) => {
   // text limitations, add more or less if needed.
   const sellingTextMaxLength = 100;
@@ -48,6 +51,7 @@ const Event = ({ formData, setFormData }) => {
         <Typography sx={{ textAlign: 'center', padding: 0, marginTop: '-1rem' }}>
          Fyll i all nödvändig information om ditt evenemang
         </Typography>
+               
         <TextField
           required
           variant="outlined"
@@ -61,6 +65,19 @@ const Event = ({ formData, setFormData }) => {
             setFormData((prevData) => ({ ...prevData, title: e.target.value }))
           }
           className="text-field"
+          slotProps={{
+            input: {
+              endAdornment: (
+                <InputAdornment position="end">
+                  <Tooltip title="Skriv en passande, slagkraftig titel på ditt evenemang eller tips så att det blir lätt att känna igen." arrow>
+                    <IconButton size="small">
+                      <HelpOutlineIcon fontSize="small" />
+                    </IconButton>
+                  </Tooltip>
+                </InputAdornment>
+              ),
+            },
+          }}
         />
         <TextField
           required
@@ -80,18 +97,24 @@ const Event = ({ formData, setFormData }) => {
           className="text-field"
           multiline
           rows={6}
-          slotProps={{ htmlInput: { maxLength: 200, minLength: 1 } }}
-          InputProps={{
+          slotProps={{ htmlInput: { maxLength: 200, minLength: 1 }, input: {
             endAdornment: (
-              <InputAdornment
-                position="end"
-                sx={{ alignSelf: 'flex-end', mr: 1 }}
-              >
-                {`${rmCharDescription}/${descriptionMaxLength}`}
+              <InputAdornment position="end">
+                <Tooltip title="Här beskriver du evenemanget så detaljerat och säljande som möjligt – ju mer information, desto bättre för besökarna! Eventuell längd på föreställning eller pauser.
+Tillgänglighetsinformation – exempelvis rullstolsanpassning eller hörslinga.
+Eventuella åldersrekommendationer.
+Övrigt: Finns det något annat viktigt som besökarna behöver känna till?" arrow>
+                  <IconButton size="small">
+                    <HelpOutlineIcon fontSize="small" />
+                  </IconButton>
+                </Tooltip>
               </InputAdornment>
             ),
-          }}
+          }, }}
+          
         />
+
+
         <TextField
           required
           variant="outlined"
@@ -118,6 +141,11 @@ const Event = ({ formData, setFormData }) => {
                 sx={{ alignSelf: 'flex-end', mr: 1 }}
               >
                 {`${rmCharSelling}/${sellingTextMaxLength}`}
+                <Tooltip title="En kort, säljande text för att locka besökare" arrow>
+          <IconButton size="small">
+            <HelpOutlineIcon fontSize="small" />
+          </IconButton>
+        </Tooltip>
               </InputAdornment>
             ),
           }}
@@ -137,6 +165,19 @@ const Event = ({ formData, setFormData }) => {
             }))
           }
           className="text-field"
+          slotProps={{
+            input: {
+              endAdornment: (
+                <InputAdornment position="end">
+                  <Tooltip title=" Behöver biljett förköpas, betalas entré i dörren, ev. återförsäljare av biljetter, olika pristyper etc" arrow>
+                    <IconButton size="small">
+                      <HelpOutlineIcon fontSize="small" />
+                    </IconButton>
+                  </Tooltip>
+                </InputAdornment>
+              ),
+            },
+          }}
         />
         <TextField
           variant="outlined"
