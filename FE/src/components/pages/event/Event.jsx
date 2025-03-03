@@ -1,34 +1,13 @@
-import { useState } from 'react';
-import {
-  TextField,
-  Box,
-  InputAdornment,
-  Checkbox,
-  FormControlLabel,
-  Typography,
-} from '@mui/material';
-import HandleFileUpload from './ImgUpload';
-import { useTranslation } from 'react-i18next';
-import InfoButton from '../../buttons/InfoBtn';
-import Places from './Places';
-import Price from './Price';
+import { TextField, Box, InputAdornment, Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
+
 const Event = ({ formData, setFormData }) => {
-  // text limitations, add more or less if needed.
   const sellingTextMaxLength = 100;
   const descriptionMaxLength = 200;
   const rmCharDescription = descriptionMaxLength - formData.description.length;
   const rmCharSelling = sellingTextMaxLength - formData.sales_text.length;
 
   const { t } = useTranslation();
-  const [consent, setConsent] = useState(false);
-
-  const handleChange = (e) => {
-    setConsent(e);
-    setFormData((prev) => ({
-      ...prev,
-      gdpr_consent: e,
-    }));
-  };
 
   return (
     <>
@@ -37,40 +16,44 @@ const Event = ({ formData, setFormData }) => {
           maxWidth: 600,
           boxShadow: 3,
           p: 4,
-          m: 'auto',
+          m: "auto",
           borderRadius: 2,
-          background: 'rgba(255, 255, 255, 0.7)',
-          backdropFilter: 'blur(2px)',
-          display: 'flex',
-          flexDirection: 'column',
+          background: "rgba(255, 255, 255, 0.7)",
+          backdropFilter: "blur(2px)",
+          display: "flex",
+          flexDirection: "column",
         }}
       >
-        <Typography sx={{ textAlign: 'center', padding: 0, marginTop: '-1rem' }}>
-         Fyll i all nödvändig information om ditt evenemang
+        <Typography
+          sx={{ textAlign: "center", padding: 0, marginTop: "-1rem" }}
+        >
+          Fyll i all nödvändig information om ditt evenemang
         </Typography>
+
         <TextField
           required
           variant="outlined"
           margin="dense"
           fullWidth
           id="title"
-          label={t('event_name')}
+          label={t("event_name")}
           name="event-title"
-          value={formData.title || ''}
+          value={formData.title || ""}
           onChange={(e) =>
             setFormData((prevData) => ({ ...prevData, title: e.target.value }))
           }
           className="text-field"
         />
+
         <TextField
           required
           variant="outlined"
           margin="dense"
           fullWidth
           id="description"
-          label={t('description')}
+          label={t("description")}
           name="description"
-          value={formData.description || ''}
+          value={formData.description || ""}
           onChange={(e) =>
             setFormData((prevData) => ({
               ...prevData,
@@ -80,27 +63,28 @@ const Event = ({ formData, setFormData }) => {
           className="text-field"
           multiline
           rows={6}
-          slotProps={{ htmlInput: { maxLength: 200, minLength: 1 } }}
+          inputProps={{ maxLength: 200, minLength: 1 }}
           InputProps={{
             endAdornment: (
               <InputAdornment
                 position="end"
-                sx={{ alignSelf: 'flex-end', mr: 1 }}
+                sx={{ alignSelf: "flex-end", mr: 1 }}
               >
                 {`${rmCharDescription}/${descriptionMaxLength}`}
               </InputAdornment>
             ),
           }}
         />
+
         <TextField
           required
           variant="outlined"
           margin="dense"
           fullWidth
           id="sales_text"
-          label={t('sales_text')}
+          label={t("sales_text")}
           name="event-sales-text"
-          value={formData.sales_text || ''}
+          value={formData.sales_text || ""}
           onChange={(e) =>
             setFormData((prevData) => ({
               ...prevData,
@@ -110,121 +94,18 @@ const Event = ({ formData, setFormData }) => {
           className="text-field"
           multiline
           rows={4}
-          slotProps={{ htmlInput: { maxLength: 100, minLength: 1 } }}
+          inputProps={{ maxLength: 100, minLength: 1 }}
           InputProps={{
             endAdornment: (
               <InputAdornment
                 position="end"
-                sx={{ alignSelf: 'flex-end', mr: 1 }}
+                sx={{ alignSelf: "flex-end", mr: 1 }}
               >
                 {`${rmCharSelling}/${sellingTextMaxLength}`}
               </InputAdornment>
             ),
           }}
         />
-        <TextField
-          variant="outlined"
-          margin="dense"
-          fullWidth
-          id="event-ticket-information"
-          label={t('ticket_information')}
-          name="event-ticket-information"
-          value={formData.ticket_information || ''}
-          onChange={(e) =>
-            setFormData((prevData) => ({
-              ...prevData,
-              ticket_information: e.target.value,
-            }))
-          }
-          className="text-field"
-        />
-        <TextField
-          variant="outlined"
-          margin="dense"
-          fullWidth
-          id="event-open-times"
-          label={t('open_times')}
-          name="event-open-times"
-          value={formData.open_times || ''}
-          onChange={(e) =>
-            setFormData((prevData) => ({
-              ...prevData,
-              open_times: e.target.value,
-            }))
-          }
-          className="text-field"
-        />{' '}
-        <TextField
-          variant="outlined"
-          margin="dense"
-          fullWidth
-          id="event-booking-link"
-          label={t('booking_link')}
-          name="event-booking-link"
-          value={formData.booking_link || ''}
-          onChange={(e) =>
-            setFormData((prevData) => ({
-              ...prevData,
-              booking_link: e.target.value,
-            }))
-          }
-          className="text-field"
-        />{' '}
-        <TextField
-          variant="outlined"
-          margin="dense"
-          fullWidth
-          id="website"
-          label={t('website')}
-          name="event-website-link"
-          value={formData.website_link || ''}
-          onChange={(e) =>
-            setFormData((prevData) => ({
-              ...prevData,
-              website_link: e.target.value,
-            }))
-          }
-          className="text-field"
-        />
-        <Box>
-          <TextField
-            variant="outlined"
-            margin="dense"
-            fullWidth
-            id="other_info"
-            label={t('other_info')}
-            name="other_info"
-            value={formData.other_info || ''}
-            onChange={(e) =>
-              setFormData((prevData) => ({
-                ...prevData,
-                other_info: e.target.value,
-              }))
-            }
-            className="text-field"
-            multiline
-            rows={4}
-          />
-        </Box>
-        <Places />
-        {/* --------------- PRICES -------------- */}
-        <Price />
-        {/* --------------- IMAGE UPLOADER -------------- */}
-        <HandleFileUpload formData={formData} setFormData={setFormData} />
-        <Box gridColumn="span 2" sx={{ display: 'flex', paddingTop: '2rem' }}>
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={consent}
-                onChange={(e) => handleChange(e.target.checked)}
-                name="consent"
-                required
-              />
-            }
-            label={t('gdpr')}
-          />
-          <InfoButton />
-        </Box>
       </Box>
     </>
   );
