@@ -63,6 +63,7 @@ const resources = {
       breadcrumbs_1: "Step 1",
       breadcrumbs_2: "Step 2",
       breadcrumbs_3: "Step 3",
+      breadcrumbs_4: "Step 4",
       trail_btn: "Is it a trail?",
       next_btn: "Next",
       submit_btn: "Submit",
@@ -124,7 +125,7 @@ const resources = {
       other_info: "Övrig information",
 
       //Success modal Form submitted! We'll process your request soon.
-      success_title: "Tack för tipset",
+      success_title: "Tack för tipset!",
       success_message: "Vi kommer att behandla ditt tips snart.",
       success_close: "Stäng",
 
@@ -142,6 +143,7 @@ const resources = {
       breadcrumbs_1: "Steg 1",
       breadcrumbs_2: "Steg 2",
       breadcrumbs_3: "Steg 3",
+      breadcrumbs_4: "Steg 4",
       submit_btn: "Skicka in",
       next_btn: "Nästa",
       images_title: "Ladda upp bilder. Max 2MB",
@@ -154,7 +156,6 @@ const resources = {
       duplicate_place_alert: "Du kan inte lägga till samma plats två gånger",
 
       //Price
-
       price_section_title: "Priser och övrig information",
       price_type_label: "Pristyp",
       price_label: "Pris",
