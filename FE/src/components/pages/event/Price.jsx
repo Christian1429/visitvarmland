@@ -1,7 +1,12 @@
-import { useContext } from "react";
-import { FormDataContext } from "../../../context/FormDataContext";
-import { Box, TextField, Typography } from "@mui/material";
-import { useTranslation } from "react-i18next";
+
+import { useContext } from 'react';
+import { FormDataContext } from '../../../context/FormDataContext';
+import { Box, TextField, Typography, InputAdornment } from '@mui/material';
+import Tooltip from "@mui/material/Tooltip";
+import IconButton from "@mui/material/IconButton";
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+
+
 
 function Price() {
   const { formData, setFormData } = useContext(FormDataContext);
@@ -77,6 +82,19 @@ function Price() {
           sx={{
             width: "100%",
             marginTop: 1,
+          }}
+          slotProps={{
+            input: {
+              endAdornment: (
+                <InputAdornment position="end">
+                  <Tooltip title="Här kan du ange priser på bland annat biljetter (exempelvis barn, vuxen, student, pensionär) och var man kan köpa dessa samt andra eventuella kostnader för besökare t.ex 'Kaffe 15 kr' " arrow>
+                    <IconButton size="small">
+                      <HelpOutlineIcon fontSize="small" />
+                    </IconButton>
+                  </Tooltip>
+                </InputAdornment>
+              ),
+            },
           }}
         />
       </Box>

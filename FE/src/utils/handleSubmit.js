@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import postForm from "../api/PostForm";
 import {
   mapPrices,
@@ -11,8 +12,8 @@ import {
 const handleSubmit = async (formData) => {
   const dataToSubmit = {
     ...formData,
-    title: formData.title || "",
-    description: formData.description || "",
+    title: formData.title || "Ingen titel angiven",
+    description: formData.description || "Ingen beskrivning",
     sales_text: formData.sales_text || "",
     presentation: formData.presentation || "",
     open_hours: formData.open_hours || "",
@@ -43,6 +44,7 @@ const handleSubmit = async (formData) => {
     occasions: mapOccasions(formData.occasions),
     gdpr_consent: formData.gdpr_consent,
   };
+
   try {
     console.log("Submitting form data:", dataToSubmit);
 
@@ -50,13 +52,32 @@ const handleSubmit = async (formData) => {
 
     if (response) {
       console.log("Form submitted successfully!");
+
+      // ✅ Toast-notis vid lyckad submission
+      toast.success(`🎉 Formulär skickat!\nTitel: ${dataToSubmit.title}\nBeskrivning: ${dataToSubmit.description}`, {
+        autoClose: 5000, // Visas i 5 sekunder istället för standard (ofta ~3s)
+        hideProgressBar: false, // Visar progress-baren (kan sättas till true om du vill dölja den)
+        closeOnClick: true, // Stänger toasten om användaren klickar på den
+        pauseOnHover: true, // Pausar timern om musen är över toasten
+        draggable: true, // Tillåter att man drar bort toasten
+        progress: undefined, // Använder standardprogress
+      });
+
       return true; // Success
     } else {
-      console.error("Form submission failed:");
+      console.error("Form submission failed.");
+
+      // ❌ Toast-notis vid misslyckad submission
+      toast.error("Något gick fel vid inskickning av formuläret. Försök igen.");
+      
       return false; // Failure
     }
   } catch (error) {
     console.error("Error submitting form:", error);
+
+    // ❌ Toast-notis vid nätverksfel
+    toast.error("Nätverksfel, kontrollera din anslutning och försök igen.");
+    
     return false; // Failure
   }
 };
