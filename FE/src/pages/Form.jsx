@@ -7,15 +7,16 @@ import {
   useMediaQuery,
   Button,
 } from "@mui/material";
-import Contact from '../components/pages/contact/Contact';
+import Contact from "../components/pages/contact/Contact";
 import Searchfield from "../components/pages/organizer/Searchfield";
-import ClientNew from '../components/pages/organizer/ClientNew';
-import DatePickerClient from '../components/pages/event/DatePicker';
-import Event from '../components/pages/event/Event';
+import ClientNew from "../components/pages/organizer/ClientNew";
+import DatePickerClient from "../components/pages/event/DatePicker";
+import Step4 from "../components/pages/placeholder4/step4";
+import Event from "../components/pages/event/Event";
 import NextBtn from "../components/buttons/NextBtn";
 import CloseBtn from "../components/buttons/CloseBtn";
 import TranslationBtn from "../components/buttons/TranslationBtn";
-import handleSubmit from '../utils/handleSubmit';
+import handleSubmit from "../utils/handleSubmit";
 
 import { useTheme } from "@mui/material/styles";
 import "./Form.css";
@@ -66,7 +67,7 @@ const Form = () => {
       case 1:
         return (
           <>
-  <Searchfield setEditable={setEditable} />
+            <Searchfield setEditable={setEditable} />
             <ClientNew
               formData={formData}
               setFormData={setFormData}
@@ -79,13 +80,19 @@ const Form = () => {
       case 2:
         return (
           <>
-            <DatePickerClient formData={formData} setFormData={setFormData} />
             <Event
               formData={formData}
               setFormData={setFormData}
               handleChange={handleChange}
               handleArrayChange={handleArrayChange}
             />
+          </>
+        );
+      case 3:
+        return (
+          <>
+            <DatePickerClient formData={formData} setFormData={setFormData} />
+            <Step4 />
           </>
         );
       default:
@@ -120,7 +127,7 @@ const Form = () => {
         >
           {t("hero")}
         </Typography>
-        <CloseBtn/>
+        <CloseBtn />
         <Box
           display="flex"
           justifyContent="center"
@@ -152,12 +159,19 @@ const Form = () => {
             >
               {t("breadcrumbs_3")}
             </Link>
+            <Link
+              color={currentStep === 3 ? "textPrimary" : "inherit"}
+              onClick={() => handleStepClick(3)}
+              sx={{ cursor: "pointer" }}
+            >
+              {t("breadcrumbs_4")}
+            </Link>
           </Breadcrumbs>
         </Box>
         <Box display="flex" flexDirection="column" alignItems="center">
           <Box sx={{ mb: 4 }}>{renderStep()}</Box>
           {currentStep < 2 && <NextBtn onClick={handleNext} />}
-          {currentStep === 2 && (
+          {currentStep === 3 && (
             <Button
               onClick={() => handleSubmitWithModal(formData)}
               sx={{ marginBottom: "2rem", width: "8rem" }}

@@ -1,3 +1,4 @@
+
 import { useContext } from 'react';
 import { FormDataContext } from '../../../context/FormDataContext';
 import { Box, TextField, Typography, InputAdornment } from '@mui/material';
@@ -6,23 +7,24 @@ import IconButton from "@mui/material/IconButton";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 
 
+
 function Price() {
   const { formData, setFormData } = useContext(FormDataContext);
-
+  const { t } = useTranslation();
   return (
     <>
-      <Typography sx={{ textAlign: 'center', paddingTop: '1rem' }}>
-          Priser och övrig information
+      <Typography sx={{ textAlign: "center", paddingTop: "1rem" }}>
+        {t("price_section_title")}
       </Typography>
       <Box
         sx={{
           marginTop: 1,
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
+          display: "grid",
+          gridTemplateColumns: "repeat(3, 1fr)",
         }}
       >
         <TextField
-          label="Pristyp"
+          label={t("price_type_label")}
           value={formData.prices[0].price_type}
           onChange={(e) =>
             setFormData((prev) => {
@@ -33,7 +35,7 @@ function Price() {
           }
         />
         <TextField
-          label="Pris"
+          label={t("price_label")}
           type="number"
           value={formData.prices[0].price}
           onChange={(e) =>
@@ -49,7 +51,7 @@ function Price() {
           }}
         />
         <TextField
-          label="Tillgängliga Platser"
+          label={t("seats_available_label")}
           type="number"
           value={formData.prices[0].seats_available}
           onChange={(e) =>
@@ -66,7 +68,7 @@ function Price() {
       </Box>
       <Box>
         <TextField
-          label="Beskrivning"
+          label={t("price_description_label")}
           value={formData.prices[0].description}
           onChange={(e) =>
             setFormData((prev) => {
@@ -78,7 +80,7 @@ function Price() {
           multiline
           rows={6}
           sx={{
-            width: '100%',
+            width: "100%",
             marginTop: 1,
           }}
           slotProps={{

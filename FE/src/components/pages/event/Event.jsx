@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import {
   TextField,
@@ -15,23 +16,14 @@ import Price from './Price';
 import Tooltip from "@mui/material/Tooltip";
 import IconButton from "@mui/material/IconButton";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+
 const Event = ({ formData, setFormData }) => {
-  // text limitations, add more or less if needed.
   const sellingTextMaxLength = 100;
   const descriptionMaxLength = 200;
   const rmCharDescription = descriptionMaxLength - formData.description.length;
   const rmCharSelling = sellingTextMaxLength - formData.sales_text.length;
 
   const { t } = useTranslation();
-  const [consent, setConsent] = useState(false);
-
-  const handleChange = (e) => {
-    setConsent(e);
-    setFormData((prev) => ({
-      ...prev,
-      gdpr_consent: e,
-    }));
-  };
 
   return (
     <>
@@ -40,27 +32,29 @@ const Event = ({ formData, setFormData }) => {
           maxWidth: 600,
           boxShadow: 3,
           p: 4,
-          m: 'auto',
+          m: "auto",
           borderRadius: 2,
-          background: 'rgba(255, 255, 255, 0.7)',
-          backdropFilter: 'blur(2px)',
-          display: 'flex',
-          flexDirection: 'column',
+          background: "rgba(255, 255, 255, 0.7)",
+          backdropFilter: "blur(2px)",
+          display: "flex",
+          flexDirection: "column",
         }}
       >
-        <Typography sx={{ textAlign: 'center', padding: 0, marginTop: '-1rem' }}>
-         Fyll i all nödvändig information om ditt evenemang
+        <Typography
+          sx={{ textAlign: "center", padding: 0, marginTop: "-1rem" }}
+        >
+          Fyll i all nödvändig information om ditt evenemang
         </Typography>
-               
+
         <TextField
           required
           variant="outlined"
           margin="dense"
           fullWidth
           id="title"
-          label={t('event_name')}
+          label={t("event_name")}
           name="event-title"
-          value={formData.title || ''}
+          value={formData.title || ""}
           onChange={(e) =>
             setFormData((prevData) => ({ ...prevData, title: e.target.value }))
           }
@@ -79,15 +73,16 @@ const Event = ({ formData, setFormData }) => {
             },
           }}
         />
+
         <TextField
           required
           variant="outlined"
           margin="dense"
           fullWidth
           id="description"
-          label={t('description')}
+          label={t("description")}
           name="description"
-          value={formData.description || ''}
+          value={formData.description || ""}
           onChange={(e) =>
             setFormData((prevData) => ({
               ...prevData,
@@ -97,9 +92,10 @@ const Event = ({ formData, setFormData }) => {
           className="text-field"
           multiline
           rows={6}
+
           slotProps={{ htmlInput: { maxLength: 200, minLength: 1 }, input: {
             endAdornment: (
-              <InputAdornment position="end">
+              <InputAdornment position="end"                 sx={{ alignSelf: "flex-end", mr: 1 }}>
                 <Tooltip title="Här beskriver du evenemanget så detaljerat och säljande som möjligt – ju mer information, desto bättre för besökarna! Eventuell längd på föreställning eller pauser.
 Tillgänglighetsinformation – exempelvis rullstolsanpassning eller hörslinga.
 Eventuella åldersrekommendationer.
@@ -108,12 +104,13 @@ Eventuella åldersrekommendationer.
                     <HelpOutlineIcon fontSize="small" />
                   </IconButton>
                 </Tooltip>
+                {`${rmCharDescription}/${descriptionMaxLength}`}
+
               </InputAdornment>
             ),
           }, }}
           
         />
-
 
         <TextField
           required
@@ -121,9 +118,9 @@ Eventuella åldersrekommendationer.
           margin="dense"
           fullWidth
           id="sales_text"
-          label={t('sales_text')}
+          label={t("sales_text")}
           name="event-sales-text"
-          value={formData.sales_text || ''}
+          value={formData.sales_text || ""}
           onChange={(e) =>
             setFormData((prevData) => ({
               ...prevData,
@@ -133,12 +130,12 @@ Eventuella åldersrekommendationer.
           className="text-field"
           multiline
           rows={4}
-          slotProps={{ htmlInput: { maxLength: 100, minLength: 1 } }}
+          inputProps={{ maxLength: 100, minLength: 1 }}
           InputProps={{
             endAdornment: (
               <InputAdornment
                 position="end"
-                sx={{ alignSelf: 'flex-end', mr: 1 }}
+                sx={{ alignSelf: "flex-end", mr: 1 }}
               >
                 {`${rmCharSelling}/${sellingTextMaxLength}`}
                 <Tooltip title="En kort, säljande text för att locka besökare" arrow>
@@ -266,6 +263,7 @@ Eventuella åldersrekommendationer.
           />
           <InfoButton />
         </Box>
+
       </Box>
     </>
   );

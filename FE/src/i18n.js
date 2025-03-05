@@ -58,16 +58,30 @@ const resources = {
       trail_save_btn: "Save",
 
       // some generic buttons, breadcrumbs and other.
-      language_btn_en: 'English',
-      language_btn_swe: 'Swedish',
-      breadcrumbs_1: 'Step 1',
-      breadcrumbs_2: 'Step 2',
-      breadcrumbs_3: 'Step 3',
-      trail_btn: 'Is it a trail?',
-      next_btn: 'Next',
-      submit_btn: 'Submit',
-      images_title: 'Upload images. Max 2MB',
-      gdpr: 'I consent to my information being stored and used in accordance with GDPR and agree that Visit Värmland reserves the right to modify or delete the information.',
+      language_btn_en: "English",
+      language_btn_swe: "Swedish",
+      breadcrumbs_1: "Step 1",
+      breadcrumbs_2: "Step 2",
+      breadcrumbs_3: "Step 3",
+      breadcrumbs_4: "Step 4",
+      trail_btn: "Is it a trail?",
+      next_btn: "Next",
+      submit_btn: "Submit",
+      images_title: "Upload images. Max 2MB",
+      gdpr: "I consent to my information being stored and used in accordance with GDPR and agree that Visit Värmland reserves the right to modify or delete the information.",
+
+      // Places
+      select_place_label: "Select a place",
+      select_place_placeholder: "Type a place...",
+      selected_places_title: "Selected places:",
+      duplicate_place_alert: "You cannot add the same place twice",
+
+      //Price
+      price_section_title: "Prices and additional information",
+      price_type_label: "Price Type",
+      price_label: "Price",
+      seats_available_label: "Available Seats",
+      price_description_label: "Description",
     },
   },
   // Swedish
@@ -111,7 +125,7 @@ const resources = {
       other_info: "Övrig information",
 
       //Success modal Form submitted! We'll process your request soon.
-      success_title: "Tack för tipset",
+      success_title: "Tack för tipset!",
       success_message: "Vi kommer att behandla ditt tips snart.",
       success_close: "Stäng",
 
@@ -124,15 +138,29 @@ const resources = {
       trail_save_btn: "Spara",
 
       // some generic buttons, breadcrumbs and other.
-      language_btn_en: 'Engelska',
-      language_btn_swe: 'Svenska',
-      breadcrumbs_1: 'Steg 1',
-      breadcrumbs_2: 'Steg 2',
-      breadcrumbs_3: 'Steg 3',
-      submit_btn: 'Skicka in',
-      next_btn: 'Nästa',
-      images_title: 'Ladda upp bilder. Max 2MB',
-      gdpr: 'Jag samtycker till att mina uppgifter lagras och används enligt GDPR och godkänner att Visit Värmland förbehåller sig rätten att ändra eller ta bort uppgifterna.',
+      language_btn_en: "Engelska",
+      language_btn_swe: "Svenska",
+      breadcrumbs_1: "Steg 1",
+      breadcrumbs_2: "Steg 2",
+      breadcrumbs_3: "Steg 3",
+      breadcrumbs_4: "Steg 4",
+      submit_btn: "Skicka in",
+      next_btn: "Nästa",
+      images_title: "Ladda upp bilder. Max 2MB",
+      gdpr: "Jag samtycker till att mina uppgifter lagras och används enligt GDPR och godkänner att Visit Värmland förbehåller sig rätten att ändra eller ta bort uppgifterna.",
+
+      // Places
+      select_place_label: "Välj en plats",
+      select_place_placeholder: "Skriv en plats...",
+      selected_places_title: "Valda platser:",
+      duplicate_place_alert: "Du kan inte lägga till samma plats två gånger",
+
+      //Price
+      price_section_title: "Priser och övrig information",
+      price_type_label: "Pristyp",
+      price_label: "Pris",
+      seats_available_label: "Tillgängliga Platser",
+      price_description_label: "Beskrivning",
     },
   },
 };
