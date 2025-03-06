@@ -140,8 +140,7 @@ function ImgUpload({ formData, setFormData }) {
       </Box>
       <Box>
         {previewImages.length > 0 && (
-          <div>
-            <Typography variant="h6">{t("selected_images")}</Typography>
+          <div>    
             <div style={{ display: "flex", flexWrap: "wrap" }}>
               {previewImages.map((imageSrc, index) => (
                 <Box
