@@ -48,7 +48,6 @@ const Form = () => {
       const {
         title,
         street1,
-        street2,
         zip_code,
         municipality_id,
         email,
@@ -58,7 +57,6 @@ const Form = () => {
       if (
         !title ||
         !street1 ||
-        !street2 ||
         !zip_code ||
         municipality_id === 0 ||
         !email ||
@@ -78,17 +76,6 @@ const Form = () => {
       }
     }
 
-    if (currentStep === 3) {
-      if (!formData.event_date) {
-        window.alert("Vänligen välj ett datum för evenemanget.");
-        return;
-      }
-      if (!formData.gdpr_consent) {
-        window.alert("Du måste godkänna GDPR.");
-        return;
-      }
-    }
-
     setCurrentStep((prevStep) => prevStep + 1);
   };
   const handleStepClick = (step) => {
@@ -96,13 +83,30 @@ const Form = () => {
   };
 
   const handleSubmitWithModal = async (formData) => {
-    const isSubmitted = await handleSubmit(formData);
-    if (isSubmitted) {
-      setShowModal(true);
-    } else {
-      console.log("Form submission failed. Please try again");
-      alert("Form submission failed. Please try again.");
+    if (!formData.gdpr_consent) {
+      window.alert("Vänligen tryck i GDPR-rutan.");
+      return;
     }
+
+    if (!formData.occasions || !formData.occasions[0].date_start) {
+      window.alert("Vänligen välj ett datum.");
+      return;
+    }
+
+    if (!formData.occasions[0].time_start || !formData.occasions[0].time_end) {
+      window.alert("Vänligen välj en start- och sluttid.");
+      return;
+    }
+
+    const isSubmitted = await handleSubmit(formData);
+
+    if (!isSubmitted) {
+      console.log("Form submission failed. Please try again.");
+      alert("Form submission failed. Please try again.");
+      return;
+    }
+
+    setShowModal(true);
   };
 
   const handleCloseModal = () => {
