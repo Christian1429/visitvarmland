@@ -1,11 +1,9 @@
 
-import { useState } from 'react';
 import {
   TextField,
   Box,
   InputAdornment,
-  Checkbox,
-  FormControlLabel,
+
   Typography,
 } from '@mui/material';
 import HandleFileUpload from './ImgUpload';
@@ -253,7 +251,6 @@ Eventuella åldersrekommendationer.
           />
         </Box>
         {/* --------------- IMAGE UPLOADER -------------- */}
-        <HandleFileUpload formData={formData} setFormData={setFormData} />
       </Box>
     </>
   );
