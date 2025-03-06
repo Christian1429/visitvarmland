@@ -22,7 +22,7 @@ const Event = ({ formData, setFormData }) => {
     <>
       <Box
         sx={{
-          maxWidth: 600,
+          width: 600,
           boxShadow: 3,
           p: 4,
           m: 'auto',
@@ -34,7 +34,7 @@ const Event = ({ formData, setFormData }) => {
         }}
       >
         <Typography
-          sx={{ textAlign: 'center', padding: 0, marginTop: '-1rem' }}
+          sx={{ textAlign: 'center', padding: 1, marginTop: '-1rem' }}
         >
           Fyll i all nödvändig information om ditt evenemang
         </Typography>

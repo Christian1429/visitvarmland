@@ -2,12 +2,12 @@ import { useState, useContext } from "react";
 import { TextField, Box, Checkbox, FormControlLabel } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import InfoButton from "../../buttons/InfoBtn";
-import Places from "../event/Places";
-import Price from "../event/Price";
-import HandleFileUpload from "../event/ImgUpload";
+import Places from "./Places";
+import Price from "./Price";
+import HandleFileUpload from "./ImgUpload";
 import { FormDataContext } from "../../../context/FormDataContext";
 
-function Step4() {
+function Other() {
   const { t } = useTranslation();
   const [consent, setConsent] = useState(false);
   const { formData, setFormData } = useContext(FormDataContext);
@@ -78,4 +78,4 @@ function Step4() {
   );
 }
 
-export default Step4;
+export default Other;

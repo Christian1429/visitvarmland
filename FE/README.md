@@ -47,10 +47,7 @@ The form is divided into multiple steps:
 i18n:
     classnames are used to translate the form's labels and buttons.
 
-Change link 'https://www.visitvarmland.com' för X knappen länk /FE/src/components/Buttons/CloseBtn.jsx
-Change link 'https://www.regionvarmland.se/regionvarmland/om-regionen/personuppgiftsbehandling' for info /FE/src/components/Buttons/InfoBtn.jsx
-
-New object for turid API to handle: 
+# ------ New objects to handle for Advant ------
 
 contact: [
       {
@@ -60,3 +57,13 @@ contact: [
         contact_number: "",
       },
     ],
+
+# ------ For visit värmland ------
+Change link 'https://www.visitvarmland.com' för X knappen länk
+/FE/src/components/Buttons/CloseBtn.jsx
+
+Change link 'https://www.regionvarmland.se/regionvarmland/om-regionen/personuppgiftsbehandling' for info 
+/FE/src/components/Buttons/InfoBtn.jsx
+
+Change translation settings or text in fields, titles etc. in 
+/FE/src/i18n.js

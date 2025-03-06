@@ -32,19 +32,6 @@ const theme = createTheme({
         },
       },
     },
-    // MuiCheckbox: {
-    //   styleOverrides: {
-    //     root: {
-    //       color: '#004337',
-    //       '&.Mui-checked': {
-    //         color: '#004337',
-    //       },
-    //       '&:hover': {
-    //         backgroundColor: 'rgba(0, 67, 55, 0.08)',
-    //       },
-    //     },
-    //   },
-    // },
     MuiSvgIcon: {
       styleOverrides: {
         root: {

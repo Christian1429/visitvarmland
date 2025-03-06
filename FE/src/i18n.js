@@ -9,7 +9,6 @@ const resources = {
 
       // Contact information (first page)
       contact_title: 'Fill in your contact information',
-      sub_title: 'Follow all steps to create your event',
       name: 'Your name',
       email: 'Email',
       phone: 'Phone number',
@@ -61,10 +60,10 @@ const resources = {
       // some generic buttons, breadcrumbs and other.
       language_btn_en: 'English',
       language_btn_swe: 'Swedish',
-      breadcrumbs_1: 'Step 1',
-      breadcrumbs_2: 'Step 2',
-      breadcrumbs_3: 'Step 3',
-      breadcrumbs_4: 'Step 4',
+      breadcrumbs_1: 'Contact >',
+      breadcrumbs_2: 'Organizer >',
+      breadcrumbs_3: 'Event >',
+      breadcrumbs_4: 'Additional info >',
       trail_btn: 'Is it a trail?',
       next_btn: 'Next',
       submit_btn: 'Submit',
@@ -92,7 +91,6 @@ const resources = {
 
       // Contact information (first page)
       contact_title: 'Fyll i din kontaktinformation',
-      sub_title: 'Följ alla steg',
       name: 'Ditt namn',
       email: 'E-post',
       phone: 'Telefonnummer',
@@ -142,10 +140,10 @@ const resources = {
       // some generic buttons, breadcrumbs and other.
       language_btn_en: 'Engelska',
       language_btn_swe: 'Svenska',
-      breadcrumbs_1: 'Kontaktuppgifter',
-      breadcrumbs_2: 'Arrangör',
-      breadcrumbs_3: 'Event',
-      breadcrumbs_4: 'Övrig info',
+      breadcrumbs_1: 'Kontaktuppgifter >',
+      breadcrumbs_2: 'Arrangör >',
+      breadcrumbs_3: 'Event >',
+      breadcrumbs_4: 'Övrig information',
       submit_btn: 'Skicka in',
       next_btn: 'Nästa',
       images_title: 'Ladda upp bilder. Max 2MB',

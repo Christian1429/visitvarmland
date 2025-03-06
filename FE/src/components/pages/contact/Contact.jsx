@@ -33,9 +33,9 @@ const Contact = ({ formData, setFormData }) => {
         sx={{
           color: '#004338',
           fontWeight: 'bold',
+          paddingTop: '1rem'
         }}
       >
-        {t('sub_title')}
       </Typography>
       {/* Contact box */}
       <Box
