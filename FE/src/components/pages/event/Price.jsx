@@ -5,12 +5,13 @@ import { Box, TextField, Typography, InputAdornment } from '@mui/material';
 import Tooltip from "@mui/material/Tooltip";
 import IconButton from "@mui/material/IconButton";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
-
+import { useTranslation } from 'react-i18next';
 
 
 function Price() {
   const { formData, setFormData } = useContext(FormDataContext);
   const { t } = useTranslation();
+
   return (
     <>
       <Typography sx={{ textAlign: "center", paddingTop: "1rem" }}>

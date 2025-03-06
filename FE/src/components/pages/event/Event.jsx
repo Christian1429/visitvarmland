@@ -22,8 +22,10 @@ const Event = ({ formData, setFormData }) => {
   const descriptionMaxLength = 200;
   const rmCharDescription = descriptionMaxLength - formData.description.length;
   const rmCharSelling = sellingTextMaxLength - formData.sales_text.length;
-
   const { t } = useTranslation();
+  const [consent, setConsent] = useState(false);
+
+  
 
   return (
     <>
