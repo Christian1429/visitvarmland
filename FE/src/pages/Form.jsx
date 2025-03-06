@@ -170,7 +170,7 @@ const Form = () => {
         </Box>
         <Box display="flex" flexDirection="column" alignItems="center">
           <Box sx={{ mb: 4 }}>{renderStep()}</Box>
-          {currentStep < 2 && <NextBtn onClick={handleNext} />}
+          {currentStep < 3 && <NextBtn onClick={handleNext} />}
           {currentStep === 3 && (
             <Button
               onClick={() => handleSubmitWithModal(formData)}
