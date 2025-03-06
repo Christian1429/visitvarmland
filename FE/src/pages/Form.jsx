@@ -10,14 +10,13 @@ import {
 import Contact from "../components/pages/contact/Contact";
 import Searchfield from "../components/pages/organizer/Searchfield";
 import ClientNew from "../components/pages/organizer/ClientNew";
-import DatePickerClient from "../components/pages/event/DatePicker";
-import Step4 from "../components/pages/placeholder4/step4";
+import DatePickerClient from "../components/pages/other/DatePicker";
+import Other from "../components/pages/other/Other";
 import Event from "../components/pages/event/Event";
 import NextBtn from "../components/buttons/NextBtn";
 import CloseBtn from "../components/buttons/CloseBtn";
 import TranslationBtn from "../components/buttons/TranslationBtn";
 import handleSubmit from "../utils/handleSubmit";
-
 import { useTheme } from "@mui/material/styles";
 import "./Form.css";
 import { FormDataContext } from "../context/FormDataContext";
@@ -149,7 +148,7 @@ const Form = () => {
         return (
           <>
             <DatePickerClient formData={formData} setFormData={setFormData} />
-            <Step4 />
+            <Other />
           </>
         );
       default:
@@ -161,13 +160,13 @@ const Form = () => {
     <Box className="container">
       <TranslationBtn />
       <form onSubmit={handleSubmit}>
-        <Box sx={{ paddingTop: "1rem", paddingLeft: "1rem" }}>
+        <Box sx={{ paddingTop: '1rem', paddingLeft: '1rem' }}>
           <img
             src="/assets/logotyp-visitvarmland-svart.svg"
             alt="Logo"
             className="logo"
             width={isMobile ? 100 : 150}
-            sx={{ paddingTop: "10rem" }}
+            sx={{ paddingTop: '10rem' }}
           />
         </Box>
         <Typography
@@ -176,53 +175,62 @@ const Form = () => {
           align="center"
           gutterBottom
           sx={{
-            color: "#004338",
-            fontWeight: "bold",
-            paddingTop: "1rem",
-            paddingBottom: "1rem",
+            color: '#004338',
+            fontWeight: 'bold',
+            paddingTop: '1rem',
+            paddingBottom: '1rem',
           }}
         >
-          {t("hero")}
+          {t('hero')}
         </Typography>
         <CloseBtn />
         <Box
-          display="flex"
-          justifyContent="center"
           sx={{
-            marginBottom: "1rem",
-            flexDirection: isMobile ? "column" : "row",
-            alignItems: "center",
+            display: 'flex',
+            justifyContent: 'center',
+            flexDirection: 'column',
+            marginBottom: '1rem',
+            alignItems: 'center',
           }}
         >
-          <Breadcrumbs aria-label="breadcrumb" separator=">">
-            <Link
-              color={currentStep === 0 ? "textPrimary" : "inherit"}
-              onClick={() => handleStepClick(0)}
-              sx={{ cursor: "pointer" }}
+          <Breadcrumbs aria-label="breadcrumb">
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: isMobile ? 'column' : 'row',
+                alignItems: 'center',
+                gap: '0.5rem',
+              }}
             >
-              {t("breadcrumbs_1")}
-            </Link>
-            <Link
-              color={currentStep === 1 ? "textPrimary" : "inherit"}
-              onClick={() => handleStepClick(1)}
-              sx={{ cursor: "pointer" }}
-            >
-              {t("breadcrumbs_2")}
-            </Link>
-            <Link
-              color={currentStep === 2 ? "textPrimary" : "inherit"}
-              onClick={() => handleStepClick(2)}
-              sx={{ cursor: "pointer" }}
-            >
-              {t("breadcrumbs_3")}
-            </Link>
-            <Link
-              color={currentStep === 3 ? "textPrimary" : "inherit"}
-              onClick={() => handleStepClick(3)}
-              sx={{ cursor: "pointer" }}
-            >
-              {t("breadcrumbs_4")}
-            </Link>
+              <Link
+                color={currentStep === 0 ? 'textPrimary' : 'inherit'}
+                onClick={() => handleStepClick(0)}
+                sx={{ cursor: 'pointer' }}
+              >
+                {t('breadcrumbs_1')}
+              </Link>
+              <Link
+                color={currentStep === 1 ? 'textPrimary' : 'inherit'}
+                onClick={() => handleStepClick(1)}
+                sx={{ cursor: 'pointer' }}
+              >
+                {t('breadcrumbs_2')}
+              </Link>
+              <Link
+                color={currentStep === 2 ? 'textPrimary' : 'inherit'}
+                onClick={() => handleStepClick(2)}
+                sx={{ cursor: 'pointer' }}
+              >
+                {t('breadcrumbs_3')}
+              </Link>
+              <Link
+                color={currentStep === 3 ? 'textPrimary' : 'inherit'}
+                onClick={() => handleStepClick(3)}
+                sx={{ cursor: 'pointer' }}
+              >
+                {t('breadcrumbs_4')}
+              </Link>
+            </Box>
           </Breadcrumbs>
         </Box>
         <Box display="flex" flexDirection="column" alignItems="center">
@@ -231,9 +239,9 @@ const Form = () => {
           {currentStep === 3 && (
             <Button
               onClick={() => handleSubmitWithModal(formData)}
-              sx={{ marginBottom: "2rem", width: "8rem" }}
+              sx={{ marginBottom: '2rem', width: '8rem' }}
             >
-              {t("submit_btn")}
+              {t('submit_btn')}
             </Button>
           )}
           <SuccessModal open={showModal} onClose={handleCloseModal} />

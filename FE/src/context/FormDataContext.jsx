@@ -9,7 +9,6 @@ export const FormDataProvider = ({ children }) => {
     sales_text: "",
     presentation: "",
     ticket_information: "",
-    open_times: "",
     booking_link: "",
     website_link: "",
     contact: [

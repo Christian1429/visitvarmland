@@ -13,7 +13,6 @@ import {
   IconButton,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import DisplayThumbnail from "./Display_thumbnail";
 
 function Places() {
   const { formData, setFormData } = useContext(FormDataContext);
@@ -150,13 +149,6 @@ function Places() {
                   fontWeight: 500,
                 }}
               />
-
-              <DisplayThumbnail
-                formData={place.thumbnail}
-                index={place.id}
-                visibility={visibility}
-              />
-
               <IconButton
                 onClick={() => removePlace(place.id)}
                 sx={{

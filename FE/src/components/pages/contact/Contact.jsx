@@ -33,9 +33,9 @@ const Contact = ({ formData, setFormData }) => {
         sx={{
           color: '#004338',
           fontWeight: 'bold',
+          paddingTop: '1rem'
         }}
       >
-        {t('sub_title')}
       </Typography>
       {/* Contact box */}
       <Box
@@ -108,7 +108,8 @@ const Contact = ({ formData, setFormData }) => {
             required
             fullWidth
             id="phone"
-            type="number"
+            inputMode="numeric"
+            pattern="[0-9]*"
             label={t('phone')}
             name="phone"
             autoComplete="phone"
@@ -119,7 +120,7 @@ const Contact = ({ formData, setFormData }) => {
                 contact: [
                   {
                     ...prevData.contact[0],
-                    contact_number: e.target.value,
+                    contact_number: e.target.value.replace(/\D/g, ''),
                   },
                 ],
               }))

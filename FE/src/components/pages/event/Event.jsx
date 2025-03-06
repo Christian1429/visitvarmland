@@ -1,15 +1,20 @@
-import { TextField, Box, InputAdornment, Typography } from "@mui/material";
-import HandleFileUpload from "./ImgUpload";
-import { useTranslation } from "react-i18next";
+
+import {
+  TextField,
+  Box,
+  InputAdornment,
+
+  Typography,
+} from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import Tooltip from "@mui/material/Tooltip";
 import IconButton from "@mui/material/IconButton";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 
 const Event = ({ formData, setFormData }) => {
-  const sellingTextMaxLength = 100;
-  const descriptionMaxLength = 200;
+  
+  const descriptionMaxLength = 5000;
   const rmCharDescription = descriptionMaxLength - formData.description.length;
-  const rmCharSelling = sellingTextMaxLength - formData.sales_text.length;
   const { t } = useTranslation();
 
   return (
@@ -28,9 +33,9 @@ const Event = ({ formData, setFormData }) => {
         }}
       >
         <Typography
-          sx={{ textAlign: "center", padding: 0, marginTop: "-1rem" }}
+          sx={{ textAlign: 'center', padding: 1, marginTop: '-1rem' }}
         >
-          Fyll i all nödvändig information om ditt evenemang
+          {t('event_title')}
         </Typography>
         <TextField
           required
@@ -38,9 +43,9 @@ const Event = ({ formData, setFormData }) => {
           margin="dense"
           fullWidth
           id="title"
-          label={t("event_name")}
-          name="event-title"
-          value={formData.title || ""}
+          label={t('event_name')}
+          name="event-name"
+          value={formData.title || ''}
           onChange={(e) =>
             setFormData((prevData) => ({ ...prevData, title: e.target.value }))
           }
@@ -65,7 +70,7 @@ const Event = ({ formData, setFormData }) => {
           margin="dense"
           fullWidth
           id="description"
-          label={t("description")}
+          label={t('event_description')}
           name="description"
           value={formData.description || ""}
           onChange={(e) =>
@@ -97,41 +102,6 @@ const Event = ({ formData, setFormData }) => {
           }}
         />
         <TextField
-          required
-          variant="outlined"
-          margin="dense"
-          fullWidth
-          id="sales_text"
-          label={t("sales_text")}
-          name="event-sales-text"
-          value={formData.sales_text || ""}
-          onChange={(e) =>
-            setFormData((prevData) => ({
-              ...prevData,
-              sales_text: e.target.value,
-            }))
-          }
-          className="text-field"
-          multiline
-          rows={4}
-          inputProps={{ maxLength: 100, minLength: 1 }}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment
-                position="end"
-                sx={{ alignSelf: "flex-end", mr: 1 }}
-              >
-                {`${rmCharSelling}/${sellingTextMaxLength}`}
-                <Tooltip title={t("tooltips_salestext")} arrow>
-                  <IconButton size="small">
-                    <HelpOutlineIcon fontSize="small" />
-                  </IconButton>
-                </Tooltip>
-              </InputAdornment>
-            ),
-          }}
-        />
-        <TextField
           variant="outlined"
           margin="dense"
           fullWidth
@@ -159,22 +129,6 @@ const Event = ({ formData, setFormData }) => {
               ),
             },
           }}
-        />
-        <TextField
-          variant="outlined"
-          margin="dense"
-          fullWidth
-          id="event-open-times"
-          label={t("open_times")}
-          name="event-open-times"
-          value={formData.open_times || ""}
-          onChange={(e) =>
-            setFormData((prevData) => ({
-              ...prevData,
-              open_times: e.target.value,
-            }))
-          }
-          className="text-field"
         />
         <TextField
           variant="outlined"

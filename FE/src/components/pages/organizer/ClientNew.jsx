@@ -113,7 +113,6 @@ const ClientNew = ({ formData, setFormData, Editable }) => {
       <TextField
         variant="outlined"
         margin="dense"
-        required
         fullWidth
         id="new-organizer-street2"
         label={t("address_2")}
@@ -247,17 +246,18 @@ const ClientNew = ({ formData, setFormData, Editable }) => {
         fullWidth
         id="new-organizer-phone-numbers"
         label={t("phone")}
-        type="number"
+        inputMode="numeric"
+        pattern="[0-9]*"
         name="phone_numbers"
         disabled={!Editable}
-        value={formData.organizers[0]?.phone_numbers.join(", ") || ""}
+        value={formData.organizers[0]?.phone_numbers || ""}
         onChange={(e) =>
           setFormData((prevData) => ({
             ...prevData,
             organizers: [
               {
                 ...prevData.organizers[0],
-                phone_numbers: e.target.value.split(", "),
+                phone_numbers: e.target.value.replace(/\D/g, ''),
               },
             ],
           }))

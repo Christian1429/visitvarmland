@@ -8,9 +8,7 @@ import FormResetButton from '../../buttons/FormResetButton';
 function Searchfield({ setEditable }) {
   const { formData, setFormData } = useContext(FormDataContext);
   const [organizers, setOrganizers] = useState([]);
-  
   const { t } = useTranslation();
-  
 
   useEffect(() => {
     const fetchOrganizers = async () => {

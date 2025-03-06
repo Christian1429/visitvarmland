@@ -6,7 +6,6 @@ import dayjs from "dayjs";
 import "dayjs/locale/sv";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "@mui/material/styles";
-// import Other_info from "./Other_info";
 
 const DatePickerClient = ({ formData, setFormData }) => {
   const theme = useTheme();
@@ -15,7 +14,7 @@ const DatePickerClient = ({ formData, setFormData }) => {
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="sv">
-      <Typography sx={{ textAlign: "center" }}>{t("event_title")}</Typography>
+      <Typography sx={{ textAlign: 'center' }}>{t('other_info_title')}</Typography>
       <Box
         sx={{
           display: isMobile ? "grid" : "flex",
@@ -155,8 +154,8 @@ const DatePickerClient = ({ formData, setFormData }) => {
             }))
           }
           multiline
-          rows={4}
-          sx={{ width: "90%" }}
+          rows={3}
+          sx={{ width: '90%' }}
         />
       </Box>
     </LocalizationProvider>
