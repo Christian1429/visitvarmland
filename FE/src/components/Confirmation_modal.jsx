@@ -37,7 +37,12 @@ const SuccessModal = ({ open, onClose }) => {
         <DialogActions
           style={{ display: "flex", justifyContent: "center", paddingTop: "0" }}
         >
-          <Button onClick={onClose} autoFocus>
+          <Button
+            onClick={() =>
+              (window.location.href = "https://www.visitvarmland.com")
+            }
+            autoFocus
+          >
             {t("success_close")}
           </Button>
         </DialogActions>
