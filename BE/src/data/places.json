@@ -5,7 +5,7 @@
     "presentation": "Sommaro",
     "latitude": "40.7128",
     "longitude": "-74.0060",
-    "thumbnail": "../../public/assets/icon.jpeg",
+    "thumbnail": "../../assets/icon.jpeg",
     "accessibility": [
       {
         "title": "Rullstolsanpassad",
@@ -19,7 +19,7 @@
     "presentation": "Sandgrund",
     "latitude": "40.7128",
     "longitude": "-74.0060",
-    "thumbnail": "../../public/assets/icon.jpeg",
+    "thumbnail": "../../assets/icon.jpeg",
     "accessibility": [
       {
         "title": "Rullstolsanpassad",
@@ -33,7 +33,7 @@
     "presentation": "Militär",
     "latitude": "40.7128",
     "longitude": "-74.0060",
-    "thumbnail": "../../public/assets/icon.jpeg",
+    "thumbnail": "../../public/icon.jpeg",
     "accessibility": [
       {
         "title": "Rullstolsanpassad",
