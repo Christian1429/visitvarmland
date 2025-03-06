@@ -5,7 +5,7 @@ import { initReactI18next } from "react-i18next";
 const resources = {
   en: {
     translation: {
-      hero: 'Tips and Events', // fixa
+      hero: 'Suggest an event',
 
       // Contact information (first page)
       contact_title: 'Fill in your contact information',
@@ -26,18 +26,18 @@ const resources = {
       erase_fields: 'Erase inputs',
 
       // Event page (third page)
-      event_title: 'Date and time for your event',
+      event_title: 'Add information about your event here',
       event_name: 'Enter the name of your event',
+      event_description: 'Description',
+      ticket_information: 'Ticket Information',
+
+      // Other information page (fourth page)
+      other_info_title: 'Date and time for your event',
       date_start: 'Date From',
       date_end: 'Date To',
       time_start: 'Time From',
       time_end: 'Time To',
       date_other_information: 'Other information about the dates or times',
-      description: 'Description',
-      sales_text: 'Sales Text',
-      presentation: 'Presentation',
-      open_times: 'Open Times',
-      ticket_information: 'Ticket Information',
       other_info: 'Other information',
       upload_files: 'Upload image',
 
@@ -46,25 +46,13 @@ const resources = {
       success_message: "We'll process your tip soon.",
       success_close: 'Close',
 
-      // trail overlay
-      trail_total_length: 'Total length of the trail',
-      number_of_trails: 'Number of trails',
-      trail_level: "Describe the trail's difficulty level",
-      trail_time: 'How long does it take to walk the trail?',
-      trail_terrain: 'Describe the terrain and / or other information',
-      trail_save_btn: 'Save',
-      trail_time: 'How long does it take to walk the trail?',
-      trail_terrain: 'Describe the terrain and / or other information',
-      trail_save_btn: 'Save',
-
       // some generic buttons, breadcrumbs and other.
       language_btn_en: 'English',
       language_btn_swe: 'Swedish',
       breadcrumbs_1: 'Contact >',
       breadcrumbs_2: 'Organizer >',
       breadcrumbs_3: 'Event >',
-      breadcrumbs_4: 'Additional info >',
-      trail_btn: 'Is it a trail?',
+      breadcrumbs_4: 'Additional information >',
       next_btn: 'Next',
       submit_btn: 'Submit',
       images_title: 'Upload images. Max 2MB',
@@ -78,16 +66,13 @@ const resources = {
 
       //Price
       price_section_title: 'Prices and additional information',
-      price_type_label: 'Price Type',
-      price_label: 'Price',
-      seats_available_label: 'Available Seats',
-      price_description_label: 'Description',
+      price_description_label: 'Price description',
     },
   },
   // Swedish
   sv: {
     translation: {
-      hero: 'Suggest an event',
+      hero: 'Tipsa om evenemang',
 
       // Contact information (first page)
       contact_title: 'Fyll i din kontaktinformation',
@@ -108,19 +93,18 @@ const resources = {
       erase_fields: 'Rensa fält',
 
       // Event page (third page)
-      event_title: 'Datum och tid för ditt event',
+      event_title: 'Lägg till information om ditt event här',
       event_name: 'Ange namnet på ditt evenemang',
+      event_description: 'Beskrivning',
+      ticket_information: 'Biljettinformation',
+
+      // Other information page (fourth page)
+      other_info_title: 'Datum och tid för ditt event',
       date_start: 'Datum Från',
       date_end: 'Datum Till',
       time_start: 'Tid Från',
       time_end: 'Tid Till',
-      date_other_information: 'Övrig information om datumen eller tiderna',
-      trail_btn: 'Är det en stig?',
-      description: 'Beskrivning',
-      sales_text: 'Säljande Text',
-      presentation: 'Presentation',
-      open_times: 'Öppettider',
-      ticket_information: 'Biljettinformation',
+      date_other_information: 'Övrig information om datum eller tider',
       other_info: 'Övrig information',
       upload_files: 'Ladda upp bild',
 
@@ -128,14 +112,6 @@ const resources = {
       success_title: 'Tack för tipset!',
       success_message: 'Vi kommer att behandla ditt tips snart.',
       success_close: 'Stäng',
-
-      // trail overlay
-      trail_total_length: 'Stigens totala längd i km',
-      number_of_trails: 'Antal stigar',
-      trail_level: 'Beskriv stigens svårighetsgrad',
-      trail_time: 'Hur långt tid tar det att gå genom stigen?',
-      trail_terrain: 'Beskriv terräng och / eller övrig information',
-      trail_save_btn: 'Spara',
 
       // some generic buttons, breadcrumbs and other.
       language_btn_en: 'Engelska',
@@ -157,9 +133,6 @@ const resources = {
 
       //Price
       price_section_title: 'Priser och övrig information',
-      price_type_label: 'Pristyp',
-      price_label: 'Pris',
-      seats_available_label: 'Tillgängliga Platser',
       price_description_label: 'Prisinformation',
     },
   },

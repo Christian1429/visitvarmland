@@ -17,7 +17,6 @@ import NextBtn from "../components/buttons/NextBtn";
 import CloseBtn from "../components/buttons/CloseBtn";
 import TranslationBtn from "../components/buttons/TranslationBtn";
 import handleSubmit from "../utils/handleSubmit";
-
 import { useTheme } from "@mui/material/styles";
 import "./Form.css";
 import { FormDataContext } from "../context/FormDataContext";

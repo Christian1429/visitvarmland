@@ -14,7 +14,7 @@ const DatePickerClient = ({ formData, setFormData }) => {
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="sv">
-      <Typography sx={{ textAlign: 'center' }}>{t('event_title')}</Typography>
+      <Typography sx={{ textAlign: 'center' }}>{t('other_info_title')}</Typography>
       <Box
         sx={{
           display: isMobile ? 'grid' : 'flex',
@@ -151,7 +151,7 @@ const DatePickerClient = ({ formData, setFormData }) => {
             }))
           }
           multiline
-          rows={4}
+          rows={3}
           sx={{ width: '90%' }}
         />
       </Box>

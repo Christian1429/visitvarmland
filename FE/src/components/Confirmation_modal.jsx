@@ -15,30 +15,32 @@ const SuccessModal = ({ open, onClose }) => {
   return (
     <div
       style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "10vh",
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '10vh',
       }}
     >
       <Dialog open={open} onClose={onClose}>
-        <DialogTitle sx={{ textAlign: "center" }}>
-          {t("success_title")}
+        <DialogTitle sx={{ textAlign: 'center' }}>
+          {t('success_title')}
         </DialogTitle>
         <DialogContent
           sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
           }}
         >
-          <DialogContentText>{t("success_message")}</DialogContentText>
+          <DialogContentText>
+            {t('success_message')}
+          </DialogContentText>
         </DialogContent>
         <DialogActions
-          style={{ display: "flex", justifyContent: "center", paddingTop: "0" }}
+          style={{ display: 'flex', justifyContent: 'center', paddingTop: '0' }}
         >
           <Button onClick={onClose} autoFocus>
-            {t("success_close")}
+            {t('success_close')}
           </Button>
         </DialogActions>
       </Dialog>

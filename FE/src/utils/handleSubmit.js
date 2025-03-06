@@ -9,6 +9,7 @@ import {
 } from './mappers';
 
 const handleSubmit = async (formData) => {
+
   const dataToSubmit = {
     ...formData,
     title: formData.title || '',
@@ -17,7 +18,6 @@ const handleSubmit = async (formData) => {
     presentation: formData.presentation || '',
     open_hours: formData.open_hours || '',
     ticket_information: formData.ticket_information || '',
-    open_times: formData.open_times || '',
     booking_link: formData.booking_link || '',
     website_link: formData.website_link || '',
     organizers: mapOrganizers(formData.organizers),
