@@ -34,21 +34,78 @@ const Form = () => {
   const [Editable, setEditable] = useState(true);
 
   const handleNext = () => {
+    if (currentStep === 0) {
+      const { contact_name, contact_email, contact_number } =
+        formData.contact[0];
+      if (!contact_name || !contact_email || !contact_number) {
+        window.alert("Vänligen fyll i alla kontaktuppgifter.");
+        return;
+      }
+    }
+
+    if (currentStep === 1) {
+      const {
+        title,
+        street1,
+        zip_code,
+        municipality_id,
+        email,
+        phone_numbers,
+      } = formData.organizers[0];
+
+      if (
+        !title ||
+        !street1 ||
+        !zip_code ||
+        municipality_id === 0 ||
+        !email ||
+        !phone_numbers ||
+        phone_numbers.length === 0 ||
+        !phone_numbers[0].trim()
+      ) {
+        window.alert("Vänligen fyll i alla arrangerörsuppgifter.");
+        return;
+      }
+    }
+    if (currentStep === 2) {
+      const { title, description, sales_text } = formData;
+      if (!title || !description || !sales_text) {
+        window.alert("Vänligen fyll i alla evenemangsuppgifter.");
+        return;
+      }
+    }
+
     setCurrentStep((prevStep) => prevStep + 1);
   };
-
   const handleStepClick = (step) => {
     setCurrentStep(step);
   };
 
   const handleSubmitWithModal = async (formData) => {
-    const isSubmitted = await handleSubmit(formData);
-    if (isSubmitted) {
-      setShowModal(true);
-    } else {
-      console.log("Form submission failed. Please try again");
-      alert("Form submission failed. Please try again.");
+    if (!formData.gdpr_consent) {
+      window.alert("Vänligen tryck i GDPR-rutan.");
+      return;
     }
+
+    if (!formData.occasions || !formData.occasions[0].date_start) {
+      window.alert("Vänligen välj ett datum.");
+      return;
+    }
+
+    if (!formData.occasions[0].time_start || !formData.occasions[0].time_end) {
+      window.alert("Vänligen välj en start- och sluttid.");
+      return;
+    }
+
+    const isSubmitted = await handleSubmit(formData);
+
+    if (!isSubmitted) {
+      console.log("Form submission failed. Please try again.");
+      alert("Form submission failed. Please try again.");
+      return;
+    }
+
+    setShowModal(true);
   };
 
   const handleCloseModal = () => {

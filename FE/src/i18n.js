@@ -15,15 +15,15 @@ const resources = {
       address_1: 'Address',
 
       // Organizer page (second page)
-      dropdown_organizer_exist: 'Already registered?',
-      title_organizer: 'Are you a new organizer, company or organization?',
-      title: 'Enter the name of your company, organization or association',
-      address_2: 'Address 2',
-      zipcode: 'Zip Code',
-      city: 'City',
-      booking_link: 'Booking link',
-      website: 'Website',
-      erase_fields: 'Erase inputs',
+      dropdown_organizer_exist: "Already registered?",
+      title_organizer: "Are you a new organizer, company or organization?",
+      title: "Enter the name of your company, organization or association",
+      address_2: "Address 2",
+      zipcode: "Zip Code",
+      city: "City",
+      booking_link: "Booking link",
+      website: "Website",
+      erase_fields: "Erase inputs",
 
       // Event page (third page)
       event_title: 'Add information about your event here',
@@ -42,7 +42,7 @@ const resources = {
       upload_files: 'Upload image',
 
       //Success modal
-      success_title: 'Thank you for the tip',
+      success_title: "Thank you for the tip",
       success_message: "We'll process your tip soon.",
       success_close: 'Close',
 
@@ -59,10 +59,10 @@ const resources = {
       gdpr: 'I consent to my information being stored and used in accordance with GDPR and agree that Visit Värmland reserves the right to modify or delete the information.',
 
       // Places
-      select_place_label: 'Select a place',
-      select_place_placeholder: 'Type a place...',
-      selected_places_title: 'Selected places:',
-      duplicate_place_alert: 'You cannot add the same place twice',
+      select_place_label: "Select a place",
+      select_place_placeholder: "Type a place...",
+      selected_places_title: "Selected places:",
+      duplicate_place_alert: "You cannot add the same place twice",
 
       //Price
       price_section_title: 'Prices and additional information',
@@ -82,15 +82,15 @@ const resources = {
       address_1: 'Adress',
 
       // Organizer page (second page)
-      dropdown_organizer_exist: 'Redan registrerad?',
-      title_organizer: 'Är du ny arrangör, företag eller förening?',
-      title: 'Namn på erat företag, förening eller organisation',
-      address_2: 'Adress 2',
-      zipcode: 'Postadress',
-      city: 'Kommun',
-      booking_link: 'Bokningslänk',
-      website: 'Hemsida',
-      erase_fields: 'Rensa fält',
+      dropdown_organizer_exist: "Redan registrerad?",
+      title_organizer: "Är du ny arrangör, företag eller förening?",
+      title: "Namn på erat företag, förening eller organisation",
+      address_2: "Adress 2",
+      zipcode: "Postadress",
+      city: "Kommun",
+      booking_link: "Bokningslänk",
+      website: "Hemsida",
+      erase_fields: "Rensa fält",
 
       // Event page (third page)
       event_title: 'Lägg till information om ditt event här',
@@ -126,10 +126,10 @@ const resources = {
       gdpr: 'Jag samtycker till att mina uppgifter lagras och används enligt GDPR och godkänner att Visit Värmland förbehåller sig rätten att ändra eller ta bort uppgifterna.',
 
       // Places
-      select_place_label: 'Välj en plats',
-      select_place_placeholder: 'Skriv en plats...',
-      selected_places_title: 'Valda platser:',
-      duplicate_place_alert: 'Du kan inte lägga till samma plats två gånger',
+      select_place_label: "Välj en plats",
+      select_place_placeholder: "Skriv en plats...",
+      selected_places_title: "Valda platser:",
+      duplicate_place_alert: "Du kan inte lägga till samma plats två gånger",
 
       //Price
       price_section_title: 'Priser och övrig information',

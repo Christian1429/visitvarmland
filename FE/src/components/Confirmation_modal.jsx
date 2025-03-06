@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Dialog,
   DialogTitle,
@@ -6,8 +6,8 @@ import {
   DialogContentText,
   DialogActions,
   Button,
-} from "@mui/material";
-import { useTranslation } from "react-i18next";
+} from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 const SuccessModal = ({ open, onClose }) => {
   const { t } = useTranslation();
@@ -32,14 +32,17 @@ const SuccessModal = ({ open, onClose }) => {
             justifyContent: 'center',
           }}
         >
-          <DialogContentText>
-            {t('success_message')}
-          </DialogContentText>
+          <DialogContentText>{t('success_message')}</DialogContentText>
         </DialogContent>
         <DialogActions
           style={{ display: 'flex', justifyContent: 'center', paddingTop: '0' }}
         >
-          <Button onClick={onClose} autoFocus>
+          <Button
+            onClick={() =>
+              (window.location.href = 'https://www.visitvarmland.com')
+            }
+            autoFocus
+          >
             {t('success_close')}
           </Button>
         </DialogActions>

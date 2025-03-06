@@ -24,12 +24,12 @@ const Event = ({ formData, setFormData }) => {
           maxWidth: 600,
           boxShadow: 3,
           p: 4,
-          m: 'auto',
+          m: "auto",
           borderRadius: 2,
-          background: 'rgba(255, 255, 255, 0.7)',
-          backdropFilter: 'blur(2px)',
-          display: 'flex',
-          flexDirection: 'column',
+          background: "rgba(255, 255, 255, 0.7)",
+          backdropFilter: "blur(2px)",
+          display: "flex",
+          flexDirection: "column",
         }}
       >
         <Typography
@@ -54,10 +54,7 @@ const Event = ({ formData, setFormData }) => {
             input: {
               endAdornment: (
                 <InputAdornment position="end">
-                  <Tooltip
-                    title="Skriv en passande, slagkraftig titel på ditt evenemang eller tips så att det blir lätt att känna igen."
-                    arrow
-                  >
+                  <Tooltip title={t("tooltips_eventname")} arrow>
                     <IconButton size="small">
                       <HelpOutlineIcon fontSize="small" />
                     </IconButton>
@@ -75,7 +72,7 @@ const Event = ({ formData, setFormData }) => {
           id="description"
           label={t('event_description')}
           name="description"
-          value={formData.description || ''}
+          value={formData.description || ""}
           onChange={(e) =>
             setFormData((prevData) => ({
               ...prevData,
@@ -91,16 +88,10 @@ const Event = ({ formData, setFormData }) => {
               endAdornment: (
                 <InputAdornment
                   position="end"
-                  sx={{ alignSelf: 'flex-end', mr: 1 }}
+                  sx={{ alignSelf: "flex-end", mr: 1 }}
                 >
                   {`${rmCharDescription}/${descriptionMaxLength}`}
-                  <Tooltip
-                    title="Här beskriver du evenemanget så detaljerat och säljande som möjligt – ju mer information, desto bättre för besökarna! Eventuell längd på föreställning eller pauser.
-Tillgänglighetsinformation – exempelvis rullstolsanpassning eller hörslinga.
-Eventuella åldersrekommendationer.
-Övrigt: Finns det något annat viktigt som besökarna behöver känna till?"
-                    arrow
-                  >
+                  <Tooltip title={t("tooltips_description")} arrow>
                     <IconButton size="small">
                       <HelpOutlineIcon fontSize="small" />
                     </IconButton>
@@ -115,9 +106,9 @@ Eventuella åldersrekommendationer.
           margin="dense"
           fullWidth
           id="event-ticket-information"
-          label={t('ticket_information')}
+          label={t("ticket_information")}
           name="event-ticket-information"
-          value={formData.ticket_information || ''}
+          value={formData.ticket_information || ""}
           onChange={(e) =>
             setFormData((prevData) => ({
               ...prevData,
@@ -129,10 +120,7 @@ Eventuella åldersrekommendationer.
             input: {
               endAdornment: (
                 <InputAdornment position="end">
-                  <Tooltip
-                    title=" Behöver biljett förköpas, betalas entré i dörren, ev. återförsäljare av biljetter, olika pristyper etc"
-                    arrow
-                  >
+                  <Tooltip title={t("tooltip_ticketinformation")} arrow>
                     <IconButton size="small">
                       <HelpOutlineIcon fontSize="small" />
                     </IconButton>
@@ -147,9 +135,9 @@ Eventuella åldersrekommendationer.
           margin="dense"
           fullWidth
           id="event-booking-link"
-          label={t('booking_link')}
+          label={t("booking_link")}
           name="event-booking-link"
-          value={formData.booking_link || ''}
+          value={formData.booking_link || ""}
           onChange={(e) =>
             setFormData((prevData) => ({
               ...prevData,
@@ -157,15 +145,15 @@ Eventuella åldersrekommendationer.
             }))
           }
           className="text-field"
-        />{' '}
+        />{" "}
         <TextField
           variant="outlined"
           margin="dense"
           fullWidth
           id="website"
-          label={t('website')}
+          label={t("website")}
           name="event-website-link"
-          value={formData.website_link || ''}
+          value={formData.website_link || ""}
           onChange={(e) =>
             setFormData((prevData) => ({
               ...prevData,
@@ -174,6 +162,27 @@ Eventuella åldersrekommendationer.
           }
           className="text-field"
         />
+        <Box>
+          <TextField
+            variant="outlined"
+            margin="dense"
+            fullWidth
+            id="other_info"
+            label={t("other_info")}
+            name="other_info"
+            value={formData.other_info || ""}
+            onChange={(e) =>
+              setFormData((prevData) => ({
+                ...prevData,
+                other_info: e.target.value,
+              }))
+            }
+            className="text-field"
+            multiline
+            rows={4}
+          />
+        </Box>
+        {/* --------------- IMAGE UPLOADER -------------- */}
       </Box>
     </>
   );

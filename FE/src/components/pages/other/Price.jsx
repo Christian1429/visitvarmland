@@ -5,8 +5,7 @@ import { Box, TextField, InputAdornment } from '@mui/material';
 import Tooltip from "@mui/material/Tooltip";
 import IconButton from "@mui/material/IconButton";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
-import { useTranslation } from 'react-i18next';
-
+import { useTranslation } from "react-i18next";
 
 function Price() {
   const { formData, setFormData } = useContext(FormDataContext);
@@ -43,7 +42,7 @@ function Price() {
             input: {
               endAdornment: (
                 <InputAdornment position="end">
-                  <Tooltip title="Här kan du ange priser på bland annat biljetter (exempelvis barn, vuxen, student, pensionär) och var man kan köpa dessa samt andra eventuella kostnader för besökare t.ex 'Kaffe 15 kr' " arrow>
+                  <Tooltip title={t("tooltips_pricedescription")} arrow>
                     <IconButton size="small">
                       <HelpOutlineIcon fontSize="small" />
                     </IconButton>
