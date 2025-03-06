@@ -134,7 +134,7 @@ const Form = () => {
           sx={{
             marginBottom: "1rem",
             flexDirection: isMobile ? "column" : "row",
-            alignItems: isMobile ? "flex-start" : "center",
+            alignItems: "center",
           }}
         >
           <Breadcrumbs aria-label="breadcrumb" separator=">">

@@ -40,6 +40,7 @@ const resources = {
       open_times: "Open Times",
       ticket_information: "Ticket Information",
       other_info: "Other information",
+      upload_files: "Upload image",
 
       //Success modal
       success_title: "Thank you for the tip",
@@ -123,6 +124,7 @@ const resources = {
       open_times: "Öppetider",
       ticket_information: "Biljettinformation",
       other_info: "Övrig information",
+      upload_files: "Ladda upp bild",
 
       //Success modal Form submitted! We'll process your request soon.
       success_title: "Tack för tipset!",
