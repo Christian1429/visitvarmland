@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import InfoButton from "../../buttons/InfoBtn";
 import Places from "../event/Places";
 import Price from "../event/Price";
-import ImgUpload from "../event/ImgUpload";
+import HandleFileUpload from "../event/ImgUpload";
 import { FormDataContext } from "../../../context/FormDataContext";
 
 function Step4() {
@@ -27,12 +27,12 @@ function Step4() {
           maxWidth: 600,
           boxShadow: 3,
           p: 4,
-          m: "auto",
+          m: 'auto',
           borderRadius: 2,
-          background: "rgba(255, 255, 255, 0.7)",
-          backdropFilter: "blur(2px)",
-          display: "flex",
-          flexDirection: "column",
+          background: 'rgba(255, 255, 255, 0.7)',
+          backdropFilter: 'blur(2px)',
+          display: 'flex',
+          flexDirection: 'column',
         }}
       >
         <TextField
@@ -40,9 +40,9 @@ function Step4() {
           margin="dense"
           fullWidth
           id="event-ticket-information"
-          label={t("ticket_information")}
+          label={t('ticket_information')}
           name="event-ticket-information"
-          value={formData.ticket_information || ""}
+          value={formData.ticket_information || ''}
           onChange={(e) =>
             setFormData((prevData) => ({
               ...prevData,
@@ -57,9 +57,9 @@ function Step4() {
           margin="dense"
           fullWidth
           id="event-open-times"
-          label={t("open_times")}
+          label={t('open_times')}
           name="event-open-times"
-          value={formData.open_times || ""}
+          value={formData.open_times || ''}
           onChange={(e) =>
             setFormData((prevData) => ({
               ...prevData,
@@ -74,9 +74,9 @@ function Step4() {
           margin="dense"
           fullWidth
           id="event-booking-link"
-          label={t("booking_link")}
+          label={t('booking_link')}
           name="event-booking-link"
-          value={formData.booking_link || ""}
+          value={formData.booking_link || ''}
           onChange={(e) =>
             setFormData((prevData) => ({
               ...prevData,
@@ -91,9 +91,9 @@ function Step4() {
           margin="dense"
           fullWidth
           id="website"
-          label={t("website")}
+          label={t('website')}
           name="event-website-link"
-          value={formData.website_link || ""}
+          value={formData.website_link || ''}
           onChange={(e) =>
             setFormData((prevData) => ({
               ...prevData,
@@ -109,9 +109,9 @@ function Step4() {
             margin="dense"
             fullWidth
             id="other_info"
-            label={t("other_info")}
+            label={t('other_info')}
             name="other_info"
-            value={formData.other_info || ""}
+            value={formData.other_info || ''}
             onChange={(e) =>
               setFormData((prevData) => ({
                 ...prevData,
@@ -126,9 +126,9 @@ function Step4() {
 
         <Places />
         <Price />
-        <ImgUpload formData={formData} setFormData={setFormData} />
+        <HandleFileUpload formData={formData} setFormData={setFormData} />
 
-        <Box gridColumn="span 2" sx={{ display: "flex", paddingTop: "2rem" }}>
+        <Box gridColumn="span 2" sx={{ display: 'flex', paddingTop: '2rem' }}>
           <FormControlLabel
             control={
               <Checkbox
@@ -138,7 +138,7 @@ function Step4() {
                 required
               />
             }
-            label={t("gdpr")}
+            label={t('gdpr')}
           />
           <InfoButton />
         </Box>
