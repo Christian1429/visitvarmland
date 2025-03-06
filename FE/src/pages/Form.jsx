@@ -35,9 +35,62 @@ const Form = () => {
   const [Editable, setEditable] = useState(true);
 
   const handleNext = () => {
+    if (currentStep === 0) {
+      const { contact_name, contact_email, contact_number } =
+        formData.contact[0];
+      if (!contact_name || !contact_email || !contact_number) {
+        window.alert("Vänligen fyll i alla kontaktuppgifter.");
+        return;
+      }
+    }
+
+    if (currentStep === 1) {
+      const {
+        title,
+        street1,
+        street2,
+        zip_code,
+        municipality_id,
+        email,
+        phone_numbers,
+      } = formData.organizers[0];
+
+      if (
+        !title ||
+        !street1 ||
+        !street2 ||
+        !zip_code ||
+        municipality_id === 0 ||
+        !email ||
+        !phone_numbers ||
+        phone_numbers.length === 0 ||
+        !phone_numbers[0].trim()
+      ) {
+        window.alert("Vänligen fyll i alla arrangerörsuppgifter.");
+        return;
+      }
+    }
+    if (currentStep === 2) {
+      const { title, description, sales_text } = formData;
+      if (!title || !description || !sales_text) {
+        window.alert("Vänligen fyll i alla evenemangsuppgifter.");
+        return;
+      }
+    }
+
+    if (currentStep === 3) {
+      if (!formData.event_date) {
+        window.alert("Vänligen välj ett datum för evenemanget.");
+        return;
+      }
+      if (!formData.gdpr_consent) {
+        window.alert("Du måste godkänna GDPR.");
+        return;
+      }
+    }
+
     setCurrentStep((prevStep) => prevStep + 1);
   };
-
   const handleStepClick = (step) => {
     setCurrentStep(step);
   };
