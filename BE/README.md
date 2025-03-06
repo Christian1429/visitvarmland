@@ -3,6 +3,9 @@ https://www.mongodb.com/try/download/community go for network setup
 
 cd fe && npm run start:all
 
+
+This is a dummy data API for the frontend.
+
 ## API Endpoints
 
 - **POST /data**: http://localhost:2000/api/data/

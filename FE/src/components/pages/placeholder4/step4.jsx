@@ -35,74 +35,8 @@ function Step4() {
           flexDirection: 'column',
         }}
       >
-        <TextField
-          variant="outlined"
-          margin="dense"
-          fullWidth
-          id="event-ticket-information"
-          label={t('ticket_information')}
-          name="event-ticket-information"
-          value={formData.ticket_information || ''}
-          onChange={(e) =>
-            setFormData((prevData) => ({
-              ...prevData,
-              ticket_information: e.target.value,
-            }))
-          }
-          className="text-field"
-        />
-
-        <TextField
-          variant="outlined"
-          margin="dense"
-          fullWidth
-          id="event-open-times"
-          label={t('open_times')}
-          name="event-open-times"
-          value={formData.open_times || ''}
-          onChange={(e) =>
-            setFormData((prevData) => ({
-              ...prevData,
-              open_times: e.target.value,
-            }))
-          }
-          className="text-field"
-        />
-
-        <TextField
-          variant="outlined"
-          margin="dense"
-          fullWidth
-          id="event-booking-link"
-          label={t('booking_link')}
-          name="event-booking-link"
-          value={formData.booking_link || ''}
-          onChange={(e) =>
-            setFormData((prevData) => ({
-              ...prevData,
-              booking_link: e.target.value,
-            }))
-          }
-          className="text-field"
-        />
-
-        <TextField
-          variant="outlined"
-          margin="dense"
-          fullWidth
-          id="website"
-          label={t('website')}
-          name="event-website-link"
-          value={formData.website_link || ''}
-          onChange={(e) =>
-            setFormData((prevData) => ({
-              ...prevData,
-              website_link: e.target.value,
-            }))
-          }
-          className="text-field"
-        />
-
+        <Places />
+        <Price />
         <Box>
           <TextField
             variant="outlined"
@@ -120,12 +54,9 @@ function Step4() {
             }
             className="text-field"
             multiline
-            rows={4}
+            rows={5}
           />
         </Box>
-
-        <Places />
-        <Price />
         <HandleFileUpload formData={formData} setFormData={setFormData} />
 
         <Box gridColumn="span 2" sx={{ display: 'flex', paddingTop: '2rem' }}>

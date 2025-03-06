@@ -26,7 +26,6 @@
     "react-dom": "^18.3.1",
     "react-i18next": "^15.4.0",
     "react-router-dom": "^7.1.1",
-    "react-toastify": "^11.0.5",
     "uuidv4": "^6.2.13"
   },
   "devDependencies": {

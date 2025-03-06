@@ -5,6 +5,7 @@ React vite application
     Fredrick : https://github.com/Fredrick665
     Marko : https://github.com/MapYh
     Christian : https://github.com/Christian1429
+    Amanda : https://github.com/Vendelin2up
 
 # ------ Installation ------
 we use mongoDB for testing
@@ -46,29 +47,16 @@ The form is divided into multiple steps:
 i18n:
     classnames are used to translate the form's labels and buttons.
 
-├── public/
-│   ├── assets/               # Static assets
-├── src/
-│   ├── api/                  # API interaction files
-│   │   ├── GetFrom.js        # Fetch data from the API
-│   │   ├── PostForm.js       # Submit form data to the API
-│   ├── components/           # Reusable UI components
-│   ├── ├── buttons/          # All buttons     
-│   │   ├── ClientExist.jsx   # Adding existing client onto theform
-│   │   ├── ClientNew.jsx     # Create a new client
-│   │   ├── Contact.jsx       # Create contact information
-│   │   ├── DatePicker.jsx    # Date selection component
-│   │   ├── Event.jsx         # Event details form
-│   │   ├── ImgUpload.jsx     # Image upload component
-│   │   ├── Places.jsx        # Location input component
-│   │   ├── Price.jsx         # Pricing information component
-│   ├── context/              # Global state management
-│   │   ├── FormDataContext.jsx
-│   ├── pages/                # Main form pages
-│   ├── utils/                # Utility functions
-│   │   ├── formUtils.js      # Form-related utilities
-│   │   ├── handleSubmit.js   # Form submission logic
-│   │   ├── mappers.js        # Data transformation functions
-│   ├── App.jsx               # Main application component
-│   ├── i18n.js               # Translation
+Change link 'https://www.visitvarmland.com' för X knappen länk /FE/src/components/Buttons/CloseBtn.jsx
+Change link 'https://www.regionvarmland.se/regionvarmland/om-regionen/personuppgiftsbehandling' for info /FE/src/components/Buttons/InfoBtn.jsx
 
+New object for turid API to handle: 
+
+contact: [
+      {
+        contact_name: "",
+        contact_email: "",
+        contact_address: "",
+        contact_number: "",
+      },
+    ],

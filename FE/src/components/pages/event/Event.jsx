@@ -6,15 +6,14 @@ import {
 
   Typography,
 } from '@mui/material';
-import HandleFileUpload from './ImgUpload';
 import { useTranslation } from 'react-i18next';
 import Tooltip from "@mui/material/Tooltip";
 import IconButton from "@mui/material/IconButton";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 
 const Event = ({ formData, setFormData }) => {
-  const sellingTextMaxLength = 100;
-  const descriptionMaxLength = 200;
+  const sellingTextMaxLength = 100; // ta bort
+  const descriptionMaxLength = 5000; // ta bort
   const rmCharDescription = descriptionMaxLength - formData.description.length;
   const rmCharSelling = sellingTextMaxLength - formData.sales_text.length;
   const { t } = useTranslation();
@@ -113,44 +112,6 @@ Eventuella åldersrekommendationer.
           }}
         />
         <TextField
-          required
-          variant="outlined"
-          margin="dense"
-          fullWidth
-          id="sales_text"
-          label={t('sales_text')}
-          name="event-sales-text"
-          value={formData.sales_text || ''}
-          onChange={(e) =>
-            setFormData((prevData) => ({
-              ...prevData,
-              sales_text: e.target.value,
-            }))
-          }
-          className="text-field"
-          multiline
-          rows={4}
-          inputProps={{ maxLength: 100, minLength: 1 }}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment
-                position="end"
-                sx={{ alignSelf: 'flex-end', mr: 1 }}
-              >
-                {`${rmCharSelling}/${sellingTextMaxLength}`}
-                <Tooltip
-                  title="En kort, säljande text för att locka besökare"
-                  arrow
-                >
-                  <IconButton size="small">
-                    <HelpOutlineIcon fontSize="small" />
-                  </IconButton>
-                </Tooltip>
-              </InputAdornment>
-            ),
-          }}
-        />
-        <TextField
           variant="outlined"
           margin="dense"
           fullWidth
@@ -230,27 +191,6 @@ Eventuella åldersrekommendationer.
           }
           className="text-field"
         />
-        <Box>
-          <TextField
-            variant="outlined"
-            margin="dense"
-            fullWidth
-            id="other_info"
-            label={t('other_info')}
-            name="other_info"
-            value={formData.other_info || ''}
-            onChange={(e) =>
-              setFormData((prevData) => ({
-                ...prevData,
-                other_info: e.target.value,
-              }))
-            }
-            className="text-field"
-            multiline
-            rows={4}
-          />
-        </Box>
-        {/* --------------- IMAGE UPLOADER -------------- */}
       </Box>
     </>
   );

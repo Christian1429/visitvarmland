@@ -5,7 +5,7 @@ import { initReactI18next } from "react-i18next";
 const resources = {
   en: {
     translation: {
-      hero: 'Tips and Events',
+      hero: 'Tips and Events', // fixa
 
       // Contact information (first page)
       contact_title: 'Fill in your contact information',
@@ -88,7 +88,7 @@ const resources = {
   // Swedish
   sv: {
     translation: {
-      hero: 'Tips och Evengemang',
+      hero: 'Suggest an event',
 
       // Contact information (first page)
       contact_title: 'Fyll i din kontaktinformation',
@@ -121,7 +121,7 @@ const resources = {
       description: 'Beskrivning',
       sales_text: 'Säljande Text',
       presentation: 'Presentation',
-      open_times: 'Öppetider',
+      open_times: 'Öppettider',
       ticket_information: 'Biljettinformation',
       other_info: 'Övrig information',
       upload_files: 'Ladda upp bild',
@@ -142,10 +142,10 @@ const resources = {
       // some generic buttons, breadcrumbs and other.
       language_btn_en: 'Engelska',
       language_btn_swe: 'Svenska',
-      breadcrumbs_1: 'Steg 1',
-      breadcrumbs_2: 'Steg 2',
-      breadcrumbs_3: 'Steg 3',
-      breadcrumbs_4: 'Steg 4',
+      breadcrumbs_1: 'Kontaktuppgifter',
+      breadcrumbs_2: 'Arrangör',
+      breadcrumbs_3: 'Event',
+      breadcrumbs_4: 'Övrig info',
       submit_btn: 'Skicka in',
       next_btn: 'Nästa',
       images_title: 'Ladda upp bilder. Max 2MB',
@@ -162,7 +162,7 @@ const resources = {
       price_type_label: 'Pristyp',
       price_label: 'Pris',
       seats_available_label: 'Tillgängliga Platser',
-      price_description_label: 'Beskrivning',
+      price_description_label: 'Prisinformation',
     },
   },
 };
