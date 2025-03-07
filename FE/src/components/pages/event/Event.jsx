@@ -33,7 +33,7 @@ const Event = ({ formData, setFormData }) => {
         }}
       >
         <Typography
-          sx={{ textAlign: 'center', padding: 1, marginTop: '-1rem' }}
+          sx={{ textAlign: 'center', padding: 1, marginTop: '-1rem', }}
         >
           {t('event_title')}
         </Typography>
@@ -54,7 +54,13 @@ const Event = ({ formData, setFormData }) => {
             input: {
               endAdornment: (
                 <InputAdornment position="end">
-                  <Tooltip title={t("tooltips_eventname")} arrow>
+                  <Tooltip title={
+    <Typography sx={{ fontSize: "1rem" }}>
+      {t("tooltips_eventname")}
+    </Typography>
+  }
+  arrow
+>
                     <IconButton size="small">
                       <HelpOutlineIcon fontSize="small" />
                     </IconButton>
@@ -91,7 +97,13 @@ const Event = ({ formData, setFormData }) => {
                   sx={{ alignSelf: "flex-end", mr: 1 }}
                 >
                   {`${rmCharDescription}/${descriptionMaxLength}`}
-                  <Tooltip title={t("tooltips_description")} arrow>
+                  <Tooltip title={
+    <Typography sx={{ fontSize: "1rem" }}>
+      {t("tooltips_description")}
+    </Typography>
+  }
+  arrow
+>
                     <IconButton size="small">
                       <HelpOutlineIcon fontSize="small" />
                     </IconButton>
@@ -120,7 +132,13 @@ const Event = ({ formData, setFormData }) => {
             input: {
               endAdornment: (
                 <InputAdornment position="end">
-                  <Tooltip title={t("tooltip_ticketinformation")} arrow>
+                  <Tooltip title={
+    <Typography sx={{ fontSize: "1rem" }}>
+      {t("tooltips_ticketinformation")}
+    </Typography>
+  }
+  arrow
+>
                     <IconButton size="small">
                       <HelpOutlineIcon fontSize="small" />
                     </IconButton>

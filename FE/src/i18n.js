@@ -32,7 +32,7 @@ const resources = {
       ticket_information: 'Ticket Information',
       tooltips_eventname: 'Here you will write a good, powerful title on your tip or event',
       tooltips_description: 'Here you describe the event as detailed and as appealing as possible - the more information, the better for visitors! Possible length of performance or breaks. Accessibility information - for example wheelchair access or hearing loop. Possible age recommendations. Other: Is there anything else important that visitors need to know?',
-      tooltip_ticketinformation: 'Does the ticket need to be purchased in advance, is entry paid at the door, are there any ticket resellers, different price categories, etc.',
+      tooltips_ticketinformation: 'Does the ticket need to be purchased in advance, is entry paid at the door, are there any ticket resellers, different price categories, etc.',
 
       // Other information page (fourth page)
       other_info_title: 'Date and time for your event',
@@ -43,7 +43,7 @@ const resources = {
       date_other_information: 'Other information about the dates or times',
       other_info: 'Other information',
       upload_files: 'Upload image',
-      tooltips_pricedescription: 'Here you can enter prices for tickets (e.g., child, adult, student, senior) and where they can be purchased, as well as any other potential costs for visitors, such as "Coffee 15 SEK."',
+      tooltips_priceinformation: 'Here you can enter prices for tickets (e.g., child, adult, student, senior) and where they can be purchased, as well as any other potential costs for visitors, such as "Coffee 15 SEK."',
 
       //Success modal
       success_title: "Thank you for the tip",
@@ -103,7 +103,7 @@ const resources = {
       ticket_information: 'Biljettinformation',
       tooltips_eventname: 'Här skriver du en bra, slagkraftig titel till ditt tips eller event',
       tooltips_description: 'Här beskriver du evenemanget så detaljerat och säljande som möjligt, ju mer information, desto bättre för besökarna! Eventuell längd på föreställning eller pauser Tillgänglighetsinformation  exempelvis rullstolsanpassning eller hörslinga. Eventuella åldersrekommendationer. Övrigt: Finns det något annat viktigt som besökarna behöver känna till?',
-      tooltip_ticketinformation: 'Behöver biljett förköpas, betalas entré i dörren, ev. återförsäljare av biljetter, olika pristyper etc',
+      tooltips_ticketinformation: 'Behöver biljett förköpas, betalas entré i dörren, ev. återförsäljare av biljetter, olika pristyper etc',
 
       // Other information page (fourth page)
       other_info_title: 'Datum och tid för ditt event',
@@ -114,7 +114,7 @@ const resources = {
       date_other_information: 'Övrig information om datum eller tider',
       other_info: 'Övrig information',
       upload_files: 'Ladda upp bild',
-      tooltips_pricedescription: 'Här kan du ange priser på bland annat biljetter (exempelvis barn, vuxen, student, pensionär) och var man kan köpa dessa samt andra eventuella kostnader för besökare t.ex "Kaffe 15 kr" ',
+      tooltips_priceinformation: 'Här kan du ange priser på bland annat biljetter (exempelvis barn, vuxen, student, pensionär) och var man kan köpa dessa samt andra eventuella kostnader för besökare t.ex "Kaffe 15 kr" ',
 
       //Success modal Form submitted! We'll process your request soon.
       success_title: 'Tack för tipset!',
