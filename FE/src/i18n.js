@@ -48,7 +48,7 @@ const resources = {
       //Success modal
       success_title: "Thank you for the tip",
       success_message: "We'll process your tip soon.",
-      success_close: 'Close',
+      success_btn_close: 'Close',
 
       // some generic buttons, breadcrumbs and other.
       language_btn_en: 'English',
@@ -119,7 +119,7 @@ const resources = {
       //Success modal Form submitted! We'll process your request soon.
       success_title: 'Tack för tipset!',
       success_message: 'Vi kommer att behandla ditt tips snart.',
-      success_close: 'Stäng',
+      success_btn_close: 'Stäng',
 
       // some generic buttons, breadcrumbs and other.
       language_btn_en: 'Engelska',

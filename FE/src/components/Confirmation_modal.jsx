@@ -1,4 +1,5 @@
-import React from 'react';
+import { useContext } from 'react';
+import { FormDataContext } from '../context/FormDataContext';
 import {
   Dialog,
   DialogTitle,
@@ -10,7 +11,8 @@ import {
 import { useTranslation } from 'react-i18next';
 
 const SuccessModal = ({ open, onClose }) => {
-  const { t } = useTranslation();
+   const { formData } = useContext(FormDataContext);
+   const { t } = useTranslation();
 
   return (
     <div
@@ -23,7 +25,7 @@ const SuccessModal = ({ open, onClose }) => {
     >
       <Dialog open={open} onClose={onClose}>
         <DialogTitle sx={{ textAlign: 'center' }}>
-          {t('success_title')}
+          {t('success_title')}{formData.title}
         </DialogTitle>
         <DialogContent
           sx={{
@@ -43,7 +45,7 @@ const SuccessModal = ({ open, onClose }) => {
             }
             autoFocus
           >
-            {t('success_close')}
+            {t('success_btn_close')}
           </Button>
         </DialogActions>
       </Dialog>
