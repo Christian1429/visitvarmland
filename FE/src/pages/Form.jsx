@@ -68,8 +68,8 @@ const Form = () => {
       }
     }
     if (currentStep === 2) {
-      const { title, description, sales_text } = formData;
-      if (!title || !description || !sales_text) {
+      const { title, description } = formData;
+      if (!title || !description) {
         window.alert("Vänligen fyll i alla evenemangsuppgifter.");
         return;
       }
@@ -160,13 +160,13 @@ const Form = () => {
     <Box className="container">
       <TranslationBtn />
       <form onSubmit={handleSubmit}>
-        <Box sx={{ paddingTop: '1rem', paddingLeft: '1rem' }}>
+        <Box sx={{ paddingTop: "1rem", paddingLeft: "1rem" }}>
           <img
             src="/assets/logotyp-visitvarmland-svart.svg"
             alt="Logo"
             className="logo"
             width={isMobile ? 100 : 150}
-            sx={{ paddingTop: '10rem' }}
+            sx={{ paddingTop: "10rem" }}
           />
         </Box>
         <Typography
@@ -175,60 +175,60 @@ const Form = () => {
           align="center"
           gutterBottom
           sx={{
-            color: '#004338',
-            fontWeight: 'bold',
-            paddingTop: '1rem',
-            paddingBottom: '1rem',
+            color: "#004338",
+            fontWeight: "bold",
+            paddingTop: "1rem",
+            paddingBottom: "1rem",
           }}
         >
-          {t('hero')}
+          {t("hero")}
         </Typography>
         <CloseBtn />
         <Box
           sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            flexDirection: 'column',
-            marginBottom: '1rem',
-            alignItems: 'center',
+            display: "flex",
+            justifyContent: "center",
+            flexDirection: "column",
+            marginBottom: "1rem",
+            alignItems: "center",
           }}
         >
           <Breadcrumbs aria-label="breadcrumb">
             <Box
               sx={{
-                display: 'flex',
-                flexDirection: isMobile ? 'column' : 'row',
-                alignItems: 'center',
-                gap: '0.5rem',
+                display: "flex",
+                flexDirection: isMobile ? "column" : "row",
+                alignItems: "center",
+                gap: "0.5rem",
               }}
             >
               <Link
-                color={currentStep === 0 ? 'textPrimary' : 'inherit'}
+                color={currentStep === 0 ? "textPrimary" : "inherit"}
                 onClick={() => handleStepClick(0)}
-                sx={{ cursor: 'pointer' }}
+                sx={{ cursor: "pointer" }}
               >
-                {t('breadcrumbs_1')}
+                {t("breadcrumbs_1")}
               </Link>
               <Link
-                color={currentStep === 1 ? 'textPrimary' : 'inherit'}
+                color={currentStep === 1 ? "textPrimary" : "inherit"}
                 onClick={() => handleStepClick(1)}
-                sx={{ cursor: 'pointer' }}
+                sx={{ cursor: "pointer" }}
               >
-                {t('breadcrumbs_2')}
+                {t("breadcrumbs_2")}
               </Link>
               <Link
-                color={currentStep === 2 ? 'textPrimary' : 'inherit'}
+                color={currentStep === 2 ? "textPrimary" : "inherit"}
                 onClick={() => handleStepClick(2)}
-                sx={{ cursor: 'pointer' }}
+                sx={{ cursor: "pointer" }}
               >
-                {t('breadcrumbs_3')}
+                {t("breadcrumbs_3")}
               </Link>
               <Link
-                color={currentStep === 3 ? 'textPrimary' : 'inherit'}
+                color={currentStep === 3 ? "textPrimary" : "inherit"}
                 onClick={() => handleStepClick(3)}
-                sx={{ cursor: 'pointer' }}
+                sx={{ cursor: "pointer" }}
               >
-                {t('breadcrumbs_4')}
+                {t("breadcrumbs_4")}
               </Link>
             </Box>
           </Breadcrumbs>
@@ -239,9 +239,9 @@ const Form = () => {
           {currentStep === 3 && (
             <Button
               onClick={() => handleSubmitWithModal(formData)}
-              sx={{ marginBottom: '2rem', width: '8rem' }}
+              sx={{ marginBottom: "2rem", width: "8rem" }}
             >
-              {t('submit_btn')}
+              {t("submit_btn")}
             </Button>
           )}
           <SuccessModal open={showModal} onClose={handleCloseModal} />
