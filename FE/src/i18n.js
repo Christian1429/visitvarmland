@@ -26,6 +26,7 @@ const resources = {
       erase_fields: "Erase inputs",
 
       // Event page (third page)
+
       event_title: "Add information about your event here",
       event_name: "Enter the name of your event",
       event_description: "Description",
@@ -46,8 +47,26 @@ const resources = {
       date_other_information: "Other information about the dates or times",
       other_info: "Other information",
       upload_files: "Upload image",
-      tooltips_pricedescription:
-        'Here you can enter prices for tickets (e.g., child, adult, student, senior) and where they can be purchased, as well as any other potential costs for visitors, such as "Coffee 15 SEK."',
+
+      event_title: 'Add information about your event here',
+      event_name: 'Enter the name of your event',
+      event_description: 'Description',
+      ticket_information: 'Ticket Information',
+      tooltips_eventname: 'Here you will write a good, powerful title on your tip or event',
+      tooltips_description: 'Here you describe the event as detailed and as appealing as possible - the more information, the better for visitors! Possible length of performance or breaks. Accessibility information - for example wheelchair access or hearing loop. Possible age recommendations. Other: Is there anything else important that visitors need to know?',
+      tooltips_ticketinformation: 'Does the ticket need to be purchased in advance, is entry paid at the door, are there any ticket resellers, different price categories, etc.',
+
+      // Other information page (fourth page)
+      other_info_title: 'Date and time for your event',
+      date_start: 'Date From',
+      date_end: 'Date To',
+      time_start: 'Time From',
+      time_end: 'Time To',
+      date_other_information: 'Other information about the dates or times',
+      other_info: 'Other information',
+      upload_files: 'Upload image',
+      tooltips_priceinformation: 'Here you can enter prices for tickets (e.g., child, adult, student, senior) and where they can be purchased, as well as any other potential costs for visitors, such as "Coffee 15 SEK."',
+
 
       //Success modal
       success_title: "Thank you for the tip",
@@ -102,6 +121,7 @@ const resources = {
       erase_fields: "Rensa fält",
 
       // Event page (third page)
+
       event_title: "Lägg till information om ditt event här",
       event_name: "Ange namnet på ditt evenemang",
       event_description: "Beskrivning",
@@ -122,8 +142,27 @@ const resources = {
       date_other_information: "Övrig information om datum eller tider",
       other_info: "Övrig information",
       upload_files: "Ladda upp bild",
-      tooltips_pricedescription:
-        'Här kan du ange priser på bland annat biljetter (exempelvis barn, vuxen, student, pensionär) och var man kan köpa dessa samt andra eventuella kostnader för besökare t.ex "Kaffe 15 kr" ',
+
+      event_title: 'Lägg till information om ditt event här',
+      event_name: 'Ange namnet på ditt evenemang',
+      event_description: 'Beskrivning',
+      ticket_information: 'Biljettinformation',
+      tooltips_eventname: 'Här skriver du en bra, slagkraftig titel till ditt tips eller event',
+      tooltips_description: 'Här beskriver du evenemanget så detaljerat och säljande som möjligt, ju mer information, desto bättre för besökarna! Eventuell längd på föreställning eller pauser Tillgänglighetsinformation  exempelvis rullstolsanpassning eller hörslinga. Eventuella åldersrekommendationer. Övrigt: Finns det något annat viktigt som besökarna behöver känna till?',
+      tooltips_ticketinformation: 'Behöver biljett förköpas, betalas entré i dörren, ev. återförsäljare av biljetter, olika pristyper etc',
+
+      // Other information page (fourth page)
+      other_info_title: 'Datum och tid för ditt event',
+      date_start: 'Datum Från',
+      date_end: 'Datum Till',
+      time_start: 'Tid Från',
+      time_end: 'Tid Till',
+      date_other_information: 'Övrig information om datum eller tider',
+      other_info: 'Övrig information',
+      upload_files: 'Ladda upp bild',
+      tooltips_priceinformation: 'Här kan du ange priser på bland annat biljetter (exempelvis barn, vuxen, student, pensionär) och var man kan köpa dessa samt andra eventuella kostnader för besökare t.ex "Kaffe 15 kr" ',
+
+
       //Success modal Form submitted! We'll process your request soon.
       success_title: "Tack för tipset!",
       success_message: "Vi kommer att behandla ditt tips snart.",
