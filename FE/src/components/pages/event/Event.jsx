@@ -21,7 +21,7 @@ const Event = ({ formData, setFormData }) => {
     <>
       <Box
         sx={{
-          maxWidth: 600,
+          width: '37.5rem',
           boxShadow: 3,
           p: 4,
           m: "auto",
@@ -55,12 +55,12 @@ const Event = ({ formData, setFormData }) => {
               endAdornment: (
                 <InputAdornment position="end">
                   <Tooltip title={
-    <Typography sx={{ fontSize: "1rem" }}>
-      {t("tooltips_eventname")}
-    </Typography>
-  }
-  arrow
->
+                  <Typography sx={{ fontSize: "1rem" }}>
+                  {t("tooltips_eventname")}
+                  </Typography>
+                  }
+                  arrow
+                  >
                     <IconButton size="small">
                       <HelpOutlineIcon fontSize="small" />
                     </IconButton>

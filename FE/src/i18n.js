@@ -69,9 +69,9 @@ const resources = {
 
 
       //Success modal
-      success_title: "Thank you for the tip",
+      success_title: "Thank you for the tip about ",
       success_message: "We'll process your tip soon.",
-      success_close: "Close",
+      success_btn_close: "Close",
       addmore_events: "Add more events",
 
       // some generic buttons, breadcrumbs and other.
@@ -162,11 +162,11 @@ const resources = {
       upload_files: 'Ladda upp bild',
       tooltips_priceinformation: 'Här kan du ange priser på bland annat biljetter (exempelvis barn, vuxen, student, pensionär) och var man kan köpa dessa samt andra eventuella kostnader för besökare t.ex "Kaffe 15 kr" ',
 
-
       //Success modal Form submitted! We'll process your request soon.
-      success_title: "Tack för tipset!",
-      success_message: "Vi kommer att behandla ditt tips snart.",
-      success_close: "Stäng",
+      success_title: 'Tack för tipset om ',
+      success_message: 'Vi kommer att behandla ditt tips snart.',
+      success_btn_close: 'Stäng',
+      //Success modal Form submitted! We'll process your request soon.
       addmore_events: "Lägg till Fler?",
       // some generic buttons, breadcrumbs and other.
       language_btn_en: "Engelska",
