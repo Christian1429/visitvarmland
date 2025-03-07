@@ -1,7 +1,6 @@
-
-import { useContext } from 'react';
-import { FormDataContext } from '../../../context/FormDataContext';
-import { Box, TextField, InputAdornment } from '@mui/material';
+import { useContext } from "react";
+import { FormDataContext } from "../../../context/FormDataContext";
+import { Box, TextField, InputAdornment, Typography } from "@mui/material";
 import Tooltip from "@mui/material/Tooltip";
 import IconButton from "@mui/material/IconButton";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
@@ -19,8 +18,7 @@ function Price() {
           display: "grid",
           gridTemplateColumns: "repeat(3, 1fr)",
         }}
-      >
-      </Box>
+      ></Box>
       <Box>
         <TextField
           label={t("price_description_label")}
@@ -42,7 +40,14 @@ function Price() {
             input: {
               endAdornment: (
                 <InputAdornment position="end">
-                  <Tooltip title={t("tooltips_pricedescription")} arrow>
+                  <Tooltip
+                    title={
+                      <Typography sx={{ fontSize: "1 rem" }}>
+                        {t("tooltips_pricedescription")}
+                      </Typography>
+                    }
+                    arrow
+                  >
                     <IconButton size="small">
                       <HelpOutlineIcon fontSize="small" />
                     </IconButton>
