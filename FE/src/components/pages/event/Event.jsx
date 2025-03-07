@@ -21,19 +21,19 @@ const Event = ({ formData, setFormData }) => {
     <>
       <Box
         sx={{
-          width: '37.5rem',
+          width: { xs: '20rem', sm: '30rem', md: '37.5rem' },
           boxShadow: 3,
           p: 4,
-          m: "auto",
+          m: 'auto',
           borderRadius: 2,
-          background: "rgba(255, 255, 255, 0.7)",
-          backdropFilter: "blur(2px)",
-          display: "flex",
-          flexDirection: "column",
+          background: 'rgba(255, 255, 255, 0.7)',
+          backdropFilter: 'blur(2px)',
+          display: 'flex',
+          flexDirection: 'column',
         }}
       >
         <Typography
-          sx={{ textAlign: 'center', padding: 1, marginTop: '-1rem', }}
+          sx={{ textAlign: 'center', padding: 1, marginTop: '-1rem' }}
         >
           {t('event_title')}
         </Typography>
@@ -54,12 +54,13 @@ const Event = ({ formData, setFormData }) => {
             input: {
               endAdornment: (
                 <InputAdornment position="end">
-                  <Tooltip title={
-                  <Typography sx={{ fontSize: "1rem" }}>
-                  {t("tooltips_eventname")}
-                  </Typography>
-                  }
-                  arrow
+                  <Tooltip
+                    title={
+                      <Typography sx={{ fontSize: '1rem' }}>
+                        {t('tooltips_eventname')}
+                      </Typography>
+                    }
+                    arrow
                   >
                     <IconButton size="small">
                       <HelpOutlineIcon fontSize="small" />
@@ -78,7 +79,7 @@ const Event = ({ formData, setFormData }) => {
           id="description"
           label={t('event_description')}
           name="description"
-          value={formData.description || ""}
+          value={formData.description || ''}
           onChange={(e) =>
             setFormData((prevData) => ({
               ...prevData,
@@ -94,16 +95,17 @@ const Event = ({ formData, setFormData }) => {
               endAdornment: (
                 <InputAdornment
                   position="end"
-                  sx={{ alignSelf: "flex-end", mr: 1 }}
+                  sx={{ alignSelf: 'flex-end', mr: 1 }}
                 >
                   {`${rmCharDescription}/${descriptionMaxLength}`}
-                  <Tooltip title={
-    <Typography sx={{ fontSize: "1rem" }}>
-      {t("tooltips_description")}
-    </Typography>
-  }
-  arrow
->
+                  <Tooltip
+                    title={
+                      <Typography sx={{ fontSize: '1rem' }}>
+                        {t('tooltips_description')}
+                      </Typography>
+                    }
+                    arrow
+                  >
                     <IconButton size="small">
                       <HelpOutlineIcon fontSize="small" />
                     </IconButton>
@@ -118,9 +120,9 @@ const Event = ({ formData, setFormData }) => {
           margin="dense"
           fullWidth
           id="event-ticket-information"
-          label={t("ticket_information")}
+          label={t('ticket_information')}
           name="event-ticket-information"
-          value={formData.ticket_information || ""}
+          value={formData.ticket_information || ''}
           onChange={(e) =>
             setFormData((prevData) => ({
               ...prevData,
@@ -132,13 +134,14 @@ const Event = ({ formData, setFormData }) => {
             input: {
               endAdornment: (
                 <InputAdornment position="end">
-                  <Tooltip title={
-    <Typography sx={{ fontSize: "1rem" }}>
-      {t("tooltips_ticketinformation")}
-    </Typography>
-  }
-  arrow
->
+                  <Tooltip
+                    title={
+                      <Typography sx={{ fontSize: '1rem' }}>
+                        {t('tooltips_ticketinformation')}
+                      </Typography>
+                    }
+                    arrow
+                  >
                     <IconButton size="small">
                       <HelpOutlineIcon fontSize="small" />
                     </IconButton>
@@ -153,9 +156,9 @@ const Event = ({ formData, setFormData }) => {
           margin="dense"
           fullWidth
           id="event-booking-link"
-          label={t("booking_link")}
+          label={t('booking_link')}
           name="event-booking-link"
-          value={formData.booking_link || ""}
+          value={formData.booking_link || ''}
           onChange={(e) =>
             setFormData((prevData) => ({
               ...prevData,
@@ -163,15 +166,15 @@ const Event = ({ formData, setFormData }) => {
             }))
           }
           className="text-field"
-        />{" "}
+        />{' '}
         <TextField
           variant="outlined"
           margin="dense"
           fullWidth
           id="website"
-          label={t("website")}
+          label={t('website')}
           name="event-website-link"
-          value={formData.website_link || ""}
+          value={formData.website_link || ''}
           onChange={(e) =>
             setFormData((prevData) => ({
               ...prevData,
@@ -186,9 +189,9 @@ const Event = ({ formData, setFormData }) => {
             margin="dense"
             fullWidth
             id="other_info"
-            label={t("other_info")}
+            label={t('other_info')}
             name="other_info"
-            value={formData.other_info || ""}
+            value={formData.other_info || ''}
             onChange={(e) =>
               setFormData((prevData) => ({
                 ...prevData,

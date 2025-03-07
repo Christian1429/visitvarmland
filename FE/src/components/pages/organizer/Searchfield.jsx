@@ -35,7 +35,7 @@ function Searchfield({ setEditable }) {
   };
 
   return (
-    <Box display="flex" alignItems="center" gap={2} marginY={2}>
+    <Box display="flex" alignItems="center" justifyContent={'space-between'} gap={2} marginY={2}>
       <Autocomplete
         options={organizers}
         getOptionLabel={(option) => option.title || ''}
@@ -45,7 +45,8 @@ function Searchfield({ setEditable }) {
             {option.title}
           </li>
         )}
-        style={{ width: 300 }}
+        sx={{ width: { xs: '16rem', sm: '18rem', md: '20rem' },
+              marginLeft: {xs: '1rem', sm: 0, md: 0}}}
         renderInput={(params) => (
           <TextField {...params} label={t('Sök arrangör')} variant="outlined" />
         )}

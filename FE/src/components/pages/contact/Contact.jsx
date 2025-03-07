@@ -40,7 +40,6 @@ const Contact = ({ formData, setFormData }) => {
       {/* Contact box */}
       <Box
         sx={{
-          maxWidth: 600,
           boxShadow: 3,
           borderRadius: 2,
           backdropFilter: 'blur(2px)',
@@ -50,8 +49,8 @@ const Contact = ({ formData, setFormData }) => {
       >
         <Box
           sx={{
-            display: isMobile ? 'flex' : 'grid',
-            flexDirection: isMobile ? 'column' : 'row',
+            display: 'flex',
+            flexDirection:'column',
             padding: isMobile ? '0rem' : '1rem',
           }}
         >

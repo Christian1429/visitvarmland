@@ -28,7 +28,8 @@ const FormResetButton = ({ setFormData, setEditable }) => {
   return <Button onClick={() => {
     setEditable(true)
     reset();
-  }}>
+  }}
+  sx={{ width: {xs: '2rem', sm: '10rem',  md: '10rem'}, marginRight: {xs: '1rem', sm: '0rem', md: '0'}}}>
   {t("erase_fields")}</Button>;
 };
 
