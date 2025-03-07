@@ -1,3 +1,4 @@
+
 import { useContext } from 'react';
 import { FormDataContext } from '../context/FormDataContext';
 import {
@@ -7,8 +8,8 @@ import {
   DialogContentText,
   DialogActions,
   Button,
-} from '@mui/material';
-import { useTranslation } from 'react-i18next';
+} from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 const SuccessModal = ({ open, onClose }) => {
    const { formData } = useContext(FormDataContext);
@@ -17,10 +18,10 @@ const SuccessModal = ({ open, onClose }) => {
   return (
     <div
       style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '10vh',
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "10vh",
       }}
     >
       <Dialog open={open} onClose={onClose}>
@@ -29,23 +30,33 @@ const SuccessModal = ({ open, onClose }) => {
         </DialogTitle>
         <DialogContent
           sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
           }}
         >
-          <DialogContentText>{t('success_message')}</DialogContentText>
+          <DialogContentText>{t("success_message")}</DialogContentText>
         </DialogContent>
         <DialogActions
-          style={{ display: 'flex', justifyContent: 'center', paddingTop: '0' }}
+          style={{
+            display: "flex",
+            justifyContent: "space-around",
+            paddingTop: "0",
+          }}
         >
           <Button
             onClick={() =>
-              (window.location.href = 'https://www.visitvarmland.com')
+              (window.location.href = "https://www.visitvarmland.com")
             }
             autoFocus
           >
-            {t('success_btn_close')}
+            {t("success_btn_close")}
+          </Button>
+          <Button
+            onClick={() => (window.location.href = "http://localhost:3000/")}
+            autoFocus
+          >
+            {t("addmore_events")}
           </Button>
         </DialogActions>
       </Dialog>
