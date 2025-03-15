@@ -51,14 +51,14 @@ const handleSubmit = async (formData) => {
 
     if (response) {
       console.log('Form submitted successfully!');
-      return true; // Success
+      return true;
     } else {
       console.error('Form submission failed.');
-      return false; // Failure
+      return false;
     }
   } catch (error) {
     console.error('Error submitting form:', error);
-    return false; // Failure
+    return false;
   }
 };
 

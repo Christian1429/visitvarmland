@@ -22,9 +22,10 @@ add:
 # ------ Usage ------
 The form is divided into multiple steps:
 
-    Step 1: Contact Information: Input name, email, and phone number.
+    Step 1: Contact Information: name, email, and phone number.
     Step 2: Organizer Information: Provide details about the event organizer.
-    Step 3: Event Details: Add event name, date, location, description, gdpr consent and submit.
+    Step 3: Event Details: Add all information related to the event.
+    Step 4: Other Information: Add additional information related to the event, such as date and time, price, and other details.
 
     Global: 
         Translation button Swedish and English.
@@ -37,7 +38,7 @@ The form is divided into multiple steps:
 
 # ------ Form Handling ------
     Form wraps the application and declare all components, making it easy to move components around and style them individually.
-    Use the Next and Back buttons to navigate between steps. The Send button submits the form data to handleSubmit.js
+    Use the Next button to navigate. The submit button sends the form data to handleSubmit.js
 
 # ------ API ------
     GetFrom.js: Fetches initial data. // local dummy data, create your own data.
@@ -58,12 +59,15 @@ contact: [
       },
     ],
 
+gdpr_consent: false,
+other_info: '',
+
 # ------ For visit värmland ------
-Change link 'https://www.visitvarmland.com' för X knappen länk
+Change link 'https://www.visitvarmland.com' for X, CloseBtn.jsx.
 /FE/src/components/Buttons/CloseBtn.jsx
 
-Change link 'https://www.regionvarmland.se/regionvarmland/om-regionen/personuppgiftsbehandling' for info 
+Change link 'https://www.regionvarmland.se/regionvarmland/om-regionen/personuppgiftsbehandling' for (i) GDPR, InfoBtn.jsx.
 /FE/src/components/Buttons/InfoBtn.jsx
 
-Change translation settings or text in fields, titles etc. in 
+Change translation settings or text in fields, titles etc. 
 /FE/src/i18n.js
