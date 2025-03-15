@@ -21,11 +21,10 @@ const SuccessModal = ({ open, onClose }) => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "10vh",
       }}
     >
       <Dialog open={open} onClose={onClose}>
-        <DialogTitle sx={{ textAlign: 'center' }}>
+        <DialogTitle sx={{ textAlign: 'center', paddingTop: "2rem", fontSize: "2rem" }}>
           {t('success_title')}{formData.title}
         </DialogTitle>
         <DialogContent
@@ -33,6 +32,8 @@ const SuccessModal = ({ open, onClose }) => {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            height: "8rem",
+            padding: "3rem",
           }}
         >
           <DialogContentText>{t("success_message")}</DialogContentText>
@@ -41,7 +42,7 @@ const SuccessModal = ({ open, onClose }) => {
           style={{
             display: "flex",
             justifyContent: "space-around",
-            paddingTop: "0",
+            paddingBottom: "2rem"
           }}
         >
           <Button
